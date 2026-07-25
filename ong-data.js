@@ -2,7 +2,7 @@ const ONGS = [
     {
         id: "holo-astrum",
         nombre: "Holo Astrum",
-        logo: "images/logo_ong/holo_astrum.png",
+        logo: "images/logo_ong/holo_astrum.webp",
         categoria: "Educación holística",
         estado: "ONG fundadora",
         representante: "Jesús Gálvez",
@@ -20,7 +20,7 @@ const ONGS = [
     {
         id: "yatimaq",
         nombre: "Yatimaq",
-        logo: "images/logo_ong/yatimaq.png",
+        logo: "images/logo_ong/yatimaq.webp",
         categoria: "Educación comunitaria",
         estado: "Afiliada",
         representante: "Representante Yatimaq",
@@ -37,7 +37,7 @@ const ONGS = [
     {
         id: "girls-in-science",
         nombre: "Girls in Science",
-        logo: "images/logo_ong/girls_in_science.png",
+        logo: "images/logo_ong/girls_in_science.webp",
         categoria: "STEM y ciencia",
         estado: "Afiliada",
         representante: "Representante Girls in Science",
@@ -54,7 +54,7 @@ const ONGS = [
     {
         id: "unity",
         nombre: "Unity",
-        logo: "images/logo_ong/unity.png",
+        logo: "images/logo_ong/unity.webp",
         categoria: "Bienestar juvenil",
         estado: "Afiliada",
         representante: "Representante Unity",

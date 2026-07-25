@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+*.zip
+*.rar
+
+# Mantener recursos fuente pesados fuera del sitio publicado.
+assets-raw/
+images/raw/
+videos/raw/
