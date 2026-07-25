@@ -55,16 +55,16 @@
                 </a>
             </div>
 
-            <div class="menu-icon">
+            <button class="menu-icon" type="button" aria-label="Abrir menú" aria-controls="mobile-navigation" aria-expanded="false">
                 <i class='bx bx-menu'></i>
-            </div>
+            </button>
         </header>
 
         <!-- SIDEBAR -->
-        <div class="sidebar">
-            <div class="close-icon">
+        <nav class="sidebar close-sidebar" id="mobile-navigation" aria-label="Navegación móvil" aria-hidden="true">
+            <button class="close-icon" type="button" aria-label="Cerrar menú">
                 <i class='bx bx-x'></i>
-            </div>
+            </button>
 
             <ul>
                 <li><a href="index.html">Inicio</a></li>
@@ -86,7 +86,7 @@
                     <i class='bx bxl-linkedin-square'></i>
                 </a>
             </div>
-        </div>
+        </nav>
 
         <!-- CONTENIDO -->
         <div class="team-page">
@@ -776,7 +776,7 @@
                 const hasPhoto = m.foto && m.foto.trim() !== "";
 
                 const avatarContent = hasPhoto
-                    ? `<img src="${m.foto}" alt="Foto de ${m.nombre}" loading="lazy">`
+                    ? `<img src="${m.foto}" alt="Foto de ${m.nombre}" loading="lazy" decoding="async">`
                     : getInitials(m.nombre);
 
                 const avatarClass = hasPhoto ? "member-avatar" : "member-avatar no-photo";
