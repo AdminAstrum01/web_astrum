@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal ONG - Red Astrum</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="container">
+        <video class="back-vid" autoplay loop muted playsinline src="videos/galaxy.mp4"></video>
+
+        <header>
+            <div class="left">
+                <img src="images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
+                <h2><span style="color: #6B2FA0;">Red</span> Astrum</h2>
+            </div>
+
+            <ul class="main">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="ongs.html">ONGs</a></li>
+                <li><a href="team.html">Equipo</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </header>
+
+        <main class="ong-portal-page">
+            <a href="ongs.html" class="back-link">
+                <i class='bx bx-left-arrow-alt'></i>
+                Volver a ONGs
+            </a>
+
+            <section class="ong-portal-header">
+                <div class="ong-portal-logo">
+                    <img id="ongLogo" src="" alt="Logo ONG">
+                </div>
+
+                <div class="ong-portal-main">
+                    <span id="ongEstado"></span>
+                    <h1 id="ongNombre"></h1>
+                    <p id="ongDescripcion"></p>
+                </div>
+            </section>
+
+            <section class="ong-portal-tabs">
+                <button class="tab-btn active" data-tab="detalles">Detalles</button>
+                <button class="tab-btn" data-tab="proyectos">Proyectos</button>
+            </section>
+
+            <section class="ong-tab-content active" id="detalles">
+                <div class="ong-detail-grid">
+                    <div class="ong-info-card">
+                        <h3>Representante</h3>
+                        <p id="ongRepresentante"></p>
+                    </div>
+
+                    <div class="ong-info-card">
+                        <h3>Área de impacto</h3>
+                        <p id="ongCategoria"></p>
+                    </div>
+
+                    <div class="ong-info-card">
+                        <h3>Correo</h3>
+                        <p id="ongCorreo"></p>
+                    </div>
+                </div>
+
+                <div class="ong-detail-block">
+                    <h2>Misión</h2>
+                    <p id="ongMision"></p>
+                </div>
+
+                <div class="ong-detail-block">
+                    <h2>Público objetivo</h2>
+                    <p id="ongPublico"></p>
+                </div>
+
+                <div class="ong-detail-block">
+                    <h2>Valor dentro de Red Astrum</h2>
+                    <p id="ongValor"></p>
+                </div>
+            </section>
+
+            <section class="ong-tab-content" id="proyectos">
+                <div class="ong-project-grid" id="ongProyectos"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="ong-data.js"></script>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const ongId = params.get("id");
+
+        const ong = ONGS.find(item => item.id === ongId);
+
+        if (!ong) {
+            document.querySelector(".ong-portal-page").innerHTML = `
+                <div class="ong-not-found">
+                    <h1>ONG no encontrada</h1>
+                    <p>La organización solicitada no existe o aún no ha sido registrada.</p>
+                    <a href="ongs.html">Volver al mosaico</a>
+                </div>
+            `;
+        } else {
+            document.title = `${ong.nombre} - Red Astrum`;
+
+            document.getElementById("ongLogo").src = ong.logo;
+            document.getElementById("ongLogo").alt = ong.nombre;
+
+            document.getElementById("ongEstado").textContent = ong.estado;
+            document.getElementById("ongNombre").textContent = ong.nombre;
+            document.getElementById("ongDescripcion").textContent = ong.descripcion;
+
+            document.getElementById("ongRepresentante").textContent = ong.representante;
+            document.getElementById("ongCategoria").textContent = ong.categoria;
+            document.getElementById("ongCorreo").textContent = ong.correo || "No registrado";
+
+            document.getElementById("ongMision").textContent = ong.mision;
+            document.getElementById("ongPublico").textContent = ong.publico;
+            document.getElementById("ongValor").textContent = ong.valor;
+
+            const projectGrid = document.getElementById("ongProyectos");
+
+            ong.proyectos.forEach(proyecto => {
+                const card = document.createElement("article");
+                card.className = "ong-project-card";
+                card.innerHTML = `
+                    <h3>${proyecto}</h3>
+                    <p>Proyecto desarrollado o impulsado por ${ong.nombre} dentro del ecosistema Red Astrum.</p>
+                `;
+                projectGrid.appendChild(card);
+            });
+        }
+
+        document.querySelectorAll(".tab-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                const tab = button.dataset.tab;
+
+                document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+                document.querySelectorAll(".ong-tab-content").forEach(panel => panel.classList.remove("active"));
+
+                button.classList.add("active");
+                document.getElementById(tab).classList.add("active");
+            });
+        });
+    </script>
+</body>
+
+</html>

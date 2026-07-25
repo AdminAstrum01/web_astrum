@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONGs - Red Astrum</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="container">
+        <video class="back-vid" autoplay loop muted playsinline src="videos/galaxy.mp4"></video>
+
+        <header>
+            <div class="left">
+                <img src="images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
+                <h2><span style="color: #6B2FA0;">Red</span> Astrum</h2>
+            </div>
+
+            <ul class="main">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="about.html">Sobre nosotros</a></li>
+                <li><a href="team.html">Equipo</a></li>
+                <li><a href="ongs.html">ONGs</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </header>
+
+        <section class="ong-list-hero">
+            <span>Ecosistema Astrum</span>
+            <h1>ONGs de Red Astrum</h1>
+            <p>
+                Explora las organizaciones que forman parte de nuestro ecosistema educativo.
+                Selecciona una ONG para entrar a su portal institucional.
+            </p>
+        </section>
+
+            <section class="ong-mosaic" id="ongMosaic"></section>
+        </main>
+    </div>
+
+    <script src="ong-data.js"></script>
+
+    <script>
+        const mosaic = document.getElementById("ongMosaic");
+
+        ONGS.forEach(ong => {
+            const card = document.createElement("a");
+            card.className = "ong-tile";
+            card.href = `ong.html?id=${ong.id}`;
+
+            card.innerHTML = `
+                <div class="ong-logo-box">
+                    <img src="${ong.logo}" alt="${ong.nombre}">
+                </div>
+
+                <div class="ong-tile-info">
+                    <h3>${ong.nombre}</h3>
+                    <p>${ong.categoria}</p>
+                    <span>${ong.estado}</span>
+                </div>
+            `;
+
+            mosaic.appendChild(card);
+        });
+    </script>
+</body>
+
+</html>
