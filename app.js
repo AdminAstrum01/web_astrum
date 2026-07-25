@@ -2,8 +2,17 @@
 const sideBar = document.querySelector('.sidebar');
 const menu = document.querySelector('.menu-icon');
 const closeIcon = document.querySelector('.close-icon');
+const menuBackdrop = document.createElement("button");
 
-function setMenuState(isOpen) {
+if (sideBar) {
+    menuBackdrop.type = "button";
+    menuBackdrop.className = "menu-backdrop";
+    menuBackdrop.setAttribute("aria-label", "Cerrar menú");
+    menuBackdrop.hidden = true;
+    sideBar.before(menuBackdrop);
+}
+
+function setMenuState(isOpen, { restoreFocus = true } = {}) {
     if (!sideBar || !menu) return;
 
     sideBar.classList.toggle("open-sidebar", isOpen);
@@ -11,11 +20,12 @@ function setMenuState(isOpen) {
     menu.setAttribute("aria-expanded", String(isOpen));
     sideBar.setAttribute("aria-hidden", String(!isOpen));
     document.body.classList.toggle("menu-open", isOpen);
+    menuBackdrop.hidden = !isOpen;
 
     if (isOpen) {
         const firstLink = sideBar.querySelector("a");
         firstLink?.focus();
-    } else {
+    } else if (restoreFocus) {
         menu.focus();
     }
 }
@@ -29,8 +39,12 @@ closeIcon?.addEventListener("click", function () {
 });
 
 sideBar?.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => setMenuState(false));
+    link.addEventListener("click", () => {
+        setMenuState(false, { restoreFocus: false });
+    });
 });
+
+menuBackdrop.addEventListener("click", () => setMenuState(false));
 
 document.addEventListener("keydown", event => {
     if (event.key === "Escape" && sideBar?.classList.contains("open-sidebar")) {
@@ -38,19 +52,9 @@ document.addEventListener("keydown", event => {
     }
 });
 
-document.addEventListener("click", event => {
-    if (
-        sideBar?.classList.contains("open-sidebar") &&
-        !sideBar.contains(event.target) &&
-        !menu?.contains(event.target)
-    ) {
-        setMenuState(false);
-    }
-});
-
 window.addEventListener("resize", () => {
     if (window.innerWidth > 1024 && sideBar?.classList.contains("open-sidebar")) {
-        setMenuState(false);
+        setMenuState(false, { restoreFocus: false });
     }
 });
 
