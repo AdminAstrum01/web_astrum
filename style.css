@@ -2748,16 +2748,26 @@ button {
 @media screen and (max-width: 1024px) {
     body.menu-open {
         overflow: hidden;
-        touch-action: none;
+        overscroll-behavior: none;
     }
 
-    body.menu-open::before {
-        content: "";
+    .menu-backdrop {
+        appearance: none;
         position: fixed;
         inset: 0;
-        z-index: 9998;
+        z-index: 10000;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        border: 0;
         background: rgba(0, 0, 0, 0.58);
         backdrop-filter: blur(3px);
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-backdrop[hidden] {
+        display: none;
     }
 
     .menu-icon {
