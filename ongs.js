@@ -2,6 +2,7 @@ const mosaic = document.getElementById("ongMosaic");
 const searchInput = document.getElementById("ongSearch");
 const countLabel = document.getElementById("ongListCount");
 const emptyState = document.getElementById("ongEmptyState");
+const networkLabel = "ONG de Red Astrum";
 
 function normalizeText(value = "") {
     return value
@@ -59,8 +60,8 @@ function createCard(ong) {
     const title = document.createElement("h3");
     title.textContent = ong.nombre;
 
-    const category = document.createElement("p");
-    category.textContent = ong.categoria || "Organización juvenil";
+    const summary = document.createElement("p");
+    summary.textContent = ong.descripcion;
 
     const metadata = document.createElement("div");
     metadata.className = "ong-tile-meta";
@@ -73,9 +74,9 @@ function createCard(ong) {
     }
 
     const status = document.createElement("span");
-    status.textContent = ong.estado || "Portal institucional";
+    status.textContent = networkLabel;
 
-    info.append(title, category, metadata, status);
+    info.append(title, summary, metadata, status);
     card.append(createLogo(ong), info);
 
     return card;
@@ -87,7 +88,6 @@ function renderOrganizations(query = "") {
         const searchable = normalizeText([
             ong.nombre,
             ong.sigla,
-            ong.categoria,
             ong.region,
             ong.descripcion
         ].filter(Boolean).join(" "));

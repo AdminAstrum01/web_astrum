@@ -2,6 +2,7 @@ const params = new URLSearchParams(window.location.search);
 const ongId = params.get("id");
 const ong = ONGS.find(item => item.id === ongId);
 const numberFormatter = new Intl.NumberFormat("es-PE");
+const networkLabel = "ONG de Red Astrum";
 
 const socialPlatforms = {
     web: { label: "Sitio web", icon: "bx-globe" },
@@ -49,22 +50,26 @@ function renderLogo(profile) {
     const fallback = document.getElementById("ongLogoFallback");
     fallback.textContent = getInitials(profile.nombre);
 
-    if (!profile.logo) {
+    const showFallback = () => {
         image.hidden = true;
         fallback.hidden = false;
-        return;
-    }
-
-    image.src = profile.logo;
-    image.alt = `Logo de ${profile.nombre}`;
-    image.addEventListener("load", () => {
+    };
+    const showImage = () => {
         image.hidden = false;
         fallback.hidden = true;
-    }, { once: true });
-    image.addEventListener("error", () => {
-        image.hidden = true;
-        fallback.hidden = false;
-    }, { once: true });
+    };
+
+    showFallback();
+    if (!profile.logo) return;
+
+    image.addEventListener("load", showImage, { once: true });
+    image.addEventListener("error", showFallback, { once: true });
+    image.alt = `Logo de ${profile.nombre}`;
+    image.src = profile.logo;
+
+    if (image.complete) {
+        image.naturalWidth > 0 ? showImage() : showFallback();
+    }
 }
 
 function renderSocialLinks(redes = {}, contacto = "") {
@@ -286,10 +291,9 @@ if (!ong) {
     document.querySelector('meta[name="description"]').content = ong.descripcion;
 
     renderLogo(ong);
-    setText("ongEstado", ong.estado || "Portal institucional");
+    setText("ongEstado", networkLabel);
     setText("ongNombre", ong.nombre);
     setText("ongDescripcion", ong.descripcion);
-    setText("ongCategoria", ong.categoria);
     setText("ongRegion", ong.region);
     setText("ongFundacion", ong.fechaFundacion);
     setText("ongMision", ong.mision);
@@ -302,7 +306,4 @@ if (!ong) {
     renderImpact(ong);
     renderProjects(ong);
     initializeTabs();
-
-    document.getElementById("ongSourceNote").hidden =
-        ong.estado !== "Perfil institucional 2026";
 }

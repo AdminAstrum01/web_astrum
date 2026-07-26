@@ -23,8 +23,17 @@
 
             <ul class="main">
                 <li><a href="index.html">Inicio</a></li>
+
+                <li>
+                    <a href="#">Acerca de <i class="bx bx-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="about.html">Sobre nosotros</a></li>
+                        <li><a href="team.html">Equipo</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="ongs.html">ONGs</a></li>
-                <li><a href="team.html">Equipo</a></li>
+                <li><a href="https://linktr.ee/redastrum" target="_blank">Únete a Red Astrum</a></li>
                 <li><a href="index.html#contacto">Contacto</a></li>
             </ul>
 
@@ -54,7 +63,7 @@
             <section class="ong-portal-header">
                 <div class="ong-portal-logo">
                     <img id="ongLogo" alt="" referrerpolicy="no-referrer" hidden>
-                    <span class="ong-logo-fallback" id="ongLogoFallback" aria-hidden="true"></span>
+                    <span class="ong-logo-fallback" id="ongLogoFallback" aria-hidden="true" hidden></span>
                 </div>
 
                 <div class="ong-portal-main">
@@ -105,11 +114,6 @@
                 tabindex="0"
             >
                 <div class="ong-detail-grid">
-                    <div class="ong-info-card">
-                        <h3>Área de impacto</h3>
-                        <p id="ongCategoria"></p>
-                    </div>
-
                     <div class="ong-info-card">
                         <h3>Región</h3>
                         <p id="ongRegion"></p>
@@ -184,10 +188,6 @@
                     <p>Los proyectos de esta organización se incorporarán próximamente.</p>
                 </div>
             </section>
-
-            <p class="ong-source-note" id="ongSourceNote" hidden>
-                Perfil piloto elaborado con información institucional reportada a Red Astrum en 2026.
-            </p>
         </main>
     </div>
 
