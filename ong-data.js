@@ -83,7 +83,7 @@ const ONGS = [
     {
         id: "bridges-of-equity",
         nombre: "Bridges of Equity",
-        logo: "https://drive.google.com/thumbnail?id=1MS2Hm5o_m714hv3qro4u-JzfZBnotcs6&sz=w500",
+        logo: "images/logo_ong/bridges_of_equity.webp",
         descripcion: "Iniciativa juvenil que promueve el liderazgo y la equidad social como herramientas de transformación comunitaria. Acompaña a jóvenes para que desarrollen iniciativas sociales, educativas y participativas con propósito.",
         mision: "Impulsar a jóvenes a liderar con propósito, desarrollando proyectos virtuales que promuevan la equidad, el liderazgo y la transformación positiva en sus comunidades.",
         vision: "Consolidarse como una iniciativa juvenil de referencia en formación en liderazgo y equidad, impulsando agentes de cambio capaces de fortalecer comunidades más justas, empáticas y colaborativas.",
@@ -117,7 +117,7 @@ const ONGS = [
     {
         id: "youth-plus",
         nombre: "Youth Plus",
-        logo: "https://drive.google.com/thumbnail?id=13JQs_ayuUsXsV9vO-H4G9HqHuic7l71d&sz=w500",
+        logo: "images/logo_ong/youth_plus.webp",
         descripcion: "Organización juvenil internacional creada por y para jóvenes que promueve la participación ciudadana, el liderazgo y el empoderamiento adolescente mediante proyectos educativos, políticos, ambientales y sociales.",
         mision: "Informar, orientar y hacer partícipes a adolescentes y jóvenes sobre política, educación, cambio climático y reducción de desigualdades, fortaleciendo su crecimiento personal y su capacidad de generar cambio.",
         vision: "Convertirse en una comunidad juvenil referente a nivel nacional e internacional por impulsar liderazgo, participación ciudadana y desarrollo integral mediante proyectos, alianzas y espacios formativos innovadores.",
@@ -167,7 +167,7 @@ const ONGS = [
     {
         id: "house-of-young-promises",
         nombre: "House of Young Promises",
-        logo: "https://drive.google.com/thumbnail?id=1sgiogAe54-NUGgAEmI840xx39oOpIjlZ&sz=w500",
+        logo: "images/logo_ong/house_of_the_young_promises.webp",
         descripcion: "Organización juvenil nacional, autónoma y sin fines de lucro con sede en Tacna. Es un ecosistema diseñado por estudiantes para cerrar brechas de información académica y transformar el potencial juvenil en impacto social.",
         mision: "Empoderar a estudiantes de secundaria mediante acompañamiento estratégico en liderazgo, redacción y preparación para oportunidades globales, cerrando la brecha de información académica.",
         vision: "Ser la red juvenil referente del país que transforma el potencial académico en impacto social tangible, formando la próxima generación de becarios y líderes sociales.",
@@ -204,7 +204,7 @@ const ONGS = [
     {
         id: "green-generation",
         nombre: "Green Generation",
-        logo: "https://drive.google.com/thumbnail?id=1BmLhWJX9dwaAj2NP7JKUWkgpsdDcz0ry&sz=w500",
+        logo: "images/logo_ong/green_generation.webp",
         descripcion: "Organización juvenil latinoamericana que promueve el desarrollo de una generación comprometida con la sostenibilidad ambiental.",
         mision: "Formar jóvenes líderes ambientales capaces de generar cambios sostenibles en sus comunidades mediante educación, acción e innovación.",
         vision: "Ser la generación latinoamericana que convive y se desarrolla en armonía con el ambiente, adoptando prácticas sostenibles que sean referentes a nivel global.",
