@@ -152,9 +152,11 @@ function renderImpact(profile) {
     if (hasRecognitionData) {
         setText(
             "ongReconocimiento",
-            profile.reconocimientoGubernamental
-                ? "La organización reporta reconocimiento por una entidad gubernamental."
-                : "La organización no reporta actualmente reconocimiento por una entidad gubernamental."
+            profile.reconocimiento || (
+                profile.reconocimientoGubernamental
+                    ? "La organización reporta reconocimiento por una entidad gubernamental."
+                    : "La organización no reporta actualmente reconocimiento por una entidad gubernamental."
+            )
         );
     }
 

@@ -56,7 +56,7 @@ const TEAM_MEMBERS = [
         nombreCompleto: "Jhosany Belen Lazo Alegre",
         rol: "Cofundadora · Representante de Holo Astrum UNMSM",
         area: "Fundadores",
-        areas: ["Fundadores", "Representantes de ONG"],
+        areas: ["Fundadores", "Consejo de ONGs"],
         subarea: "Holo Astrum UNMSM",
         foto: "/images/fundadores/jhosany_lazo.webp",
         redes: {
@@ -95,7 +95,7 @@ const TEAM_MEMBERS = [
         nombreCompleto: "Mary Ann Juliet Thomas Lara",
         rol: "Coordinadora de ONGs · Representante de House of Young Promises",
         area: "Consejo Supremo",
-        areas: ["Consejo Supremo", "Representantes de ONG"],
+        areas: ["Consejo Supremo", "Consejo de ONGs"],
         subarea: "House of Young Promises",
         foto: "/images/representantes_ong/mary_thomas.webp",
         redes: {
@@ -270,8 +270,8 @@ const TEAM_MEMBERS = [
         nombre: "Kimberlym Bonilla",
         nombreCompleto: "Kimberlym Makarena Bonilla Gastulo",
         rol: "Representante de Bridges of Equity",
-        area: "Representantes de ONG",
-        areas: ["Representantes de ONG"],
+        area: "Consejo de ONGs",
+        areas: ["Consejo de ONGs"],
         subarea: "Bridges of Equity",
         foto: "/images/representantes_ong/kimberlym_bonilla.webp",
         redes: {
@@ -283,8 +283,8 @@ const TEAM_MEMBERS = [
         nombre: "Jimena Carlos",
         nombreCompleto: "Jimena Isabel Carlos Alan",
         rol: "Representante de Girls In Science",
-        area: "Representantes de ONG",
-        areas: ["Representantes de ONG"],
+        area: "Consejo de ONGs",
+        areas: ["Consejo de ONGs"],
         subarea: "Girls In Science",
         foto: "",
         redes: {
@@ -296,8 +296,8 @@ const TEAM_MEMBERS = [
         nombre: "Karla Camara",
         nombreCompleto: "Karla Jimena Camara Rosas",
         rol: "Representante de Green Generation",
-        area: "Representantes de ONG",
-        areas: ["Representantes de ONG"],
+        area: "Consejo de ONGs",
+        areas: ["Consejo de ONGs"],
         subarea: "Green Generation",
         foto: "/images/representantes_ong/karla_camara.webp",
         redes: {
@@ -308,10 +308,10 @@ const TEAM_MEMBERS = [
     {
         nombre: "Celeste Bedoya",
         nombreCompleto: "Angel Celeste Bedoya Yzasiga",
-        rol: "Representante de Holo Astrum",
-        area: "Representantes de ONG",
-        areas: ["Representantes de ONG"],
-        subarea: "Holo Astrum",
+        rol: "Representante de Holo Astrum y Maywa",
+        area: "Consejo de ONGs",
+        areas: ["Consejo de ONGs"],
+        subarea: "Holo Astrum · Maywa",
         foto: "",
         redes: {
             email: "celeste.bedoya@redastrum.org"
@@ -321,8 +321,8 @@ const TEAM_MEMBERS = [
         nombre: "Diego Iparraguirre",
         nombreCompleto: "Diego Noe Iparraguirre Romero",
         rol: "Representante de Holo Astrum PUCP",
-        area: "Representantes de ONG",
-        areas: ["Representantes de ONG"],
+        area: "Consejo de ONGs",
+        areas: ["Consejo de ONGs"],
         subarea: "Holo Astrum PUCP",
         foto: "",
         redes: {
@@ -333,8 +333,8 @@ const TEAM_MEMBERS = [
         nombre: "Clarisa Farfán",
         nombreCompleto: "Clarisa Teresa Farfan Tapia",
         rol: "Representante de Rikchari",
-        area: "Representantes de ONG",
-        areas: ["Representantes de ONG"],
+        area: "Consejo de ONGs",
+        areas: ["Consejo de ONGs"],
         subarea: "Rikchari",
         foto: "/images/representantes_ong/clarisa_farfan.webp",
         redes: {
@@ -346,8 +346,8 @@ const TEAM_MEMBERS = [
         nombre: "Pamela Vega",
         nombreCompleto: "Pamela Giuliana Vega De La Cruz",
         rol: "Representante de Unity",
-        area: "Representantes de ONG",
-        areas: ["Representantes de ONG"],
+        area: "Consejo de ONGs",
+        areas: ["Consejo de ONGs"],
         subarea: "Unity",
         foto: "/images/representantes_ong/pamela_vega.webp",
         redes: {
@@ -358,8 +358,8 @@ const TEAM_MEMBERS = [
         nombre: "Nadia Huaman",
         nombreCompleto: "Nadia Rossy Mary Huaman Palomino",
         rol: "Representante de Yatimaq",
-        area: "Representantes de ONG",
-        areas: ["Representantes de ONG"],
+        area: "Consejo de ONGs",
+        areas: ["Consejo de ONGs"],
         subarea: "Yatimaq",
         foto: "",
         redes: {
@@ -370,8 +370,8 @@ const TEAM_MEMBERS = [
         nombre: "Valery Huaranga",
         nombreCompleto: "Valery Corayma Huaranga Rosas",
         rol: "Representante de Youth Plus",
-        area: "Representantes de ONG",
-        areas: ["Representantes de ONG"],
+        area: "Consejo de ONGs",
+        areas: ["Consejo de ONGs"],
         subarea: "Youth Plus",
         foto: "/images/representantes_ong/valery_huaranga.webp",
         redes: {
@@ -383,8 +383,8 @@ const TEAM_MEMBERS = [
         nombre: "Andrés Navarrete",
         nombreCompleto: "Andrés Sebastian Navarrete Obando",
         rol: "Representante de Red Mundial de Jóvenes Académicos",
-        area: "Representantes de ONG",
-        areas: ["Representantes de ONG"],
+        area: "Consejo de ONGs",
+        areas: ["Consejo de ONGs"],
         subarea: "Red Mundial de Jóvenes Académicos",
         foto: "",
         redes: {

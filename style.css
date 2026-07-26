@@ -1596,7 +1596,7 @@ header > .box-icons {
     --area-color: linear-gradient(to right, var(--color-primary), var(--color-light));
 }
 
-.member-card[data-area="Representantes de ONG"] {
+.member-card[data-area="Consejo de ONGs"] {
     --area-color: linear-gradient(to right, var(--color-accent), var(--color-light));
 }
 

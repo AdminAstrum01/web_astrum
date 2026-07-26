@@ -3,23 +3,111 @@ const ONGS = [
         id: "holo-astrum",
         nombre: "Holo Astrum",
         logo: "/images/logo_ong/holo_astrum.webp",
-        descripcion: "Holo Astrum impulsa espacios de formación integral orientados al liderazgo, el pensamiento crítico y el desarrollo humano de jóvenes.",
-        mision: "Formar jóvenes con propósito, criterio y capacidad de liderazgo desde una educación integral.",
-        publico: "Estudiantes escolares, universitarios y jóvenes líderes.",
-        valor: "Aporta experiencia en el diseño y desarrollo de programas educativos para jóvenes.",
+        descripcion: "Organización juvenil peruana sin fines de lucro que acompaña a adolescentes y jóvenes mediante educación holística, talleres, círculos y programas formativos.",
+        mision: "Desarrollar integralmente a adolescentes y jóvenes mediante experiencias educativas que articulen dimensiones emocionales, mentales, sociales, físicas y espirituales para enfrentar los desafíos del mundo real.",
+        vision: "Consolidarse como un referente latinoamericano en educación holística juvenil, formando personas conscientes, equilibradas y capaces de construir comunidades más humanas, resilientes y colaborativas.",
+        publico: "Adolescentes y jóvenes peruanos.",
+        region: "Perú",
+        fechaFundacion: "2023 como iniciativa; consolidada como organización en 2025",
+        ods: [
+            "ODS 4 · Educación de calidad"
+        ],
+        valor: "Aporta experiencia en educación holística y en el diseño de experiencias de aprendizaje para jóvenes.",
         contacto: "info@redastrum.org",
+        redes: {
+            instagram: "https://www.instagram.com/holoastrum/",
+            youtube: "https://www.youtube.com/@HoloAstrumONG",
+            linkedin: "https://www.linkedin.com/company/holoastrum"
+        },
         proyectos: [
             {
-                nombre: "Modo PUCP",
-                descripcion: "Programa de orientación y preparación para estudiantes que inician su experiencia universitaria."
-            },
-            {
                 nombre: "Formaciones Astrum",
-                descripcion: "Espacios de aprendizaje integral para fortalecer pensamiento crítico, propósito y liderazgo."
+                descripcion: "Talleres, círculos y programas que integran ciencia, arte, liderazgo y reflexión para fortalecer el desarrollo humano."
             },
             {
-                nombre: "Talleres de liderazgo",
-                descripcion: "Experiencias formativas para convertir ideas juveniles en iniciativas con impacto."
+                nombre: "Convocatoria de equipo 2026",
+                descripcion: "Convocatoria en seis áreas para sumar jóvenes a la gestión de proyectos, investigación, comunicaciones y alianzas.",
+                enlace: "https://www.instagram.com/p/DSDlkHljxJj/"
+            }
+        ]
+    },
+    {
+        id: "maywa",
+        nombre: "Maywa",
+        logo: "/images/logo_ong/maywa.webp",
+        descripcion: "Organización sin fines de lucro integrante de Red Astrum. Su identidad pública se articula bajo el lema «Si tú puedes soñarlo, puedes hacerlo».",
+        mision: "Motivar a jóvenes a reconocer su potencial y transformar sus aspiraciones en iniciativas con propósito.",
+        vision: "Ser una comunidad latinoamericana que convierte los sueños y el potencial de niños y jóvenes en trayectorias educativas, proyectos con propósito y oportunidades reales de desarrollo.",
+        publico: "Jóvenes.",
+        region: "Perú",
+        valor: "Aporta una mirada centrada en el potencial juvenil, la iniciativa y la construcción de propósito.",
+        contacto: "celeste.bedoya@redastrum.org",
+        redes: {
+            instagram: "https://www.instagram.com/maywa.ong/"
+        },
+        proyectos: [
+            {
+                nombre: "Comunidad Maywa",
+                descripcion: "Espacio institucional en desarrollo para compartir iniciativas, convocatorias y oportunidades dirigidas a jóvenes.",
+                enlace: "https://www.instagram.com/maywa.ong/"
+            }
+        ]
+    },
+    {
+        id: "holo-astrum-pucp",
+        nombre: "Holo Astrum PUCP",
+        logo: "/images/logo_ong/holo_astrumpucp.webp",
+        descripcion: "Agrupación estudiantil de la PUCP que fomenta una educación holística y práctica en la comunidad universitaria, creando espacios para aprender, reflexionar y crecer más allá del aula.",
+        mision: "Promover una educación holística y práctica que fortalezca el aprendizaje, la reflexión, el bienestar y el desarrollo integral de estudiantes PUCP.",
+        vision: "Ser la comunidad universitaria referente de la PUCP en formación holística, bienestar y liderazgo humano, integrando el conocimiento académico con el desarrollo personal y el servicio a la sociedad.",
+        publico: "Estudiantes de la Pontificia Universidad Católica del Perú.",
+        region: "Lima, Perú · comunidad PUCP",
+        fechaFundacion: "2026",
+        ods: [
+            "ODS 3 · Salud y bienestar",
+            "ODS 4 · Educación de calidad"
+        ],
+        valor: "Conecta la educación integral con la experiencia universitaria y el bienestar estudiantil.",
+        contacto: "diego.iparraguirre@redastrum.org",
+        redes: {
+            instagram: "https://www.instagram.com/holoastrum.pucp/"
+        },
+        proyectos: [
+            {
+                nombre: "Astrum Picnic PUCP",
+                descripcion: "Encuentro dedicado a la salud mental, la conexión y el bienestar dentro de la comunidad universitaria.",
+                enlace: "https://www.instagram.com/reel/DWl9dLosHUX/"
+            },
+            {
+                nombre: "Espacios más allá del aula",
+                descripcion: "Actividades para que estudiantes conozcan, reflexionen y aprovechen mejor su vida universitaria.",
+                enlace: "https://www.instagram.com/holoastrum.pucp/"
+            }
+        ]
+    },
+    {
+        id: "holo-astrum-unmsm",
+        nombre: "Holo Astrum UNMSM",
+        logo: "/images/logo_ong/holo_astrumunmsm.webp",
+        descripcion: "ONG estudiantil en la UNMSM e iniciativa de Red Astrum que fomenta una educación integral en la comunidad universitaria.",
+        mision: "Crear experiencias de educación integral, bienestar y conexión que complementen la formación universitaria de estudiantes sanmarquinos.",
+        vision: "Ser la comunidad universitaria referente de la UNMSM en educación integral, bienestar y liderazgo consciente, fortaleciendo estudiantes capaces de transformar su entorno con humanidad y propósito.",
+        publico: "Estudiantes de la Universidad Nacional Mayor de San Marcos.",
+        region: "Lima, Perú · comunidad UNMSM",
+        ods: [
+            "ODS 3 · Salud y bienestar",
+            "ODS 4 · Educación de calidad"
+        ],
+        valor: "Extiende la educación integral y el acompañamiento estudiantil a la comunidad sanmarquina.",
+        contacto: "belen.lazo@redastrum.org",
+        redes: {
+            instagram: "https://www.instagram.com/holoastrumunmsm/"
+        },
+        proyectos: [
+            {
+                nombre: "Astrum Picnic UNMSM",
+                descripcion: "Encuentro juvenil enfocado en salud mental, conexión y bienestar.",
+                enlace: "https://www.instagram.com/p/DalGkz7DkeF/"
             }
         ]
     },
@@ -27,37 +115,61 @@ const ONGS = [
         id: "yatimaq",
         nombre: "Yatimaq",
         logo: "/images/logo_ong/yatimaq.webp",
-        descripcion: "Yatimaq desarrolla iniciativas educativas con enfoque comunitario para acercar oportunidades formativas a jóvenes.",
-        mision: "Crear experiencias educativas accesibles y con impacto social.",
-        publico: "Jóvenes de comunidades educativas y organizaciones aliadas.",
-        valor: "Fortalece la dimensión territorial y comunitaria del ecosistema Astrum.",
+        descripcion: "Organización juvenil de Red Astrum orientada al desarrollo de habilidades blandas para la vida, especialmente oratoria, liderazgo y comunicación.",
+        mision: "Fortalecer habilidades blandas en jóvenes para que se comuniquen, lideren y se desarrollen al máximo.",
+        vision: "Ser una comunidad educativa referente en el desarrollo de comunicadores y líderes jóvenes con pensamiento crítico, capaces de participar, argumentar y generar impacto positivo en la sociedad.",
+        publico: "Jóvenes y estudiantes.",
+        region: "Perú",
+        ods: [
+            "ODS 4 · Educación de calidad"
+        ],
+        valor: "Fortalece la comunicación, el liderazgo y las capacidades personales dentro del ecosistema Astrum.",
+        contacto: "nadia.huaman@redastrum.org",
+        redes: {
+            instagram: "https://www.instagram.com/yatimaq_/"
+        },
         proyectos: [
             {
-                nombre: "Talleres comunitarios",
-                descripcion: "Actividades educativas orientadas a las necesidades de comunidades y organizaciones aliadas."
-            },
-            {
-                nombre: "Mentorías educativas",
-                descripcion: "Acompañamiento a jóvenes para fortalecer sus trayectorias formativas."
+                nombre: "Formación en habilidades blandas",
+                descripcion: "Contenidos y experiencias orientados a fortalecer oratoria, liderazgo y comunicación para la vida.",
+                enlace: "https://www.instagram.com/yatimaq_/"
             }
         ]
     },
     {
         id: "girls-in-science",
-        nombre: "Girls in Science",
+        nombre: "Girls In Science",
         logo: "/images/logo_ong/girls_in_science.webp",
-        descripcion: "Girls in Science promueve la participación de niñas y jóvenes mujeres en ciencia, tecnología, ingeniería y matemáticas.",
-        mision: "Inspirar y acompañar a jóvenes mujeres en su camino hacia áreas científicas y tecnológicas.",
-        publico: "Niñas, escolares y universitarias interesadas en STEM.",
-        valor: "Aporta enfoque de equidad, ciencia y representación femenina dentro de la red.",
+        descripcion: "Organización juvenil peruana sin fines de lucro que promueve educación científica y oportunidades formativas para niñas, adolescentes y jóvenes de zonas vulnerables, con énfasis en cerrar brechas de género en ciencia.",
+        mision: "Impactar positivamente en la educación, abrir caminos en STEM y brindar herramientas reales para que más jóvenes se desarrollen académica y profesionalmente sin que su procedencia o contexto sean una barrera.",
+        vision: "Ser una organización referente en el Perú y Latinoamérica por cerrar brechas de género y acceso en STEM, formando una generación diversa de niñas y jóvenes capaces de liderar la ciencia, la innovación y el desarrollo sostenible.",
+        publico: "Niñas, adolescentes y jóvenes de zonas vulnerables del Perú, con énfasis en mujeres y poblaciones vulnerables.",
+        region: "Lima y otras comunidades del Perú",
+        fechaFundacion: "2023",
+        impacto: {
+            miembros: 14
+        },
+        ods: [
+            "ODS 4 · Educación de calidad",
+            "ODS 5 · Igualdad de género"
+        ],
+        reconocimientoGubernamental: true,
+        reconocimiento: "Organización asambleísta del Consejo Metropolitano de Participación de la Juventud de Lima, acreditada mediante la Constancia N.° 0010-2025.",
+        valor: "Aporta enfoque de equidad, divulgación científica y representación femenina dentro de la red.",
+        contacto: "jimena.carlos@redastrum.org",
+        redes: {
+            instagram: "https://www.instagram.com/girlsinscience_/",
+            linkedin: "https://www.linkedin.com/company/girls-in-science-pe"
+        },
         proyectos: [
             {
-                nombre: "Charlas STEM",
-                descripcion: "Encuentros de divulgación y orientación sobre carreras científicas y tecnológicas."
+                nombre: "Programas y charlas STEM",
+                descripcion: "Actividades de educación científica, biología, medicina y medio ambiente para acercar la ciencia a jóvenes y comunidades.",
+                enlace: "https://drive.google.com/file/d/1NqPewlrsOkzYlcMkjxa2zi2TDJaeKQ-Y/view?usp=sharing"
             },
             {
-                nombre: "Mentorías científicas",
-                descripcion: "Acompañamiento para jóvenes interesadas en desarrollar una trayectoria dentro de STEM."
+                nombre: "Ciencia y liderazgo femenino",
+                descripcion: "Espacios que promueven curiosidad científica, habilidades y liderazgo de niñas, adolescentes y jóvenes."
             }
         ]
     },
@@ -65,18 +177,55 @@ const ONGS = [
         id: "unity",
         nombre: "Unity",
         logo: "/images/logo_ong/unity.webp",
-        descripcion: "Unity impulsa espacios de integración, bienestar y colaboración entre jóvenes con vocación de servicio.",
-        mision: "Crear comunidad y fortalecer el bienestar integral de jóvenes.",
-        publico: "Jóvenes voluntarios, estudiantes y comunidades juveniles.",
-        valor: "Aporta una línea de integración, acompañamiento y cultura comunitaria.",
+        descripcion: "Organización juvenil que desarrolla experiencias educativas sobre bienestar emocional, psicología y neurociencia, promoviendo la participación estudiantil y el impacto social.",
+        mision: "Fortalecer el bienestar emocional y la voz de estudiantes mediante programas STEAM, espacios formativos y alianzas juveniles.",
+        vision: "Consolidarse como una red juvenil referente en bienestar emocional, educación STEAM y participación estudiantil, donde cada joven cuente con herramientas y espacios seguros para impulsar cambios equitativos.",
+        publico: "Estudiantes y jóvenes.",
+        region: "Perú",
+        ods: [
+            "ODS 3 · Salud y bienestar",
+            "ODS 4 · Educación de calidad"
+        ],
+        valor: "Aporta educación emocional, bienestar y experiencias STEAM con enfoque juvenil.",
+        contacto: "pamela.vega@redastrum.org",
+        redes: {
+            instagram: "https://www.instagram.com/unity__org/"
+        },
         proyectos: [
             {
-                nombre: "Espacios de integración",
-                descripcion: "Actividades para fortalecer vínculos, colaboración y sentido de comunidad."
+                nombre: "Pasaporte STEAM",
+                descripcion: "Semana formativa de psicología y neurociencia dirigida a estudiantes.",
+                enlace: "https://www.instagram.com/p/C9np5UMuDGy/"
             },
             {
-                nombre: "Actividades de bienestar",
-                descripcion: "Iniciativas orientadas al desarrollo y bienestar integral de jóvenes."
+                nombre: "Educación emocional juvenil",
+                descripcion: "Alianzas y actividades para fortalecer el bienestar emocional, la participación estudiantil y el impacto educativo.",
+                enlace: "https://www.instagram.com/p/C8x9KCFuNFg/"
+            }
+        ]
+    },
+    {
+        id: "rikchari",
+        nombre: "Rikchari",
+        logo: "",
+        descripcion: "Organización juvenil que impulsa formación en liderazgo con propósito, empatía e impacto social.",
+        mision: "Acompañar a jóvenes para fortalecer su liderazgo, propósito personal y capacidad de generar una huella positiva en sus comunidades.",
+        vision: "Ser un movimiento juvenil referente en liderazgo con propósito, capaz de movilizar a una generación empática que transforme positivamente sus comunidades.",
+        publico: "Jóvenes interesados en liderazgo, propósito y acción social.",
+        region: "Perú",
+        ods: [
+            "ODS 4 · Educación de calidad"
+        ],
+        valor: "Aporta formación en liderazgo empático y herramientas para convertir el propósito juvenil en acción.",
+        contacto: "clarisa.farfan@redastrum.org",
+        redes: {
+            instagram: "https://www.instagram.com/rikchari._/"
+        },
+        proyectos: [
+            {
+                nombre: "Líderes con Huella",
+                descripcion: "Programa formativo para jóvenes que fortalece propósito, empatía y liderazgo con impacto positivo.",
+                enlace: "https://www.instagram.com/p/DMqnMKwS-1Z/"
             }
         ]
     },
