@@ -217,16 +217,15 @@ const TEAM_MEMBERS = [
         }
     },
     {
-        nombre: "Yaiza Rojas",
-        nombreCompleto: "Yaiza Rojas Olivares",
+        nombre: "Julibeth Román",
+        nombreCompleto: "Julibeth Román Arrieta",
         rol: "Directora de Gestión",
         area: "Núcleo Duro",
         areas: ["Núcleo Duro"],
         subarea: "Gestión",
-        foto: "/images/nucleoduro/yaiza_rojas.webp",
+        foto: "/images/nucleoduro/julibeth_roman.webp",
         redes: {
-            linkedin: "https://www.linkedin.com/in/yaiza-rojas-a9486a346",
-            email: "yaiza.rojas@redastrum.org"
+            email: "julibeth.roman@redastrum.org"
         }
     },
     {
@@ -286,7 +285,7 @@ const TEAM_MEMBERS = [
         area: "Consejo de ONGs",
         areas: ["Consejo de ONGs"],
         subarea: "Girls In Science",
-        foto: "",
+        foto: "/images/representantes_ong/jimena_carlos.webp",
         redes: {
             linkedin: "https://www.linkedin.com/in/jimena-isabel-carlos-alan-6a9849314/",
             email: "jimena.carlos@redastrum.org"
@@ -312,7 +311,7 @@ const TEAM_MEMBERS = [
         area: "Consejo de ONGs",
         areas: ["Consejo de ONGs"],
         subarea: "Holo Astrum · Maywa",
-        foto: "",
+        foto: "/images/representantes_ong/celeste_bedoya.webp",
         redes: {
             email: "celeste.bedoya@redastrum.org"
         }
@@ -324,7 +323,7 @@ const TEAM_MEMBERS = [
         area: "Consejo de ONGs",
         areas: ["Consejo de ONGs"],
         subarea: "Holo Astrum PUCP",
-        foto: "",
+        foto: "/images/representantes_ong/diego_iparraguirre.webp",
         redes: {
             email: "diego.iparraguirre@redastrum.org"
         }
@@ -361,7 +360,7 @@ const TEAM_MEMBERS = [
         area: "Consejo de ONGs",
         areas: ["Consejo de ONGs"],
         subarea: "Yatimaq",
-        foto: "",
+        foto: "/images/representantes_ong/nadia_huaman.webp",
         redes: {
             email: "nadia.huaman@redastrum.org"
         }

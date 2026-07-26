@@ -3,20 +3,20 @@ const ONGS = [
         id: "holo-astrum",
         nombre: "Holo Astrum",
         logo: "/images/logo_ong/holo_astrum.webp",
-        descripcion: "Organización juvenil peruana sin fines de lucro que acompaña a adolescentes y jóvenes mediante educación holística, talleres, círculos y programas formativos.",
+        descripcion: "Organización juvenil peruana sin fines de lucro que busca transformar la vida de adolescentes y jóvenes mediante una educación holística que integra dimensiones emocionales, mentales, sociales, físicas y espirituales.",
         mision: "Desarrollar integralmente a adolescentes y jóvenes mediante experiencias educativas que articulen dimensiones emocionales, mentales, sociales, físicas y espirituales para enfrentar los desafíos del mundo real.",
         vision: "Consolidarse como un referente latinoamericano en educación holística juvenil, formando personas conscientes, equilibradas y capaces de construir comunidades más humanas, resilientes y colaborativas.",
         publico: "Adolescentes y jóvenes peruanos.",
         region: "Perú",
-        fechaFundacion: "2023 como iniciativa; consolidada como organización en 2025",
+        fechaFundacion: "1 de enero de 2024",
         ods: [
             "ODS 4 · Educación de calidad"
         ],
+        reconocimientoGubernamental: true,
         valor: "Aporta experiencia en educación holística y en el diseño de experiencias de aprendizaje para jóvenes.",
         contacto: "info@redastrum.org",
         redes: {
             instagram: "https://www.instagram.com/holoastrum/",
-            youtube: "https://www.youtube.com/@HoloAstrumONG",
             linkedin: "https://www.linkedin.com/company/holoastrum"
         },
         proyectos: [
@@ -35,11 +35,13 @@ const ONGS = [
         id: "maywa",
         nombre: "Maywa",
         logo: "/images/logo_ong/maywa.webp",
-        descripcion: "Organización sin fines de lucro integrante de Red Astrum. Su identidad pública se articula bajo el lema «Si tú puedes soñarlo, puedes hacerlo».",
+        descripcion: "Organización juvenil que busca brindar aprendizaje académico y oportunidades a niños, adolescentes y jóvenes de Latinoamérica.",
         mision: "Motivar a jóvenes a reconocer su potencial y transformar sus aspiraciones en iniciativas con propósito.",
         vision: "Ser una comunidad latinoamericana que convierte los sueños y el potencial de niños y jóvenes en trayectorias educativas, proyectos con propósito y oportunidades reales de desarrollo.",
         publico: "Jóvenes.",
         region: "Perú",
+        fechaFundacion: "2024",
+        reconocimientoGubernamental: false,
         valor: "Aporta una mirada centrada en el potencial juvenil, la iniciativa y la construcción de propósito.",
         contacto: "celeste.bedoya@redastrum.org",
         redes: {
@@ -62,11 +64,12 @@ const ONGS = [
         vision: "Ser la comunidad universitaria referente de la PUCP en formación holística, bienestar y liderazgo humano, integrando el conocimiento académico con el desarrollo personal y el servicio a la sociedad.",
         publico: "Estudiantes de la Pontificia Universidad Católica del Perú.",
         region: "Lima, Perú · comunidad PUCP",
-        fechaFundacion: "2026",
+        fechaFundacion: "1 de febrero de 2026",
         ods: [
             "ODS 3 · Salud y bienestar",
             "ODS 4 · Educación de calidad"
         ],
+        reconocimientoGubernamental: true,
         valor: "Conecta la educación integral con la experiencia universitaria y el bienestar estudiantil.",
         contacto: "diego.iparraguirre@redastrum.org",
         redes: {
@@ -94,10 +97,12 @@ const ONGS = [
         vision: "Ser la comunidad universitaria referente de la UNMSM en educación integral, bienestar y liderazgo consciente, fortaleciendo estudiantes capaces de transformar su entorno con humanidad y propósito.",
         publico: "Estudiantes de la Universidad Nacional Mayor de San Marcos.",
         region: "Lima, Perú · comunidad UNMSM",
+        fechaFundacion: "1 de febrero de 2026",
         ods: [
             "ODS 3 · Salud y bienestar",
             "ODS 4 · Educación de calidad"
         ],
+        reconocimientoGubernamental: true,
         valor: "Extiende la educación integral y el acompañamiento estudiantil a la comunidad sanmarquina.",
         contacto: "belen.lazo@redastrum.org",
         redes: {
@@ -120,13 +125,16 @@ const ONGS = [
         vision: "Ser una comunidad educativa referente en el desarrollo de comunicadores y líderes jóvenes con pensamiento crítico, capaces de participar, argumentar y generar impacto positivo en la sociedad.",
         publico: "Jóvenes y estudiantes.",
         region: "Perú",
+        fechaFundacion: "2023",
         ods: [
             "ODS 4 · Educación de calidad"
         ],
+        reconocimientoGubernamental: true,
         valor: "Fortalece la comunicación, el liderazgo y las capacidades personales dentro del ecosistema Astrum.",
         contacto: "nadia.huaman@redastrum.org",
         redes: {
-            instagram: "https://www.instagram.com/yatimaq_/"
+            instagram: "https://www.instagram.com/yatimaq_/",
+            facebook: "https://www.facebook.com/profile.php?id=61555363310802"
         },
         proyectos: [
             {
@@ -159,6 +167,7 @@ const ONGS = [
         contacto: "jimena.carlos@redastrum.org",
         redes: {
             instagram: "https://www.instagram.com/girlsinscience_/",
+            facebook: "https://www.facebook.com/profile.php?id=100093589072920",
             linkedin: "https://www.linkedin.com/company/girls-in-science-pe"
         },
         proyectos: [
@@ -182,10 +191,12 @@ const ONGS = [
         vision: "Consolidarse como una red juvenil referente en bienestar emocional, educación STEAM y participación estudiantil, donde cada joven cuente con herramientas y espacios seguros para impulsar cambios equitativos.",
         publico: "Estudiantes y jóvenes.",
         region: "Perú",
+        fechaFundacion: "2025",
         ods: [
             "ODS 3 · Salud y bienestar",
             "ODS 4 · Educación de calidad"
         ],
+        reconocimientoGubernamental: false,
         valor: "Aporta educación emocional, bienestar y experiencias STEAM con enfoque juvenil.",
         contacto: "pamela.vega@redastrum.org",
         redes: {
@@ -213,9 +224,11 @@ const ONGS = [
         vision: "Ser un movimiento juvenil referente en liderazgo con propósito, capaz de movilizar a una generación empática que transforme positivamente sus comunidades.",
         publico: "Jóvenes interesados en liderazgo, propósito y acción social.",
         region: "Perú",
+        fechaFundacion: "2025",
         ods: [
             "ODS 4 · Educación de calidad"
         ],
+        reconocimientoGubernamental: true,
         valor: "Aporta formación en liderazgo empático y herramientas para convertir el propósito juvenil en acción.",
         contacto: "clarisa.farfan@redastrum.org",
         redes: {
