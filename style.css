@@ -439,6 +439,7 @@ header ul.main > li > a:hover {
 }
 
 .scroll-down {
+    display: block;
     height: 50px;
     width: 30px;
     border: 2px solid lightgray;
@@ -448,6 +449,13 @@ header ul.main > li > a:hover {
     border-radius: 50px;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.626);
+    text-decoration: none;
+    z-index: 2;
+}
+
+.scroll-down:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 5px;
 }
 
 .scroll-down::before,
@@ -484,6 +492,10 @@ header ul.main > li > a:hover {
         top: 90%;
         opacity: 0;
     }
+}
+
+#proposito {
+    scroll-margin-top: calc(var(--header-height) + 24px);
 }
 
 /* ============================
@@ -800,6 +812,20 @@ header ul.main > li > a:hover {
     object-fit: contain;
 }
 
+.astrum-carousel-item a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+}
+
+.astrum-carousel-item a:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
 .astrum-carousel:hover .astrum-carousel-item {
     animation-play-state: paused;
 }
@@ -808,6 +834,35 @@ header ul.main > li > a:hover {
     transform: scale(1.08);
     border-color: var(--color-light);
     box-shadow: 0 0 25px var(--color-light-50);
+}
+
+.ongs-directory-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 48px;
+    margin-top: 34px;
+    padding: 12px 22px;
+    border: 1px solid rgba(212, 184, 232, 0.34);
+    border-radius: 999px;
+    background: rgba(107, 47, 160, 0.18);
+    color: var(--color-white);
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ongs-directory-link i {
+    font-size: 22px;
+}
+
+.ongs-directory-link:hover,
+.ongs-directory-link:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba(212, 184, 232, 0.72);
+    box-shadow: 0 0 20px rgba(107, 47, 160, 0.28);
 }
 
 @keyframes astrumCarouselRun {
