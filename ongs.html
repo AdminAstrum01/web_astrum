@@ -23,9 +23,17 @@
 
             <ul class="main">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="about.html">Sobre nosotros</a></li>
-                <li><a href="team.html">Equipo</a></li>
+
+                <li>
+                    <a href="#">Acerca de <i class="bx bx-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="about.html">Sobre nosotros</a></li>
+                        <li><a href="team.html">Equipo</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="ongs.html">ONGs</a></li>
+                <li><a href="https://linktr.ee/redastrum" target="_blank">Únete a Red Astrum</a></li>
                 <li><a href="index.html#contacto">Contacto</a></li>
             </ul>
 
@@ -62,7 +70,7 @@
                     <input
                         id="ongSearch"
                         type="search"
-                        placeholder="Buscar por nombre, área o región"
+                        placeholder="Buscar por nombre, descripción o región"
                         autocomplete="off"
                     >
                 </label>
@@ -74,7 +82,7 @@
             <div class="ong-empty-state" id="ongEmptyState" hidden>
                 <i class='bx bx-search-alt' aria-hidden="true"></i>
                 <h2>No encontramos organizaciones</h2>
-                <p>Prueba con otro nombre, área de impacto o región.</p>
+                <p>Prueba con otro nombre, término o región.</p>
             </div>
         </main>
     </div>
