@@ -1,9 +1,11 @@
-// Mantener URLs públicas limpias cuando el servidor resuelve index.html o una ruta de carpeta.
+// Mantener URLs públicas limpias aunque se acceda mediante un archivo HTML heredado.
 if (window.location.protocol !== "file:") {
     let cleanPath = window.location.pathname;
 
     if (cleanPath.endsWith("/index.html")) {
         cleanPath = cleanPath.slice(0, -"/index.html".length) || "/";
+    } else if (cleanPath.endsWith(".html")) {
+        cleanPath = cleanPath.slice(0, -".html".length) || "/";
     }
 
     if (cleanPath.length > 1 && cleanPath.endsWith("/")) {

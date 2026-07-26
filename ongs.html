@@ -1,16 +1,114 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-public-route="/ongs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0;url=/ongs">
+    <title>ONGs - Red Astrum</title>
+    <meta name="description" content="Explora las organizaciones de Red Astrum, sus áreas de impacto, proyectos y resultados.">
     <link rel="canonical" href="https://www.redastrum.org/ongs">
-    <title>Redirigiendo a ONGs - Red Astrum</title>
-    <script>
-        window.location.replace(`/ongs${window.location.search}${window.location.hash}`);
-    </script>
+
+    <link rel="stylesheet" href="/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
-    <p>Esta página cambió de dirección. <a href="/ongs">Ir a ONGs</a>.</p>
+    <div class="container">
+        <video class="back-vid" autoplay loop muted playsinline src="/videos/galaxy.mp4"></video>
+
+        <header>
+            <div class="left">
+                <img src="/images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
+                <h2><span style="color: #6B2FA0;">Red</span> Astrum</h2>
+            </div>
+
+            <ul class="main">
+                <li><a href="/">Inicio</a></li>
+
+                <li class="nav-dropdown">
+                    <a href="/about">Acerca de <i class="bx bx-chevron-down" aria-hidden="true"></i></a>
+                    <ul>
+                        <li><a href="/about">Sobre nosotros</a></li>
+                        <li><a href="/team">Equipo</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="/ongs" aria-current="page">ONGs</a></li>
+                <li><a href="https://linktr.ee/redastrum" target="_blank" rel="noopener noreferrer">Únete a Red Astrum</a></li>
+                <li><a href="/#contacto">Contacto</a></li>
+            </ul>
+
+            <div class="box-icons">
+                <a href="https://www.facebook.com/share/18Cic6fYTM/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="bx bxl-facebook-circle"></i>
+                </a>
+                <a href="https://www.instagram.com/red_astrum?igsh=cGxwdHd5OWY2c2w1" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="bx bxl-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/red-astrum?trk=blended-typeahead" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="bx bxl-linkedin-square"></i>
+                </a>
+            </div>
+
+            <button class="menu-icon" type="button" aria-label="Abrir menú" aria-controls="mobile-navigation" aria-expanded="false">
+                <i class='bx bx-menu'></i>
+            </button>
+        </header>
+
+        <nav class="sidebar close-sidebar" id="mobile-navigation" aria-label="Navegación móvil" aria-hidden="true">
+            <button class="close-icon" type="button" aria-label="Cerrar menú"><i class='bx bx-x'></i></button>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/about">Sobre nosotros</a></li>
+                <li><a href="/team">Equipo</a></li>
+                <li><a href="/ongs" aria-current="page">ONGs</a></li>
+                <li><a href="https://linktr.ee/redastrum" target="_blank" rel="noopener noreferrer">Únete a Red Astrum</a></li>
+                <li><a href="/#contacto">Contacto</a></li>
+            </ul>
+            <div class="social-sidebar">
+                <a href="https://www.facebook.com/share/18Cic6fYTM/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+                <a href="https://www.instagram.com/red_astrum?igsh=cGxwdHd5OWY2c2w1" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                <a href="https://www.linkedin.com/company/red-astrum?trk=blended-typeahead" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
+            </div>
+        </nav>
+
+        <main class="ong-list-page">
+            <section class="ong-list-hero">
+                <span>Ecosistema Astrum</span>
+                <h1>ONGs de Red Astrum</h1>
+                <p>
+                    Conoce las organizaciones de nuestro ecosistema, sus áreas de impacto,
+                    proyectos y resultados. Selecciona una ONG para abrir su portal institucional.
+                </p>
+            </section>
+
+            <section class="ong-list-tools" aria-label="Buscar organizaciones">
+                <label class="ong-search-box" for="ongSearch">
+                    <i class='bx bx-search' aria-hidden="true"></i>
+                    <input
+                        id="ongSearch"
+                        type="search"
+                        placeholder="Buscar por nombre, descripción o región"
+                        autocomplete="off"
+                    >
+                </label>
+                <p class="ong-list-count" id="ongListCount" aria-live="polite"></p>
+            </section>
+
+            <section class="ong-mosaic" id="ongMosaic" aria-live="polite"></section>
+
+            <div class="ong-empty-state" id="ongEmptyState" hidden>
+                <i class='bx bx-search-alt' aria-hidden="true"></i>
+                <h2>No encontramos organizaciones</h2>
+                <p>Prueba con otro nombre, término o región.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="/app.js"></script>
+    <script src="/ong-data.js"></script>
+    <script src="/ongs.js"></script>
 </body>
+
 </html>
