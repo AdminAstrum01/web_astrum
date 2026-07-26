@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONGs - Red Astrum</title>
+    <meta name="description" content="Explora las organizaciones de Red Astrum, sus áreas de impacto, proyectos y resultados.">
 
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -50,41 +51,37 @@
                 <span>Ecosistema Astrum</span>
                 <h1>ONGs de Red Astrum</h1>
                 <p>
-                    Explora las organizaciones que forman parte de nuestro ecosistema educativo.
-                    Selecciona una ONG para entrar a su portal institucional.
+                    Conoce las organizaciones de nuestro ecosistema, sus áreas de impacto,
+                    proyectos y resultados. Selecciona una ONG para abrir su portal institucional.
                 </p>
             </section>
 
-            <section class="ong-mosaic" id="ongMosaic"></section>
+            <section class="ong-list-tools" aria-label="Buscar organizaciones">
+                <label class="ong-search-box" for="ongSearch">
+                    <i class='bx bx-search' aria-hidden="true"></i>
+                    <input
+                        id="ongSearch"
+                        type="search"
+                        placeholder="Buscar por nombre, área o región"
+                        autocomplete="off"
+                    >
+                </label>
+                <p class="ong-list-count" id="ongListCount" aria-live="polite"></p>
+            </section>
+
+            <section class="ong-mosaic" id="ongMosaic" aria-live="polite"></section>
+
+            <div class="ong-empty-state" id="ongEmptyState" hidden>
+                <i class='bx bx-search-alt' aria-hidden="true"></i>
+                <h2>No encontramos organizaciones</h2>
+                <p>Prueba con otro nombre, área de impacto o región.</p>
+            </div>
         </main>
     </div>
 
     <script src="app.js"></script>
     <script src="ong-data.js"></script>
-
-    <script>
-        const mosaic = document.getElementById("ongMosaic");
-
-        ONGS.forEach(ong => {
-            const card = document.createElement("a");
-            card.className = "ong-tile";
-            card.href = `ong.html?id=${ong.id}`;
-
-            card.innerHTML = `
-                <div class="ong-logo-box">
-                    <img src="${ong.logo}" alt="${ong.nombre}" loading="lazy" decoding="async">
-                </div>
-
-                <div class="ong-tile-info">
-                    <h3>${ong.nombre}</h3>
-                    <p>${ong.categoria}</p>
-                    <span>${ong.estado}</span>
-                </div>
-            `;
-
-            mosaic.appendChild(card);
-        });
-    </script>
+    <script src="ongs.js"></script>
 </body>
 
 </html>
