@@ -1,3 +1,24 @@
+// Mantener URLs públicas limpias cuando el servidor resuelve index.html o una ruta de carpeta.
+if (window.location.protocol !== "file:") {
+    let cleanPath = window.location.pathname;
+
+    if (cleanPath.endsWith("/index.html")) {
+        cleanPath = cleanPath.slice(0, -"/index.html".length) || "/";
+    }
+
+    if (cleanPath.length > 1 && cleanPath.endsWith("/")) {
+        cleanPath = cleanPath.slice(0, -1);
+    }
+
+    if (cleanPath !== window.location.pathname) {
+        window.history.replaceState(
+            window.history.state,
+            "",
+            `${cleanPath}${window.location.search}${window.location.hash}`
+        );
+    }
+}
+
 // Navegación responsive
 const sideBar = document.querySelector('.sidebar');
 const menu = document.querySelector('.menu-icon');

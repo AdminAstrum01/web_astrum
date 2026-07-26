@@ -86,13 +86,14 @@ video {
    HEADER
    ============================ */
 header {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(210px, 1fr) auto minmax(210px, 1fr);
+    column-gap: 24px;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     align-items: center;
-    justify-content: space-between;
     height: var(--header-height);
     padding: 0 36px;
     background-color: rgba(12, 12, 18, 0.80);
@@ -104,6 +105,7 @@ header {
 .left {
     display: flex;
     align-items: center;
+    justify-self: start;
     min-width: 210px;
 }
 
@@ -128,6 +130,7 @@ header ul.main {
     justify-content: center;
     width: auto;
     max-width: 760px;
+    justify-self: center;
     gap: 22px;
     padding: 12px 28px;
     margin: 0;
@@ -197,11 +200,26 @@ header ul.main > li > a:hover {
     z-index: 99999;
 }
 
+.main > li:hover > ul,
+.main > li:focus-within > ul,
 .main > li.open > ul {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
     pointer-events: auto;
+}
+
+.nav-dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: -12px;
+    left: -12px;
+    height: 20px;
+}
+
+header ul.main a[aria-current="page"] {
+    color: var(--color-light);
 }
 
 .main ul li a {
@@ -227,6 +245,10 @@ header ul.main > li > a:hover {
 .box-icons {
     display: flex;
     gap: 24px;
+}
+
+header > .box-icons {
+    justify-self: end;
 }
 
 .box-icons a {
@@ -258,6 +280,7 @@ header ul.main > li > a:hover {
     cursor: pointer;
     display: none;
     color: var(--color-light);
+    justify-self: end;
 }
 
 .sidebar {
@@ -1507,6 +1530,14 @@ header ul.main > li > a:hover {
     font-weight: 600;
 }
 
+.team-source-note {
+    margin: 8px 0 0;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+}
+
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 320px));
@@ -1563,6 +1594,10 @@ header ul.main > li > a:hover {
 
 .member-card[data-area="Núcleo Duro"] {
     --area-color: linear-gradient(to right, var(--color-primary), var(--color-light));
+}
+
+.member-card[data-area="Representantes de ONG"] {
+    --area-color: linear-gradient(to right, var(--color-accent), var(--color-light));
 }
 
 .member-avatar {
@@ -1690,12 +1725,16 @@ header ul.main > li > a:hover {
 }
 
 .empty-state {
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
     color: gray;
     padding: 60px 0;
+}
+
+.empty-state[hidden] {
+    display: none !important;
 }
 
 .empty-state i {
@@ -1712,6 +1751,7 @@ header ul.main > li > a:hover {
    ============================ */
 @media screen and (max-width: 1200px) {
     header {
+        grid-template-columns: minmax(190px, 1fr) auto minmax(190px, 1fr);
         padding: 0 22px;
     }
 
@@ -1750,6 +1790,10 @@ header ul.main > li > a:hover {
 }
 
 @media screen and (max-width: 1024px) {
+    header {
+        grid-template-columns: 1fr auto;
+    }
+
     header ul.main {
         display: none;
     }
@@ -2418,7 +2462,7 @@ header ul.main > li > a:hover {
 
 /* =====================================================
    PORTAL INDIVIDUAL ONG — RED ASTRUM PREMIUM
-   Para ong.html?id=...
+   Para /ong?id=...
    ===================================================== */
 
 .ong-portal-page {

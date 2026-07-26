@@ -277,7 +277,7 @@ function renderNotFound() {
     message.textContent = "La organización solicitada no existe o aún no ha sido registrada.";
 
     const link = document.createElement("a");
-    link.href = "ongs.html";
+    link.href = "/ongs";
     link.textContent = "Volver al directorio";
 
     state.append(title, message, link);

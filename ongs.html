@@ -1,95 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONGs - Red Astrum</title>
-    <meta name="description" content="Explora las organizaciones de Red Astrum, sus áreas de impacto, proyectos y resultados.">
-
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta http-equiv="refresh" content="0;url=/ongs">
+    <link rel="canonical" href="https://www.redastrum.org/ongs">
+    <title>Redirigiendo a ONGs - Red Astrum</title>
+    <script>
+        window.location.replace(`/ongs${window.location.search}${window.location.hash}`);
+    </script>
 </head>
-
 <body>
-    <div class="container">
-        <video class="back-vid" autoplay loop muted playsinline src="videos/galaxy.mp4"></video>
-
-        <header>
-            <div class="left">
-                <img src="images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
-                <h2><span style="color: #6B2FA0;">Red</span> Astrum</h2>
-            </div>
-
-            <ul class="main">
-                <li><a href="index.html">Inicio</a></li>
-
-                <li>
-                    <a href="#">Acerca de <i class="bx bx-chevron-down"></i></a>
-                    <ul>
-                        <li><a href="about.html">Sobre nosotros</a></li>
-                        <li><a href="team.html">Equipo</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="ongs.html">ONGs</a></li>
-                <li><a href="https://linktr.ee/redastrum" target="_blank">Únete a Red Astrum</a></li>
-                <li><a href="index.html#contacto">Contacto</a></li>
-            </ul>
-
-            <button class="menu-icon" type="button" aria-label="Abrir menú" aria-controls="mobile-navigation" aria-expanded="false">
-                <i class='bx bx-menu'></i>
-            </button>
-        </header>
-
-        <nav class="sidebar close-sidebar" id="mobile-navigation" aria-label="Navegación móvil" aria-hidden="true">
-            <button class="close-icon" type="button" aria-label="Cerrar menú"><i class='bx bx-x'></i></button>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="about.html">Sobre nosotros</a></li>
-                <li><a href="team.html">Equipo</a></li>
-                <li><a href="ongs.html">ONGs</a></li>
-                <li><a href="https://linktr.ee/redastrum" target="_blank">Únete a Red Astrum</a></li>
-                <li><a href="index.html#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-
-        <main class="ong-list-page">
-            <section class="ong-list-hero">
-                <span>Ecosistema Astrum</span>
-                <h1>ONGs de Red Astrum</h1>
-                <p>
-                    Conoce las organizaciones de nuestro ecosistema, sus áreas de impacto,
-                    proyectos y resultados. Selecciona una ONG para abrir su portal institucional.
-                </p>
-            </section>
-
-            <section class="ong-list-tools" aria-label="Buscar organizaciones">
-                <label class="ong-search-box" for="ongSearch">
-                    <i class='bx bx-search' aria-hidden="true"></i>
-                    <input
-                        id="ongSearch"
-                        type="search"
-                        placeholder="Buscar por nombre, descripción o región"
-                        autocomplete="off"
-                    >
-                </label>
-                <p class="ong-list-count" id="ongListCount" aria-live="polite"></p>
-            </section>
-
-            <section class="ong-mosaic" id="ongMosaic" aria-live="polite"></section>
-
-            <div class="ong-empty-state" id="ongEmptyState" hidden>
-                <i class='bx bx-search-alt' aria-hidden="true"></i>
-                <h2>No encontramos organizaciones</h2>
-                <p>Prueba con otro nombre, término o región.</p>
-            </div>
-        </main>
-    </div>
-
-    <script src="app.js"></script>
-    <script src="ong-data.js"></script>
-    <script src="ongs.js"></script>
+    <p>Esta página cambió de dirección. <a href="/ongs">Ir a ONGs</a>.</p>
 </body>
-
 </html>
