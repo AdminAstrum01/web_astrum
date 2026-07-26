@@ -51,7 +51,7 @@ function createLogo(ong) {
 function createCard(ong) {
     const card = document.createElement("a");
     card.className = "ong-tile";
-    card.href = `ong.html?id=${encodeURIComponent(ong.id)}`;
+    card.href = `/ong?id=${encodeURIComponent(ong.id)}`;
     card.setAttribute("aria-label", `Abrir portal de ${ong.nombre}`);
 
     const info = document.createElement("div");

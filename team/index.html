@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo - Red Astrum</title>
+    <meta name="description" content="Conoce a los fundadores, el Consejo Supremo, el Núcleo Duro y los representantes de ONG de Red Astrum.">
+    <link rel="canonical" href="https://www.redastrum.org/team">
+
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+</head>
+
+<body>
+    <div class="container">
+        <video class="back-vid" autoplay loop muted playsinline src="/videos/galaxy.mp4"></video>
+
+        <header data-aos="fade-down" data-aos-duration="1200">
+            <div class="left">
+                <img src="/images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
+                <h2><span>Red</span> Astrum</h2>
+            </div>
+
+            <ul class="main">
+                <li><a href="/">Inicio</a></li>
+                <li class="nav-dropdown">
+                    <a href="/about" aria-current="page">
+                        Acerca de <i class="bx bx-chevron-down" aria-hidden="true"></i>
+                    </a>
+                    <ul>
+                        <li><a href="/about">Sobre nosotros</a></li>
+                        <li><a href="/team" aria-current="page">Equipo</a></li>
+                    </ul>
+                </li>
+                <li><a href="/ongs">ONGs</a></li>
+                <li>
+                    <a href="https://linktr.ee/redastrum" target="_blank" rel="noopener noreferrer">
+                        Únete a Red Astrum
+                    </a>
+                </li>
+                <li><a href="/#contacto">Contacto</a></li>
+            </ul>
+
+            <div class="box-icons">
+                <a href="https://www.facebook.com/share/18Cic6fYTM/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="bx bxl-facebook-circle"></i>
+                </a>
+                <a href="https://www.instagram.com/red_astrum?igsh=cGxwdHd5OWY2c2w1" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="bx bxl-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/red-astrum?trk=blended-typeahead" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="bx bxl-linkedin-square"></i>
+                </a>
+            </div>
+
+            <button class="menu-icon" type="button" aria-label="Abrir menú" aria-controls="mobile-navigation" aria-expanded="false">
+                <i class="bx bx-menu"></i>
+            </button>
+        </header>
+
+        <nav class="sidebar close-sidebar" id="mobile-navigation" aria-label="Navegación móvil" aria-hidden="true">
+            <button class="close-icon" type="button" aria-label="Cerrar menú">
+                <i class="bx bx-x"></i>
+            </button>
+
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/about">Sobre nosotros</a></li>
+                <li><a href="/team" aria-current="page">Equipo</a></li>
+                <li><a href="/ongs">ONGs</a></li>
+                <li><a href="https://linktr.ee/redastrum" target="_blank" rel="noopener noreferrer">Únete a Red Astrum</a></li>
+                <li><a href="/#contacto">Contacto</a></li>
+            </ul>
+
+            <div class="social-sidebar">
+                <a href="https://www.facebook.com/share/18Cic6fYTM/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="bx bxl-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/red_astrum?igsh=cGxwdHd5OWY2c2w1" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="bx bxl-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/red-astrum?trk=blended-typeahead" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="bx bxl-linkedin-square"></i>
+                </a>
+            </div>
+        </nav>
+
+        <main class="team-page">
+            <section class="team-hero" data-aos="fade-down" data-aos-duration="1000">
+                <h1>Nuestro <span class="gradient">Equipo</span></h1>
+                <p>
+                    Conoce a las personas que lideran, gestionan y representan a las organizaciones
+                    que integran Red Astrum.
+                </p>
+            </section>
+
+            <section class="team-controls" data-aos="fade-up" data-aos-duration="800" aria-label="Filtrar equipo">
+                <label class="search-box" for="search-input">
+                    <i class="bx bx-search" aria-hidden="true"></i>
+                    <input
+                        type="search"
+                        id="search-input"
+                        placeholder="Buscar por nombre, rol u ONG..."
+                        autocomplete="off"
+                    >
+                </label>
+
+                <div class="filter-pills" id="filter-pills" aria-label="Grupos del equipo">
+                    <button class="pill active" type="button" data-filter="Todos" aria-pressed="true">Todos</button>
+                    <button class="pill" type="button" data-filter="Fundadores" aria-pressed="false">Fundadores</button>
+                    <button class="pill" type="button" data-filter="Consejo Supremo" aria-pressed="false">Consejo Supremo</button>
+                    <button class="pill" type="button" data-filter="Núcleo Duro" aria-pressed="false">Núcleo Duro</button>
+                    <button class="pill" type="button" data-filter="Representantes de ONG" aria-pressed="false">Representantes de ONG</button>
+                </div>
+            </section>
+
+            <p class="results-count" id="results-count" aria-live="polite">
+                Mostrando <span id="count-num">0</span> perfiles únicos
+            </p>
+            <p class="team-source-note">Directorio institucional actualizado a julio de 2026.</p>
+
+            <section class="team-grid" id="team-grid" aria-live="polite"></section>
+
+            <div class="empty-state" id="empty-state" hidden>
+                <i class="bx bx-user-x" aria-hidden="true"></i>
+                <p>No se encontraron integrantes con ese filtro.</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-text">
+                <h1>© 2026 Red Astrum. Todos los derechos reservados.</h1>
+                <p>RUC: 20615815005</p>
+            </div>
+
+            <div class="box-icons">
+                <a href="https://www.facebook.com/share/18Cic6fYTM/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="bx bxl-facebook-circle"></i>
+                </a>
+                <a href="https://www.instagram.com/red_astrum?igsh=cGxwdHd5OWY2c2w1" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="bx bxl-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/red-astrum?trk=blended-typeahead" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="bx bxl-linkedin-square"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/app.js"></script>
+    <script src="/team-data.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="/team.js"></script>
+</body>
+
+</html>
