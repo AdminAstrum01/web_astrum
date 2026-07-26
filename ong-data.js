@@ -5,6 +5,7 @@ const ONGS = [
         logo: "/images/logo_ong/holo_astrum.webp",
         descripcion: "Organización juvenil peruana sin fines de lucro que acompaña a adolescentes y jóvenes mediante educación holística, talleres, círculos y programas formativos.",
         mision: "Desarrollar integralmente a adolescentes y jóvenes mediante experiencias educativas que articulen dimensiones emocionales, mentales, sociales, físicas y espirituales para enfrentar los desafíos del mundo real.",
+        vision: "Consolidarse como un referente latinoamericano en educación holística juvenil, formando personas conscientes, equilibradas y capaces de construir comunidades más humanas, resilientes y colaborativas.",
         publico: "Adolescentes y jóvenes peruanos.",
         region: "Perú",
         fechaFundacion: "2023 como iniciativa; consolidada como organización en 2025",
@@ -36,6 +37,7 @@ const ONGS = [
         logo: "/images/logo_ong/maywa.webp",
         descripcion: "Organización sin fines de lucro integrante de Red Astrum. Su identidad pública se articula bajo el lema «Si tú puedes soñarlo, puedes hacerlo».",
         mision: "Motivar a jóvenes a reconocer su potencial y transformar sus aspiraciones en iniciativas con propósito.",
+        vision: "Ser una comunidad latinoamericana que convierte los sueños y el potencial de niños y jóvenes en trayectorias educativas, proyectos con propósito y oportunidades reales de desarrollo.",
         publico: "Jóvenes.",
         region: "Perú",
         valor: "Aporta una mirada centrada en el potencial juvenil, la iniciativa y la construcción de propósito.",
@@ -57,6 +59,7 @@ const ONGS = [
         logo: "/images/logo_ong/holo_astrumpucp.webp",
         descripcion: "Agrupación estudiantil de la PUCP que fomenta una educación holística y práctica en la comunidad universitaria, creando espacios para aprender, reflexionar y crecer más allá del aula.",
         mision: "Promover una educación holística y práctica que fortalezca el aprendizaje, la reflexión, el bienestar y el desarrollo integral de estudiantes PUCP.",
+        vision: "Ser la comunidad universitaria referente de la PUCP en formación holística, bienestar y liderazgo humano, integrando el conocimiento académico con el desarrollo personal y el servicio a la sociedad.",
         publico: "Estudiantes de la Pontificia Universidad Católica del Perú.",
         region: "Lima, Perú · comunidad PUCP",
         fechaFundacion: "2026",
@@ -88,6 +91,7 @@ const ONGS = [
         logo: "/images/logo_ong/holo_astrumunmsm.webp",
         descripcion: "ONG estudiantil en la UNMSM e iniciativa de Red Astrum que fomenta una educación integral en la comunidad universitaria.",
         mision: "Crear experiencias de educación integral, bienestar y conexión que complementen la formación universitaria de estudiantes sanmarquinos.",
+        vision: "Ser la comunidad universitaria referente de la UNMSM en educación integral, bienestar y liderazgo consciente, fortaleciendo estudiantes capaces de transformar su entorno con humanidad y propósito.",
         publico: "Estudiantes de la Universidad Nacional Mayor de San Marcos.",
         region: "Lima, Perú · comunidad UNMSM",
         ods: [
@@ -113,6 +117,7 @@ const ONGS = [
         logo: "/images/logo_ong/yatimaq.webp",
         descripcion: "Organización juvenil de Red Astrum orientada al desarrollo de habilidades blandas para la vida, especialmente oratoria, liderazgo y comunicación.",
         mision: "Fortalecer habilidades blandas en jóvenes para que se comuniquen, lideren y se desarrollen al máximo.",
+        vision: "Ser una comunidad educativa referente en el desarrollo de comunicadores y líderes jóvenes con pensamiento crítico, capaces de participar, argumentar y generar impacto positivo en la sociedad.",
         publico: "Jóvenes y estudiantes.",
         region: "Perú",
         ods: [
@@ -137,6 +142,7 @@ const ONGS = [
         logo: "/images/logo_ong/girls_in_science.webp",
         descripcion: "Organización juvenil peruana sin fines de lucro que promueve educación científica y oportunidades formativas para niñas, adolescentes y jóvenes de zonas vulnerables, con énfasis en cerrar brechas de género en ciencia.",
         mision: "Impactar positivamente en la educación, abrir caminos en STEM y brindar herramientas reales para que más jóvenes se desarrollen académica y profesionalmente sin que su procedencia o contexto sean una barrera.",
+        vision: "Ser una organización referente en el Perú y Latinoamérica por cerrar brechas de género y acceso en STEM, formando una generación diversa de niñas y jóvenes capaces de liderar la ciencia, la innovación y el desarrollo sostenible.",
         publico: "Niñas, adolescentes y jóvenes de zonas vulnerables del Perú, con énfasis en mujeres y poblaciones vulnerables.",
         region: "Lima y otras comunidades del Perú",
         fechaFundacion: "2023",
@@ -173,6 +179,7 @@ const ONGS = [
         logo: "/images/logo_ong/unity.webp",
         descripcion: "Organización juvenil que desarrolla experiencias educativas sobre bienestar emocional, psicología y neurociencia, promoviendo la participación estudiantil y el impacto social.",
         mision: "Fortalecer el bienestar emocional y la voz de estudiantes mediante programas STEAM, espacios formativos y alianzas juveniles.",
+        vision: "Consolidarse como una red juvenil referente en bienestar emocional, educación STEAM y participación estudiantil, donde cada joven cuente con herramientas y espacios seguros para impulsar cambios equitativos.",
         publico: "Estudiantes y jóvenes.",
         region: "Perú",
         ods: [
@@ -203,6 +210,7 @@ const ONGS = [
         logo: "",
         descripcion: "Organización juvenil que impulsa formación en liderazgo con propósito, empatía e impacto social.",
         mision: "Acompañar a jóvenes para fortalecer su liderazgo, propósito personal y capacidad de generar una huella positiva en sus comunidades.",
+        vision: "Ser un movimiento juvenil referente en liderazgo con propósito, capaz de movilizar a una generación empática que transforme positivamente sus comunidades.",
         publico: "Jóvenes interesados en liderazgo, propósito y acción social.",
         region: "Perú",
         ods: [
