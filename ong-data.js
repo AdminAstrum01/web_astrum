@@ -13,6 +13,11 @@ const ONGS = [
             "ODS 4 · Educación de calidad"
         ],
         reconocimientoGubernamental: true,
+        acreditacion: {
+            documento: "/documents/acreditaciones/holo-astrum.pdf",
+            codigo: "RA-2026-HA-ONG",
+            fechaEmision: "18 de junio de 2026"
+        },
         valor: "Aporta experiencia en educación holística y en el diseño de experiencias de aprendizaje para jóvenes.",
         contacto: "info@redastrum.org",
         redes: {
@@ -70,6 +75,11 @@ const ONGS = [
             "ODS 4 · Educación de calidad"
         ],
         reconocimientoGubernamental: true,
+        acreditacion: {
+            documento: "/documents/acreditaciones/holo-astrum-pucp.pdf",
+            codigo: "RA-2026-HAP-ONG",
+            fechaEmision: "18 de junio de 2026"
+        },
         valor: "Conecta la educación integral con la experiencia universitaria y el bienestar estudiantil.",
         contacto: "diego.iparraguirre@redastrum.org",
         redes: {
@@ -130,6 +140,11 @@ const ONGS = [
             "ODS 4 · Educación de calidad"
         ],
         reconocimientoGubernamental: true,
+        acreditacion: {
+            documento: "/documents/acreditaciones/yatimaq.pdf",
+            codigo: "RA-2026-YA-ONG",
+            fechaEmision: "18 de junio de 2026"
+        },
         valor: "Fortalece la comunicación, el liderazgo y las capacidades personales dentro del ecosistema Astrum.",
         contacto: "nadia.huaman@redastrum.org",
         redes: {
@@ -163,6 +178,11 @@ const ONGS = [
         ],
         reconocimientoGubernamental: true,
         reconocimiento: "Organización asambleísta del Consejo Metropolitano de Participación de la Juventud de Lima, acreditada mediante la Constancia N.° 0010-2025.",
+        acreditacion: {
+            documento: "/documents/acreditaciones/girls-in-science.pdf",
+            codigo: "RA-2026-GIC-ONG",
+            fechaEmision: "18 de junio de 2026"
+        },
         valor: "Aporta enfoque de equidad, divulgación científica y representación femenina dentro de la red.",
         contacto: "jimena.carlos@redastrum.org",
         redes: {
@@ -197,6 +217,11 @@ const ONGS = [
             "ODS 4 · Educación de calidad"
         ],
         reconocimientoGubernamental: false,
+        acreditacion: {
+            documento: "/documents/acreditaciones/unity.pdf",
+            codigo: "RA-2026-UN-ONG",
+            fechaEmision: "18 de junio de 2026"
+        },
         valor: "Aporta educación emocional, bienestar y experiencias STEAM con enfoque juvenil.",
         contacto: "pamela.vega@redastrum.org",
         redes: {
@@ -262,6 +287,11 @@ const ONGS = [
             "ODS 5 · Igualdad de género"
         ],
         reconocimientoGubernamental: false,
+        acreditacion: {
+            documento: "/documents/acreditaciones/bridges-of-equity.pdf",
+            codigo: "RA-2026-BOE-ONG",
+            fechaEmision: "18 de junio de 2026"
+        },
         redes: {
             instagram: "https://www.instagram.com/bridgesofequity",
             facebook: "https://www.facebook.com/share/18cnNBWrT4/",
@@ -298,6 +328,11 @@ const ONGS = [
             "ODS 13 · Acción por el clima"
         ],
         reconocimientoGubernamental: true,
+        acreditacion: {
+            documento: "/documents/acreditaciones/youth-plus.pdf",
+            codigo: "RA-2026-YP-ONG",
+            fechaEmision: "18 de junio de 2026"
+        },
         redes: {
             instagram: "https://www.instagram.com/youth.plus.organization",
             facebook: "https://www.facebook.com/profile.php?id=61587399263543",
@@ -346,6 +381,11 @@ const ONGS = [
             "ODS 17 · Alianzas para lograr los objetivos"
         ],
         reconocimientoGubernamental: false,
+        acreditacion: {
+            documento: "/documents/acreditaciones/house-of-young-promises.pdf",
+            codigo: "RA-2026-HYP-ONG",
+            fechaEmision: "18 de junio de 2026"
+        },
         redes: {
             instagram: "https://www.instagram.com/houseofyoungpromises/",
             linkedin: "https://www.linkedin.com/in/house-of-young-promises-2034823a7/"
@@ -384,6 +424,11 @@ const ONGS = [
             "ODS 13 · Acción por el clima"
         ],
         reconocimientoGubernamental: true,
+        acreditacion: {
+            documento: "/documents/acreditaciones/green-generation.pdf",
+            codigo: "RA-2026-GG-ONG",
+            fechaEmision: "18 de junio de 2026"
+        },
         redes: {
             instagram: "https://www.instagram.com/green_generation_oficial/",
             facebook: "https://www.facebook.com/profile.php?id=61573878930361",
@@ -438,6 +483,11 @@ const ONGS = [
             "ODS 17 · Alianzas para lograr los objetivos"
         ],
         reconocimientoGubernamental: false,
+        acreditacion: {
+            documento: "/documents/acreditaciones/red-mundial-jovenes-academicos.pdf",
+            codigo: "RA-2026-RJA-ONG",
+            fechaEmision: "28 de junio de 2026"
+        },
         redes: {
             web: "https://rmjovenesacademicos.com",
             instagram: "https://www.instagram.com/jovenes_abc/",
