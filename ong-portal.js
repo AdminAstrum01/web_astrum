@@ -32,6 +32,19 @@ function isSafeExternalUrl(value) {
     }
 }
 
+function isSafeAccreditationUrl(value) {
+    if (!value) return false;
+
+    try {
+        const url = new URL(value, window.location.href);
+        return url.origin === window.location.origin
+            && url.pathname.startsWith("/documents/acreditaciones/")
+            && url.pathname.endsWith(".pdf");
+    } catch {
+        return false;
+    }
+}
+
 function setText(id, value, fallback = "Información en actualización") {
     const element = document.getElementById(id);
     if (element) element.textContent = value || fallback;
@@ -111,6 +124,33 @@ function renderSocialLinks(redes = {}, contacto = "") {
 
     container.replaceChildren(fragment);
     container.hidden = !container.children.length;
+}
+
+function renderAccreditation(profile) {
+    const block = document.getElementById("ongAcreditacionBlock");
+    const link = document.getElementById("ongAcreditacionLink");
+    const accreditation = profile.acreditacion;
+    const hasValidDocument = accreditation
+        && isSafeAccreditationUrl(accreditation.documento);
+
+    block.hidden = !hasValidDocument;
+    if (!hasValidDocument) {
+        link.removeAttribute("href");
+        return;
+    }
+
+    setText(
+        "ongAcreditacionDescripcion",
+        `Esta constancia emitida por Red Astrum acredita que ${profile.nombre} forma parte de la red institucional.`
+    );
+    setText("ongAcreditacionCodigo", accreditation.codigo);
+    setText("ongAcreditacionFecha", accreditation.fechaEmision);
+
+    link.href = accreditation.documento;
+    link.setAttribute(
+        "aria-label",
+        `Ver constancia de acreditación institucional de ${profile.nombre} en PDF`
+    );
 }
 
 function createImpactCard(label, value, iconClass) {
@@ -305,6 +345,7 @@ if (!ong) {
     setOptionalBlock("ongValorBlock", "ongValor", ong.valor);
 
     renderSocialLinks(ong.redes, ong.contacto);
+    renderAccreditation(ong);
     renderImpact(ong);
     renderProjects(ong);
     initializeTabs();

@@ -2783,6 +2783,130 @@ header > .box-icons {
     line-height: 1.35;
 }
 
+/* Constancia institucional */
+.ong-accreditation {
+    position: relative;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: center;
+
+    margin-bottom: 28px;
+    padding: 28px;
+    border: 1px solid rgba(212, 184, 232, 0.36);
+    border-radius: 26px;
+
+    background:
+        radial-gradient(circle at top right, rgba(232, 116, 12, 0.14), transparent 36%),
+        linear-gradient(135deg, rgba(107, 47, 160, 0.24), rgba(8, 6, 20, 0.82) 56%);
+
+    box-shadow:
+        0 0 24px rgba(107, 47, 160, 0.14),
+        inset 0 0 28px rgba(255, 255, 255, 0.018);
+}
+
+.ong-accreditation::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--color-light), var(--color-accent));
+}
+
+.ong-accreditation-icon {
+    display: grid;
+    width: 62px;
+    height: 62px;
+    place-items: center;
+    border: 1px solid rgba(212, 184, 232, 0.42);
+    border-radius: 18px;
+    background: rgba(107, 47, 160, 0.26);
+    color: var(--color-light);
+    box-shadow: 0 0 20px rgba(107, 47, 160, 0.24);
+}
+
+.ong-accreditation-icon i {
+    font-size: 34px;
+}
+
+.ong-accreditation-content > span {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--color-light);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.ong-accreditation-content h2 {
+    margin: 0 0 8px;
+    color: var(--color-white);
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.ong-accreditation-content > p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.ong-accreditation-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 26px;
+    margin: 18px 0 0;
+}
+
+.ong-accreditation-meta div {
+    min-width: 155px;
+}
+
+.ong-accreditation-meta dt {
+    margin-bottom: 3px;
+    color: rgba(255, 255, 255, 0.52);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ong-accreditation-meta dd {
+    margin: 0;
+    color: var(--color-white);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.ong-accreditation-link {
+    display: inline-flex;
+    min-height: 46px;
+    padding: 11px 17px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(212, 184, 232, 0.48);
+    border-radius: 14px;
+    background: rgba(107, 47, 160, 0.30);
+    color: var(--color-white);
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.ong-accreditation-link:hover,
+.ong-accreditation-link:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--color-light);
+    background: rgba(107, 47, 160, 0.52);
+}
+
 /* Bloques de detalle */
 .ong-detail-block {
     position: relative;
@@ -2981,6 +3105,7 @@ header > .box-icons {
 .ong-tab-content[hidden],
 .ong-empty-state[hidden],
 .ong-social-links[hidden],
+.ong-accreditation[hidden],
 .ong-detail-block[hidden] {
     display: none !important;
 }
@@ -3042,6 +3167,15 @@ header > .box-icons {
         grid-template-columns: 1fr;
     }
 
+    .ong-accreditation {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .ong-accreditation-link {
+        grid-column: 2;
+        justify-self: start;
+    }
+
     .ong-portal-tabs {
         flex-wrap: wrap;
     }
@@ -3084,6 +3218,17 @@ header > .box-icons {
 
     .ong-social-links {
         justify-content: center;
+    }
+
+    .ong-accreditation {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 24px;
+    }
+
+    .ong-accreditation-link {
+        grid-column: auto;
+        width: 100%;
     }
 
     .tab-btn {
