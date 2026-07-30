@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Verificador público de certificados, constancias, acreditaciones y reconocimientos emitidos mediante Astrum Certifica.">
+  <meta name="theme-color" content="#1f3a5f">
+  <title>Verificador Astrum Certifica | Red Astrum</title>
+  <link rel="canonical" href="https://www.redastrum.org/verificar/">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="verificar.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Volver al inicio de Red Astrum">
+        <img src="../images/logo_redastrum/logo_0_red.webp" alt="Logo de Red Astrum">
+        <span class="brand-copy"><strong>Red Astrum</strong><small>Educación holística</small></span>
+      </a>
+      <a class="back-link" href="/">Volver al sitio web</a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="eyebrow">Sistema institucional de validación</div>
+        <h1 id="page-title">Astrum Certifica</h1>
+        <p>Consulta la autenticidad y el estado vigente de certificados, constancias, acreditaciones y reconocimientos emitidos por Red Astrum.</p>
+
+        <form id="verification-form" class="verification-form" novalidate>
+          <label for="certificate-code">Código de verificación</label>
+          <div class="input-row">
+            <input id="certificate-code" name="codigo" type="text" inputmode="text" autocomplete="off" spellcheck="false" maxlength="80" placeholder="Ej.: RA-CER-2026-000001-ABCD" aria-describedby="code-help">
+            <button type="submit">Verificar</button>
+          </div>
+          <small id="code-help">El código se encuentra impreso junto al QR del documento.</small>
+        </form>
+      </section>
+
+      <section class="verifier-card" aria-label="Resultado de la verificación">
+        <div class="card-heading">
+          <div>
+            <span class="live-dot" aria-hidden="true"></span>
+            <strong>Consulta oficial</strong>
+          </div>
+          <span>Astrum Certifica OP-v1.0</span>
+        </div>
+
+        <div id="frame-loading" class="frame-loading" role="status" aria-live="polite">
+          <span class="spinner" aria-hidden="true"></span>
+          Cargando el verificador seguro…
+        </div>
+
+        <iframe id="astrum-verifier" title="Verificador público de Astrum Certifica" loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </section>
+
+      <section class="privacy-note" aria-label="Información de privacidad">
+        <h2>Consulta pública protegida</h2>
+        <p>La verificación muestra únicamente información institucional necesaria para validar el documento. No publica DNI, correos, evidencias ni información interna de auditoría.</p>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Red Astrum</span>
+      <span>Verificación institucional mediante Astrum Certifica</span>
+    </footer>
+  </div>
+
+  <noscript>Activa JavaScript para utilizar el verificador de Astrum Certifica.</noscript>
+  <script src="verificar.js" defer></script>
+</body>
+</html>
