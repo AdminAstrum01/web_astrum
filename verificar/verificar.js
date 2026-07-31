@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const BACKEND_BASE = "https://script.google.com/macros/s/AKfycbyWQ64D2PBhQpDAy5hRkcTUbr2MDAP9TsHD3_YFK065cnGdu3FNEMd8E8Uqhc3US9sCsQ/exec";
+  const BACKEND_BASE = "https://script.google.com/macros/s/AKfycbziIiJ1ftinsWFd1YEPVoujSFJM7rhXX3kIwaUlkDOH-tFXtEEDM0ubnYZMWcBs57z0rg/exec";
   const frame = document.getElementById("astrum-verifier");
   const loading = document.getElementById("frame-loading");
 
