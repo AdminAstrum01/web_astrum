@@ -21,48 +21,197 @@ if (window.location.protocol !== "file:") {
     }
 }
 
-// Acceso institucional al verificador en la navegación principal y móvil.
-function addVerificationMenuItem() {
-    const normalizedPath = (window.location.pathname.replace(/\/+$/, "") || "/");
-    const isVerificationPage = normalizedPath === "/verificar";
+// Menú institucional de servicios, con acceso a Astrum Certifica.
+function addServicesMenu() {
+    const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
+    const isAstrumCertificaPage = normalizedPath === "/verificar";
 
-    const addItem = (menuList, label, ariaLabel) => {
-        if (!menuList || menuList.querySelector('a[href="/verificar/"], a[href="/verificar"]')) return;
+    // Retirar el enlace directo anterior si aún permanece en una versión almacenada.
+    document.querySelectorAll(
+        'ul.main > li > a[href="/verificar/"], ul.main > li > a[href="/verificar"], ' +
+        '.sidebar > ul > li > a[href="/verificar/"], .sidebar > ul > li > a[href="/verificar"]'
+    ).forEach(link => link.closest("li")?.remove());
 
-        const item = document.createElement("li");
-        const link = document.createElement("a");
-        link.href = "/verificar/";
-        link.textContent = label;
-        link.setAttribute("aria-label", ariaLabel);
+    const desktopMenu = document.querySelector("ul.main");
 
-        if (isVerificationPage) {
-            link.setAttribute("aria-current", "page");
+    if (desktopMenu && !desktopMenu.querySelector('[data-menu="services"]')) {
+        const servicesItem = document.createElement("li");
+        servicesItem.className = "nav-dropdown";
+        servicesItem.dataset.menu = "services";
+
+        const servicesTrigger = document.createElement("a");
+        servicesTrigger.href = "#services-menu";
+        servicesTrigger.setAttribute("aria-haspopup", "true");
+        servicesTrigger.setAttribute("aria-expanded", "false");
+        servicesTrigger.append(document.createTextNode("Servicios "));
+
+        const chevron = document.createElement("i");
+        chevron.className = "bx bx-chevron-down";
+        chevron.setAttribute("aria-hidden", "true");
+        servicesTrigger.appendChild(chevron);
+
+        const submenu = document.createElement("ul");
+        submenu.id = "services-menu";
+        submenu.setAttribute("aria-label", "Servicios de Red Astrum");
+
+        const astrumItem = document.createElement("li");
+        const astrumLink = document.createElement("a");
+        astrumLink.href = "/verificar/";
+        astrumLink.textContent = "Astrum Certifica";
+        astrumLink.setAttribute(
+            "aria-label",
+            "Abrir Astrum Certifica para verificar certificados, constancias y acreditaciones"
+        );
+
+        if (isAstrumCertificaPage) {
+            servicesTrigger.setAttribute("aria-current", "page");
+            astrumLink.setAttribute("aria-current", "page");
         }
 
-        item.appendChild(link);
+        astrumItem.appendChild(astrumLink);
+        submenu.appendChild(astrumItem);
+        servicesItem.append(servicesTrigger, submenu);
 
-        const contactItem = Array.from(menuList.children).find(child => {
-            const contactLink = child.querySelector('a[href="#contacto"], a[href="/#contacto"]');
-            return Boolean(contactLink);
+        const contactItem = Array.from(desktopMenu.children).find(child =>
+            Boolean(child.querySelector('a[href="#contacto"], a[href="/#contacto"]'))
+        );
+
+        desktopMenu.insertBefore(servicesItem, contactItem || null);
+
+        const setServicesState = isOpen => {
+            servicesItem.classList.toggle("open", isOpen);
+            servicesTrigger.setAttribute("aria-expanded", String(isOpen));
+        };
+
+        servicesTrigger.addEventListener("click", event => {
+            event.preventDefault();
+            setServicesState(!servicesItem.classList.contains("open"));
         });
 
-        menuList.insertBefore(item, contactItem || null);
-    };
+        servicesItem.addEventListener("keydown", event => {
+            if (event.key === "Escape") {
+                setServicesState(false);
+                servicesTrigger.focus();
+            }
+        });
 
-    addItem(
-        document.querySelector("ul.main"),
-        "Verificar",
-        "Verificar certificado, constancia o acreditación"
-    );
+        document.addEventListener("click", event => {
+            if (!servicesItem.contains(event.target)) {
+                setServicesState(false);
+            }
+        });
+    }
 
-    addItem(
-        document.querySelector(".sidebar ul"),
-        "Verificar certificado",
-        "Verificar certificado, constancia o acreditación"
-    );
+    const mobileMenu = document.querySelector(".sidebar > ul");
+
+    if (mobileMenu && !mobileMenu.querySelector('[data-menu="services-mobile"]')) {
+        const servicesItem = document.createElement("li");
+        servicesItem.className = "sidebar-services";
+        servicesItem.dataset.menu = "services-mobile";
+
+        const details = document.createElement("details");
+        if (isAstrumCertificaPage) details.open = true;
+
+        const summary = document.createElement("summary");
+        const summaryLabel = document.createElement("span");
+        summaryLabel.textContent = "Servicios";
+
+        const chevron = document.createElement("i");
+        chevron.className = "bx bx-chevron-down";
+        chevron.setAttribute("aria-hidden", "true");
+
+        summary.append(summaryLabel, chevron);
+
+        const submenu = document.createElement("ul");
+        submenu.setAttribute("aria-label", "Servicios de Red Astrum");
+
+        const astrumItem = document.createElement("li");
+        const astrumLink = document.createElement("a");
+        astrumLink.href = "/verificar/";
+        astrumLink.textContent = "Astrum Certifica";
+        astrumLink.setAttribute(
+            "aria-label",
+            "Abrir Astrum Certifica para verificar certificados, constancias y acreditaciones"
+        );
+
+        if (isAstrumCertificaPage) {
+            astrumLink.setAttribute("aria-current", "page");
+        }
+
+        astrumItem.appendChild(astrumLink);
+        submenu.appendChild(astrumItem);
+        details.append(summary, submenu);
+        servicesItem.appendChild(details);
+
+        const contactItem = Array.from(mobileMenu.children).find(child =>
+            Boolean(child.querySelector('a[href="#contacto"], a[href="/#contacto"]'))
+        );
+
+        mobileMenu.insertBefore(servicesItem, contactItem || null);
+    }
+
+    if (!document.getElementById("services-menu-styles")) {
+        const styles = document.createElement("style");
+        styles.id = "services-menu-styles";
+        styles.textContent = `
+            .sidebar .sidebar-services {
+                margin-bottom: 24px;
+            }
+
+            .sidebar .sidebar-services details {
+                width: 100%;
+            }
+
+            .sidebar .sidebar-services summary {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 10px;
+                color: lightgray;
+                cursor: pointer;
+                font-size: clamp(24px, 7vw, 30px);
+                font-weight: 900;
+                list-style: none;
+                text-shadow: 0 0 15px #4c4c4c;
+            }
+
+            .sidebar .sidebar-services summary::-webkit-details-marker {
+                display: none;
+            }
+
+            .sidebar .sidebar-services summary i {
+                font-size: 0.85em;
+                transition: transform 0.25s ease;
+            }
+
+            .sidebar .sidebar-services details[open] summary i {
+                transform: rotate(180deg);
+            }
+
+            .sidebar .sidebar-services ul {
+                margin: 14px 0 0 6px;
+                padding: 0 0 0 18px;
+                border-left: 2px solid rgba(212, 184, 232, 0.45);
+            }
+
+            .sidebar .sidebar-services ul li {
+                margin: 0;
+            }
+
+            .sidebar .sidebar-services ul li a {
+                display: inline-flex;
+                padding: 8px 0;
+                color: var(--color-light);
+                font-size: clamp(18px, 5.5vw, 23px);
+                font-weight: 700;
+                line-height: 1.25;
+            }
+        `;
+        document.head.appendChild(styles);
+    }
 }
 
-addVerificationMenuItem();
+addServicesMenu();
 
 // Navegación responsive
 const sideBar = document.querySelector('.sidebar');
@@ -91,8 +240,12 @@ function setMenuState(isOpen, { restoreFocus = true } = {}) {
     if (isOpen) {
         const firstLink = sideBar.querySelector("a");
         firstLink?.focus();
-    } else if (restoreFocus) {
-        menu.focus();
+    } else {
+        sideBar.querySelectorAll("details[open]").forEach(details => {
+            details.removeAttribute("open");
+        });
+
+        if (restoreFocus) menu.focus();
     }
 }
 
@@ -163,6 +316,7 @@ window.addEventListener("scroll", () => {
         activated = false;
     }
 });
+
 // Scroll reveal (reemplaza animation-timeline: view(), poco confiable entre navegadores)
 const revealTargets = document.querySelectorAll(".autoBlur, .autoDisplay, .fadein-left");
 
