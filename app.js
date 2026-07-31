@@ -21,6 +21,49 @@ if (window.location.protocol !== "file:") {
     }
 }
 
+// Acceso institucional al verificador en la navegación principal y móvil.
+function addVerificationMenuItem() {
+    const normalizedPath = (window.location.pathname.replace(/\/+$/, "") || "/");
+    const isVerificationPage = normalizedPath === "/verificar";
+
+    const addItem = (menuList, label, ariaLabel) => {
+        if (!menuList || menuList.querySelector('a[href="/verificar/"], a[href="/verificar"]')) return;
+
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = "/verificar/";
+        link.textContent = label;
+        link.setAttribute("aria-label", ariaLabel);
+
+        if (isVerificationPage) {
+            link.setAttribute("aria-current", "page");
+        }
+
+        item.appendChild(link);
+
+        const contactItem = Array.from(menuList.children).find(child => {
+            const contactLink = child.querySelector('a[href="#contacto"], a[href="/#contacto"]');
+            return Boolean(contactLink);
+        });
+
+        menuList.insertBefore(item, contactItem || null);
+    };
+
+    addItem(
+        document.querySelector("ul.main"),
+        "Verificar",
+        "Verificar certificado, constancia o acreditación"
+    );
+
+    addItem(
+        document.querySelector(".sidebar ul"),
+        "Verificar certificado",
+        "Verificar certificado, constancia o acreditación"
+    );
+}
+
+addVerificationMenuItem();
+
 // Navegación responsive
 const sideBar = document.querySelector('.sidebar');
 const menu = document.querySelector('.menu-icon');
