@@ -1,8 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const ongId = params.get("id");
 const ong = ONGS.find(item => item.id === ongId);
-const numberFormatter = new Intl.NumberFormat("es-PE");
-const networkLabel = "ONG de Red Astrum";
 
 const socialPlatforms = {
     web: { label: "Sitio web", icon: "bx-globe" },
@@ -11,6 +9,19 @@ const socialPlatforms = {
     youtube: { label: "YouTube", icon: "bxl-youtube" },
     linkedin: { label: "LinkedIn", icon: "bxl-linkedin-square" }
 };
+
+function localizedText(value = "") {
+    return window.AstrumI18n?.translateText(value) || value;
+}
+
+function message(key, variables, fallback) {
+    return window.AstrumI18n?.t(key, variables) || fallback;
+}
+
+function formatNumber(value) {
+    const locale = window.AstrumI18n?.getLocale() || "es-PE";
+    return new Intl.NumberFormat(locale).format(value);
+}
 
 function getInitials(name) {
     return name
@@ -45,7 +56,11 @@ function isSafeAccreditationUrl(value) {
     }
 }
 
-function setText(id, value, fallback = "Información en actualización") {
+function setText(id, value, fallback = message(
+    "common.updating",
+    {},
+    "Información en actualización"
+)) {
     const element = document.getElementById(id);
     if (element) element.textContent = value || fallback;
 }
@@ -77,7 +92,11 @@ function renderLogo(profile) {
 
     image.addEventListener("load", showImage, { once: true });
     image.addEventListener("error", showFallback, { once: true });
-    image.alt = `Logo de ${profile.nombre}`;
+    image.alt = message(
+        "ongs.logo",
+        { name: profile.nombre },
+        "Logo de " + profile.nombre
+    );
     image.src = profile.logo;
 
     if (image.complete) {
@@ -98,8 +117,16 @@ function renderSocialLinks(redes = {}, contacto = "") {
         link.href = url;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.setAttribute("aria-label", `${config.label} de ${ong.nombre}`);
-        link.title = config.label;
+        const platformLabel = localizedText(config.label);
+        link.setAttribute(
+            "aria-label",
+            message(
+                "ong.social",
+                { platform: platformLabel, name: ong.nombre },
+                platformLabel + " de " + ong.nombre
+            )
+        );
+        link.title = platformLabel;
 
         const icon = document.createElement("i");
         icon.className = `bx ${config.icon}`;
@@ -111,9 +138,16 @@ function renderSocialLinks(redes = {}, contacto = "") {
     if (contacto) {
         const mail = document.createElement("a");
         mail.className = "ong-social-link";
-        mail.href = `mailto:${contacto}`;
-        mail.setAttribute("aria-label", `Escribir a ${ong.nombre}`);
-        mail.title = "Correo institucional";
+        mail.href = "mailto:" + contacto;
+        mail.setAttribute(
+            "aria-label",
+            message("ong.email", { name: ong.nombre }, "Escribir a " + ong.nombre)
+        );
+        mail.title = message(
+            "ong.institutionalEmail",
+            {},
+            "Correo institucional"
+        );
 
         const icon = document.createElement("i");
         icon.className = "bx bx-envelope";
@@ -141,15 +175,27 @@ function renderAccreditation(profile) {
 
     setText(
         "ongAcreditacionDescripcion",
-        `Esta constancia emitida por Red Astrum acredita que ${profile.nombre} forma parte de la red institucional.`
+        message(
+            "ong.accreditationDescription",
+            { name: profile.nombre },
+            "Esta constancia emitida por Red Astrum acredita que " +
+                profile.nombre +
+                " forma parte de la red institucional."
+        )
     );
     setText("ongAcreditacionCodigo", accreditation.codigo);
-    setText("ongAcreditacionFecha", accreditation.fechaEmision);
+    setText("ongAcreditacionFecha", localizedText(accreditation.fechaEmision));
 
     link.href = accreditation.documento;
     link.setAttribute(
         "aria-label",
-        `Ver constancia de acreditación institucional de ${profile.nombre} en PDF`
+        message(
+            "ong.accreditationAria",
+            { name: profile.nombre },
+            "Ver constancia de acreditación institucional de " +
+                profile.nombre +
+                " en PDF"
+        )
     );
 }
 
@@ -162,7 +208,7 @@ function createImpactCard(label, value, iconClass) {
     icon.setAttribute("aria-hidden", "true");
 
     const number = document.createElement("strong");
-    number.textContent = numberFormatter.format(value);
+    number.textContent = formatNumber(value);
 
     const description = document.createElement("span");
     description.textContent = label;
@@ -175,9 +221,33 @@ function renderImpact(profile) {
     const impactGrid = document.getElementById("ongImpacto");
     const impact = profile.impact || {};
     const metrics = [
-        ["Personas impactadas directamente", impact.directo, "bx-user-check"],
-        ["Personas impactadas indirectamente", impact.indirecto, "bx-group"],
-        ["Miembros de la organización", impact.miembros, "bx-network-chart"]
+        [
+            message(
+                "ong.impact.direct",
+                {},
+                "Personas impactadas directamente"
+            ),
+            impact.directo,
+            "bx-user-check"
+        ],
+        [
+            message(
+                "ong.impact.indirect",
+                {},
+                "Personas impactadas indirectamente"
+            ),
+            impact.indirecto,
+            "bx-group"
+        ],
+        [
+            message(
+                "ong.impact.members",
+                {},
+                "Miembros de la organización"
+            ),
+            impact.miembros,
+            "bx-network-chart"
+        ]
     ].filter(([, value]) => Number.isFinite(value));
 
     const fragment = document.createDocumentFragment();
@@ -192,10 +262,18 @@ function renderImpact(profile) {
     if (hasRecognitionData) {
         setText(
             "ongReconocimiento",
-            profile.reconocimiento || (
+            localizedText(profile.reconocimiento) || (
                 profile.reconocimientoGubernamental
-                    ? "La organización reporta reconocimiento por una entidad gubernamental."
-                    : "La organización no reporta actualmente reconocimiento por una entidad gubernamental."
+                    ? message(
+                        "ong.recognition.yes",
+                        {},
+                        "La organización reporta reconocimiento por una entidad gubernamental."
+                    )
+                    : message(
+                        "ong.recognition.no",
+                        {},
+                        "La organización no reporta actualmente reconocimiento por una entidad gubernamental."
+                    )
             )
         );
     }
@@ -209,7 +287,7 @@ function renderImpact(profile) {
     ods.forEach(item => {
         const chip = document.createElement("span");
         chip.className = "ong-ods-chip";
-        chip.textContent = item;
+        chip.textContent = localizedText(item);
         odsFragment.appendChild(chip);
     });
     odsContainer.replaceChildren(odsFragment);
@@ -227,7 +305,13 @@ function renderProjects(profile) {
         const normalizedProject = typeof project === "string"
             ? {
                 nombre: project,
-                descripcion: `Proyecto desarrollado por ${profile.nombre} dentro del ecosistema Red Astrum.`
+                descripcion: message(
+                    "ong.project.defaultNetwork",
+                    { name: profile.nombre },
+                    "Proyecto desarrollado por " +
+                        profile.nombre +
+                        " dentro del ecosistema Red Astrum."
+                )
             }
             : project;
 
@@ -235,11 +319,15 @@ function renderProjects(profile) {
         card.className = "ong-project-card";
 
         const title = document.createElement("h3");
-        title.textContent = normalizedProject.nombre;
+        title.textContent = localizedText(normalizedProject.nombre);
 
         const description = document.createElement("p");
-        description.textContent = normalizedProject.descripcion ||
-            `Proyecto desarrollado por ${profile.nombre}.`;
+        description.textContent = localizedText(normalizedProject.descripcion) ||
+            message(
+                "ong.project.default",
+                { name: profile.nombre },
+                "Proyecto desarrollado por " + profile.nombre + "."
+            );
 
         card.append(title, description);
 
@@ -249,7 +337,14 @@ function renderProjects(profile) {
             link.href = normalizedProject.enlace;
             link.target = "_blank";
             link.rel = "noopener noreferrer";
-            link.innerHTML = "Ver evidencia <i class='bx bx-link-external' aria-hidden='true'></i>";
+            link.append(document.createTextNode(
+                message("ong.project.evidence", {}, "Ver evidencia") + " "
+            ));
+
+            const icon = document.createElement("i");
+            icon.className = "bx bx-link-external";
+            icon.setAttribute("aria-hidden", "true");
+            link.appendChild(icon);
             card.appendChild(link);
         }
 
@@ -313,40 +408,75 @@ function renderNotFound() {
     state.className = "ong-not-found";
 
     const title = document.createElement("h1");
-    title.textContent = "ONG no encontrada";
+    title.textContent = message("ong.notFound.title", {}, "ONG no encontrada");
 
-    const message = document.createElement("p");
-    message.textContent = "La organización solicitada no existe o aún no ha sido registrada.";
+    const messageElement = document.createElement("p");
+    messageElement.textContent = window.AstrumI18n?.t("ong.notFound.message") ||
+        "La organización solicitada no existe o aún no ha sido registrada.";
 
     const link = document.createElement("a");
     link.href = "/ongs";
-    link.textContent = "Volver al directorio";
+    link.textContent = window.AstrumI18n?.t("ong.notFound.link") ||
+        "Volver al directorio";
 
-    state.append(title, message, link);
+    state.append(title, messageElement, link);
     portal.appendChild(state);
+}
+
+function renderLocalizedProfile(profile) {
+    document.title = profile.nombre + " - Red Astrum";
+    document.querySelector('meta[name="description"]').content =
+        localizedText(profile.descripcion);
+
+    const logo = document.getElementById("ongLogo");
+    if (logo) {
+        logo.alt = message(
+            "ongs.logo",
+            { name: profile.nombre },
+            "Logo de " + profile.nombre
+        );
+    }
+
+    setText(
+        "ongEstado",
+        message("ongs.network", {}, "ONG de Red Astrum")
+    );
+    setText("ongNombre", profile.nombre);
+    setText("ongDescripcion", localizedText(profile.descripcion));
+    setText("ongRegion", localizedText(profile.region));
+    setText("ongFundacion", localizedText(profile.fechaFundacion));
+    setText("ongMision", localizedText(profile.mision));
+
+    setOptionalBlock(
+        "ongVisionBlock",
+        "ongVision",
+        profile.vision ? localizedText(profile.vision) : ""
+    );
+    setOptionalBlock(
+        "ongPublicoBlock",
+        "ongPublico",
+        profile.publico ? localizedText(profile.publico) : ""
+    );
+    setOptionalBlock(
+        "ongValorBlock",
+        "ongValor",
+        profile.valor ? localizedText(profile.valor) : ""
+    );
+
+    renderSocialLinks(profile.redes, profile.contacto);
+    renderAccreditation(profile);
+    renderImpact(profile);
+    renderProjects(profile);
 }
 
 if (!ong) {
     renderNotFound();
+    document.addEventListener("astrum:languagechange", renderNotFound);
 } else {
-    document.title = `${ong.nombre} - Red Astrum`;
-    document.querySelector('meta[name="description"]').content = ong.descripcion;
-
     renderLogo(ong);
-    setText("ongEstado", networkLabel);
-    setText("ongNombre", ong.nombre);
-    setText("ongDescripcion", ong.descripcion);
-    setText("ongRegion", ong.region);
-    setText("ongFundacion", ong.fechaFundacion);
-    setText("ongMision", ong.mision);
-
-    setOptionalBlock("ongVisionBlock", "ongVision", ong.vision);
-    setOptionalBlock("ongPublicoBlock", "ongPublico", ong.publico);
-    setOptionalBlock("ongValorBlock", "ongValor", ong.valor);
-
-    renderSocialLinks(ong.redes, ong.contacto);
-    renderAccreditation(ong);
-    renderImpact(ong);
-    renderProjects(ong);
+    renderLocalizedProfile(ong);
     initializeTabs();
+    document.addEventListener("astrum:languagechange", () => {
+        renderLocalizedProfile(ong);
+    });
 }

@@ -7,6 +7,18 @@ const filterContainer = document.getElementById("filter-pills");
 let activeFilter = "Todos";
 let searchQuery = "";
 
+function localizedText(value = "") {
+    return window.AstrumI18n?.translateText(value) || value;
+}
+
+function searchableText(value = "") {
+    return window.AstrumI18n?.searchable(value) || value;
+}
+
+function message(key, variables, fallback) {
+    return window.AstrumI18n?.t(key, variables) || fallback;
+}
+
 function normalizeText(value = "") {
     return value
         .normalize("NFD")
@@ -41,7 +53,11 @@ function renderAvatar(member) {
 
     const image = document.createElement("img");
     image.src = member.foto;
-    image.alt = `Foto de ${member.nombre}`;
+    image.alt = message(
+        "team.photo",
+        { name: member.nombre },
+        "Foto de " + member.nombre
+    );
     image.loading = "lazy";
     image.decoding = "async";
     image.addEventListener("error", showInitials, { once: true });
@@ -63,8 +79,11 @@ function createSocialLink(platform, value, memberName) {
     icon.setAttribute("aria-hidden", "true");
 
     if (platform === "email") {
-        link.href = `mailto:${value}`;
-        link.setAttribute("aria-label", `Escribir a ${memberName}`);
+        link.href = "mailto:" + value;
+        link.setAttribute(
+            "aria-label",
+            message("team.email", { name: memberName }, "Escribir a " + memberName)
+        );
     } else {
         try {
             const url = new URL(value);
@@ -76,7 +95,10 @@ function createSocialLink(platform, value, memberName) {
         link.href = value;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.setAttribute("aria-label", `LinkedIn de ${memberName}`);
+        link.setAttribute(
+            "aria-label",
+            message("team.linkedin", { name: memberName }, "LinkedIn de " + memberName)
+        );
     }
 
     link.appendChild(icon);
@@ -99,14 +121,14 @@ function renderMemberCard(member, index) {
     member.areas.forEach(area => {
         const badge = document.createElement("span");
         badge.className = "member-area";
-        badge.textContent = area;
+        badge.textContent = localizedText(area);
         badges.appendChild(badge);
     });
 
     if (member.subarea) {
         const subarea = document.createElement("span");
         subarea.className = "member-subarea";
-        subarea.textContent = member.subarea;
+        subarea.textContent = localizedText(member.subarea);
         badges.appendChild(subarea);
     }
 
@@ -116,7 +138,7 @@ function renderMemberCard(member, index) {
 
     const role = document.createElement("p");
     role.className = "member-role";
-    role.textContent = member.rol;
+    role.textContent = localizedText(member.rol);
 
     card.append(badges, name, role);
 
@@ -154,7 +176,7 @@ function applyFilters() {
             member.rol,
             member.subarea,
             ...member.areas
-        ].join(" "));
+        ].map(searchableText).join(" "));
 
         return matchesArea && searchable.includes(searchQuery);
     });
@@ -180,6 +202,8 @@ searchInput?.addEventListener("input", event => {
     searchQuery = normalizeText(event.target.value);
     applyFilters();
 });
+
+document.addEventListener("astrum:languagechange", applyFilters);
 
 window.AOS?.init();
 applyFilters();

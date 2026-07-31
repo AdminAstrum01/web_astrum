@@ -2,7 +2,18 @@ const mosaic = document.getElementById("ongMosaic");
 const searchInput = document.getElementById("ongSearch");
 const countLabel = document.getElementById("ongListCount");
 const emptyState = document.getElementById("ongEmptyState");
-const networkLabel = "ONG de Red Astrum";
+
+function localizedText(value = "") {
+    return window.AstrumI18n?.translateText(value) || value;
+}
+
+function searchableText(value = "") {
+    return window.AstrumI18n?.searchable(value) || value;
+}
+
+function message(key, variables, fallback) {
+    return window.AstrumI18n?.t(key, variables) || fallback;
+}
 
 function normalizeText(value = "") {
     return value
@@ -38,7 +49,11 @@ function createLogo(ong) {
 
     const image = document.createElement("img");
     image.src = ong.logo;
-    image.alt = `Logo de ${ong.nombre}`;
+    image.alt = message(
+        "ongs.logo",
+        { name: ong.nombre },
+        "Logo de " + ong.nombre
+    );
     image.loading = "lazy";
     image.decoding = "async";
     image.referrerPolicy = "no-referrer";
@@ -51,8 +66,11 @@ function createLogo(ong) {
 function createCard(ong) {
     const card = document.createElement("a");
     card.className = "ong-tile";
-    card.href = `/ong?id=${encodeURIComponent(ong.id)}`;
-    card.setAttribute("aria-label", `Abrir portal de ${ong.nombre}`);
+    card.href = "/ong?id=" + encodeURIComponent(ong.id);
+    card.setAttribute(
+        "aria-label",
+        message("ongs.open", { name: ong.nombre }, "Abrir portal de " + ong.nombre)
+    );
 
     const info = document.createElement("div");
     info.className = "ong-tile-info";
@@ -61,7 +79,7 @@ function createCard(ong) {
     title.textContent = ong.nombre;
 
     const summary = document.createElement("p");
-    summary.textContent = ong.descripcion;
+    summary.textContent = localizedText(ong.descripcion);
 
     const metadata = document.createElement("div");
     metadata.className = "ong-tile-meta";
@@ -69,12 +87,12 @@ function createCard(ong) {
     if (ong.region) {
         const region = document.createElement("small");
         region.innerHTML = "<i class='bx bx-map' aria-hidden='true'></i>";
-        region.append(document.createTextNode(ong.region));
+        region.append(document.createTextNode(localizedText(ong.region)));
         metadata.appendChild(region);
     }
 
     const status = document.createElement("span");
-    status.textContent = networkLabel;
+    status.textContent = message("ongs.network", {}, "ONG de Red Astrum");
 
     info.append(title, summary, metadata, status);
     card.append(createLogo(ong), info);
@@ -90,7 +108,7 @@ function renderOrganizations(query = "") {
             ong.sigla,
             ong.region,
             ong.descripcion
-        ].filter(Boolean).join(" "));
+        ].filter(Boolean).map(searchableText).join(" "));
 
         return searchable.includes(normalizedQuery);
     });
@@ -100,13 +118,21 @@ function renderOrganizations(query = "") {
     mosaic.replaceChildren(fragment);
 
     countLabel.textContent = filtered.length === 1
-        ? "1 organización"
-        : `${filtered.length} organizaciones`;
+        ? message("ongs.count.one", {}, "1 organización")
+        : message(
+            "ongs.count.many",
+            { count: filtered.length },
+            String(filtered.length) + " organizaciones"
+        );
     emptyState.hidden = filtered.length !== 0;
 }
 
 searchInput?.addEventListener("input", event => {
     renderOrganizations(event.target.value);
+});
+
+document.addEventListener("astrum:languagechange", () => {
+    renderOrganizations(searchInput?.value || "");
 });
 
 renderOrganizations();
