@@ -155,7 +155,7 @@ function addServicesMenu() {
         styles.id = "services-menu-styles";
         styles.textContent = `
             .sidebar .sidebar-services {
-                margin-bottom: 24px;
+                margin: 0;
             }
 
             .sidebar .sidebar-services details {
@@ -166,21 +166,40 @@ function addServicesMenu() {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-                gap: 10px;
-                color: lightgray;
+                gap: 8px;
+                width: 100%;
+                min-height: 48px;
+                padding: 11px 14px;
+                border-radius: 13px;
+                color: rgba(255, 255, 255, 0.88);
                 cursor: pointer;
-                font-size: clamp(24px, 7vw, 30px);
-                font-weight: 900;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 1.3;
                 list-style: none;
-                text-shadow: 0 0 15px #4c4c4c;
+                text-shadow: none;
+                transition: background-color 0.2s ease, color 0.2s ease;
+                -webkit-tap-highlight-color: transparent;
             }
 
             .sidebar .sidebar-services summary::-webkit-details-marker {
                 display: none;
             }
 
+            .sidebar .sidebar-services summary:hover,
+            .sidebar .sidebar-services summary:active,
+            .sidebar .sidebar-services details[open] > summary {
+                background: rgba(212, 184, 232, 0.12);
+                color: var(--color-white);
+            }
+
+            .sidebar .sidebar-services summary:focus-visible {
+                outline: 3px solid var(--color-accent);
+                outline-offset: 3px;
+            }
+
             .sidebar .sidebar-services summary i {
-                font-size: 0.85em;
+                font-size: 20px;
                 transition: transform 0.25s ease;
             }
 
@@ -189,8 +208,10 @@ function addServicesMenu() {
             }
 
             .sidebar .sidebar-services ul {
-                margin: 14px 0 0 6px;
-                padding: 0 0 0 18px;
+                gap: 2px;
+                width: calc(100% - 20px);
+                margin: 4px 0 2px 14px;
+                padding: 4px 0 4px 12px;
                 border-left: 2px solid rgba(212, 184, 232, 0.45);
             }
 
@@ -199,12 +220,16 @@ function addServicesMenu() {
             }
 
             .sidebar .sidebar-services ul li a {
-                display: inline-flex;
-                padding: 8px 0;
+                display: flex;
+                width: 100%;
+                min-height: 44px;
+                padding: 10px 12px;
+                border-radius: 11px;
                 color: var(--color-light);
-                font-size: clamp(18px, 5.5vw, 23px);
-                font-weight: 700;
-                line-height: 1.25;
+                font-size: 15px;
+                font-weight: 600;
+                line-height: 1.3;
+                text-shadow: none;
             }
         `;
         document.head.appendChild(styles);
