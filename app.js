@@ -420,5 +420,17 @@ function synchronizePublicNgoState() {
     }
 }
 
+function enforceOfficialNgoCounter() {
+    const counter = document.querySelector(
+        '.counters span[data-count="15"], .counters span[data-count="14"]'
+    );
+    if (!counter) return;
+
+    counter.dataset.count = String(OFFICIAL_NGO_COUNT);
+    if (activated) counter.textContent = String(OFFICIAL_NGO_COUNT);
+}
+
 window.setTimeout(synchronizePublicNgoState, 0);
+window.setTimeout(enforceOfficialNgoCounter, 0);
 document.addEventListener("DOMContentLoaded", synchronizePublicNgoState, { once: true });
+document.addEventListener("DOMContentLoaded", enforceOfficialNgoCounter, { once: true });
