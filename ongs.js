@@ -103,6 +103,8 @@ function createCard(ong) {
 function renderOrganizations(query = "") {
     const normalizedQuery = normalizeText(query);
     const filtered = ONGS.filter(ong => {
+        if (ong.id === "maywa") return false;
+
         const searchable = normalizeText([
             ong.nombre,
             ong.sigla,
