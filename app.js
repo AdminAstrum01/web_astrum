@@ -362,3 +362,63 @@ if (revealTargets.length && "IntersectionObserver" in window) {
     // Sin soporte de IntersectionObserver: mostrar todo de inmediato
     revealTargets.forEach(el => el.classList.add("in-view"));
 }
+
+// Sincronización pública del número de ONGs y retiro de Maywa.
+const OFFICIAL_NGO_COUNT = 14;
+
+function synchronizePublicNgoState() {
+    const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
+    const requestedOng = new URLSearchParams(window.location.search).get("id");
+
+    if (normalizedPath === "/ong" && requestedOng === "maywa") {
+        window.location.replace("/ongs");
+        return;
+    }
+
+    if (typeof ONGS !== "undefined") {
+        const maywaIndex = ONGS.findIndex(organization => organization.id === "maywa");
+        if (maywaIndex >= 0) ONGS.splice(maywaIndex, 1);
+    }
+
+    const ngoCounter = Array.from(document.querySelectorAll(".counter")).find(counter =>
+        counter.querySelector("h3")?.textContent.trim() === "ONGs de Red Astrum"
+    );
+    const ngoCounterValue = ngoCounter?.querySelector("span[data-count]");
+    if (ngoCounterValue) {
+        ngoCounterValue.dataset.count = String(OFFICIAL_NGO_COUNT);
+        if (activated) ngoCounterValue.textContent = String(OFFICIAL_NGO_COUNT);
+    }
+
+    const carousel = document.querySelector(".astrum-carousel");
+    const maywaCarouselItem = carousel
+        ?.querySelector('img[src*="maywa.webp"]')
+        ?.closest(".astrum-carousel-item");
+
+    if (maywaCarouselItem) {
+        const list = maywaCarouselItem.parentElement;
+        maywaCarouselItem.remove();
+
+        const remainingItems = Array.from(list.querySelectorAll(".astrum-carousel-item"));
+        remainingItems.forEach((item, index) => {
+            item.style.setProperty("--position", String(index + 1));
+        });
+        carousel.style.setProperty("--quantity", String(remainingItems.length));
+    }
+
+    if (typeof renderOrganizations === "function") {
+        const searchValue = document.getElementById("ongSearch")?.value || "";
+        renderOrganizations(searchValue);
+    } else {
+        document.querySelectorAll('a.ong-tile[href*="id=maywa"]').forEach(card => card.remove());
+        const directoryCount = document.getElementById("ongListCount");
+        if (directoryCount) {
+            directoryCount.textContent = window.AstrumI18n?.t(
+                "ongs.count.many",
+                { count: OFFICIAL_NGO_COUNT }
+            ) || `${OFFICIAL_NGO_COUNT} organizaciones`;
+        }
+    }
+}
+
+window.setTimeout(synchronizePublicNgoState, 0);
+document.addEventListener("DOMContentLoaded", synchronizePublicNgoState, { once: true });
