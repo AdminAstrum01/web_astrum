@@ -100,7 +100,7 @@ const TEAM_MEMBERS = [
         foto: "/images/representantes_ong/mary_thomas.webp",
         redes: {
             linkedin: "https://www.linkedin.com/in/mary-ann-thomas-lara-1b95033b2",
-            email: "mary_ann.thomas@redastrum.org"
+            email: "mary-ann.thomas@redastrum.org"
         }
     },
     {
@@ -266,15 +266,15 @@ const TEAM_MEMBERS = [
         }
     },
     {
-        nombre: "Dayanna Córdoba",
-        nombreCompleto: "Dayanna Nicole Córdoba Orozco",
+        nombre: "Dayanna Córdova",
+        nombreCompleto: "Dayanna Nicole Córdova Orozco",
         rol: "Miembro de Gestión",
         area: "Núcleo Duro",
         areas: ["Núcleo Duro"],
         subarea: "Gestión",
         foto: "/images/nucleoduro/dayanna_cordoba.webp",
         redes: {
-            email: "dayanna.cordoba@redastrum.org"
+            email: "dayanna.cordova@redastrum.org"
         }
     },
     {
