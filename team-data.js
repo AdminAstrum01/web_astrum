@@ -58,7 +58,7 @@ const TEAM_MEMBERS = [
         area: "Fundadores",
         areas: ["Fundadores", "Consejo de ONGs"],
         subarea: "Holo Astrum UNMSM",
-        foto: "/images/fundadores/jhosany_lazo.webp",
+        foto: "/images/representantes_ong/jhosany_lazo.webp",
         redes: {
             linkedin: "https://www.linkedin.com/in/belen-lazo-alegre-831740282",
             email: "belen.lazo@redastrum.org"
@@ -100,7 +100,7 @@ const TEAM_MEMBERS = [
         foto: "/images/representantes_ong/mary_thomas.webp",
         redes: {
             linkedin: "https://www.linkedin.com/in/mary-ann-thomas-lara-1b95033b2",
-            email: "mary.thomas@redastrum.org"
+            email: "mary_ann.thomas@redastrum.org"
         }
     },
     {
@@ -175,7 +175,7 @@ const TEAM_MEMBERS = [
         subarea: "Tecnología",
         foto: "/images/nucleoduro/evans_toribio.webp",
         redes: {
-            email: "toribio.evans@redastrum.org"
+            email: "evans.toribio@redastrum.org"
         }
     },
     {
@@ -211,9 +211,21 @@ const TEAM_MEMBERS = [
         area: "Núcleo Duro",
         areas: ["Núcleo Duro"],
         subarea: "Secretaría",
-        foto: "",
+        foto: "/images/nucleoduro/nancy_sucasaca.webp",
         redes: {
             email: "nancy.sucasaca@redastrum.org"
+        }
+    },
+    {
+        nombre: "Zharick Figueroa",
+        nombreCompleto: "Zharick Alejandra Figueroa Carranza",
+        rol: "Miembro de Secretaría",
+        area: "Núcleo Duro",
+        areas: ["Núcleo Duro"],
+        subarea: "Secretaría",
+        foto: "",
+        redes: {
+            email: "zharick.figueroa@redastrum.org"
         }
     },
     {
@@ -263,6 +275,18 @@ const TEAM_MEMBERS = [
         foto: "/images/nucleoduro/dayanna_cordoba.webp",
         redes: {
             email: "dayanna.cordoba@redastrum.org"
+        }
+    },
+    {
+        nombre: "Thayz Caycho",
+        nombreCompleto: "Thayz Alexandra Medalith Caycho Vargas",
+        rol: "Co-Coordinadora de G-Astrum",
+        area: "Núcleo Duro",
+        areas: ["Núcleo Duro"],
+        subarea: "G-Astrum",
+        foto: "/images/nucleoduro/thayz_caycho.webp",
+        redes: {
+            email: "thayz.caycho@redastrum.org"
         }
     },
     {
@@ -385,10 +409,34 @@ const TEAM_MEMBERS = [
         area: "Consejo de ONGs",
         areas: ["Consejo de ONGs"],
         subarea: "Red Mundial de Jóvenes Académicos",
-        foto: "",
+        foto: "/images/representantes_ong/andres_navarrete.webp",
         redes: {
             linkedin: "https://www.linkedin.com/in/andres-sebastian-navarrete-obando-73a4a5343/",
             email: "andres.navarrete@redastrum.org"
+        }
+    },
+    {
+        nombre: "Ximena Cortez",
+        nombreCompleto: "Ximena Camila Cortez Cruz",
+        rol: "Representante de For Our Rights",
+        area: "Consejo de ONGs",
+        areas: ["Consejo de ONGs"],
+        subarea: "For Our Rights",
+        foto: "/images/representantes_ong/ximena_cortez.webp",
+        redes: {
+            linkedin: "https://www.linkedin.com/in/ximena-camila-cortez-cruz-63407b1b8/"
+        }
+    },
+    {
+        nombre: "Jashira Meza",
+        nombreCompleto: "Jashira Ashly Meza Peña",
+        rol: "Representante de Oportunidades con Impacto",
+        area: "Consejo de ONGs",
+        areas: ["Consejo de ONGs"],
+        subarea: "Oportunidades con Impacto",
+        foto: "/images/representantes_ong/jashira_meza.webp",
+        redes: {
+            linkedin: "https://www.linkedin.com/in/jashirameza/"
         }
     }
 ];
