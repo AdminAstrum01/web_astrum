@@ -331,10 +331,10 @@ const TEAM_MEMBERS = [
     {
         nombre: "Celeste Bedoya",
         nombreCompleto: "Angel Celeste Bedoya Yzasiga",
-        rol: "Representante de Holo Astrum y Maywa",
+        rol: "Representante de Holo Astrum",
         area: "Consejo de ONGs",
         areas: ["Consejo de ONGs"],
-        subarea: "Holo Astrum · Maywa",
+        subarea: "Holo Astrum",
         foto: "/images/representantes_ong/celeste_bedoya.webp",
         redes: {
             email: "celeste.bedoya@redastrum.org"
