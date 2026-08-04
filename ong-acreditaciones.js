@@ -5,7 +5,7 @@
         [
             "holo-astrum-unmsm",
             {
-                documento: "/documents/acreditaciones/holo-astrum-unmsm.pdf",
+                documento: "https://drive.google.com/file/d/1Ru6PNraXdODhq9RkE1davAJrubw_kQSV/view?usp=sharing",
                 codigo: "RA-2026-HAU-ONG",
                 fechaEmision: "3 de agosto de 2026"
             }
@@ -13,7 +13,7 @@
         [
             "rikchari",
             {
-                documento: "/documents/acreditaciones/rikchari.pdf",
+                documento: "https://drive.google.com/file/d/1iL1EjeMV0jUbawce9ePRuPmQ3aXExk5L/view?usp=sharing",
                 codigo: "RA-2026-RK-ONG",
                 fechaEmision: "3 de agosto de 2026"
             }
@@ -21,7 +21,7 @@
         [
             "oportunidades-con-impacto",
             {
-                documento: "/documents/acreditaciones/oportunidades-con-impacto.pdf",
+                documento: "https://drive.google.com/file/d/1OAv__aPTJqDtWXJQk5TYlrduC1SBIKuf/view?usp=sharing",
                 codigo: "RA-2026-OCI-ONG",
                 fechaEmision: "3 de agosto de 2026"
             }
@@ -29,7 +29,7 @@
         [
             "for-our-rights",
             {
-                documento: "/documents/acreditaciones/for-our-rights.pdf",
+                documento: "https://drive.google.com/file/d/1hMCRlv576BNZAkNHemMXkVxMJYOMHMn2/view?usp=sharing",
                 codigo: "RA-2026-FOR-ONG",
                 fechaEmision: "3 de agosto de 2026"
             }
