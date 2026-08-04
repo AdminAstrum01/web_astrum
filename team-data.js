@@ -223,8 +223,9 @@ const TEAM_MEMBERS = [
         area: "Núcleo Duro",
         areas: ["Núcleo Duro"],
         subarea: "Secretaría",
-        foto: "",
+        foto: "/images/nucleoduro/zharick_figueroa.webp",
         redes: {
+            linkedin: "https://pe.linkedin.com/in/nancy-sucasaca-5117682b8",
             email: "zharick.figueroa@redastrum.org"
         }
     },
