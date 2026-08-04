@@ -19,7 +19,7 @@ const ONGS = [
             fechaEmision: "18 de junio de 2026"
         },
         valor: "Aporta experiencia en educación holística y en el diseño de experiencias de aprendizaje para jóvenes.",
-        contacto: "info@redastrum.org",
+        contacto: "astrum.ong@gmail.com",
         redes: {
             instagram: "https://www.instagram.com/holoastrum/",
             linkedin: "https://www.linkedin.com/company/holoastrum"
