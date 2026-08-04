@@ -33,20 +33,11 @@
     transform-origin: 51% 45%;
 }
 
-.member-avatar img[src$="/jashira_meza.webp"] {
-    object-position: 50% 29%;
-    transform: scale(1.35);
-    transform-origin: 50% 29%;
-}
 
 .member-avatar img[src$="/jimena_carlos.webp"] {
     object-position: 50% 50%;
     transform: scale(1.35);
     transform-origin: 50% 47%;
-}
-
-.member-avatar img[src$="/mary_thomas.webp"] {
-    object-position: 55% 50%;
 }
 
 .member-avatar img[src$="/nadia_huaman.webp"] {
