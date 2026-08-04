@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/documents/acreditaciones/holo-astrum-unmsm.pdf",
+      "destination": "https://drive.google.com/file/d/1Ru6PNraXdODhq9RkE1davAJrubw_kQSV/view?usp=sharing",
+      "permanent": false
+    },
+    {
+      "source": "/documents/acreditaciones/rikchari.pdf",
+      "destination": "https://drive.google.com/file/d/1iL1EjeMV0jUbawce9ePRuPmQ3aXExk5L/view?usp=sharing",
+      "permanent": false
+    },
+    {
+      "source": "/documents/acreditaciones/oportunidades-con-impacto.pdf",
+      "destination": "https://drive.google.com/file/d/1OAv__aPTJqDtWXJQk5TYlrduC1SBIKuf/view?usp=sharing",
+      "permanent": false
+    },
+    {
+      "source": "/documents/acreditaciones/for-our-rights.pdf",
+      "destination": "https://drive.google.com/file/d/1hMCRlv576BNZAkNHemMXkVxMJYOMHMn2/view?usp=sharing",
+      "permanent": false
+    }
+  ]
+}
