@@ -1,7 +1,7 @@
 (() => {
     "use strict";
 
-    const accreditations = new Map([
+    const approvedAccreditations = new Map([
         [
             "holo-astrum-unmsm",
             {
@@ -37,7 +37,53 @@
     ]);
 
     ONGS.forEach(organization => {
-        const accreditation = accreditations.get(organization.id);
+        const accreditation = approvedAccreditations.get(organization.id);
         if (accreditation) organization.acreditacion = accreditation;
+    });
+
+    function renderApprovedAccreditation() {
+        const id = new URLSearchParams(window.location.search).get("id");
+        const profile = ONGS.find(organization => organization.id === id);
+        const accreditation = profile && approvedAccreditations.get(profile.id);
+        if (!profile || !accreditation) return;
+
+        const block = document.getElementById("ongAcreditacionBlock");
+        const description = document.getElementById("ongAcreditacionDescripcion");
+        const code = document.getElementById("ongAcreditacionCodigo");
+        const date = document.getElementById("ongAcreditacionFecha");
+        const link = document.getElementById("ongAcreditacionLink");
+        if (!block || !description || !code || !date || !link) return;
+
+        const i18n = window.AstrumI18n;
+        description.textContent = i18n?.t(
+            "ong.accreditationDescription",
+            { name: profile.nombre }
+        ) || (
+            "Esta constancia emitida por Red Astrum acredita que " +
+            profile.nombre +
+            " forma parte de la red institucional."
+        );
+        code.textContent = accreditation.codigo;
+        date.textContent = i18n?.translateText(accreditation.fechaEmision) ||
+            accreditation.fechaEmision;
+        link.href = accreditation.documento;
+        link.setAttribute(
+            "aria-label",
+            i18n?.t("ong.accreditationAria", { name: profile.nombre }) ||
+                "Ver constancia de acreditación institucional de " +
+                profile.nombre +
+                " en PDF"
+        );
+        block.hidden = false;
+    }
+
+    const scheduleRender = () => queueMicrotask(renderApprovedAccreditation);
+    if (document.readyState === "complete") {
+        scheduleRender();
+    } else {
+        window.addEventListener("load", scheduleRender, { once: true });
+    }
+    document.addEventListener("astrum:languagechange", () => {
+        window.setTimeout(renderApprovedAccreditation, 0);
     });
 })();
