@@ -1,0 +1,46 @@
+name: Generar constancias institucionales
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - scripts/generate_accreditations.py
+      - .github/workflows/generate-accreditations.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: python -m pip install --disable-pip-version-check pymupdf pillow
+
+      - name: Generar constancias
+        run: python scripts/generate_accreditations.py
+
+      - name: Publicar PDF generados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add documents/acreditaciones/holo-astrum-unmsm.pdf
+          git add documents/acreditaciones/rikchari.pdf
+          git add documents/acreditaciones/oportunidades-con-impacto.pdf
+          git add documents/acreditaciones/for-our-rights.pdf
+          if git diff --cached --quiet; then
+            echo "No hay cambios en las constancias."
+            exit 0
+          fi
+          git commit -m "Regenerar constancias con estilo institucional"
+          git push
