@@ -16,6 +16,10 @@
     object-position: 66% 50%;
 }
 
+.member-avatar img[src$="/julibeth_roman.webp"] {
+    object-position: 66% 50%;
+}
+
 .member-avatar img[src$="/nancy_sucasaca.webp"] {
     object-position: 50% 14%;
 }
