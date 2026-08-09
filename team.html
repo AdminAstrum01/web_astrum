@@ -9,7 +9,6 @@
     <link rel="canonical" href="https://www.redastrum.org/team">
 
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/team-face-position.css">
     <link rel="stylesheet" href="/i18n.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -18,7 +17,7 @@
 
 <body>
     <div class="container">
-        <video class="back-vid" autoplay loop muted playsinline src="/videos/galaxy.mp4"></video>
+        <video class="back-vid" autoplay loop muted playsinline preload="none" data-src="/videos/galaxy.mp4"></video>
 
         <header data-aos="fade-down" data-aos-duration="1200">
             <div class="left">
@@ -155,11 +154,11 @@
         </footer>
     </div>
 
-    <script src="/i18n.js"></script>
-    <script src="/app.js"></script>
-    <script src="/team-data.js"></script>
+    <script src="/i18n.js" defer></script>
+    <script src="/app.js" defer></script>
+    <script src="/team-data.js" defer></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="/team.js"></script>
+    <script src="/team.js" defer></script>
 </body>
 
 </html>

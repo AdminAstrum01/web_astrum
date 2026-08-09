@@ -4,11 +4,6 @@
     const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
     const compactViewport = window.matchMedia?.("(max-width: 1024px)").matches ?? false;
 
-    function ensureOptimizationStyles() {
-        if (document.querySelector('link[href="/site-optimizations.css"],link[href="site-optimizations.css"]')) return;
-        const link = document.createElement("link"); link.rel = "stylesheet"; link.href = "/site-optimizations.css"; document.head.appendChild(link);
-    }
-
     function ensureSocialMetadata() {
         const title = document.title.trim();
         const description = document.querySelector('meta[name="description"]')?.content?.trim() || "Red Astrum: educación integral, liderazgo juvenil y comunidades que transforman.";
@@ -37,8 +32,9 @@
             if (!frame.hasAttribute("referrerpolicy")) frame.referrerPolicy = "strict-origin-when-cross-origin";
             if (!frame.hasAttribute("title")) frame.title = "Contenido integrado de Red Astrum";
         });
+        const decorativeVideos = document.querySelectorAll(".back-vid,.blackhole-box video");
         if (compactViewport || reducedMotion) {
-            document.querySelectorAll(".back-vid,.blackhole-box video").forEach(video => {
+            decorativeVideos.forEach(video => {
                 video.pause?.();
                 video.removeAttribute("autoplay");
                 video.removeAttribute("src");
@@ -47,8 +43,37 @@
                 video.hidden = true;
             });
         } else {
-            document.querySelectorAll(".back-vid,.blackhole-box video").forEach(video => video.setAttribute("preload", "none"));
+            decorativeVideos.forEach(video => {
+                video.preload = "none";
+                if (video.dataset.src && !video.src) video.src = video.dataset.src;
+                video.play?.()?.catch(() => {});
+            });
         }
+    }
+
+    function setupLazyVideos() {
+        const videos = document.querySelectorAll("video[data-lazy-video][data-src]");
+        if (!videos.length) return;
+
+        const loadVideo = video => {
+            if (!video.src) video.src = video.dataset.src;
+            video.play?.()?.catch(() => {});
+        };
+
+        if (!("IntersectionObserver" in window)) {
+            videos.forEach(loadVideo);
+            return;
+        }
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                loadVideo(entry.target);
+                observer.unobserve(entry.target);
+            });
+        }, { rootMargin: "320px 0px" });
+
+        videos.forEach(video => observer.observe(video));
     }
 
     function addGastrumNavigation() {
@@ -145,5 +170,5 @@
             </div>`;
     }
 
-    ensureOptimizationStyles(); ensureSocialMetadata(); optimizeMedia(); addGastrumNavigation(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); ensureInstitutionalFooter();
+    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addGastrumNavigation(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); ensureInstitutionalFooter();
 })();

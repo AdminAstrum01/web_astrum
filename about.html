@@ -16,7 +16,7 @@
 
 <body>
     <div class="container">
-        <video class="back-vid" autoplay loop muted playsinline src="/videos/galaxy.mp4"></video>
+        <video class="back-vid" autoplay loop muted playsinline preload="none" data-src="/videos/galaxy.mp4"></video>
 
         <!-- NAVBAR -->
         <header data-aos="fade-down" data-aos-duration="2000">
@@ -236,6 +236,8 @@
                     <iframe
                         src="https://www.youtube.com/embed/e1oFQR5R098"
                         title="El Pensamiento Astrum"
+                        loading="lazy"
+                        referrerpolicy="strict-origin-when-cross-origin"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>
                     </iframe>
@@ -258,8 +260,8 @@
         </section>
     </div>
 
-    <script src="/i18n.js"></script>
-    <script src="/app.js"></script>
+    <script src="/i18n.js" defer></script>
+    <script src="/app.js" defer></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         window.AOS?.init();

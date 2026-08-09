@@ -15,7 +15,7 @@
 
 <body>
     <div class="container">
-        <video class="back-vid" autoplay loop muted playsinline src="videos/galaxy.mp4"></video>
+        <video class="back-vid" autoplay loop muted playsinline preload="none" data-src="videos/galaxy.mp4"></video>
 
         <!-- HEADER -->
         <header data-aos="fade-down" data-aos-duration="1200">
@@ -86,7 +86,7 @@
         </nav>
 
         <div class="blackhole-box" data-aos="fade-down" data-aos-duration="1600">
-            <video autoplay loop muted playsinline src="videos/blackhole.mp4"></video>
+            <video autoplay loop muted playsinline preload="none" data-src="videos/blackhole.mp4"></video>
         </div>
 
         <!-- HERO -->
@@ -148,7 +148,7 @@
                             en Perú y Latinoamérica.
                         </h2>
                     </div>
-                    <video src="videos/glob.mp4" autoplay loop muted playsinline></video>
+                    <video autoplay loop muted playsinline preload="none" data-lazy-video data-src="videos/glob.mp4"></video>
                 </article>
 
                 <article class="ra-card ra-card-wide">
@@ -264,67 +264,67 @@
                     <div class="astrum-carousel-list">
                         <div class="astrum-carousel-item" style="--position: 1">
                             <a href="/ong?id=holo-astrum">
-                                <img src="images/logo_ong/holo_astrum.webp" alt="Abrir portal de Holo Astrum">
+                                <img src="images/logo_ong/holo_astrum.webp" alt="Abrir portal de Holo Astrum" loading="lazy" decoding="async">
                             </a>
                         </div>
 
                         <div class="astrum-carousel-item" style="--position: 2">
                             <a href="/ongs">
-                                <img src="images/logo_ong/holo_astrumpucp.webp" alt="Explorar organizaciones de Red Astrum">
+                                <img src="images/logo_ong/holo_astrumpucp.webp" alt="Explorar organizaciones de Red Astrum" loading="lazy" decoding="async">
                             </a>
                         </div>
 
                         <div class="astrum-carousel-item" style="--position: 3">
                             <a href="/ongs">
-                                <img src="images/logo_ong/holo_astrumunmsm.webp" alt="Explorar organizaciones de Red Astrum">
+                                <img src="images/logo_ong/holo_astrumunmsm.webp" alt="Explorar organizaciones de Red Astrum" loading="lazy" decoding="async">
                             </a>
                         </div>
 
                         <div class="astrum-carousel-item" style="--position: 4">
                             <a href="/ong?id=yatimaq">
-                                <img src="images/logo_ong/yatimaq.webp" alt="Abrir portal de Yatimaq">
+                                <img src="images/logo_ong/yatimaq.webp" alt="Abrir portal de Yatimaq" loading="lazy" decoding="async">
                             </a>
                         </div>
 
                         <div class="astrum-carousel-item" style="--position: 5">
                             <a href="/ong?id=girls-in-science">
-                                <img src="images/logo_ong/girls_in_science.webp" alt="Abrir portal de Girls in Science">
+                                <img src="images/logo_ong/girls_in_science.webp" alt="Abrir portal de Girls in Science" loading="lazy" decoding="async">
                             </a>
                         </div>
 
                         <div class="astrum-carousel-item" style="--position: 6">
                             <a href="/ong?id=unity">
-                                <img src="images/logo_ong/unity.webp" alt="Abrir portal de Unity">
+                                <img src="images/logo_ong/unity.webp" alt="Abrir portal de Unity" loading="lazy" decoding="async">
                             </a>
                         </div>
 
                         <div class="astrum-carousel-item" style="--position: 7">
                             <a href="/ongs">
-                                <img src="images/logo_ong/maywa.webp" alt="Explorar organizaciones de Red Astrum">
+                                <img src="images/logo_ong/maywa.webp" alt="Explorar organizaciones de Red Astrum" loading="lazy" decoding="async">
                             </a>
                         </div>
 
                         <div class="astrum-carousel-item" style="--position: 8">
                             <a href="/ong?id=bridges-of-equity">
-                                <img src="images/logo_ong/bridges_of_equity.webp" alt="Abrir portal de Bridges of Equity">
+                                <img src="images/logo_ong/bridges_of_equity.webp" alt="Abrir portal de Bridges of Equity" loading="lazy" decoding="async">
                             </a>
                         </div>
 
                         <div class="astrum-carousel-item" style="--position: 9">
                             <a href="/ong?id=green-generation">
-                                <img src="images/logo_ong/green_generation.webp" alt="Abrir portal de Green Generation">
+                                <img src="images/logo_ong/green_generation.webp" alt="Abrir portal de Green Generation" loading="lazy" decoding="async">
                             </a>
                         </div>
 
                         <div class="astrum-carousel-item" style="--position: 10">
                             <a href="/ong?id=house-of-young-promises">
-                                <img src="images/logo_ong/house_of_the_young_promises.webp" alt="Abrir portal de House of Young Promises">
+                                <img src="images/logo_ong/house_of_the_young_promises.webp" alt="Abrir portal de House of Young Promises" loading="lazy" decoding="async">
                             </a>
                         </div>
 
                         <div class="astrum-carousel-item" style="--position: 11">
                             <a href="/ong?id=youth-plus">
-                                <img src="images/logo_ong/youth_plus.webp" alt="Abrir portal de Youth Plus">
+                                <img src="images/logo_ong/youth_plus.webp" alt="Abrir portal de Youth Plus" loading="lazy" decoding="async">
                             </a>
                         </div>
                     </div>
@@ -374,6 +374,8 @@
                     <iframe
                         src="https://docs.google.com/forms/d/e/1FAIpQLSd7WYG3PcVon1nOJthCSuhw8jAiFcYGSPMQ6_2YLh4jGXCWbg/viewform?embedded=true"
                         title="Formulario de contacto Red Astrum"
+                        loading="lazy"
+                        referrerpolicy="strict-origin-when-cross-origin"
                         width="640"
                         height="520"
                         frameborder="0"
@@ -409,8 +411,8 @@
     </div>
 
     <!-- SCRIPTS -->
-    <script src="/i18n.js"></script>
-    <script src="app.js"></script>
+    <script src="/i18n.js" defer></script>
+    <script src="app.js" defer></script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 

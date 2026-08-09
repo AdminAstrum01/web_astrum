@@ -19,6 +19,12 @@ function message(key, variables, fallback) {
 }
 
 function formatNumber(value) {
+    if (!Number.isFinite(value)) {
+        return window.AstrumI18n?.getLanguage() === "en"
+            ? "Not reported"
+            : "No reportado";
+    }
+
     const locale = window.AstrumI18n?.getLocale() || "es-PE";
     return new Intl.NumberFormat(locale).format(value);
 }
@@ -209,6 +215,7 @@ function createImpactCard(label, value, iconClass) {
 
     const number = document.createElement("strong");
     number.textContent = formatNumber(value);
+    if (!Number.isFinite(value)) number.classList.add("ong-impact-pending");
 
     const description = document.createElement("span");
     description.textContent = label;
@@ -239,7 +246,10 @@ function renderImpact(profile) {
             impact.indirecto,
             "bx-group"
         ],
-        [
+    ];
+
+    if (Number.isFinite(impact.miembros)) {
+        metrics.push([
             message(
                 "ong.impact.members",
                 {},
@@ -247,8 +257,8 @@ function renderImpact(profile) {
             ),
             impact.miembros,
             "bx-network-chart"
-        ]
-    ].filter(([, value]) => Number.isFinite(value));
+        ]);
+    }
 
     const fragment = document.createDocumentFragment();
     metrics.forEach(([label, value, icon]) => {

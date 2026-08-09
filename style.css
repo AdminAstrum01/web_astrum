@@ -4140,3 +4140,225 @@ button {
         transition: none;
     }
 }
+
+/* Shared loading, accessibility and responsive optimizations. */
+:root {
+    --focus-ring: #f3a65a;
+    --content-max: 1180px;
+}
+
+:where(a, button, summary, input, select, textarea):focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+img[loading="lazy"],
+iframe[loading="lazy"] {
+    content-visibility: auto;
+}
+
+iframe[loading="lazy"] {
+    contain-intrinsic-size: 640px 520px;
+}
+
+.menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    border: 0;
+    background: rgba(0, 0, 0, 0.54);
+    backdrop-filter: blur(2px);
+}
+
+.menu-backdrop[hidden] {
+    display: none;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+.sidebar .sidebar-services {
+    margin: 0;
+}
+
+.sidebar .sidebar-services details {
+    width: 100%;
+}
+
+.sidebar .sidebar-services summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 14px;
+    border-radius: 13px;
+    color: rgba(255, 255, 255, 0.88);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+    list-style: none;
+    text-shadow: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sidebar .sidebar-services summary::-webkit-details-marker {
+    display: none;
+}
+
+.sidebar .sidebar-services summary:hover,
+.sidebar .sidebar-services details[open] > summary {
+    color: var(--color-white);
+    background: rgba(212, 184, 232, 0.12);
+}
+
+.sidebar .sidebar-services summary i {
+    font-size: 20px;
+    transition: transform 0.25s ease;
+}
+
+.sidebar .sidebar-services details[open] summary i {
+    transform: rotate(180deg);
+}
+
+.sidebar .sidebar-services ul {
+    gap: 2px;
+    width: calc(100% - 20px);
+    margin: 4px 0 2px 14px;
+    padding: 4px 0 4px 12px;
+    border-left: 2px solid rgba(212, 184, 232, 0.45);
+}
+
+.sidebar .sidebar-services ul li {
+    margin: 0;
+}
+
+.sidebar .sidebar-services ul li a {
+    display: flex;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border-radius: 11px;
+    color: var(--color-light);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-shadow: none;
+}
+
+/* Team portrait framing. */
+.member-avatar {
+    overflow: hidden;
+}
+
+.member-avatar img {
+    transition: transform 0.25s ease;
+}
+
+.member-avatar img[src$="/daira_lima.webp"] {
+    object-position: 50% 44%;
+}
+
+.member-avatar img[src$="/dayanna_cordoba.webp"],
+.member-avatar img[src$="/julibeth_roman.webp"] {
+    object-position: 66% 50%;
+}
+
+.member-avatar img[src$="/nancy_sucasaca.webp"] {
+    object-position: 50% 14%;
+}
+
+.member-avatar img[src$="/evans_toribio.webp"] {
+    object-position: 50% 50%;
+    transform: scale(2.25);
+    transform-origin: 50% 49%;
+}
+
+.member-avatar img[src$="/andres_navarrete.webp"] {
+    object-position: 50% 50%;
+    transform: scale(1.55);
+    transform-origin: 51% 45%;
+}
+
+.member-avatar img[src$="/jimena_carlos.webp"] {
+    object-position: 50% 50%;
+    transform: scale(1.35);
+    transform-origin: 50% 47%;
+}
+
+.member-avatar img[src$="/nadia_huaman.webp"] {
+    object-position: 40% 46%;
+    transform: scale(1.18);
+    transform-origin: 40% 46%;
+}
+
+.member-avatar img[src$="/pamela_vega.webp"] {
+    object-position: 55% 31%;
+    transform: scale(1.85);
+    transform-origin: 55% 31%;
+}
+
+.member-avatar img[src$="/valery_huaranga.webp"] {
+    object-position: 40% 47%;
+    transform: scale(1.15);
+    transform-origin: 40% 47%;
+}
+
+.member-avatar img[src$="/ximena_cortez.webp"] {
+    object-position: 58% 50%;
+}
+
+@media (max-width: 1024px) {
+    header {
+        padding-inline: clamp(14px, 4vw, 28px);
+    }
+
+    .back-vid,
+    .blackhole-box video {
+        display: none;
+    }
+
+    body {
+        background: radial-gradient(circle at 20% 10%, rgba(107, 47, 160, 0.2), transparent 36%), #05070d;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        padding-inline: 14px;
+    }
+
+    .sidebar ul li a,
+    .sidebar .sidebar-services summary {
+        min-height: 44px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .back-vid,
+    .blackhole-box video {
+        display: none;
+    }
+}

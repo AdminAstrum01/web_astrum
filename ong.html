@@ -16,7 +16,7 @@
 
 <body>
     <div class="container">
-        <video class="back-vid" autoplay loop muted playsinline src="/videos/galaxy.mp4"></video>
+        <video class="back-vid" autoplay loop muted playsinline preload="none" data-src="/videos/galaxy.mp4"></video>
 
         <header>
             <div class="left">
@@ -239,13 +239,10 @@
         </main>
     </div>
 
-    <script src="/i18n.js"></script>
-    <script src="/app.js"></script>
-    <script src="/ong-data.js"></script>
-    <script src="/ong-data-updates.js"></script>
-    <script src="/ong-acreditaciones.js"></script>
-    <script src="/ong-impact-adapter.js"></script>
-    <script src="/ong-portal.js"></script>
+    <script src="/i18n.js" defer></script>
+    <script src="/app.js" defer></script>
+    <script src="/ong-data.js" defer></script>
+    <script src="/ong-portal.js" defer></script>
 </body>
 
 </html>
