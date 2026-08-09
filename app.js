@@ -24,7 +24,8 @@
     function optimizeMedia() {
         document.querySelectorAll("img").forEach(img => {
             img.decoding ||= "async";
-            if (!img.closest("header,.hero,.ga-hero") && !img.hasAttribute("loading")) img.loading = "lazy";
+            const isPriorityImage = img.matches("#ongLogo") || img.closest("header,.hero,.ga-hero,.ong-portal-header");
+            if (!isPriorityImage && !img.hasAttribute("loading")) img.loading = "lazy";
         });
         document.querySelectorAll("iframe").forEach(frame => {
             frame.loading ||= "lazy";

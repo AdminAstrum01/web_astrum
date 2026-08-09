@@ -96,13 +96,27 @@ function renderLogo(profile) {
     showFallback();
     if (!profile.logo) return;
 
-    image.addEventListener("load", showImage, { once: true });
-    image.addEventListener("error", showFallback, { once: true });
+    let retried = false;
+    const handleError = () => {
+        showFallback();
+        if (!retried) {
+            retried = true;
+            const retryUrl = new URL(profile.logo, window.location.href);
+            retryUrl.searchParams.set("astrum-retry", "1");
+            image.src = retryUrl.href;
+        }
+    };
+
+    image.addEventListener("load", showImage);
+    image.addEventListener("error", handleError);
     image.alt = message(
         "ongs.logo",
         { name: profile.nombre },
         "Logo de " + profile.nombre
     );
+    image.loading = "eager";
+    image.decoding = "async";
+    image.fetchPriority = "high";
     image.src = profile.logo;
 
     if (image.complete) {

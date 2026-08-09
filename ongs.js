@@ -33,6 +33,12 @@ function getInitials(name) {
         .toUpperCase();
 }
 
+function retryImageUrl(source) {
+    const url = new URL(source, window.location.href);
+    url.searchParams.set("astrum-retry", "1");
+    return url.href;
+}
+
 function createLogo(ong) {
     const logoBox = document.createElement("div");
     logoBox.className = "ong-logo-box";
@@ -48,18 +54,34 @@ function createLogo(ong) {
     }
 
     const image = document.createElement("img");
-    image.src = ong.logo;
     image.alt = message(
         "ongs.logo",
         { name: ong.nombre },
         "Logo de " + ong.nombre
     );
-    image.loading = "lazy";
+    image.hidden = true;
+    image.loading = "eager";
     image.decoding = "async";
+    image.fetchPriority = "auto";
     image.referrerPolicy = "no-referrer";
-    image.addEventListener("error", () => image.replaceWith(fallback), { once: true });
 
-    logoBox.appendChild(image);
+    let retried = false;
+    image.addEventListener("load", () => {
+        image.hidden = false;
+        fallback.hidden = true;
+    });
+    image.addEventListener("error", () => {
+        image.hidden = true;
+        fallback.hidden = false;
+
+        if (!retried) {
+            retried = true;
+            image.src = retryImageUrl(ong.logo);
+        }
+    });
+
+    logoBox.append(fallback, image);
+    image.src = ong.logo;
     return logoBox;
 }
 

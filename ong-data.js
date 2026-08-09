@@ -299,7 +299,7 @@ const ONGS = [
     {
         "id": "rikchari",
         "nombre": "Rikchari",
-        "logo": "https://drive.google.com/thumbnail?id=1RNoXrsV_7fW46xyR65VO28Rne4OgtmPL&sz=w500",
+        "logo": "/images/logo_ong/rikchari.webp",
         "descripcion": "Rikchari es una organización juvenil sin fines de lucro que promueve el acceso equitativo a la educación, el liderazgo y el desarrollo integral de niños, adolescentes y jóvenes en comunidades vulnerables mediante proyectos educativos, culturales y sociales.",
         "mision": "Impulsar oportunidades de aprendizaje, liderazgo y participación ciudadana para que niños, adolescentes y jóvenes desarrollen su máximo potencial y contribuyan al progreso de sus comunidades.",
         "vision": "Ser una organización referente en el Perú por su impacto en la transformación educativa y el empoderamiento juvenil, construyendo comunidades con mayores oportunidades, equidad e innovación social.",
@@ -555,7 +555,7 @@ const ONGS = [
         "id": "red-mundial-jovenes-academicos",
         "nombre": "Red Mundial de Jóvenes Académicos",
         "sigla": "RMJA",
-        "logo": "https://drive.google.com/thumbnail?id=1TXnSIvCApvLpsMwTtPHwwKWBxTH-y3sp&sz=w500",
+        "logo": "/images/logo_ong/red_mundial_jovenes_academicos.webp",
         "descripcion": "Organización no gubernamental juvenil y sin fines de lucro orientada al desarrollo integral de adolescentes y jóvenes mediante pensamiento crítico, liderazgo y participación ciudadana.",
         "mision": "Desarrollar, capacitar y ofrecer herramientas para fortalecer la competitividad de jóvenes y convertir su voz en acción a favor de la justicia, la equidad y el cambio social.",
         "vision": "Ser una red internacional de líderes juveniles que promueva pensamiento crítico, equidad, justicia social y la construcción de un futuro sostenible y humano.",
