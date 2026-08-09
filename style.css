@@ -1368,6 +1368,22 @@ header > .box-icons {
     font-size: 34px;
 }
 
+.saturnday-mark {
+    background: transparent;
+}
+
+.saturnday-mark i {
+    display: none;
+}
+
+.saturnday-mark::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: url("/images/logo_redastrum/saturnday.webp") center / cover no-repeat;
+}
+
 .saturnday-status {
     display: inline-flex;
     margin-bottom: 5px;
