@@ -114,5 +114,36 @@
         if (typeof window.renderOrganizations === "function") window.renderOrganizations(document.getElementById("ongSearch")?.value || "");
     }
 
-    ensureOptimizationStyles(); ensureSocialMetadata(); optimizeMedia(); addGastrumNavigation(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal();
+    function ensureInstitutionalFooter() {
+        const path = window.location.pathname.replace(/\/+$/, "") || "/";
+        if (!['/ongs', '/g-astrum'].includes(path)) return;
+
+        let footer = document.querySelector('.footer');
+        if (!footer) {
+            footer = document.createElement('section');
+            footer.className = 'footer';
+            document.querySelector('.container')?.appendChild(footer);
+        }
+
+        if (path === '/g-astrum') footer.classList.add('ga-footer');
+
+        footer.innerHTML = `
+            <div class="footer-text">
+                <h1>© 2026 Red Astrum. Todos los derechos reservados.</h1>
+                <p>RUC: 20615815005</p>
+            </div>
+            <div class="box-icons">
+                <a href="https://www.facebook.com/share/18Cic6fYTM/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="bx bxl-facebook-circle" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/red_astrum?igsh=cGxwdHd5OWY2c2w1" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="bx bxl-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/red-astrum?trk=blended-typeahead" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="bx bxl-linkedin-square" aria-hidden="true"></i>
+                </a>
+            </div>`;
+    }
+
+    ensureOptimizationStyles(); ensureSocialMetadata(); optimizeMedia(); addGastrumNavigation(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); ensureInstitutionalFooter();
 })();
