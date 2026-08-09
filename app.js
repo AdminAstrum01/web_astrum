@@ -1,64 +1,62 @@
 // Shared frontend behavior for Red Astrum.
 (() => {
     "use strict";
-
     const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 
-    // Keep public URLs clean when legacy .html routes are used.
+    function ensureOptimizationStyles() {
+        if (document.querySelector('link[href="/site-optimizations.css"],link[href="site-optimizations.css"]')) return;
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "/site-optimizations.css";
+        document.head.appendChild(link);
+    }
+
+    function addGastrumNavigation() {
+        const isGastrum = (window.location.pathname.replace(/\/+$/, "") || "/") === "/g-astrum";
+        const addLink = menu => {
+            if (!menu || menu.querySelector('a[href="/g-astrum"]')) return;
+            const ngos = Array.from(menu.children).find(item => item.querySelector('a[href="/ongs"]'));
+            if (!ngos) return;
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.href = "/g-astrum";
+            a.textContent = "G-Astrum";
+            if (isGastrum) a.setAttribute("aria-current", "page");
+            li.appendChild(a);
+            ngos.after(li);
+        };
+        addLink(document.querySelector("ul.main"));
+        addLink(document.querySelector(".sidebar > ul"));
+    }
+
     if (window.location.protocol !== "file:") {
         let cleanPath = window.location.pathname;
         if (cleanPath.endsWith("/index.html")) cleanPath = cleanPath.slice(0, -"/index.html".length) || "/";
         else if (cleanPath.endsWith(".html")) cleanPath = cleanPath.slice(0, -".html".length) || "/";
         if (cleanPath.length > 1 && cleanPath.endsWith("/")) cleanPath = cleanPath.slice(0, -1);
-        if (cleanPath !== window.location.pathname) {
-            window.history.replaceState(window.history.state, "", `${cleanPath}${window.location.search}${window.location.hash}`);
-        }
+        if (cleanPath !== window.location.pathname) window.history.replaceState(window.history.state, "", `${cleanPath}${window.location.search}${window.location.hash}`);
     }
 
     function addServicesMenu() {
         const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
         const isAstrumCertificaPage = normalizedPath === "/verificar";
-
         document.querySelectorAll('ul.main > li > a[href="/verificar/"],ul.main > li > a[href="/verificar"],.sidebar > ul > li > a[href="/verificar/"],.sidebar > ul > li > a[href="/verificar"]').forEach(link => link.closest("li")?.remove());
-
         const desktopMenu = document.querySelector("ul.main");
         if (desktopMenu && !desktopMenu.querySelector('[data-menu="services"]')) {
-            const item = document.createElement("li");
-            item.className = "nav-dropdown";
-            item.dataset.menu = "services";
+            const item = document.createElement("li"); item.className = "nav-dropdown"; item.dataset.menu = "services";
             item.innerHTML = `<a href="#services-menu" aria-haspopup="true" aria-expanded="false">Servicios <i class="bx bx-chevron-down" aria-hidden="true"></i></a><ul id="services-menu" aria-label="Servicios de Red Astrum"><li><a href="/verificar/">Astrum Certifica</a></li></ul>`;
-            const trigger = item.querySelector(":scope > a");
-            const serviceLink = item.querySelector('a[href="/verificar/"]');
-            if (isAstrumCertificaPage) {
-                trigger?.setAttribute("aria-current", "page");
-                serviceLink?.setAttribute("aria-current", "page");
-            }
+            const trigger = item.querySelector(":scope > a"); const serviceLink = item.querySelector('a[href="/verificar/"]');
+            if (isAstrumCertificaPage) { trigger?.setAttribute("aria-current", "page"); serviceLink?.setAttribute("aria-current", "page"); }
             const contact = Array.from(desktopMenu.children).find(el => el.querySelector('a[href="#contacto"],a[href="/#contacto"]'));
             desktopMenu.insertBefore(item, contact || null);
-            const setOpen = open => {
-                item.classList.toggle("open", open);
-                trigger?.setAttribute("aria-expanded", String(open));
-            };
-            trigger?.addEventListener("click", event => {
-                event.preventDefault();
-                setOpen(!item.classList.contains("open"));
-            });
-            item.addEventListener("keydown", event => {
-                if (event.key === "Escape") {
-                    setOpen(false);
-                    trigger?.focus();
-                }
-            });
-            document.addEventListener("click", event => {
-                if (!item.contains(event.target)) setOpen(false);
-            });
+            const setOpen = open => { item.classList.toggle("open", open); trigger?.setAttribute("aria-expanded", String(open)); };
+            trigger?.addEventListener("click", event => { event.preventDefault(); setOpen(!item.classList.contains("open")); });
+            item.addEventListener("keydown", event => { if (event.key === "Escape") { setOpen(false); trigger?.focus(); } });
+            document.addEventListener("click", event => { if (!item.contains(event.target)) setOpen(false); });
         }
-
         const mobileMenu = document.querySelector(".sidebar > ul");
         if (mobileMenu && !mobileMenu.querySelector('[data-menu="services-mobile"]')) {
-            const item = document.createElement("li");
-            item.className = "sidebar-services";
-            item.dataset.menu = "services-mobile";
+            const item = document.createElement("li"); item.className = "sidebar-services"; item.dataset.menu = "services-mobile";
             item.innerHTML = `<details${isAstrumCertificaPage ? " open" : ""}><summary><span>Servicios</span><i class="bx bx-chevron-down" aria-hidden="true"></i></summary><ul aria-label="Servicios de Red Astrum"><li><a href="/verificar/"${isAstrumCertificaPage ? ' aria-current="page"' : ""}>Astrum Certifica</a></li></ul></details>`;
             const contact = Array.from(mobileMenu.children).find(el => el.querySelector('a[href="#contacto"],a[href="/#contacto"]'));
             mobileMenu.insertBefore(item, contact || null);
@@ -66,127 +64,40 @@
     }
 
     function setupMobileMenu() {
-        const sidebar = document.querySelector(".sidebar");
-        const menuButton = document.querySelector(".menu-icon");
-        const closeButton = document.querySelector(".close-icon");
+        const sidebar = document.querySelector(".sidebar"); const menuButton = document.querySelector(".menu-icon"); const closeButton = document.querySelector(".close-icon");
         if (!sidebar || !menuButton) return;
-
-        const backdrop = document.createElement("button");
-        backdrop.type = "button";
-        backdrop.className = "menu-backdrop";
-        backdrop.setAttribute("aria-label", "Cerrar menú");
-        backdrop.hidden = true;
-        sidebar.before(backdrop);
-
-        const setState = (open, restoreFocus = true) => {
-            sidebar.classList.toggle("open-sidebar", open);
-            sidebar.classList.toggle("close-sidebar", !open);
-            menuButton.setAttribute("aria-expanded", String(open));
-            sidebar.setAttribute("aria-hidden", String(!open));
-            document.body.classList.toggle("menu-open", open);
-            backdrop.hidden = !open;
-            if (open) sidebar.querySelector("a,button,summary")?.focus();
-            else if (restoreFocus) menuButton.focus();
-        };
-
-        menuButton.addEventListener("click", () => setState(!sidebar.classList.contains("open-sidebar")));
-        closeButton?.addEventListener("click", () => setState(false));
-        backdrop.addEventListener("click", () => setState(false));
-        sidebar.addEventListener("click", event => {
-            if (event.target.closest("a")) setState(false, false);
-        });
-        document.addEventListener("keydown", event => {
-            if (event.key === "Escape" && sidebar.classList.contains("open-sidebar")) setState(false);
-        });
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 1024 && sidebar.classList.contains("open-sidebar")) setState(false, false);
-        }, { passive: true });
+        const backdrop = document.createElement("button"); backdrop.type = "button"; backdrop.className = "menu-backdrop"; backdrop.setAttribute("aria-label", "Cerrar menú"); backdrop.hidden = true; sidebar.before(backdrop);
+        const setState = (open, restoreFocus = true) => { sidebar.classList.toggle("open-sidebar", open); sidebar.classList.toggle("close-sidebar", !open); menuButton.setAttribute("aria-expanded", String(open)); sidebar.setAttribute("aria-hidden", String(!open)); document.body.classList.toggle("menu-open", open); backdrop.hidden = !open; if (open) sidebar.querySelector("a,button,summary")?.focus(); else if (restoreFocus) menuButton.focus(); };
+        menuButton.addEventListener("click", () => setState(!sidebar.classList.contains("open-sidebar"))); closeButton?.addEventListener("click", () => setState(false)); backdrop.addEventListener("click", () => setState(false)); sidebar.addEventListener("click", event => { if (event.target.closest("a")) setState(false, false); });
+        document.addEventListener("keydown", event => { if (event.key === "Escape" && sidebar.classList.contains("open-sidebar")) setState(false); });
+        window.addEventListener("resize", () => { if (window.innerWidth > 1024 && sidebar.classList.contains("open-sidebar")) setState(false, false); }, { passive: true });
     }
 
     function setupCounters() {
-        const container = document.querySelector(".counters");
-        if (!container) return;
-        const counters = container.querySelectorAll("span[data-count]");
-        if (!counters.length) return;
-
+        const container = document.querySelector(".counters"); if (!container) return; const counters = container.querySelectorAll("span[data-count]"); if (!counters.length) return;
         const renderFinal = () => counters.forEach(counter => { counter.textContent = counter.dataset.count || "0"; });
-        if (reducedMotion || !("IntersectionObserver" in window)) {
-            renderFinal();
-            return;
-        }
-
+        if (reducedMotion || !("IntersectionObserver" in window)) { renderFinal(); return; }
         let activated = false;
-        const observer = new IntersectionObserver(entries => {
-            if (activated || !entries.some(entry => entry.isIntersecting)) return;
-            activated = true;
-            counters.forEach(counter => {
-                const target = Number.parseInt(counter.dataset.count || "0", 10);
-                let current = 0;
-                const step = Math.max(1, Math.ceil(target / 70));
-                const tick = () => {
-                    current = Math.min(target, current + step);
-                    counter.textContent = String(current);
-                    if (current < target) requestAnimationFrame(tick);
-                };
-                tick();
-            });
-            observer.disconnect();
-        }, { threshold: 0.25, rootMargin: "0px 0px -10% 0px" });
+        const observer = new IntersectionObserver(entries => { if (activated || !entries.some(entry => entry.isIntersecting)) return; activated = true; counters.forEach(counter => { const target = Number.parseInt(counter.dataset.count || "0", 10); let current = 0; const step = Math.max(1, Math.ceil(target / 70)); const tick = () => { current = Math.min(target, current + step); counter.textContent = String(current); if (current < target) requestAnimationFrame(tick); }; tick(); }); observer.disconnect(); }, { threshold: .25, rootMargin: "0px 0px -10% 0px" });
         observer.observe(container);
     }
 
     function setupReveal() {
-        const targets = document.querySelectorAll(".autoBlur,.autoDisplay,.fadein-left");
-        if (!targets.length) return;
-        if (reducedMotion || !("IntersectionObserver" in window)) {
-            targets.forEach(el => el.classList.add("in-view"));
-            return;
-        }
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("in-view");
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+        const targets = document.querySelectorAll(".autoBlur,.autoDisplay,.fadein-left"); if (!targets.length) return;
+        if (reducedMotion || !("IntersectionObserver" in window)) { targets.forEach(el => el.classList.add("in-view")); return; }
+        const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("in-view"); observer.unobserve(entry.target); } }); }, { threshold: .15, rootMargin: "0px 0px -8% 0px" });
         targets.forEach(el => observer.observe(el));
     }
 
     function synchronizePublicNgoState() {
-        const OFFICIAL_NGO_COUNT = 14;
-        const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
-        const requestedOng = new URLSearchParams(window.location.search).get("id");
-        if (normalizedPath === "/ong" && requestedOng === "maywa") {
-            window.location.replace("/ongs");
-            return;
-        }
-        if (typeof window.ONGS !== "undefined" && Array.isArray(window.ONGS)) {
-            const maywaIndex = window.ONGS.findIndex(org => org.id === "maywa");
-            if (maywaIndex >= 0) window.ONGS.splice(maywaIndex, 1);
-        }
-        document.querySelectorAll(".counter").forEach(counter => {
-            if (counter.querySelector("h3")?.textContent.trim() === "ONGs de Red Astrum") {
-                const value = counter.querySelector("span[data-count]");
-                if (value) value.dataset.count = String(OFFICIAL_NGO_COUNT);
-            }
-        });
+        const OFFICIAL_NGO_COUNT = 14; const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/"; const requestedOng = new URLSearchParams(window.location.search).get("id");
+        if (normalizedPath === "/ong" && requestedOng === "maywa") { window.location.replace("/ongs"); return; }
+        if (typeof window.ONGS !== "undefined" && Array.isArray(window.ONGS)) { const index = window.ONGS.findIndex(org => org.id === "maywa"); if (index >= 0) window.ONGS.splice(index, 1); }
+        document.querySelectorAll(".counter").forEach(counter => { if (counter.querySelector("h3")?.textContent.trim() === "ONGs de Red Astrum") { const value = counter.querySelector("span[data-count]"); if (value) value.dataset.count = String(OFFICIAL_NGO_COUNT); } });
         const maywaItem = document.querySelector('.astrum-carousel img[src*="maywa.webp"]')?.closest(".astrum-carousel-item");
-        if (maywaItem) {
-            const list = maywaItem.parentElement;
-            maywaItem.remove();
-            const items = Array.from(list?.querySelectorAll(".astrum-carousel-item") || []);
-            items.forEach((item, index) => item.style.setProperty("--position", String(index + 1)));
-            list?.closest(".astrum-carousel")?.style.setProperty("--quantity", String(items.length));
-        }
-        if (typeof window.renderOrganizations === "function") {
-            window.renderOrganizations(document.getElementById("ongSearch")?.value || "");
-        }
+        if (maywaItem) { const list = maywaItem.parentElement; maywaItem.remove(); const items = Array.from(list?.querySelectorAll(".astrum-carousel-item") || []); items.forEach((item, index) => item.style.setProperty("--position", String(index + 1))); list?.closest(".astrum-carousel")?.style.setProperty("--quantity", String(items.length)); }
+        if (typeof window.renderOrganizations === "function") window.renderOrganizations(document.getElementById("ongSearch")?.value || "");
     }
 
-    addServicesMenu();
-    setupMobileMenu();
-    synchronizePublicNgoState();
-    setupCounters();
-    setupReveal();
+    ensureOptimizationStyles(); addGastrumNavigation(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal();
 })();
