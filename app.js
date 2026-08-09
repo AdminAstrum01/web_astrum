@@ -2,31 +2,63 @@
 (() => {
     "use strict";
     const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    const compactViewport = window.matchMedia?.("(max-width: 1024px)").matches ?? false;
 
     function ensureOptimizationStyles() {
         if (document.querySelector('link[href="/site-optimizations.css"],link[href="site-optimizations.css"]')) return;
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = "/site-optimizations.css";
-        document.head.appendChild(link);
+        const link = document.createElement("link"); link.rel = "stylesheet"; link.href = "/site-optimizations.css"; document.head.appendChild(link);
+    }
+
+    function ensureSocialMetadata() {
+        const title = document.title.trim();
+        const description = document.querySelector('meta[name="description"]')?.content?.trim() || "Red Astrum: educación integral, liderazgo juvenil y comunidades que transforman.";
+        const canonical = document.querySelector('link[rel="canonical"]')?.href || window.location.href.split("?")[0].split("#")[0];
+        const ensureMeta = (selector, attrs) => {
+            if (document.head.querySelector(selector)) return;
+            const meta = document.createElement("meta"); Object.entries(attrs).forEach(([key, value]) => meta.setAttribute(key, value)); document.head.appendChild(meta);
+        };
+        ensureMeta('meta[property="og:type"]', { property: "og:type", content: "website" });
+        ensureMeta('meta[property="og:site_name"]', { property: "og:site_name", content: "Red Astrum" });
+        ensureMeta('meta[property="og:title"]', { property: "og:title", content: title });
+        ensureMeta('meta[property="og:description"]', { property: "og:description", content: description });
+        ensureMeta('meta[property="og:url"]', { property: "og:url", content: canonical });
+        ensureMeta('meta[name="twitter:card"]', { name: "twitter:card", content: "summary" });
+        ensureMeta('meta[name="twitter:title"]', { name: "twitter:title", content: title });
+        ensureMeta('meta[name="twitter:description"]', { name: "twitter:description", content: description });
+    }
+
+    function optimizeMedia() {
+        document.querySelectorAll("img").forEach(img => {
+            img.decoding ||= "async";
+            if (!img.closest("header,.hero,.ga-hero") && !img.hasAttribute("loading")) img.loading = "lazy";
+        });
+        document.querySelectorAll("iframe").forEach(frame => {
+            frame.loading ||= "lazy";
+            if (!frame.hasAttribute("referrerpolicy")) frame.referrerPolicy = "strict-origin-when-cross-origin";
+            if (!frame.hasAttribute("title")) frame.title = "Contenido integrado de Red Astrum";
+        });
+        if (compactViewport || reducedMotion) {
+            document.querySelectorAll(".back-vid,.blackhole-box video").forEach(video => {
+                video.pause?.();
+                video.removeAttribute("autoplay");
+                video.removeAttribute("src");
+                video.querySelectorAll("source").forEach(source => source.removeAttribute("src"));
+                video.load?.();
+                video.hidden = true;
+            });
+        } else {
+            document.querySelectorAll(".back-vid,.blackhole-box video").forEach(video => video.setAttribute("preload", "none"));
+        }
     }
 
     function addGastrumNavigation() {
         const isGastrum = (window.location.pathname.replace(/\/+$/, "") || "/") === "/g-astrum";
         const addLink = menu => {
             if (!menu || menu.querySelector('a[href="/g-astrum"]')) return;
-            const ngos = Array.from(menu.children).find(item => item.querySelector('a[href="/ongs"]'));
-            if (!ngos) return;
-            const li = document.createElement("li");
-            const a = document.createElement("a");
-            a.href = "/g-astrum";
-            a.textContent = "G-Astrum";
-            if (isGastrum) a.setAttribute("aria-current", "page");
-            li.appendChild(a);
-            ngos.after(li);
+            const ngos = Array.from(menu.children).find(item => item.querySelector('a[href="/ongs"]')); if (!ngos) return;
+            const li = document.createElement("li"); const a = document.createElement("a"); a.href = "/g-astrum"; a.textContent = "G-Astrum"; if (isGastrum) a.setAttribute("aria-current", "page"); li.appendChild(a); ngos.after(li);
         };
-        addLink(document.querySelector("ul.main"));
-        addLink(document.querySelector(".sidebar > ul"));
+        addLink(document.querySelector("ul.main")); addLink(document.querySelector(".sidebar > ul"));
     }
 
     if (window.location.protocol !== "file:") {
@@ -38,66 +70,49 @@
     }
 
     function addServicesMenu() {
-        const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
-        const isAstrumCertificaPage = normalizedPath === "/verificar";
+        const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/"; const isAstrumCertificaPage = normalizedPath === "/verificar";
         document.querySelectorAll('ul.main > li > a[href="/verificar/"],ul.main > li > a[href="/verificar"],.sidebar > ul > li > a[href="/verificar/"],.sidebar > ul > li > a[href="/verificar"]').forEach(link => link.closest("li")?.remove());
         const desktopMenu = document.querySelector("ul.main");
         if (desktopMenu && !desktopMenu.querySelector('[data-menu="services"]')) {
             const item = document.createElement("li"); item.className = "nav-dropdown"; item.dataset.menu = "services";
             item.innerHTML = `<a href="#services-menu" aria-haspopup="true" aria-expanded="false">Servicios <i class="bx bx-chevron-down" aria-hidden="true"></i></a><ul id="services-menu" aria-label="Servicios de Red Astrum"><li><a href="/verificar/">Astrum Certifica</a></li></ul>`;
-            const trigger = item.querySelector(":scope > a"); const serviceLink = item.querySelector('a[href="/verificar/"]');
-            if (isAstrumCertificaPage) { trigger?.setAttribute("aria-current", "page"); serviceLink?.setAttribute("aria-current", "page"); }
-            const contact = Array.from(desktopMenu.children).find(el => el.querySelector('a[href="#contacto"],a[href="/#contacto"]'));
-            desktopMenu.insertBefore(item, contact || null);
+            const trigger = item.querySelector(":scope > a"); const serviceLink = item.querySelector('a[href="/verificar/"]'); if (isAstrumCertificaPage) { trigger?.setAttribute("aria-current", "page"); serviceLink?.setAttribute("aria-current", "page"); }
+            const contact = Array.from(desktopMenu.children).find(el => el.querySelector('a[href="#contacto"],a[href="/#contacto"]')); desktopMenu.insertBefore(item, contact || null);
             const setOpen = open => { item.classList.toggle("open", open); trigger?.setAttribute("aria-expanded", String(open)); };
-            trigger?.addEventListener("click", event => { event.preventDefault(); setOpen(!item.classList.contains("open")); });
-            item.addEventListener("keydown", event => { if (event.key === "Escape") { setOpen(false); trigger?.focus(); } });
-            document.addEventListener("click", event => { if (!item.contains(event.target)) setOpen(false); });
+            trigger?.addEventListener("click", event => { event.preventDefault(); setOpen(!item.classList.contains("open")); }); item.addEventListener("keydown", event => { if (event.key === "Escape") { setOpen(false); trigger?.focus(); } }); document.addEventListener("click", event => { if (!item.contains(event.target)) setOpen(false); });
         }
         const mobileMenu = document.querySelector(".sidebar > ul");
         if (mobileMenu && !mobileMenu.querySelector('[data-menu="services-mobile"]')) {
-            const item = document.createElement("li"); item.className = "sidebar-services"; item.dataset.menu = "services-mobile";
-            item.innerHTML = `<details${isAstrumCertificaPage ? " open" : ""}><summary><span>Servicios</span><i class="bx bx-chevron-down" aria-hidden="true"></i></summary><ul aria-label="Servicios de Red Astrum"><li><a href="/verificar/"${isAstrumCertificaPage ? ' aria-current="page"' : ""}>Astrum Certifica</a></li></ul></details>`;
-            const contact = Array.from(mobileMenu.children).find(el => el.querySelector('a[href="#contacto"],a[href="/#contacto"]'));
-            mobileMenu.insertBefore(item, contact || null);
+            const item = document.createElement("li"); item.className = "sidebar-services"; item.dataset.menu = "services-mobile"; item.innerHTML = `<details${isAstrumCertificaPage ? " open" : ""}><summary><span>Servicios</span><i class="bx bx-chevron-down" aria-hidden="true"></i></summary><ul aria-label="Servicios de Red Astrum"><li><a href="/verificar/"${isAstrumCertificaPage ? ' aria-current="page"' : ""}>Astrum Certifica</a></li></ul></details>`;
+            const contact = Array.from(mobileMenu.children).find(el => el.querySelector('a[href="#contacto"],a[href="/#contacto"]')); mobileMenu.insertBefore(item, contact || null);
         }
     }
 
     function setupMobileMenu() {
-        const sidebar = document.querySelector(".sidebar"); const menuButton = document.querySelector(".menu-icon"); const closeButton = document.querySelector(".close-icon");
-        if (!sidebar || !menuButton) return;
+        const sidebar = document.querySelector(".sidebar"); const menuButton = document.querySelector(".menu-icon"); const closeButton = document.querySelector(".close-icon"); if (!sidebar || !menuButton) return;
         const backdrop = document.createElement("button"); backdrop.type = "button"; backdrop.className = "menu-backdrop"; backdrop.setAttribute("aria-label", "Cerrar menú"); backdrop.hidden = true; sidebar.before(backdrop);
         const setState = (open, restoreFocus = true) => { sidebar.classList.toggle("open-sidebar", open); sidebar.classList.toggle("close-sidebar", !open); menuButton.setAttribute("aria-expanded", String(open)); sidebar.setAttribute("aria-hidden", String(!open)); document.body.classList.toggle("menu-open", open); backdrop.hidden = !open; if (open) sidebar.querySelector("a,button,summary")?.focus(); else if (restoreFocus) menuButton.focus(); };
-        menuButton.addEventListener("click", () => setState(!sidebar.classList.contains("open-sidebar"))); closeButton?.addEventListener("click", () => setState(false)); backdrop.addEventListener("click", () => setState(false)); sidebar.addEventListener("click", event => { if (event.target.closest("a")) setState(false, false); });
-        document.addEventListener("keydown", event => { if (event.key === "Escape" && sidebar.classList.contains("open-sidebar")) setState(false); });
-        window.addEventListener("resize", () => { if (window.innerWidth > 1024 && sidebar.classList.contains("open-sidebar")) setState(false, false); }, { passive: true });
+        menuButton.addEventListener("click", () => setState(!sidebar.classList.contains("open-sidebar"))); closeButton?.addEventListener("click", () => setState(false)); backdrop.addEventListener("click", () => setState(false)); sidebar.addEventListener("click", event => { if (event.target.closest("a")) setState(false, false); }); document.addEventListener("keydown", event => { if (event.key === "Escape" && sidebar.classList.contains("open-sidebar")) setState(false); }); window.addEventListener("resize", () => { if (window.innerWidth > 1024 && sidebar.classList.contains("open-sidebar")) setState(false, false); }, { passive: true });
     }
 
     function setupCounters() {
         const container = document.querySelector(".counters"); if (!container) return; const counters = container.querySelectorAll("span[data-count]"); if (!counters.length) return;
-        const renderFinal = () => counters.forEach(counter => { counter.textContent = counter.dataset.count || "0"; });
-        if (reducedMotion || !("IntersectionObserver" in window)) { renderFinal(); return; }
-        let activated = false;
-        const observer = new IntersectionObserver(entries => { if (activated || !entries.some(entry => entry.isIntersecting)) return; activated = true; counters.forEach(counter => { const target = Number.parseInt(counter.dataset.count || "0", 10); let current = 0; const step = Math.max(1, Math.ceil(target / 70)); const tick = () => { current = Math.min(target, current + step); counter.textContent = String(current); if (current < target) requestAnimationFrame(tick); }; tick(); }); observer.disconnect(); }, { threshold: .25, rootMargin: "0px 0px -10% 0px" });
-        observer.observe(container);
+        const renderFinal = () => counters.forEach(counter => { counter.textContent = counter.dataset.count || "0"; }); if (reducedMotion || !("IntersectionObserver" in window)) { renderFinal(); return; }
+        let activated = false; const observer = new IntersectionObserver(entries => { if (activated || !entries.some(entry => entry.isIntersecting)) return; activated = true; counters.forEach(counter => { const target = Number.parseInt(counter.dataset.count || "0", 10); let current = 0; const step = Math.max(1, Math.ceil(target / 70)); const tick = () => { current = Math.min(target, current + step); counter.textContent = String(current); if (current < target) requestAnimationFrame(tick); }; tick(); }); observer.disconnect(); }, { threshold: .25, rootMargin: "0px 0px -10% 0px" }); observer.observe(container);
     }
 
     function setupReveal() {
-        const targets = document.querySelectorAll(".autoBlur,.autoDisplay,.fadein-left"); if (!targets.length) return;
-        if (reducedMotion || !("IntersectionObserver" in window)) { targets.forEach(el => el.classList.add("in-view")); return; }
-        const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("in-view"); observer.unobserve(entry.target); } }); }, { threshold: .15, rootMargin: "0px 0px -8% 0px" });
-        targets.forEach(el => observer.observe(el));
+        const targets = document.querySelectorAll(".autoBlur,.autoDisplay,.fadein-left"); if (!targets.length) return; if (reducedMotion || !("IntersectionObserver" in window)) { targets.forEach(el => el.classList.add("in-view")); return; }
+        const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("in-view"); observer.unobserve(entry.target); } }); }, { threshold: .15, rootMargin: "0px 0px -8% 0px" }); targets.forEach(el => observer.observe(el));
     }
 
     function synchronizePublicNgoState() {
-        const OFFICIAL_NGO_COUNT = 14; const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/"; const requestedOng = new URLSearchParams(window.location.search).get("id");
-        if (normalizedPath === "/ong" && requestedOng === "maywa") { window.location.replace("/ongs"); return; }
+        const OFFICIAL_NGO_COUNT = 14; const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/"; const requestedOng = new URLSearchParams(window.location.search).get("id"); if (normalizedPath === "/ong" && requestedOng === "maywa") { window.location.replace("/ongs"); return; }
         if (typeof window.ONGS !== "undefined" && Array.isArray(window.ONGS)) { const index = window.ONGS.findIndex(org => org.id === "maywa"); if (index >= 0) window.ONGS.splice(index, 1); }
         document.querySelectorAll(".counter").forEach(counter => { if (counter.querySelector("h3")?.textContent.trim() === "ONGs de Red Astrum") { const value = counter.querySelector("span[data-count]"); if (value) value.dataset.count = String(OFFICIAL_NGO_COUNT); } });
-        const maywaItem = document.querySelector('.astrum-carousel img[src*="maywa.webp"]')?.closest(".astrum-carousel-item");
-        if (maywaItem) { const list = maywaItem.parentElement; maywaItem.remove(); const items = Array.from(list?.querySelectorAll(".astrum-carousel-item") || []); items.forEach((item, index) => item.style.setProperty("--position", String(index + 1))); list?.closest(".astrum-carousel")?.style.setProperty("--quantity", String(items.length)); }
+        const maywaItem = document.querySelector('.astrum-carousel img[src*="maywa.webp"]')?.closest(".astrum-carousel-item"); if (maywaItem) { const list = maywaItem.parentElement; maywaItem.remove(); const items = Array.from(list?.querySelectorAll(".astrum-carousel-item") || []); items.forEach((item, index) => item.style.setProperty("--position", String(index + 1))); list?.closest(".astrum-carousel")?.style.setProperty("--quantity", String(items.length)); }
         if (typeof window.renderOrganizations === "function") window.renderOrganizations(document.getElementById("ongSearch")?.value || "");
     }
 
-    ensureOptimizationStyles(); addGastrumNavigation(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal();
+    ensureOptimizationStyles(); ensureSocialMetadata(); optimizeMedia(); addGastrumNavigation(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal();
 })();
