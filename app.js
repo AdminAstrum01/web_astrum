@@ -72,9 +72,25 @@
 
     function addGastrumNavigation() {
         const isGastrum = (window.location.pathname.replace(/\/+$/, "") || "/") === "/g-astrum";
+        const pointsTo = (link, targetPath) => {
+            const rawHref = link.getAttribute("href");
+            if (!rawHref || rawHref.startsWith("#")) return false;
+            try {
+                const url = new URL(rawHref, window.location.origin);
+                return url.origin === window.location.origin
+                    && (url.pathname.replace(/\/+$/, "") || "/") === targetPath;
+            } catch {
+                return false;
+            }
+        };
         const addLink = menu => {
-            if (!menu || menu.querySelector('a[href="/g-astrum"]')) return;
-            const ngos = Array.from(menu.children).find(item => item.querySelector('a[href="/ongs"]')); if (!ngos) return;
+            if (!menu) return;
+            const links = [...menu.querySelectorAll("a[href]")];
+            if (links.some(link => pointsTo(link, "/g-astrum"))) return;
+            const ngos = Array.from(menu.children).find(item => {
+                return [...item.querySelectorAll("a[href]")].some(link => pointsTo(link, "/ongs"));
+            });
+            if (!ngos) return;
             const li = document.createElement("li"); const a = document.createElement("a"); a.href = "/g-astrum"; a.textContent = "G-Astrum"; if (isGastrum) a.setAttribute("aria-current", "page"); li.appendChild(a); ngos.after(li);
         };
         addLink(document.querySelector("ul.main")); addLink(document.querySelector(".sidebar > ul"));
