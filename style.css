@@ -1369,7 +1369,7 @@ header > .box-icons {
 }
 
 .saturnday-mark {
-    background: transparent;
+    background: url("/images/logo_redastrum/saturnday.webp") center / cover no-repeat;
 }
 
 .saturnday-mark i {
@@ -1377,11 +1377,7 @@ header > .box-icons {
 }
 
 .saturnday-mark::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: url("/images/logo_redastrum/saturnday.webp") center / cover no-repeat;
+    display: none;
 }
 
 .saturnday-status {
