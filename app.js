@@ -2,7 +2,6 @@
 (() => {
     "use strict";
     const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
-    const compactViewport = window.matchMedia?.("(max-width: 1024px)").matches ?? false;
 
     function ensureSocialMetadata() {
         const title = document.title.trim();
@@ -33,22 +32,17 @@
             if (!frame.hasAttribute("title")) frame.title = "Contenido integrado de Red Astrum";
         });
         const decorativeVideos = document.querySelectorAll(".back-vid,.blackhole-box video");
-        if (compactViewport || reducedMotion) {
-            decorativeVideos.forEach(video => {
+        decorativeVideos.forEach(video => {
+            video.preload = "none";
+            if (video.dataset.src && !video.src) video.src = video.dataset.src;
+
+            if (reducedMotion) {
                 video.pause?.();
                 video.removeAttribute("autoplay");
-                video.removeAttribute("src");
-                video.querySelectorAll("source").forEach(source => source.removeAttribute("src"));
-                video.load?.();
-                video.hidden = true;
-            });
-        } else {
-            decorativeVideos.forEach(video => {
-                video.preload = "none";
-                if (video.dataset.src && !video.src) video.src = video.dataset.src;
+            } else {
                 video.play?.()?.catch(() => {});
-            });
-        }
+            }
+        });
     }
 
     function setupLazyVideos() {

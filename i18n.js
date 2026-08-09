@@ -5,6 +5,8 @@
     const DEFAULT_LANGUAGE = "es";
     const SUPPORTED_LANGUAGES = new Set(["es", "en"]);
     const TRANSLATABLE_ATTRIBUTES = ["alt", "aria-label", "placeholder", "title"];
+    const TRANSLATABLE_META_SELECTOR =
+        'meta[name="description"],meta[property^="og:"],meta[name^="twitter:"]';
 
     const MESSAGES = {
         es: {
@@ -52,7 +54,7 @@
             "team.linkedin": "{name}'s LinkedIn profile",
             "ongs.network": "Red Astrum NGO",
             "ongs.logo": "{name} logo",
-            "ongs.open": "Open {name}'s portal",
+            "ongs.open": "Open the portal for {name}",
             "ongs.count.one": "1 organization",
             "ongs.count.many": "{count} organizations",
             "ong.website": "Website",
@@ -154,7 +156,7 @@
         ["La Red Astrum es una red educativa creada por jóvenes que impulsa una nueva forma de aprender: más libre, integral y orientada a transformar la sociedad.", "Red Astrum is a youth-created educational network advancing a new way of learning: freer, more holistic, and focused on transforming society."],
         ["Historia", "Our history"],
         ["De una iniciativa a una red", "From one initiative to a network"],
-        ["Red Astrum nació a partir de Holo Astrum, una iniciativa educativa fundada en 2023 enfocada en enseñar ciencia y tecnología a jóvenes. Con el desarrollo de nuestros programas comprendimos que la educación debía ir más allá del conocimiento y enfocarse en el desarrollo integral del estudiante.", "Red Astrum grew out of Holo Astrum, an educational initiative founded in 2023 to teach science and technology to young people. As our programs evolved, we realized that education needed to go beyond knowledge and focus on each student's holistic development."],
+        ["Red Astrum nació a partir de Holo Astrum, una iniciativa educativa fundada en 2024 enfocada en enseñar ciencia y tecnología a jóvenes. Con el desarrollo de nuestros programas comprendimos que la educación debía ir más allá del conocimiento y enfocarse en el desarrollo integral del estudiante.", "Red Astrum grew out of Holo Astrum, an educational initiative founded in 2024 to teach science and technology to young people. As our programs evolved, we realized that education needed to go beyond knowledge and focus on each student's holistic development."],
         ["Así, el 1 de julio de 2025, junto a Holo Astrum y Yatimaq, nació Red Astrum con el propósito de conectar organizaciones juveniles y construir un ecosistema que impulse una educación más humana, colaborativa y transformadora.", "That is how Red Astrum was founded on July 1, 2025, together with Holo Astrum and Yatimaq: to connect youth organizations and build an ecosystem that advances a more humane, collaborative, and transformative education."],
         ["\"Descubrimos que educar no es dirigir, sino acompañar.\" — Jesús Gálvez", "\"We discovered that education is not about directing people, but walking alongside them.\" — Jesús Gálvez"],
         ["Nace Holo Astrum", "Holo Astrum is born"],
@@ -164,7 +166,7 @@
         ["Fundación de Red Astrum", "Red Astrum is founded"],
         ["Junto a Holo Astrum y Yatimaq, nace la red para conectar organizaciones juveniles.", "Together with Holo Astrum and Yatimaq, the network is created to connect youth organizations."],
         ["Hoy", "Today"],
-        ["13 organizaciones de la Red", "13 network organizations"],
+        ["14 organizaciones de la Red", "14 network organizations"],
         ["Más de 2500 jóvenes peruanos alcanzados y creciendo en Latinoamérica.", "More than 2,500 young Peruvians reached, with a growing presence across Latin America."],
         ["Por qué nació", "Why we were founded"],
         ["La educación que necesitamos no existe todavía", "The education we need does not exist yet"],
@@ -201,6 +203,82 @@
         ["Liderazgo al servicio de los demás", "Leadership in service of others"],
         ["El Pensamiento Astrum", "The Astrum Mindset"],
 
+        // G-Astrum.
+        ["G-Astrum es el programa de clubes juveniles de Red Astrum: Política, Lectura, Videojuegos y Cine, con liderazgo compartido y aprendizaje práctico.", "G-Astrum is Red Astrum's youth club program for Politics, Reading, Video Games, and Film, built around shared leadership and practical learning."],
+        ["G-Astrum | Programa de clubes juveniles de Red Astrum", "G-Astrum | Red Astrum Youth Club Program"],
+        ["Cuatro clubes juveniles para explorar, participar, conectar y liderar dentro de Red Astrum.", "Four youth clubs where members can explore, participate, connect, and lead within Red Astrum."],
+        ["El programa de clubes juveniles de Red Astrum.", "Red Astrum's youth club program."],
+        ["G-Astrum, Comunidad de Líderes", "G-Astrum, Leadership Community"],
+        ["Comunidad de Líderes · V2.0", "Leadership Community · V2.0"],
+        ["Programa de clubes juveniles de Red Astrum", "Red Astrum Youth Club Program"],
+        ["Tus intereses pueden convertirse en", "Your interests can become"],
+        ["clubes reales.", "real clubs."],
+        ["G-Astrum es el programa de clubes juveniles de Red Astrum.", "G-Astrum is Red Astrum's youth club program."],
+        ["Reúne a jóvenes alrededor de temas que les importan para aprender haciendo, conversar con criterio, crear experiencias y asumir responsabilidades en comunidad.", "It brings young people together around topics they care about to learn by doing, engage in thoughtful discussion, create experiences, and take on responsibilities as a community."],
+        ["No es una organización aparte:", "It is not a separate organization:"],
+        ["es un sistema de clubes de Red Astrum donde jóvenes exploran, participan, conectan y lideran.", "it is a Red Astrum club system where young people explore, participate, connect, and lead."],
+        ["Conocer los clubes", "Explore the clubs"],
+        ["Ver convocatorias", "View opportunities"],
+        ["Datos del piloto G-Astrum", "G-Astrum pilot data"],
+        ["clubes piloto", "pilot clubs"],
+        ["líderes", "leaders"],
+        ["semanas", "weeks"],
+        ["talleres por club", "workshops per club"],
+        ["CLUBES", "CLUBS"],
+        ["Política", "Politics"],
+        ["Lectura", "Reading"],
+        ["Videojuegos", "Video Games"],
+        ["Cine", "Film"],
+        ["Una comunidad para...", "A community to..."],
+        ["Aprender haciendo y construir con otros.", "Learn by doing and build with others."],
+        ["Explorar", "Explore"],
+        ["Temas relevantes desde distintas perspectivas.", "Relevant topics from different perspectives."],
+        ["Participar", "Participate"],
+        ["Conversar, practicar, crear y colaborar.", "Discuss, practice, create, and collaborate."],
+        ["Conectar", "Connect"],
+        ["Con jóvenes, especialistas, aliados y organizaciones.", "Connect with young people, specialists, partners, and organizations."],
+        ["Liderar", "Lead"],
+        ["Actividades útiles para una comunidad real.", "Useful activities for a real community."],
+        ["4 clubes · 8 líderes", "4 clubs · 8 leaders"],
+        ["Cuatro intereses. Cuatro comunidades temáticas.", "Four interests. Four thematic communities."],
+        ["El piloto contempla cuatro clubes, cada uno con dos líderes y una ruta de cuatro talleres durante un ciclo de ocho semanas.", "The pilot includes four clubs, each with two leaders and a four-workshop pathway over an eight-week cycle."],
+        ["Logo Club Política", "Politics Club logo"],
+        ["Ciudadanía y deliberación plural.", "Citizenship and pluralistic deliberation."],
+        ["Logo Club Lectura", "Reading Club logo"],
+        ["Comprensión y pensamiento crítico.", "Comprehension and critical thinking."],
+        ["Logo Club Videojuegos", "Video Games Club logo"],
+        ["Estrategia y convivencia digital.", "Strategy and positive digital interaction."],
+        ["Logo Club Cine", "Film Club logo"],
+        ["Lenguaje audiovisual y creación.", "Audiovisual language and creative work."],
+        ["Cómo funciona", "How it works"],
+        ["Un ciclo piloto de ocho semanas.", "An eight-week pilot cycle."],
+        ["La ruta avanza desde la inducción de líderes hasta talleres, participación comunitaria y cierre del ciclo.", "The pathway progresses from leader onboarding to workshops, community participation, and the end-of-cycle review."],
+        ["Inducción", "Onboarding"],
+        ["Acuerdo de dupla y ajuste del plan.", "Pair agreement and plan refinement."],
+        ["Activación", "Activation"],
+        ["Presentación del club y primer taller.", "Club introduction and first workshop."],
+        ["Profundización", "Deepening"],
+        ["Segundo taller y comunidad.", "Second workshop and community building."],
+        ["Aplicación", "Application"],
+        ["Tercer taller y experiencia práctica.", "Third workshop and practical experience."],
+        ["Cierre", "Closing"],
+        ["Cuarto taller y evaluación del ciclo.", "Fourth workshop and cycle evaluation."],
+        ["Dos líderes por club", "Two leaders per club"],
+        ["Liderazgo compartido para sostener la experiencia.", "Shared leadership to sustain the experience."],
+        ["Programa y Talleres", "Program and Workshops"],
+        ["Diseño de contenidos, sesiones, facilitación y calidad formativa.", "Content design, sessions, facilitation, and learning quality."],
+        ["Comunidad y Operaciones", "Community and Operations"],
+        ["Convocatoria, comunicación, logística, convivencia y continuidad.", "Recruitment, communication, logistics, community well-being, and continuity."],
+        ["Programa de clubes", "Club program"],
+        ["Red Astrum → G-Astrum → Clubes", "Red Astrum → G-Astrum → Clubs"],
+        ["Identidad propia, pertenencia institucional clara.", "A distinct identity with clear institutional belonging."],
+        ["El lenguaje azul y amarillo distingue la experiencia de clubes, mientras Red Astrum permanece visible como su casa institucional.", "The blue-and-yellow visual language distinguishes the club experience while Red Astrum remains visible as its institutional home."],
+        ["Próximas oportunidades", "Upcoming opportunities"],
+        ["¿Quieres participar en un club G-Astrum?", "Would you like to join a G-Astrum club?"],
+        ["Consulta únicamente las convocatorias y canales oficiales de Red Astrum.", "Use only Red Astrum's official opportunity listings and communication channels."],
+        ["Ver oportunidades", "View opportunities"],
+        ["G-Astrum · Programa de clubes juveniles de Red Astrum", "G-Astrum · Red Astrum Youth Club Program"],
+
         // Team.
         ["Equipo - Red Astrum", "Team - Red Astrum"],
         ["Conoce a los fundadores, el Consejo Supremo, el Núcleo Duro y el Consejo de ONGs de Red Astrum.", "Meet Red Astrum's founders, Supreme Council, Core Team, and NGO Council."],
@@ -216,7 +294,7 @@
         ["Consejo de ONGs", "NGO Council"],
         ["Mostrando", "Showing"],
         ["perfiles únicos", "unique profiles"],
-        ["Directorio institucional actualizado a julio de 2026. El Consejo de ONGs reúne 12 representantes para 15 organizaciones.", "Institutional directory updated in July 2026. The NGO Council brings together 12 representatives from 15 organizations."],
+        ["Directorio institucional actualizado a agosto de 2026. El Consejo de ONGs reúne 14 representantes para 14 organizaciones.", "Institutional directory updated in August 2026. The NGO Council brings together 14 representatives from 14 organizations."],
         ["No se encontraron integrantes con ese filtro.", "No team members matched that filter."],
         ["Fundador · Presidente · Representante legal", "Founder · President · Legal representative"],
         ["Presidencia", "Office of the President"],
@@ -252,7 +330,8 @@
         ["Representante de Unity", "Unity Representative"],
         ["Representante de Yatimaq", "Yatimaq Representative"],
         ["Representante de Youth Plus", "Youth Plus Representative"],
-        ["Representante de Red Mundial de Jóvenes Académicos", "Representative of Red Mundial de Jóvenes Académicos"],
+        ["Representante de Red Mundial de Jóvenes Académicos", "Red Mundial de Jóvenes Académicos Representative"],
+        ["Representante de Oportunidades con Impacto", "Oportunidades con Impacto Representative"],
 
         // NGO directory and portal.
         ["ONGs - Red Astrum", "NGOs - Red Astrum"],
@@ -318,6 +397,7 @@
         ["17 de enero de 2024", "January 17, 2024"],
         ["18 de junio de 2026", "June 18, 2026"],
         ["28 de junio de 2026", "June 28, 2026"],
+        ["3 de agosto de 2026", "August 3, 2026"],
         ["ODS 3 · Salud y bienestar", "SDG 3 · Good Health and Well-being"],
         ["ODS 4 · Educación de calidad", "SDG 4 · Quality Education"],
         ["ODS 5 · Igualdad de género", "SDG 5 · Gender Equality"],
@@ -565,7 +645,7 @@
 
     function translateAttribute(element, attributeName) {
         if (!element.hasAttribute(attributeName)) return;
-        if (attributeName === "content" && !element.matches('meta[name="description"]')) return;
+        if (attributeName === "content" && !element.matches(TRANSLATABLE_META_SELECTOR)) return;
 
         const state = getAttributeSource(element, attributeName);
         if (state.source === null) return;
@@ -631,7 +711,7 @@
         TRANSLATABLE_ATTRIBUTES.forEach(attributeName => {
             translateAttribute(element, attributeName);
         });
-        if (element.matches?.('meta[name="description"]')) {
+        if (element.matches?.(TRANSLATABLE_META_SELECTOR)) {
             translateAttribute(element, "content");
         }
         localizeInternalLink(element);

@@ -4322,11 +4322,6 @@ body.menu-open {
         padding-inline: clamp(14px, 4vw, 28px);
     }
 
-    .back-vid,
-    .blackhole-box video {
-        display: none;
-    }
-
     body {
         background: radial-gradient(circle at 20% 10%, rgba(107, 47, 160, 0.2), transparent 36%), #05070d;
     }
@@ -4357,8 +4352,4 @@ body.menu-open {
         scroll-behavior: auto !important;
     }
 
-    .back-vid,
-    .blackhole-box video {
-        display: none;
-    }
 }
