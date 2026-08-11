@@ -74,6 +74,17 @@ header > .box-icons .language-switcher--desktop {
     border: 0 !important;
 }
 
+/*
+ * The sidebar is rendered in the HTML with `close-sidebar` so it starts
+ * inaccessible before JavaScript initializes. The original close animation
+ * starts from the fully open state, which caused a visible menu flash on every
+ * page load/navigation. Keep the initial closed state static; opening remains
+ * animated via `open-sidebar`.
+ */
+.sidebar.close-sidebar {
+    animation: none;
+}
+
 @media screen and (max-width: 1200px) {
     header > .box-icons .language-switcher--desktop {
         margin-left: -6px;
