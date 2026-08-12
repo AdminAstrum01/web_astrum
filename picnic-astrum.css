@@ -17,7 +17,6 @@
 .picnic-page {
     background: var(--picnic-cream);
     color: var(--picnic-ink);
-    font-family: "Manrope", sans-serif;
 }
 
 .picnic-page .container {
@@ -31,7 +30,12 @@
     text-decoration: none;
 }
 
-.picnic-main { width: 100%; overflow: hidden; }
+.picnic-page header,
+.picnic-page .sidebar {
+    font-family: "Poppins", sans-serif;
+}
+
+.picnic-main { width: 100%; overflow: hidden; font-family: "Manrope", sans-serif; }
 .picnic-wrap { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
 .picnic-main h1,
 .picnic-main h2,
