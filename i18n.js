@@ -84,6 +84,8 @@
         ["Sobre nosotros", "About us"],
         ["Equipo", "Team"],
         ["ONGs", "NGOs"],
+        ["Programas", "Programs"],
+        ["Programas de Red Astrum", "Red Astrum programs"],
         ["Únete a Red Astrum", "Join Red Astrum"],
         ["Contacto", "Contact"],
         ["Servicios", "Services"],

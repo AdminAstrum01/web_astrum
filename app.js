@@ -71,19 +71,37 @@
         videos.forEach(video => observer.observe(video));
     }
 
+    function linkTargets(link, pathname, hash = "") {
+        const rawHref = link?.getAttribute("href");
+        if (!rawHref) return false;
+        try {
+            const url = new URL(rawHref, window.location.origin);
+            const normalizedPath = url.pathname.replace(/\/+$/, "") || "/";
+            return url.origin === window.location.origin
+                && normalizedPath === pathname
+                && (!hash || url.hash === hash);
+        } catch {
+            return false;
+        }
+    }
+
+    function findTopLevelMenuItem(menu, pathname, hash = "") {
+        return Array.from(menu?.children || []).find(item => {
+            return linkTargets(item.querySelector(":scope > a[href]"), pathname, hash);
+        });
+    }
+
     function addProgramsMenu() {
         const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
         const isGastrum = normalizedPath === "/g-astrum";
         const isPicnic = normalizedPath === "/picnic-astrum";
         const isProgramPage = isGastrum || isPicnic;
-        const directProgramLinks = [
-            'ul.main > li > a[href="/g-astrum"]',
-            'ul.main > li > a[href="/picnic-astrum"]',
-            '.sidebar > ul > li > a[href="/g-astrum"]',
-            '.sidebar > ul > li > a[href="/picnic-astrum"]'
-        ].join(",");
-
-        document.querySelectorAll(directProgramLinks).forEach(link => link.closest("li")?.remove());
+        [document.querySelector("ul.main"), document.querySelector(".sidebar > ul")].forEach(menu => {
+            Array.from(menu?.children || []).forEach(item => {
+                const link = item.querySelector(":scope > a[href]");
+                if (linkTargets(link, "/g-astrum") || linkTargets(link, "/picnic-astrum")) item.remove();
+            });
+        });
 
         const desktopMenu = document.querySelector("ul.main");
         if (desktopMenu && !desktopMenu.querySelector('[data-menu="programs"]')) {
@@ -91,8 +109,9 @@
             item.className = "nav-dropdown";
             item.dataset.menu = "programs";
             item.innerHTML = `<a href="#programs-menu" aria-haspopup="true" aria-expanded="false"${isProgramPage ? ' aria-current="page"' : ""}>Programas <i class="bx bx-chevron-down" aria-hidden="true"></i></a><ul id="programs-menu" aria-label="Programas de Red Astrum"><li><a href="/g-astrum"${isGastrum ? ' aria-current="page"' : ""}>G-Astrum</a></li><li><a href="/picnic-astrum"${isPicnic ? ' aria-current="page"' : ""}>Picnic Astrum</a></li></ul>`;
-            const ngos = Array.from(desktopMenu.children).find(el => el.querySelector(':scope > a[href="/ongs"]'));
-            if (ngos) ngos.after(item); else desktopMenu.appendChild(item);
+            const ngos = findTopLevelMenuItem(desktopMenu, "/ongs");
+            const join = Array.from(desktopMenu.children).find(el => el.querySelector(':scope > a[href*="linktr.ee/red_astrum"]'));
+            if (ngos) ngos.after(item); else desktopMenu.insertBefore(item, join || null);
 
             const trigger = item.querySelector(":scope > a");
             const setOpen = open => {
@@ -120,8 +139,9 @@
             item.className = "sidebar-services";
             item.dataset.menu = "programs-mobile";
             item.innerHTML = `<details${isProgramPage ? " open" : ""}><summary><span>Programas</span><i class="bx bx-chevron-down" aria-hidden="true"></i></summary><ul aria-label="Programas de Red Astrum"><li><a href="/g-astrum"${isGastrum ? ' aria-current="page"' : ""}>G-Astrum</a></li><li><a href="/picnic-astrum"${isPicnic ? ' aria-current="page"' : ""}>Picnic Astrum</a></li></ul></details>`;
-            const ngos = Array.from(mobileMenu.children).find(el => el.querySelector(':scope > a[href="/ongs"]'));
-            if (ngos) ngos.after(item); else mobileMenu.appendChild(item);
+            const ngos = findTopLevelMenuItem(mobileMenu, "/ongs");
+            const join = Array.from(mobileMenu.children).find(el => el.querySelector(':scope > a[href*="linktr.ee/red_astrum"]'));
+            if (ngos) ngos.after(item); else mobileMenu.insertBefore(item, join || null);
         }
     }
 
@@ -141,14 +161,24 @@
             const item = document.createElement("li"); item.className = "nav-dropdown"; item.dataset.menu = "services";
             item.innerHTML = `<a href="#services-menu" aria-haspopup="true" aria-expanded="false">Servicios <i class="bx bx-chevron-down" aria-hidden="true"></i></a><ul id="services-menu" aria-label="Servicios de Red Astrum"><li><a href="/verificar/">Astrum Certifica</a></li></ul>`;
             const trigger = item.querySelector(":scope > a"); const serviceLink = item.querySelector('a[href="/verificar/"]'); if (isAstrumCertificaPage) { trigger?.setAttribute("aria-current", "page"); serviceLink?.setAttribute("aria-current", "page"); }
-            const contact = Array.from(desktopMenu.children).find(el => el.querySelector('a[href="#contacto"],a[href="/#contacto"]')); desktopMenu.insertBefore(item, contact || null);
+            const contact = Array.from(desktopMenu.children).find(el => {
+                const link = el.querySelector(":scope > a[href]");
+                if (!link) return false;
+                try { return new URL(link.getAttribute("href"), window.location.origin).hash === "#contacto"; }
+                catch { return false; }
+            }); desktopMenu.insertBefore(item, contact || null);
             const setOpen = open => { item.classList.toggle("open", open); trigger?.setAttribute("aria-expanded", String(open)); };
             trigger?.addEventListener("click", event => { event.preventDefault(); setOpen(!item.classList.contains("open")); }); item.addEventListener("keydown", event => { if (event.key === "Escape") { setOpen(false); trigger?.focus(); } }); document.addEventListener("click", event => { if (!item.contains(event.target)) setOpen(false); });
         }
         const mobileMenu = document.querySelector(".sidebar > ul");
         if (mobileMenu && !mobileMenu.querySelector('[data-menu="services-mobile"]')) {
             const item = document.createElement("li"); item.className = "sidebar-services"; item.dataset.menu = "services-mobile"; item.innerHTML = `<details${isAstrumCertificaPage ? " open" : ""}><summary><span>Servicios</span><i class="bx bx-chevron-down" aria-hidden="true"></i></summary><ul aria-label="Servicios de Red Astrum"><li><a href="/verificar/"${isAstrumCertificaPage ? ' aria-current="page"' : ""}>Astrum Certifica</a></li></ul></details>`;
-            const contact = Array.from(mobileMenu.children).find(el => el.querySelector('a[href="#contacto"],a[href="/#contacto"]')); mobileMenu.insertBefore(item, contact || null);
+            const contact = Array.from(mobileMenu.children).find(el => {
+                const link = el.querySelector(":scope > a[href]");
+                if (!link) return false;
+                try { return new URL(link.getAttribute("href"), window.location.origin).hash === "#contacto"; }
+                catch { return false; }
+            }); mobileMenu.insertBefore(item, contact || null);
         }
     }
 
