@@ -97,6 +97,24 @@
         addLink(document.querySelector("ul.main")); addLink(document.querySelector(".sidebar > ul"));
     }
 
+    function addPicnicNavigation() {
+        const targetPath = "/picnic-astrum";
+        const isPicnic = (window.location.pathname.replace(/\/+$/, "") || "/") === targetPath;
+        const addLink = menu => {
+            if (!menu || menu.querySelector('a[href="/picnic-astrum"]')) return;
+            const item = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = targetPath;
+            link.textContent = "Picnic Astrum";
+            if (isPicnic) link.setAttribute("aria-current", "page");
+            item.appendChild(link);
+            const joinItem = Array.from(menu.children).find(child => child.querySelector('a[href*="linktr.ee/red_astrum"]'));
+            menu.insertBefore(item, joinItem || null);
+        };
+        addLink(document.querySelector("ul.main"));
+        addLink(document.querySelector(".sidebar > ul"));
+    }
+
     if (window.location.protocol !== "file:") {
         let cleanPath = window.location.pathname;
         if (cleanPath.endsWith("/index.html")) cleanPath = cleanPath.slice(0, -"/index.html".length) || "/";
@@ -127,7 +145,7 @@
     function setupMobileMenu() {
         const sidebar = document.querySelector(".sidebar"); const menuButton = document.querySelector(".menu-icon"); const closeButton = document.querySelector(".close-icon"); if (!sidebar || !menuButton) return;
         const backdrop = document.createElement("button"); backdrop.type = "button"; backdrop.className = "menu-backdrop"; backdrop.setAttribute("aria-label", "Cerrar menú"); backdrop.hidden = true; sidebar.before(backdrop);
-        const setState = (open, restoreFocus = true) => { sidebar.classList.toggle("open-sidebar", open); sidebar.classList.toggle("close-sidebar", !open); menuButton.setAttribute("aria-expanded", String(open)); sidebar.setAttribute("aria-hidden", String(!open)); document.body.classList.toggle("menu-open", open); backdrop.hidden = !open; if (open) sidebar.querySelector("a,button,summary")?.focus(); else if (restoreFocus) menuButton.focus(); };
+        const setState = (open, restoreFocus = true) => { sidebar.classList.toggle("open-sidebar", open); sidebar.classList.toggle("close-sidebar", !open); menuButton.setAttribute("aria-expanded", String(open)); sidebar.setAttribute("aria-hidden", String(!open)); sidebar.inert = !open; document.body.classList.toggle("menu-open", open); backdrop.hidden = !open; if (open) sidebar.querySelector("a,button,summary")?.focus(); else if (restoreFocus) menuButton.focus(); };
         menuButton.addEventListener("click", () => setState(!sidebar.classList.contains("open-sidebar"))); closeButton?.addEventListener("click", () => setState(false)); backdrop.addEventListener("click", () => setState(false)); sidebar.addEventListener("click", event => { if (event.target.closest("a")) setState(false, false); }); document.addEventListener("keydown", event => { if (event.key === "Escape" && sidebar.classList.contains("open-sidebar")) setState(false); }); window.addEventListener("resize", () => { if (window.innerWidth > 1024 && sidebar.classList.contains("open-sidebar")) setState(false, false); }, { passive: true });
     }
 
@@ -181,5 +199,5 @@
             </div>`;
     }
 
-    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addGastrumNavigation(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); ensureInstitutionalFooter();
+    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addGastrumNavigation(); addPicnicNavigation(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); ensureInstitutionalFooter();
 })();

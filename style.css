@@ -888,6 +888,30 @@ header > .box-icons {
     box-shadow: 0 0 20px rgba(107, 47, 160, 0.28);
 }
 
+.project-more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 11px 18px;
+    border: 1px solid rgba(212, 184, 232, 0.4);
+    border-radius: 999px;
+    background: rgba(107, 47, 160, 0.2);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.project-more-link:hover,
+.project-more-link:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 0 22px rgba(212, 184, 232, .3);
+}
+
+.project-more-link i { font-size: 21px; }
+
 @keyframes astrumCarouselRun {
     from {
         left: 100%;
@@ -4352,4 +4376,22 @@ body.menu-open {
         scroll-behavior: auto !important;
     }
 
+}
+
+/* La navegación suma Picnic Astrum; en pantallas medianas pasa antes al menú móvil. */
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    header {
+        grid-template-columns: 1fr auto;
+    }
+
+    header ul.main,
+    header .box-icons {
+        display: none;
+    }
+
+    .menu-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
