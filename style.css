@@ -54,6 +54,119 @@ body {
     width: 100%;
 }
 
+/* ============================
+   ACCESO A ASTROPEDIA
+   ============================ */
+.astropedia-entry-section {
+    width: min(1100px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+.astropedia-entry-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 260px;
+    padding: 44px 48px;
+    display: grid;
+    grid-template-columns: 150px 1fr auto;
+    align-items: center;
+    gap: 34px;
+    background: rgba(13, 20, 38, 0.92);
+    border: 1px solid rgba(212, 184, 232, 0.3);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+}
+
+.astropedia-entry-card::after {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    top: -260px;
+    right: 8%;
+    border: 1px solid rgba(212, 184, 232, 0.18);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.astropedia-entry-mark {
+    width: 142px;
+    height: 142px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: rgba(107, 47, 160, 0.16);
+    border: 1px solid rgba(212, 184, 232, 0.25);
+    border-radius: 50%;
+}
+
+.astropedia-entry-mark img {
+    width: 115px;
+    height: 150px;
+    object-fit: contain;
+    object-position: center 18%;
+}
+
+.astropedia-entry-copy span {
+    color: var(--color-accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.astropedia-entry-copy h2 {
+    margin: 8px 0 10px;
+    color: #fff;
+    font-size: clamp(30px, 4vw, 46px);
+    line-height: 1.05;
+}
+
+.astropedia-entry-copy p {
+    max-width: 610px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.astropedia-entry-card > a {
+    position: relative;
+    z-index: 1;
+    min-height: 48px;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #fff;
+    background: var(--color-primary);
+    border: 1px solid rgba(212, 184, 232, 0.35);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.astropedia-entry-card > a:hover {
+    background: #7d3db4;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(107, 47, 160, 0.3);
+}
+
+@media (max-width: 850px) {
+    .astropedia-entry-card { padding: 34px; grid-template-columns: 105px 1fr; }
+    .astropedia-entry-mark { width: 100px; height: 100px; }
+    .astropedia-entry-mark img { width: 82px; height: 115px; }
+    .astropedia-entry-card > a { grid-column: 1 / -1; width: max-content; }
+}
+
+@media (max-width: 560px) {
+    .astropedia-entry-card { padding: 30px 24px; grid-template-columns: 1fr; text-align: left; }
+    .astropedia-entry-mark { width: 86px; height: 86px; }
+    .astropedia-entry-card > a { width: 100%; }
+}
+
 img,
 video {
     max-width: 100%;
