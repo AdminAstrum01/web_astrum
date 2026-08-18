@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es" data-public-route="/astropedia">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astropedia | Red Astrum</title>
+    <meta name="description" content="Portal de colaboración y servicios del Programa de Integración Institucional de Red Astrum.">
+    <link rel="canonical" href="https://www.redastrum.org/astropedia">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/astropedia.css">
+</head>
+
+<body>
+    <section class="astro-login" id="astroLogin" aria-labelledby="loginTitle">
+        <div class="astro-login-brand">
+            <a class="astro-brand" href="/" aria-label="Volver a Red Astrum">
+                <img src="/images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
+                <span><strong>RED ASTRUM</strong><small>Articulamos para transformar</small></span>
+            </a>
+            <div class="astro-orbit astro-orbit-one" aria-hidden="true"></div>
+            <div class="astro-orbit astro-orbit-two" aria-hidden="true"></div>
+            <div class="astro-login-copy">
+                <p class="astro-kicker">PROGRAMA DE INTEGRACIÓN INSTITUCIONAL</p>
+                <h1>Todo lo que tu organización necesita, en una sola órbita.</h1>
+                <p>Conecta, colabora y accede a los servicios que impulsan tu impacto dentro de Red Astrum.</p>
+            </div>
+            <div class="astro-stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+
+        <div class="astro-login-panel">
+            <form class="astro-login-card" id="loginForm">
+                <span class="astro-login-symbol"><i class="bx bx-planet" aria-hidden="true"></i></span>
+                <p class="astro-kicker">BIENVENIDA A TU ESPACIO</p>
+                <h2 id="loginTitle">Ingresa a Astropedia</h2>
+                <p class="astro-login-intro">Usa el correo institucional asignado a tu organización.</p>
+
+                <label for="loginEmail">Correo institucional</label>
+                <span class="astro-field">
+                    <i class="bx bx-envelope" aria-hidden="true"></i>
+                    <input id="loginEmail" type="email" value="holoastrum@redastrum.org" autocomplete="username" required>
+                </span>
+
+                <label for="loginPassword">Contraseña</label>
+                <span class="astro-field">
+                    <i class="bx bx-lock-alt" aria-hidden="true"></i>
+                    <input id="loginPassword" type="password" placeholder="Ingresa tu contraseña" autocomplete="current-password" required>
+                    <button type="button" id="togglePassword" aria-label="Mostrar contraseña"><i class="bx bx-show" aria-hidden="true"></i></button>
+                </span>
+
+                <p class="astro-form-error" id="loginError" role="alert"></p>
+                <div class="astro-login-options">
+                    <label><input type="checkbox" checked> Recordarme</label>
+                    <a href="mailto:info@redastrum.org?subject=Ayuda%20con%20Astropedia">¿Necesitas ayuda?</a>
+                </div>
+                <button class="astro-primary-button" type="submit">Ingresar a la plataforma <i class="bx bx-right-arrow-alt"></i></button>
+                <button class="astro-demo-button" id="demoAccess" type="button"><i class="bx bx-play-circle"></i> Completar acceso piloto</button>
+
+                <div class="astro-security-note">
+                    <i class="bx bx-shield-quarter" aria-hidden="true"></i>
+                    <p><strong>Versión piloto</strong>Este formulario demuestra la experiencia. No valida ni almacena contraseñas reales.</p>
+                </div>
+                <a class="astro-back-link" href="/"><i class="bx bx-left-arrow-alt"></i> Volver a redastrum.org</a>
+            </form>
+        </div>
+    </section>
+
+    <main class="astro-app" id="astroApp" hidden>
+        <header class="astro-topbar">
+            <a class="astro-brand astro-brand-dark" href="/">
+                <img src="/images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
+                <span><strong>RED ASTRUM</strong><small>ASTROPEDIA</small></span>
+            </a>
+            <nav aria-label="Secciones de Astropedia">
+                <a href="#inicio" class="is-active">Inicio</a>
+                <a href="#colabora">Colabora</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#impacto">Impacto</a>
+            </nav>
+            <div class="astro-account">
+                <span class="astro-account-avatar" id="accountAvatar">HA</span>
+                <span><strong id="accountName">Holo Astrum</strong><small id="accountLevel">Integración institucional</small></span>
+                <button id="logoutButton" type="button" title="Cerrar sesión" aria-label="Cerrar sesión"><i class="bx bx-log-out"></i></button>
+            </div>
+        </header>
+
+        <section class="astro-welcome astro-shell" id="inicio">
+            <div>
+                <p class="astro-kicker astro-muted-kicker"><span></span> PORTAL INSTITUCIONAL</p>
+                <h1>Hola, <span id="welcomeName">Holo Astrum</span> <em>✦</em></h1>
+                <p>Este es tu espacio para conectar, crecer y transformar junto a la red.</p>
+            </div>
+            <article class="astro-participation">
+                <div class="astro-progress-ring" id="progressRing"><span><strong id="participationValue">100%</strong><small>Participación</small></span></div>
+                <div><span class="astro-level-pill" id="levelPill"><i class="bx bx-sparkles"></i> Integración institucional</span><h2 id="levelMessage">Tu organización transforma la red</h2><p id="levelDescription">Tienes acceso al nivel más amplio de beneficios institucionales.</p><a href="#nivel">Conocer mi modalidad <i class="bx bx-right-arrow-alt"></i></a></div>
+            </article>
+        </section>
+
+        <section class="astro-section astro-directory" id="colabora">
+            <div class="astro-shell">
+                <div class="astro-section-heading">
+                    <div><p class="astro-kicker">CONSTRUYAMOS EN CONJUNTO</p><h2>Colabora con la red</h2><p>Conoce a las organizaciones, sus representantes y los ODS que trabajan.</p></div>
+                    <label class="astro-search"><i class="bx bx-search"></i><input id="orgSearch" type="search" placeholder="Buscar organización, representante u ODS" aria-label="Buscar organizaciones"></label>
+                </div>
+                <div class="astro-directory-table">
+                    <div class="astro-directory-head"><span>Organización</span><span>Representante</span><span>Contacto institucional</span><span>ODS</span><span></span></div>
+                    <div id="organizationList"></div>
+                </div>
+                <p class="astro-results" id="organizationCount" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <section class="astro-section astro-services astro-shell" id="servicios">
+            <div class="astro-section-heading">
+                <div><p class="astro-kicker">BENEFICIOS DE TU CONVENIO</p><h2>Servicios para tu organización</h2><p>Los servicios se habilitan según la modalidad y porcentaje de participación acordados.</p></div>
+                <div class="astro-key"><span><i class="available"></i> Disponible</span><span><i class="blocked"></i> Próxima modalidad</span></div>
+            </div>
+            <div class="astro-service-grid" id="serviceGrid"></div>
+        </section>
+
+        <section class="astro-section astro-impact astro-shell" id="impacto">
+            <div class="astro-section-heading">
+                <div><p class="astro-kicker">HISTORIAS QUE INSPIRAN</p><h2>La red en acción</h2><p>Experiencias reales que convierten la integración en resultados.</p></div>
+                <a class="astro-text-link" href="/ongs">Explorar organizaciones <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+            <div class="astro-impact-grid">
+                <article class="astro-story astro-story-main">
+                    <div class="astro-story-image"><img src="/images/fotos/picnic_lima_redastrum.webp" alt="Jóvenes participando en un picnic de Red Astrum"><span>Holo Astrum · Lima</span></div>
+                    <div class="astro-story-copy"><small>BIENESTAR Y COMUNIDAD</small><h3>Picnic Astrum Lima</h3><p>Una experiencia de conexión juvenil diseñada para promover bienestar, escucha y nuevas amistades.</p><div><span><strong>16</strong><small>participantes</small></span><span><strong>6</strong><small>dinámicas</small></span></div></div>
+                </article>
+                <article class="astro-story">
+                    <div class="astro-story-image"><img src="/images/fotos/conferencia_climatica_internacional.webp" alt="Conferencia climática internacional"><span>Red Astrum · Internacional</span></div>
+                    <div class="astro-story-copy"><small>ALIANZAS Y APRENDIZAJE</small><h3>Conferencia climática</h3><p>Networking y educación ambiental conectando voces jóvenes y especialistas.</p></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="astro-level-section" id="nivel">
+            <div class="astro-shell astro-level-layout">
+                <div><p class="astro-kicker astro-light-kicker">CRECE DENTRO DE LA RED</p><h2>Más integración,<br>más posibilidades.</h2><p>El porcentaje refleja actividad y articulación institucional. No representa propiedad, control ni participación patrimonial.</p><a href="mailto:info@redastrum.org?subject=Revisión%20de%20nivel%20de%20integración">Solicitar revisión de nivel <i class="bx bx-right-arrow-alt"></i></a></div>
+                <div class="astro-levels">
+                    <article data-min="20"><span>20–30%</span><h3>Colaborativa</h3><p>Cooperación flexible y acceso a recursos comunes.</p></article>
+                    <article data-min="31"><span>31–50%</span><h3>Operativa</h3><p>Actividades articuladas y recursos operativos.</p></article>
+                    <article data-min="51"><span>+50%</span><h3>Institucional</h3><p>Coordinación estratégica y beneficios prioritarios.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <footer class="astro-footer"><div class="astro-shell"><span><img src="/images/logo_redastrum/logo_0_red.webp" alt=""> Red Astrum</span><p>Astropedia · Programa de Integración Institucional</p><a href="mailto:info@redastrum.org">Soporte</a></div></footer>
+
+        <aside class="astro-assistant" id="assistantPanel" hidden aria-label="Asistente Astro">
+            <div class="astro-assistant-header"><span><i></i><strong>Astro</strong><small>Guía de Astropedia</small></span><button id="closeAssistant" type="button" aria-label="Cerrar asistente"><i class="bx bx-x"></i></button></div>
+            <div class="astro-assistant-body"><img src="/images/astropedia/astro-guide.png" alt="Astro, guía de Astropedia"><p>¡Hola! Elige una pregunta y te orientaré con información oficial del programa.</p><div class="astro-answer" id="assistantAnswer"></div><div class="astro-questions" id="assistantQuestions"></div></div>
+            <div class="astro-assistant-footer"><i class="bx bx-shield-quarter"></i> Información del Programa de Integración Institucional</div>
+        </aside>
+        <button class="astro-assistant-button" id="assistantButton" type="button" aria-label="Abrir asistente Astro"><img src="/images/astropedia/astro-guide.png" alt=""><span><strong>¿Tienes dudas?</strong><small>Pregúntale a Astro</small></span><i class="bx bx-message-rounded-dots"></i></button>
+
+        <div class="astro-modal-backdrop" id="serviceModal" hidden>
+            <section class="astro-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button id="closeModal" type="button" aria-label="Cerrar"><i class="bx bx-x"></i></button><span class="astro-modal-icon"><i id="modalIcon" class="bx bx-envelope"></i></span><p class="astro-kicker" id="modalGroup">SERVICIO DISPONIBLE</p><h2 id="modalTitle">Servicio</h2><p id="modalDescription"></p><div class="astro-modal-detail" id="modalDetail"></div><a class="astro-primary-button" id="modalAction" href="mailto:info@redastrum.org">Continuar <i class="bx bx-right-arrow-alt"></i></a></section>
+        </div>
+        <div class="astro-toast" id="astroToast" role="status" hidden><i class="bx bx-check"></i><span></span></div>
+    </main>
+
+    <script src="/ong-data.js"></script>
+    <script src="/astropedia-data.js"></script>
+    <script src="/astropedia.js"></script>
+</body>
+
+</html>
