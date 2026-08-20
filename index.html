@@ -19,10 +19,10 @@
 
         <!-- HEADER -->
         <header data-aos="fade-down" data-aos-duration="1200">
-            <div class="left">
+            <a class="left" href="/" aria-label="Ir al inicio de Red Astrum">
                 <img src="images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
                 <h2><span>Red</span> Astrum</h2>
-            </div>
+            </a>
 
             <ul class="main">
                 <li><a href="/" aria-current="page">Inicio</a></li>
@@ -337,27 +337,6 @@
             </a>
         </section>
 
-        <!-- ASTROPEDIA -->
-        <section class="astropedia-entry-section" aria-labelledby="astropedia-entry-title">
-            <div class="astropedia-entry-card">
-                <div class="astropedia-entry-mark" aria-hidden="true">
-                    <img src="images/astropedia/astro-guide.png" alt="">
-                </div>
-                <div class="astropedia-entry-copy">
-                    <span>PROGRAMA DE INTEGRACIÓN INSTITUCIONAL</span>
-                    <h2 id="astropedia-entry-title">Conoce Astropedia</h2>
-                    <p>
-                        El portal para que las organizaciones afiliadas colaboren, consulten sus beneficios
-                        y accedan a los servicios de Red Astrum según su nivel de integración.
-                    </p>
-                </div>
-                <a href="/astropedia">
-                    Ingresar a Astropedia
-                    <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
-                </a>
-            </div>
-        </section>
-
         <!-- CONTACTO -->
         <section class="contact-section" id="contacto">
             <h1 class="section-title autoDisplay">Contáctanos 😊</h1>
@@ -376,34 +355,50 @@
                         <i class="bx bxl-linkedin-square"></i> Red Astrum
                     </a>
 
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/share/18Cic6fYTM/" target="_blank" aria-label="Facebook">
-                            <i class="bx bxl-facebook"></i>
-                        </a>
-
-                        <a href="https://www.instagram.com/red_astrum?igsh=cGxwdHd5OWY2c2w1" target="_blank" aria-label="Instagram">
-                            <i class="bx bxl-instagram"></i>
-                        </a>
-
-                        <a href="https://www.linkedin.com/company/red-astrum?trk=blended-typeahead" target="_blank" aria-label="LinkedIn">
-                            <i class="bx bxl-linkedin-square"></i>
-                        </a>
-                    </div>
                 </div>
 
                 <div class="contact-box autoBlur">
-                    <iframe
-                        src="https://docs.google.com/forms/d/e/1FAIpQLSd7WYG3PcVon1nOJthCSuhw8jAiFcYGSPMQ6_2YLh4jGXCWbg/viewform?embedded=true"
-                        title="Formulario de contacto Red Astrum"
-                        loading="lazy"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        width="640"
-                        height="520"
-                        frameborder="0"
-                        marginheight="0"
-                        marginwidth="0">
-                        Cargando…
-                    </iframe>
+                    <form class="contact-form" id="contactForm"
+                        action="https://docs.google.com/forms/d/e/1FAIpQLSd7WYG3PcVon1nOJthCSuhw8jAiFcYGSPMQ6_2YLh4jGXCWbg/formResponse"
+                        method="post" target="contactSubmissionFrame" data-contact-form>
+                        <div class="contact-form-grid">
+                            <label class="contact-field">
+                                <span>Nombre <b aria-hidden="true">*</b></span>
+                                <input name="entry.1304881297" type="text" autocomplete="name" placeholder="Tu nombre completo" required>
+                            </label>
+                            <label class="contact-field">
+                                <span>Organización (opcional)</span>
+                                <input name="entry.441290631" type="text" autocomplete="organization" placeholder="Nombre de tu organización">
+                            </label>
+                            <label class="contact-field">
+                                <span>Correo electrónico <b aria-hidden="true">*</b></span>
+                                <input name="entry.1210137141" type="email" autocomplete="email" placeholder="nombre@organizacion.org" required>
+                            </label>
+                            <label class="contact-field">
+                                <span>Asunto <b aria-hidden="true">*</b></span>
+                                <select name="entry.716944469" required>
+                                    <option value="" selected disabled>Selecciona un asunto</option>
+                                    <option value="Información general">Información general</option>
+                                    <option value="Unirme a Red Astrum">Unirme a Red Astrum</option>
+                                    <option value="Alianzas y colaboraciones">Alianzas y colaboraciones</option>
+                                    <option value="Donaciones">Donaciones</option>
+                                    <option value="Programas y talleres">Programas y talleres</option>
+                                    <option value="Eventos">Eventos</option>
+                                    <option value="Prensa">Prensa</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                            </label>
+                        </div>
+                        <label class="contact-field contact-field-full">
+                            <span>Mensaje <b aria-hidden="true">*</b></span>
+                            <textarea name="entry.144811474" rows="6" placeholder="Cuéntanos cómo podemos ayudarte" required></textarea>
+                        </label>
+                        <button class="contact-submit" type="submit">
+                            Enviar mensaje <i class="bx bx-send" aria-hidden="true"></i>
+                        </button>
+                        <p class="contact-form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
+                    </form>
+                    <iframe class="contact-submission-frame" name="contactSubmissionFrame" title="Confirmación del formulario de contacto" hidden></iframe>
                 </div>
             </div>
         </section>
@@ -411,8 +406,7 @@
         <!-- FOOTER -->
         <section class="footer">
             <div class="footer-text">
-                <h1>© 2026 Red Astrum. Todos los derechos reservados.</h1>
-                <p>RUC: 20615815005</p>
+                <p>© 2026 Red Astrum. Todos los derechos reservados. <span aria-hidden="true">·</span> RUC 20615815005</p>
             </div>
 
             <div class="box-icons">

@@ -54,119 +54,6 @@ body {
     width: 100%;
 }
 
-/* ============================
-   ACCESO A ASTROPEDIA
-   ============================ */
-.astropedia-entry-section {
-    width: min(1100px, calc(100% - 40px));
-    margin: 0 auto;
-}
-
-.astropedia-entry-card {
-    position: relative;
-    overflow: hidden;
-    min-height: 260px;
-    padding: 44px 48px;
-    display: grid;
-    grid-template-columns: 150px 1fr auto;
-    align-items: center;
-    gap: 34px;
-    background: rgba(13, 20, 38, 0.92);
-    border: 1px solid rgba(212, 184, 232, 0.3);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
-}
-
-.astropedia-entry-card::after {
-    content: "";
-    position: absolute;
-    width: 420px;
-    height: 420px;
-    top: -260px;
-    right: 8%;
-    border: 1px solid rgba(212, 184, 232, 0.18);
-    border-radius: 50%;
-    pointer-events: none;
-}
-
-.astropedia-entry-mark {
-    width: 142px;
-    height: 142px;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    background: rgba(107, 47, 160, 0.16);
-    border: 1px solid rgba(212, 184, 232, 0.25);
-    border-radius: 50%;
-}
-
-.astropedia-entry-mark img {
-    width: 115px;
-    height: 150px;
-    object-fit: contain;
-    object-position: center 18%;
-}
-
-.astropedia-entry-copy span {
-    color: var(--color-accent);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-}
-
-.astropedia-entry-copy h2 {
-    margin: 8px 0 10px;
-    color: #fff;
-    font-size: clamp(30px, 4vw, 46px);
-    line-height: 1.05;
-}
-
-.astropedia-entry-copy p {
-    max-width: 610px;
-    margin: 0;
-    color: rgba(255, 255, 255, 0.66);
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-.astropedia-entry-card > a {
-    position: relative;
-    z-index: 1;
-    min-height: 48px;
-    padding: 0 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: #fff;
-    background: var(--color-primary);
-    border: 1px solid rgba(212, 184, 232, 0.35);
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 700;
-    white-space: nowrap;
-    transition: 0.3s;
-}
-
-.astropedia-entry-card > a:hover {
-    background: #7d3db4;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(107, 47, 160, 0.3);
-}
-
-@media (max-width: 850px) {
-    .astropedia-entry-card { padding: 34px; grid-template-columns: 105px 1fr; }
-    .astropedia-entry-mark { width: 100px; height: 100px; }
-    .astropedia-entry-mark img { width: 82px; height: 115px; }
-    .astropedia-entry-card > a { grid-column: 1 / -1; width: max-content; }
-}
-
-@media (max-width: 560px) {
-    .astropedia-entry-card { padding: 30px 24px; grid-template-columns: 1fr; text-align: left; }
-    .astropedia-entry-mark { width: 86px; height: 86px; }
-    .astropedia-entry-card > a { width: 100%; }
-}
-
 img,
 video {
     max-width: 100%;
@@ -220,6 +107,14 @@ header {
     align-items: center;
     justify-self: start;
     min-width: 210px;
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+.left:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 6px;
+    border-radius: 6px;
 }
 
 .left img {
@@ -897,7 +792,8 @@ header > .box-icons {
 
 .astrum-carousel {
     --width: 220px;
-    --height: 220px;
+    --card-height: 220px;
+    --height: 252px;
     --duration: 34s;
 
     width: 100%;
@@ -919,10 +815,10 @@ header > .box-icons {
 .astrum-carousel-item {
     position: absolute;
     left: 100%;
-    top: 0;
+    top: 16px;
 
     width: var(--width);
-    height: var(--height);
+    height: var(--card-height);
 
     display: flex;
     align-items: center;
@@ -968,6 +864,7 @@ header > .box-icons {
 
 .astrum-carousel-item:hover {
     transform: scale(1.08);
+    z-index: 2;
     border-color: var(--color-light);
     box-shadow: 0 0 25px var(--color-light-50);
 }
@@ -1061,28 +958,119 @@ header > .box-icons {
     margin-right: 10px;
 }
 
-.social-icons {
-    display: flex;
-    gap: 18px;
-    margin-top: 20px;
-}
-
-.social-icons a i {
-    color: white;
-    margin-top: 0;
-}
-
 .contact-box {
     width: 100%;
     max-width: 640px;
 }
 
-.contact-box iframe {
+.contact-form {
     width: 100%;
-    max-width: 640px;
-    height: 520px;
-    border-radius: 16px;
-    border: none;
+    padding: 30px;
+    color: var(--color-white);
+    background: rgba(12, 12, 18, 0.78);
+    border: 1px solid rgba(212, 184, 232, 0.28);
+    border-radius: 18px;
+    box-shadow: 0 20px 54px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(12px);
+}
+
+.contact-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.contact-field {
+    display: grid;
+    gap: 8px;
+}
+
+.contact-field-full {
+    margin-top: 20px;
+}
+
+.contact-field > span {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.contact-field b {
+    color: var(--color-accent);
+}
+
+.contact-field input,
+.contact-field select,
+.contact-field textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(212, 184, 232, 0.24);
+    border-radius: 9px;
+    font: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.contact-field select {
+    color-scheme: dark;
+}
+
+.contact-field textarea {
+    min-height: 132px;
+    resize: vertical;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.42);
+}
+
+.contact-field input:focus,
+.contact-field select:focus,
+.contact-field textarea:focus {
+    background: rgba(107, 47, 160, 0.12);
+    border-color: var(--color-light);
+    box-shadow: 0 0 0 3px rgba(212, 184, 232, 0.12);
+}
+
+.contact-submit {
+    min-height: 50px;
+    margin-top: 22px;
+    padding: 0 21px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--color-primary), #8147b5);
+    border: 1px solid rgba(212, 184, 232, 0.36);
+    border-radius: 9px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.contact-submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(107, 47, 160, 0.3);
+}
+
+.contact-submit:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.contact-form-status {
+    min-height: 20px;
+    margin: 12px 0 0;
+    color: var(--color-light);
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 /* ============================
@@ -1105,23 +1093,14 @@ header > .box-icons {
 
 .footer-text {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.footer-text h1 {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.55);
-    letter-spacing: 0.02em;
+    align-items: center;
 }
 
 .footer-text p {
     margin: 0;
-    font-size: 14px;
-    font-weight: 800;
-    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.56);
     letter-spacing: 0.02em;
 }
 
@@ -2218,7 +2197,8 @@ header > .box-icons {
 
     .astrum-carousel {
         --width: 150px;
-        --height: 150px;
+        --card-height: 150px;
+        --height: 176px;
         --duration: 30s;
     }
 
@@ -2241,10 +2221,6 @@ header > .box-icons {
         text-align: center;
     }
 
-    .contact-box iframe {
-        height: 520px;
-    }
-
     .footer {
         flex-direction: column;
         text-align: center;
@@ -2256,7 +2232,6 @@ header > .box-icons {
         align-items: center;
     }
 
-    .footer-text h1,
     .footer-text p {
         font-size: 13px;
     }
@@ -2314,7 +2289,8 @@ header > .box-icons {
 
     .astrum-carousel {
         --width: 120px;
-        --height: 120px;
+        --card-height: 120px;
+        --height: 142px;
     }
 
     .astrum-carousel-item {
@@ -3865,7 +3841,7 @@ button {
 
     .astrum-carousel {
         --width: 132px;
-        --height: 132px;
+        --card-height: 132px;
         height: auto;
         margin-top: 16px;
         padding: 4px 2px 14px;
@@ -3894,7 +3870,7 @@ button {
         left: auto;
         flex: 0 0 var(--width);
         width: var(--width);
-        height: var(--height);
+        height: var(--card-height);
         padding: 18px;
         animation: none;
         scroll-snap-align: center;
@@ -3922,12 +3898,6 @@ button {
         line-height: 1.5;
         white-space: normal;
         overflow-wrap: anywhere;
-    }
-
-    .contact-box iframe {
-        min-height: 560px;
-        height: 68vh;
-        border-radius: 14px;
     }
 
     .footer {
@@ -4448,6 +4418,25 @@ body.menu-open {
     .sidebar ul li a,
     .sidebar .sidebar-services summary {
         min-height: 44px;
+    }
+}
+
+@media (max-width: 680px) {
+    .contact-form {
+        padding: 22px 18px;
+    }
+
+    .contact-form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .contact-field-full {
+        margin-top: 16px;
+    }
+
+    .contact-submit {
+        width: 100%;
     }
 }
 
