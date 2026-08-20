@@ -67,6 +67,8 @@
                     ? currentOrg.participation >= 31 && currentOrg.participation <= 50
                     : currentOrg.participation > 50;
             card.classList.toggle("is-current", isCurrent);
+            if (isCurrent) card.setAttribute("aria-current", "step");
+            else card.removeAttribute("aria-current");
         });
     }
 
@@ -212,6 +214,10 @@
     if (faq.length) selectQuestion(0);
     document.getElementById("assistantButton").addEventListener("click", () => { assistant.hidden = !assistant.hidden; });
     document.getElementById("closeAssistant").addEventListener("click", () => { assistant.hidden = true; });
+
+    document.querySelectorAll(".astro-assistant-avatar img, .astro-button-avatar img").forEach(image => {
+        image.addEventListener("error", () => { image.hidden = true; }, { once: true });
+    });
 
     const sections = [...document.querySelectorAll(".astro-app section[id]")];
     const navLinks = [...document.querySelectorAll(".astro-topbar nav a")];

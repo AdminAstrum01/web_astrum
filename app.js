@@ -200,6 +200,36 @@
         const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("in-view"); observer.unobserve(entry.target); } }); }, { threshold: .15, rootMargin: "0px 0px -8% 0px" }); targets.forEach(el => observer.observe(el));
     }
 
+    function setupContactForm() {
+        const form = document.querySelector("[data-contact-form]");
+        if (!form) return;
+        const frame = document.querySelector('iframe[name="contactSubmissionFrame"]');
+        const status = document.getElementById("contactFormStatus");
+        const button = form.querySelector('button[type="submit"]');
+        if (!frame || !status || !button) return;
+
+        let submitted = false;
+        const label = () => document.documentElement.lang === "en" ? "Send message" : "Enviar mensaje";
+
+        form.addEventListener("submit", () => {
+            submitted = true;
+            button.disabled = true;
+            button.innerHTML = `${document.documentElement.lang === "en" ? "Sending…" : "Enviando…"} <i class="bx bx-loader-alt bx-spin" aria-hidden="true"></i>`;
+            status.textContent = document.documentElement.lang === "en" ? "Sending message…" : "Enviando mensaje…";
+        });
+
+        frame.addEventListener("load", () => {
+            if (!submitted) return;
+            submitted = false;
+            form.reset();
+            button.disabled = false;
+            button.innerHTML = `${label()} <i class="bx bx-send" aria-hidden="true"></i>`;
+            status.textContent = document.documentElement.lang === "en"
+                ? "Thanks. We received your message and will contact you soon."
+                : "Gracias. Recibimos tu mensaje y nos comunicaremos contigo pronto.";
+        });
+    }
+
     function synchronizePublicNgoState() {
         const OFFICIAL_NGO_COUNT = 14; const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/"; const requestedOng = new URLSearchParams(window.location.search).get("id"); if (normalizedPath === "/ong" && requestedOng === "maywa") { window.location.replace("/ongs"); return; }
         if (typeof window.ONGS !== "undefined" && Array.isArray(window.ONGS)) { const index = window.ONGS.findIndex(org => org.id === "maywa"); if (index >= 0) window.ONGS.splice(index, 1); }
@@ -223,8 +253,7 @@
 
         footer.innerHTML = `
             <div class="footer-text">
-                <h1>© 2026 Red Astrum. Todos los derechos reservados.</h1>
-                <p>RUC: 20615815005</p>
+                <p>© 2026 Red Astrum. Todos los derechos reservados. <span aria-hidden="true">·</span> RUC 20615815005</p>
             </div>
             <div class="box-icons">
                 <a href="https://www.facebook.com/share/18Cic6fYTM/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -239,5 +268,5 @@
             </div>`;
     }
 
-    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addProgramsMenu(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); ensureInstitutionalFooter();
+    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addProgramsMenu(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); setupContactForm(); ensureInstitutionalFooter();
 })();

@@ -154,10 +154,10 @@
 
         <aside class="astro-assistant" id="assistantPanel" hidden aria-label="Asistente Astro">
             <div class="astro-assistant-header"><span><i></i><strong>Astro</strong><small>Guía de Astropedia</small></span><button id="closeAssistant" type="button" aria-label="Cerrar asistente"><i class="bx bx-x"></i></button></div>
-            <div class="astro-assistant-body"><img src="/images/astropedia/astro-guide.png" alt="Astro, guía de Astropedia"><p>¡Hola! Elige una pregunta y te orientaré con información oficial del programa.</p><div class="astro-answer" id="assistantAnswer"></div><div class="astro-questions" id="assistantQuestions"></div></div>
+            <div class="astro-assistant-body"><div class="astro-assistant-intro"><span class="astro-assistant-avatar" aria-hidden="true"><i class="bx bx-bot"></i></span><p>¡Hola! Elige una pregunta y te orientaré con información oficial del programa.</p></div><div class="astro-answer" id="assistantAnswer"></div><div class="astro-questions" id="assistantQuestions"></div></div>
             <div class="astro-assistant-footer"><i class="bx bx-shield-quarter"></i> Información del Programa de Integración Institucional</div>
         </aside>
-        <button class="astro-assistant-button" id="assistantButton" type="button" aria-label="Abrir asistente Astro"><img src="/images/astropedia/astro-guide.png" alt=""><span><strong>¿Tienes dudas?</strong><small>Pregúntale a Astro</small></span><i class="bx bx-message-rounded-dots"></i></button>
+        <button class="astro-assistant-button" id="assistantButton" type="button" aria-label="Abrir asistente Astro"><span class="astro-button-avatar" aria-hidden="true"><i class="bx bx-bot"></i></span><span><strong>¿Tienes dudas?</strong><small>Pregúntale a Astro</small></span><i class="bx bx-message-rounded-dots"></i></button>
 
         <div class="astro-modal-backdrop" id="serviceModal" hidden>
             <section class="astro-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button id="closeModal" type="button" aria-label="Cerrar"><i class="bx bx-x"></i></button><span class="astro-modal-icon"><i id="modalIcon" class="bx bx-envelope"></i></span><p class="astro-kicker" id="modalGroup">SERVICIO DISPONIBLE</p><h2 id="modalTitle">Servicio</h2><p id="modalDescription"></p><div class="astro-modal-detail" id="modalDetail"></div><a class="astro-primary-button" id="modalAction" href="mailto:info@redastrum.org">Continuar <i class="bx bx-right-arrow-alt"></i></a></section>

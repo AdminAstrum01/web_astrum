@@ -103,3 +103,79 @@ button { cursor: pointer; }
     .astro-topbar { height: 66px; padding: 0 15px; }.astro-account > span:nth-child(2) { display: none; }.astro-welcome { padding-block: 42px 36px; }.astro-welcome > div > h1 { font-size: 38px; }.astro-participation { grid-template-columns: 84px 1fr; padding: 17px; }.astro-progress-ring { width: 80px; height: 80px; }.astro-progress-ring strong { font-size: 20px; }
     .astro-section { padding-block: 52px; }.astro-section-heading { flex-direction: column; align-items: stretch; gap: 17px; }.astro-section-heading h2 { font-size: 32px; }.astro-search { width: 100%; }.astro-org-row { grid-template-columns: 1fr auto; padding: 14px; }.astro-ods { display: none; }.astro-service-grid { grid-template-columns: 1fr; }.astro-service-card { min-height: 235px; }.astro-key { display: none; }.astro-story-main { grid-template-columns: 1fr; }.astro-story-image { min-height: 220px; }.astro-level-section { padding-block: 55px; }.astro-level-layout h2 { font-size: 36px; }.astro-levels { grid-template-columns: 1fr; }.astro-levels article { min-height: auto; }.astro-footer > div { flex-direction: column; gap: 15px; }.astro-assistant-button { right: 13px; bottom: 13px; }.astro-assistant-button span { display: none; }.astro-assistant { right: 13px; bottom: 82px; }
 }
+
+/* Ajustes derivados de la revisión de Astropedia. */
+.astro-services { padding-bottom: 44px; }
+.astro-impact { padding-top: 44px; }
+
+.astro-service-card { min-height: 250px; }
+.astro-service-group { margin-top: 20px; font-size: 8.5px; }
+.astro-service-card h3 { font-size: 19px; line-height: 1.18; }
+.astro-service-card p { font-size: 10.5px; line-height: 1.65; }
+
+.astro-story { grid-template-rows: 230px auto; }
+.astro-story-main { grid-template-rows: minmax(320px, auto); }
+.astro-story-image { min-height: 0; height: 100%; }
+.astro-story-main .astro-story-image { min-height: 320px; }
+
+.astro-levels article.is-current {
+    position: relative;
+    box-shadow: inset 0 0 0 1px rgba(212,184,232,.45), 0 12px 30px rgba(0,0,0,.16);
+}
+.astro-levels article.is-current::after {
+    content: "Nivel actual";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.astro-assistant-intro { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 13px; }
+.astro-assistant-avatar,
+.astro-button-avatar {
+    position: relative;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    color: var(--astro-purple);
+    background: rgba(107,47,160,.1);
+    border: 1px solid rgba(107,47,160,.16);
+    border-radius: 50%;
+}
+.astro-assistant-avatar { width: 58px; height: 58px; }
+.astro-button-avatar { width: 50px; height: 50px; min-width: 50px !important; }
+.astro-assistant-avatar > i,
+.astro-button-avatar > i { font-size: 25px; }
+.astro-assistant-avatar img,
+.astro-button-avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.astro-assistant-intro p {
+    flex: 1;
+    min-width: 0;
+    min-height: 58px;
+    margin: 0;
+    padding: 11px 12px;
+    color: #475563;
+    background: #fff;
+    border: 1px solid #e3ded6;
+    border-radius: 2px 12px 12px 12px;
+    font-size: 9px;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+.astro-assistant-button > span:nth-child(2) { min-width: 100px; text-align: left; }
+
+@media (max-width: 640px) {
+    .astro-services { padding-bottom: 34px; }
+    .astro-impact { padding-top: 34px; }
+    .astro-story,
+    .astro-story-main { grid-template-rows: auto; }
+    .astro-story-image,
+    .astro-story-main .astro-story-image { min-height: 220px; height: 220px; }
+    .astro-assistant-button > span:nth-child(2) { display: none; }
+    .astro-button-avatar { display: grid !important; }
+}
