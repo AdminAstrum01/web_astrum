@@ -1,0 +1,6 @@
+name = "red-astrum-donations"
+main = "src/worker.js"
+compatibility_date = "2026-08-21"
+
+# Deploy to a dedicated HTTPS worker hostname, e.g. donations-api.redastrum.org.
+# Secrets are set with `wrangler secret put`; they never belong in this file.
