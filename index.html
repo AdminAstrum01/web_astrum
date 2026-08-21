@@ -337,6 +337,21 @@
             </a>
         </section>
 
+        <!-- DONACIONES -->
+        <section class="donation-section" id="donaciones">
+            <h1 class="section-title autoDisplay">Apoya a Red Astrum</h1>
+            <p class="donation-lead">Elige un monto y paga de forma segura con Mercado Pago.</p>
+            <label class="donation-amount-label" for="donationAmount">Monto de donación (PEN)</label>
+            <select id="donationAmount" class="donation-amount-select">
+                <option value="10">S/ 10.00</option>
+                <option value="25" selected>S/ 25.00</option>
+                <option value="50">S/ 50.00</option>
+                <option value="100">S/ 100.00</option>
+            </select>
+            <div id="paymentBrick_container" class="payment-brick-container"></div>
+            <p id="donationStatus" class="donation-status" role="status" aria-live="polite"></p>
+        </section>
+
         <!-- CONTACTO -->
         <section class="contact-section" id="contacto">
             <h1 class="section-title autoDisplay">Contáctanos 😊</h1>
@@ -427,6 +442,9 @@
 
     <!-- SCRIPTS -->
     <script src="/i18n.js" defer></script>
+    <script src="/donations-config.js" defer></script>
+    <script src="https://sdk.mercadopago.com/js/v2" defer></script>
+    <script src="/payment-brick.js" defer></script>
     <script src="app.js" defer></script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
