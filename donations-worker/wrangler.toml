@@ -4,3 +4,21 @@ compatibility_date = "2026-08-21"
 
 # Deploy to a dedicated HTTPS worker hostname, e.g. donations-api.redastrum.org.
 # Secrets are set with `wrangler secret put`; they never belong in this file.
+
+{
+  "observability": {
+    "enabled": false,
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": false,
+      "persist": true,
+      "head_sampling_rate": 1
+    }
+  }
+}
