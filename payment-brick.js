@@ -39,7 +39,7 @@
                 onReady: () => {
                     status("Formulario listo para recibir tu donación.");
                 },
-                onSubmit: async ({ formData }) => {
+                onSubmit: async ({ formData, selectedPaymentMethod }) => {
                     status("Procesando donación de prueba…");
                     const endpoint = `${config.apiBaseUrl.replace(/\/$/, "")}${config.paymentEndpoint || "/process_order"}`;
                     const response = await fetch(endpoint, {
@@ -47,7 +47,10 @@
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                             ...formData,
-                            transaction_amount: amount()
+                            transaction_amount: amount(),
+                            payment_type_id: selectedPaymentMethod === "debit_card"
+                                ? "debit_card"
+                                : "credit_card"
                         })
                     });
                     if (!response.ok) {
