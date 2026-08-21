@@ -29,13 +29,17 @@
         controller = await builder.create("payment", containerId, {
             initialization: { amount: amount() },
             callbacks: {
-                onSubmit: async formData => {
+                onSubmit: async (formData, additionalData) => {
                     status("Procesando donación de prueba…");
                     const endpoint = `${config.apiBaseUrl.replace(/\/$/, "")}${config.paymentEndpoint || "/process_order"}`;
                     const response = await fetch(endpoint, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ ...formData, transaction_amount: amount() })
+                        body: JSON.stringify({
+                            ...formData,
+                            transaction_amount: amount(),
+                            payment_type_id: additionalData?.paymentTypeId
+                        })
                     });
                     if (!response.ok) {
                         status("El backend no pudo procesar la donación.");
