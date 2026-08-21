@@ -36,6 +36,9 @@
                 }
             },
             callbacks: {
+                onReady: () => {
+                    status("Formulario listo para recibir tu donación.");
+                },
                 onSubmit: async ({ formData }) => {
                     status("Procesando donación de prueba…");
                     const endpoint = `${config.apiBaseUrl.replace(/\/$/, "")}${config.paymentEndpoint || "/process_order"}`;
