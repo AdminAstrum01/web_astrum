@@ -28,8 +28,15 @@
 
         controller = await builder.create("payment", containerId, {
             initialization: { amount: amount() },
+            customization: {
+                paymentMethods: {
+                    creditCard: "all",
+                    debitCard: "all",
+                    prepaidCard: "all"
+                }
+            },
             callbacks: {
-                onSubmit: async (formData, additionalData) => {
+                onSubmit: async ({ formData }) => {
                     status("Procesando donación de prueba…");
                     const endpoint = `${config.apiBaseUrl.replace(/\/$/, "")}${config.paymentEndpoint || "/process_order"}`;
                     const response = await fetch(endpoint, {
@@ -37,8 +44,7 @@
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
                             ...formData,
-                            transaction_amount: amount(),
-                            payment_type_id: additionalData?.paymentTypeId
+                            transaction_amount: amount()
                         })
                     });
                     if (!response.ok) {
