@@ -230,23 +230,6 @@
         });
     }
 
-    function addDonationMenu() {
-        const desktopMenu = document.querySelector("ul.main");
-        if (desktopMenu && !desktopMenu.querySelector("[data-donate-open]")) {
-            const item = document.createElement("li");
-            item.innerHTML = '<a href="#donar" data-donate-open>Donar</a>';
-            const join = Array.from(desktopMenu.children).find(el => el.querySelector(':scope > a[href*="linktr.ee/red_astrum"]'));
-            desktopMenu.insertBefore(item, join || null);
-        }
-        const mobileMenu = document.querySelector(".sidebar > ul");
-        if (mobileMenu && !mobileMenu.querySelector("[data-donate-open]")) {
-            const item = document.createElement("li");
-            item.innerHTML = '<a href="#donar" data-donate-open>Donar</a>';
-            const join = Array.from(mobileMenu.children).find(el => el.querySelector(':scope > a[href*="linktr.ee/red_astrum"]'));
-            mobileMenu.insertBefore(item, join || null);
-        }
-    }
-
     function synchronizePublicNgoState() {
         const OFFICIAL_NGO_COUNT = 14; const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/"; const requestedOng = new URLSearchParams(window.location.search).get("id"); if (normalizedPath === "/ong" && requestedOng === "maywa") { window.location.replace("/ongs"); return; }
         if (typeof window.ONGS !== "undefined" && Array.isArray(window.ONGS)) { const index = window.ONGS.findIndex(org => org.id === "maywa"); if (index >= 0) window.ONGS.splice(index, 1); }
@@ -285,5 +268,5 @@
             </div>`;
     }
 
-    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addProgramsMenu(); addServicesMenu(); addDonationMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); setupContactForm(); ensureInstitutionalFooter();
+    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addProgramsMenu(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); setupContactForm(); ensureInstitutionalFooter();
 })();
