@@ -9,3 +9,9 @@ Thumbs.db
 assets-raw/
 images/raw/
 videos/raw/
+
+# Never commit Mercado Pago or deployment secrets.
+.dev.vars
+.env
+.env.*
+!.env.example
