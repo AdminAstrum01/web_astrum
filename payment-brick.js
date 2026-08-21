@@ -2,7 +2,7 @@
     "use strict";
 
     const config = window.RED_ASTRUM_DONATIONS || {};
-    const containerId = "paymentBrick_container";
+    const containerId = "cardPaymentBrick_container";
     let controller;
 
     const status = message => {
@@ -26,20 +26,13 @@
         const builder = mp.bricks();
         const amount = () => Number(document.getElementById("donationAmount")?.value || 25);
 
-        controller = await builder.create("payment", containerId, {
+        controller = await builder.create("cardPayment", containerId, {
             initialization: { amount: amount() },
-            customization: {
-                paymentMethods: {
-                    creditCard: "all",
-                    debitCard: "all",
-                    prepaidCard: "all"
-                }
-            },
             callbacks: {
                 onReady: () => {
                     status("Formulario listo para recibir tu donación.");
                 },
-                onSubmit: async ({ formData, selectedPaymentMethod }) => {
+                onSubmit: async (formData, additionalData) => {
                     status("Procesando donación de prueba…");
                     const endpoint = `${config.apiBaseUrl.replace(/\/$/, "")}${config.paymentEndpoint || "/process_order"}`;
                     const response = await fetch(endpoint, {
@@ -48,9 +41,7 @@
                         body: JSON.stringify({
                             ...formData,
                             transaction_amount: amount(),
-                            payment_type_id: selectedPaymentMethod === "debit_card"
-                                ? "debit_card"
-                                : "credit_card"
+                            payment_type_id: additionalData.paymentTypeId
                         })
                     });
                     const result = await response.json().catch(() => ({}));
@@ -63,7 +54,7 @@
                     return result;
                 },
                 onError: error => {
-                    console.error("Mercado Pago Payment Brick", error);
+                    console.error("Mercado Pago Card Payment Brick", error);
                     status("Revisa los datos ingresados e inténtalo nuevamente.");
                 }
             }
