@@ -53,12 +53,14 @@
                                 : "credit_card"
                         })
                     });
+                    const result = await response.json().catch(() => ({}));
                     if (!response.ok) {
-                        status("El backend no pudo procesar la donación.");
+                        const detail = result.details || result.code || `HTTP ${response.status}`;
+                        status(`Mercado Pago rechazó la donación: ${detail}`);
                         throw new Error("Payment backend error");
                     }
                     status("Solicitud enviada. Revisa el resultado de la operación.");
-                    return response.json();
+                    return result;
                 },
                 onError: error => {
                     console.error("Mercado Pago Payment Brick", error);
