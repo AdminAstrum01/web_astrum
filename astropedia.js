@@ -31,6 +31,12 @@
     let currentService = null;
     let recoveryMode = false;
 
+    function isInviteCallback() {
+        const queryType = new URLSearchParams(window.location.search).get("type");
+        const hashType = new URLSearchParams(window.location.hash.replace(/^#/, "")).get("type");
+        return queryType === "invite" || hashType === "invite";
+    }
+
     const normalize = (value = "") => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
     const initials = (name = "") => name.split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase();
     const getPublicOrg = id => publicOrgs.find(org => org.id === id) || null;
@@ -315,6 +321,12 @@
     }
 
     if (!db) return void (errorBox.textContent = "La conexión segura no está disponible. Contacta a soporte.");
-    db.auth.onAuthStateChange((event, session) => { if (event === "PASSWORD_RECOVERY") setRecoveryMode(session?.user); });
-    db.auth.getSession().then(({ data }) => { if (data.session && !recoveryMode) loadPortal(data.session.user); });
+    db.auth.onAuthStateChange((event, session) => {
+        if (event === "PASSWORD_RECOVERY" || (session && isInviteCallback())) setRecoveryMode(session?.user);
+    });
+    db.auth.getSession().then(({ data }) => {
+        if (!data.session || recoveryMode) return;
+        if (isInviteCallback()) setRecoveryMode(data.session.user);
+        else loadPortal(data.session.user);
+    });
 })();
