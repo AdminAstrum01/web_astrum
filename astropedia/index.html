@@ -42,7 +42,7 @@
                 <label for="loginEmail">Correo institucional</label>
                 <span class="astro-field">
                     <i class="bx bx-envelope" aria-hidden="true"></i>
-                    <input id="loginEmail" type="email" value="holoastrum@redastrum.org" autocomplete="username" required>
+                    <input id="loginEmail" type="email" placeholder="organizacion@redastrum.org" autocomplete="username" required>
                 </span>
 
                 <label for="loginPassword">Contraseña</label>
@@ -55,14 +55,13 @@
                 <p class="astro-form-error" id="loginError" role="alert"></p>
                 <div class="astro-login-options">
                     <label><input type="checkbox" checked> Recordarme</label>
-                    <a href="mailto:info@redastrum.org?subject=Ayuda%20con%20Astropedia">¿Necesitas ayuda?</a>
+                    <a href="#" id="resetPassword">¿Olvidaste tu contraseña?</a>
                 </div>
                 <button class="astro-primary-button" type="submit">Ingresar a la plataforma <i class="bx bx-right-arrow-alt"></i></button>
-                <button class="astro-demo-button" id="demoAccess" type="button"><i class="bx bx-play-circle"></i> Completar acceso piloto</button>
 
                 <div class="astro-security-note">
                     <i class="bx bx-shield-quarter" aria-hidden="true"></i>
-                    <p><strong>Versión piloto</strong>Este formulario demuestra la experiencia. No valida ni almacena contraseñas reales.</p>
+                    <p><strong>Acceso seguro</strong>La autenticación está protegida por Supabase. Red Astrum nunca muestra ni comparte tus contraseñas.</p>
                 </div>
                 <a class="astro-back-link" href="/"><i class="bx bx-left-arrow-alt"></i> Volver a redastrum.org</a>
             </form>
@@ -165,6 +164,8 @@
         <div class="astro-toast" id="astroToast" role="status" hidden><i class="bx bx-check"></i><span></span></div>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/astropedia-config.js"></script>
     <script src="/ong-data.js"></script>
     <script src="/astropedia-data.js"></script>
     <script src="/astropedia.js"></script>
