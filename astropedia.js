@@ -4,6 +4,14 @@
     const faq = window.ASTROPEDIA_FAQ || [];
     const publicOrgs = typeof ONGS !== "undefined" ? ONGS : [];
     const config = window.ASTROPEDIA_CONFIG || {};
+    const initialQuery = new URLSearchParams(window.location.search);
+    const initialHash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+    const initialFlowType = initialQuery.get("type") || initialHash.get("type");
+    let passwordSetupIntent =
+        initialQuery.get("setup") === "password" ||
+        initialHash.get("setup") === "password" ||
+        initialQuery.has("code") ||
+        ["invite", "recovery", "signup"].includes(initialFlowType);
     const db = window.supabase && config.url && config.publishableKey
         ? window.supabase.createClient(config.url, config.publishableKey)
         : null;
@@ -31,10 +39,17 @@
     let currentService = null;
     let recoveryMode = false;
 
-    function isInviteCallback() {
-        const queryType = new URLSearchParams(window.location.search).get("type");
-        const hashType = new URLSearchParams(window.location.hash.replace(/^#/, "")).get("type");
-        return queryType === "invite" || hashType === "invite";
+    function clearAuthCallbackUrl() {
+        const cleanUrl = new URL(window.location.href);
+        ["code", "type", "setup"].forEach(parameter => cleanUrl.searchParams.delete(parameter));
+        cleanUrl.hash = "";
+        window.history.replaceState({}, document.title, cleanUrl.pathname + cleanUrl.search);
+    }
+
+    function openPasswordSetup(user) {
+        passwordSetupIntent = false;
+        clearAuthCallbackUrl();
+        setRecoveryMode(user);
     }
 
     const normalize = (value = "") => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
@@ -322,11 +337,11 @@
 
     if (!db) return void (errorBox.textContent = "La conexión segura no está disponible. Contacta a soporte.");
     db.auth.onAuthStateChange((event, session) => {
-        if (event === "PASSWORD_RECOVERY" || (session && isInviteCallback())) setRecoveryMode(session?.user);
+        if (event === "PASSWORD_RECOVERY" || (session && passwordSetupIntent)) openPasswordSetup(session?.user);
     });
     db.auth.getSession().then(({ data }) => {
         if (!data.session || recoveryMode) return;
-        if (isInviteCallback()) setRecoveryMode(data.session.user);
+        if (passwordSetupIntent) openPasswordSetup(data.session.user);
         else loadPortal(data.session.user);
     });
 })();
