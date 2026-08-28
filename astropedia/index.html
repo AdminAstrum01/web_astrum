@@ -54,7 +54,7 @@
 
                 <p class="astro-form-error" id="loginError" role="alert"></p>
                 <div class="astro-login-options">
-                    <label><input type="checkbox" checked> Recordarme</label>
+                    <span><i class="bx bx-shield-quarter" aria-hidden="true"></i> Sesión protegida</span>
                     <a href="#" id="resetPassword">¿Olvidaste tu contraseña?</a>
                 </div>
                 <button class="astro-primary-button" type="submit">Ingresar a la plataforma <i class="bx bx-right-arrow-alt"></i></button>
@@ -79,6 +79,7 @@
                 <a href="#colabora">Colabora</a>
                 <a href="#servicios">Servicios</a>
                 <a href="#impacto">Impacto</a>
+                <a href="#administracion" id="adminNav" hidden>Administración</a>
             </nav>
             <div class="astro-account">
                 <span class="astro-account-avatar" id="accountAvatar">HA</span>
@@ -121,6 +122,33 @@
             <div class="astro-service-grid" id="serviceGrid"></div>
         </section>
 
+        <section class="astro-section astro-admin astro-shell" id="administracion" hidden>
+            <div class="astro-section-heading">
+                <div><p class="astro-kicker">GESTIÓN DE LA PLATAFORMA</p><h2>Administración de Astropedia</h2><p>Edita organizaciones y servicios, y da seguimiento a las solicitudes institucionales.</p></div>
+                <span class="astro-admin-badge"><i class="bx bx-shield-quarter"></i> Acceso administrativo</span>
+            </div>
+            <div class="astro-admin-summary">
+                <article><i class="bx bx-buildings"></i><span><strong id="adminOrganizationCount">0</strong><small>organizaciones</small></span></article>
+                <article><i class="bx bx-check-circle"></i><span><strong id="adminActiveCount">0</strong><small>organizaciones activas</small></span></article>
+                <article><i class="bx bx-envelope-open"></i><span><strong id="adminRequestCount">0</strong><small>solicitudes pendientes</small></span></article>
+            </div>
+
+            <div class="astro-admin-block">
+                <div class="astro-admin-block-heading"><div><h3>Organizaciones</h3><p>Representantes, correos, ODS y nivel de participación.</p></div><label class="astro-search"><i class="bx bx-search"></i><input id="adminOrgSearch" type="search" placeholder="Buscar organización" aria-label="Buscar organizaciones para administrar"></label></div>
+                <div class="astro-admin-table"><div class="astro-admin-head astro-admin-org-grid"><span>Organización</span><span>Representante</span><span>Participación</span><span>Estado</span><span></span></div><div id="adminOrganizationList"></div></div>
+            </div>
+
+            <div class="astro-admin-block">
+                <div class="astro-admin-block-heading"><div><h3>Servicios</h3><p>Contenido, porcentaje requerido y disponibilidad.</p></div></div>
+                <div class="astro-admin-table"><div class="astro-admin-head astro-admin-service-grid"><span>Servicio</span><span>Grupo</span><span>Requisito</span><span>Estado</span><span></span></div><div id="adminServiceList"></div></div>
+            </div>
+
+            <div class="astro-admin-block">
+                <div class="astro-admin-block-heading"><div><h3>Solicitudes</h3><p>Actualiza el estado de las solicitudes enviadas por las organizaciones.</p></div></div>
+                <div class="astro-admin-table"><div class="astro-admin-head astro-admin-request-grid"><span>Organización</span><span>Servicio</span><span>Fecha</span><span>Estado</span><span></span></div><div id="adminRequestList"></div></div>
+            </div>
+        </section>
+
         <section class="astro-section astro-impact astro-shell" id="impacto">
             <div class="astro-section-heading">
                 <div><p class="astro-kicker">HISTORIAS QUE INSPIRAN</p><h2>La red en acción</h2><p>Experiencias reales que convierten la integración en resultados.</p></div>
@@ -161,14 +189,49 @@
         <div class="astro-modal-backdrop" id="serviceModal" hidden>
             <section class="astro-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button id="closeModal" type="button" aria-label="Cerrar"><i class="bx bx-x"></i></button><span class="astro-modal-icon"><i id="modalIcon" class="bx bx-envelope"></i></span><p class="astro-kicker" id="modalGroup">SERVICIO DISPONIBLE</p><h2 id="modalTitle">Servicio</h2><p id="modalDescription"></p><div class="astro-modal-detail" id="modalDetail"></div><a class="astro-primary-button" id="modalAction" href="mailto:info@redastrum.org">Continuar <i class="bx bx-right-arrow-alt"></i></a></section>
         </div>
+        <div class="astro-modal-backdrop" id="adminOrganizationModal" hidden>
+            <form class="astro-modal astro-admin-form" id="adminOrganizationForm" aria-labelledby="adminOrganizationTitle">
+                <button class="astro-modal-close" id="closeAdminOrganizationModal" type="button" aria-label="Cerrar"><i class="bx bx-x"></i></button>
+                <p class="astro-kicker">EDITAR ORGANIZACIÓN</p><h2 id="adminOrganizationTitle">Datos institucionales</h2>
+                <input id="adminOrganizationId" type="hidden">
+                <div class="astro-admin-fields">
+                    <label>Nombre<input id="adminOrganizationName" type="text" required maxlength="160"></label>
+                    <label>Correo institucional<input id="adminOrganizationEmail" type="email" maxlength="200"></label>
+                    <label>Representante<input id="adminRepresentativeName" type="text" maxlength="160"></label>
+                    <label>Cargo<input id="adminRepresentativeRole" type="text" maxlength="160"></label>
+                    <label>Participación (%)<input id="adminParticipation" type="number" min="20" max="100" required></label>
+                    <label>ODS <small>Separados por comas</small><input id="adminOds" type="text" placeholder="4, 5, 10, 17"></label>
+                    <label class="astro-admin-checkbox"><input id="adminOrganizationActive" type="checkbox"> Organización activa</label>
+                </div>
+                <p class="astro-form-error" id="adminOrganizationError" role="alert"></p>
+                <button class="astro-primary-button" type="submit">Guardar organización <i class="bx bx-save"></i></button>
+            </form>
+        </div>
+        <div class="astro-modal-backdrop" id="adminServiceModal" hidden>
+            <form class="astro-modal astro-admin-form" id="adminServiceForm" aria-labelledby="adminServiceTitle">
+                <button class="astro-modal-close" id="closeAdminServiceModal" type="button" aria-label="Cerrar"><i class="bx bx-x"></i></button>
+                <p class="astro-kicker">EDITAR SERVICIO</p><h2 id="adminServiceTitle">Contenido del servicio</h2>
+                <input id="adminServiceId" type="hidden">
+                <div class="astro-admin-fields">
+                    <label>Título<input id="adminServiceName" type="text" required maxlength="160"></label>
+                    <label>Grupo<input id="adminServiceGroup" type="text" required maxlength="120"></label>
+                    <label class="astro-admin-field-wide">Descripción<textarea id="adminServiceDescription" required maxlength="600" rows="4"></textarea></label>
+                    <label>Texto del botón<input id="adminServiceAction" type="text" required maxlength="120"></label>
+                    <label>Participación mínima (%)<input id="adminServiceParticipation" type="number" min="20" max="100" required></label>
+                    <label class="astro-admin-checkbox"><input id="adminServiceActive" type="checkbox"> Servicio activo</label>
+                </div>
+                <p class="astro-form-error" id="adminServiceError" role="alert"></p>
+                <button class="astro-primary-button" type="submit">Guardar servicio <i class="bx bx-save"></i></button>
+            </form>
+        </div>
         <div class="astro-toast" id="astroToast" role="status" hidden><i class="bx bx-check"></i><span></span></div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
-    <script src="/astropedia-config.js?v=2.0.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js" crossorigin="anonymous"></script>
+    <script src="/astropedia-config.js?v=3.0.0"></script>
     <script src="/ong-data.js"></script>
     <script src="/astropedia-data.js"></script>
-    <script src="/astropedia.js?v=2.0.2"></script>
+    <script src="/astropedia.js?v=3.0.0"></script>
 </body>
 
 </html>
