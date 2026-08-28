@@ -4,6 +4,7 @@
     const faq = window.ASTROPEDIA_FAQ || [];
     const publicOrgs = typeof ONGS !== "undefined" ? ONGS : [];
     const config = window.ASTROPEDIA_CONFIG || {};
+    const ORGANIZATION_COLUMNS = "id,slug,name,representative_name,representative_role,institutional_email,participation,ods,active,created_at,updated_at";
     const initialQuery = new URLSearchParams(window.location.search);
     const initialHash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
     const initialFlowType = initialQuery.get("type") || initialHash.get("type");
@@ -12,6 +13,7 @@
         initialHash.get("setup") === "password" ||
         initialQuery.has("code") ||
         ["invite", "recovery", "signup"].includes(initialFlowType);
+
     const db = window.supabase && config.url && config.publishableKey
         ? window.supabase.createClient(config.url, config.publishableKey)
         : null;
@@ -31,13 +33,55 @@
     const modal = byId("serviceModal");
     const modalAction = byId("modalAction");
     const toast = byId("astroToast");
+    const adminSection = byId("administracion");
+    const adminNav = byId("adminNav");
+    const adminOrganizationModal = byId("adminOrganizationModal");
+    const adminServiceModal = byId("adminServiceModal");
 
     let orgs = [];
     let services = [];
+    let serviceRequests = [];
     let currentOrg = null;
     let currentUser = null;
     let currentService = null;
+    let currentRole = null;
     let recoveryMode = false;
+
+    const normalize = (value = "") => String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+    const initials = (name = "") => String(name).split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase();
+    const escapeHtml = (value = "") => String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    }[character]));
+    const getPublicOrg = id => publicOrgs.find(org => org.id === id) || null;
+    const isAdmin = () => currentRole === "admin";
+
+    const mapOrg = row => ({
+        databaseId: row.id,
+        id: row.slug,
+        name: row.name,
+        representative: row.representative_name || "Representante por confirmar",
+        role: row.representative_role || "",
+        email: row.institutional_email || "",
+        participation: Number(row.participation),
+        ods: Array.isArray(row.ods) ? row.ods.map(Number).filter(Number.isFinite) : [],
+        active: row.active !== false
+    });
+
+    const mapService = row => ({
+        id: row.id,
+        icon: row.icon || "bx-grid-alt",
+        title: row.title,
+        description: row.description,
+        level: Number(row.minimum_participation),
+        group: row.service_group,
+        action: row.action_label,
+        active: row.active !== false,
+        sortOrder: Number(row.sort_order || 0)
+    });
 
     function clearAuthCallbackUrl() {
         const cleanUrl = new URL(window.location.href);
@@ -51,29 +95,6 @@
         clearAuthCallbackUrl();
         setRecoveryMode(user);
     }
-
-    const normalize = (value = "") => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
-    const initials = (name = "") => name.split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase();
-    const getPublicOrg = id => publicOrgs.find(org => org.id === id) || null;
-    const mapOrg = row => ({
-        databaseId: row.id,
-        id: row.slug,
-        name: row.name,
-        representative: row.representative_name || "Representante por confirmar",
-        role: row.representative_role || "",
-        email: row.institutional_email || "",
-        participation: Number(row.participation),
-        ods: Array.isArray(row.ods) ? row.ods : []
-    });
-    const mapService = row => ({
-        id: row.id,
-        icon: row.icon,
-        title: row.title,
-        description: row.description,
-        level: Number(row.minimum_participation),
-        group: row.service_group,
-        action: row.action_label
-    });
 
     function integrationLevel(percentage) {
         if (percentage > 50) return { name: "Integración institucional", message: "Tu organización transforma la red", description: "Tienes acceso al nivel más amplio de beneficios institucionales." };
@@ -125,12 +146,31 @@
     }
 
     function renderProfile() {
+        if (isAdmin()) {
+            byId("accountAvatar").textContent = "RA";
+            byId("accountName").textContent = "Red Astrum";
+            byId("accountLevel").textContent = "Administrador";
+            byId("welcomeName").textContent = "Administración Red Astrum";
+            byId("participationValue").textContent = "ADMIN";
+            byId("progressRing").querySelector("small").textContent = "Rol";
+            byId("progressRing").style.setProperty("--progress", "360deg");
+            byId("levelPill").innerHTML = "<i class='bx bx-shield-quarter'></i> Administración";
+            byId("levelMessage").textContent = "Gestión central de Astropedia";
+            byId("levelDescription").textContent = "Administra organizaciones, servicios y solicitudes desde un único espacio seguro.";
+            document.querySelectorAll(".astro-levels article").forEach(card => {
+                card.classList.remove("is-current");
+                card.removeAttribute("aria-current");
+            });
+            return;
+        }
+
         const level = integrationLevel(currentOrg.participation);
         byId("accountAvatar").textContent = initials(currentOrg.name);
         byId("accountName").textContent = currentOrg.name;
         byId("accountLevel").textContent = level.name;
         byId("welcomeName").textContent = currentOrg.name;
         byId("participationValue").textContent = currentOrg.participation + "%";
+        byId("progressRing").querySelector("small").textContent = "Participación";
         byId("progressRing").style.setProperty("--progress", Math.min(360, currentOrg.participation * 3.6) + "deg");
         byId("levelPill").innerHTML = "<i class='bx bx-sparkles'></i> " + level.name;
         byId("levelMessage").textContent = level.message;
@@ -145,33 +185,41 @@
 
     function logoMarkup(org) {
         const publicOrg = getPublicOrg(org.id);
+        const fallback = escapeHtml(initials(org.name));
         return publicOrg?.logo
-            ? `<span class="astro-org-logo"><img src="${publicOrg.logo}" alt="Logo de ${org.name}" loading="lazy" onerror="this.parentElement.textContent='${initials(org.name)}'"></span>`
-            : `<span class="astro-org-logo">${initials(org.name)}</span>`;
+            ? `<span class="astro-org-logo"><img src="${escapeHtml(publicOrg.logo)}" alt="Logo de ${escapeHtml(org.name)}" loading="lazy"></span>`
+            : `<span class="astro-org-logo">${fallback}</span>`;
     }
 
     function renderOrganizations(query = "") {
-        const filtered = orgs.filter(org => normalize([org.name, org.representative, org.role, org.email, org.ods.join(" ")].join(" ")).includes(normalize(query)));
+        const filtered = orgs
+            .filter(org => org.active)
+            .filter(org => normalize([org.name, org.representative, org.role, org.email, org.ods.join(" ")].join(" ")).includes(normalize(query)));
+
         orgList.innerHTML = filtered.map(org => {
             const publicOrg = getPublicOrg(org.id);
             const email = org.email
-                ? `<a class="astro-org-email" href="mailto:${org.email}"><i class="bx bx-envelope"></i><span>${org.email}</span></a>`
-                : `<span class="astro-org-email is-empty"><i class="bx bx-envelope"></i><span>Por asignar</span></span>`;
+                ? `<a class="astro-org-email" href="mailto:${encodeURIComponent(org.email)}"><i class="bx bx-envelope"></i><span>${escapeHtml(org.email)}</span></a>`
+                : '<span class="astro-org-email is-empty"><i class="bx bx-envelope"></i><span>Por asignar</span></span>';
             const portal = publicOrg
                 ? `<a class="astro-portal-link" href="/ong?id=${encodeURIComponent(org.id)}">Ver portal <i class="bx bx-link-external"></i></a>`
-                : `<span class="astro-portal-link is-disabled">Portal próximo</span>`;
-            return `<article class="astro-org-row"><div class="astro-org-name">${logoMarkup(org)}<span><strong>${org.name}</strong><small>${publicOrg?.region || "Organización afiliada"}</small></span></div><div class="astro-representative"><i class="bx bx-user"></i><span><strong>${org.representative}</strong><small>${org.role}</small></span></div>${email}<div class="astro-ods">${org.ods.map(number => `<span title="ODS ${number}">${number}</span>`).join("")}</div>${portal}</article>`;
+                : '<span class="astro-portal-link is-disabled">Portal próximo</span>';
+            return `<article class="astro-org-row"><div class="astro-org-name">${logoMarkup(org)}<span><strong>${escapeHtml(org.name)}</strong><small>${escapeHtml(publicOrg?.region || "Organización afiliada")}</small></span></div><div class="astro-representative"><i class="bx bx-user"></i><span><strong>${escapeHtml(org.representative)}</strong><small>${escapeHtml(org.role)}</small></span></div>${email}<div class="astro-ods">${org.ods.map(number => `<span title="ODS ${number}">${number}</span>`).join("")}</div>${portal}</article>`;
         }).join("");
+
         orgCount.textContent = `${filtered.length} ${filtered.length === 1 ? "organización" : "organizaciones"}`;
     }
 
     function renderServices() {
-        serviceGrid.innerHTML = services.map(service => {
-            const available = currentOrg.participation >= service.level;
-            return `<article class="astro-service-card ${available ? "" : "is-locked"}"><div class="astro-service-card-top"><span class="astro-service-icon"><i class="bx ${service.icon}"></i></span><span class="astro-service-status"><i class="bx ${available ? "bx-check" : "bx-lock-alt"}"></i>${available ? "Disponible" : `Requiere ${service.level}%`}</span></div><span class="astro-service-group">${service.group}</span><h3>${service.title}</h3><p>${service.description}</p><button type="button" data-service="${service.id}">${available ? service.action : "Cómo desbloquear"}<i class="bx ${available ? "bx-right-arrow-alt" : "bx-lock-alt"}"></i></button></article>`;
+        serviceGrid.innerHTML = services.filter(service => service.active || isAdmin()).map(service => {
+            const available = isAdmin() || currentOrg.participation >= service.level;
+            const action = isAdmin() ? "Editar servicio" : available ? service.action : "Cómo desbloquear";
+            return `<article class="astro-service-card ${available ? "" : "is-locked"}"><div class="astro-service-card-top"><span class="astro-service-icon"><i class="bx ${escapeHtml(service.icon)}"></i></span><span class="astro-service-status"><i class="bx ${available ? "bx-check" : "bx-lock-alt"}"></i>${isAdmin() ? (service.active ? "Activo" : "Inactivo") : available ? "Disponible" : `Requiere ${service.level}%`}</span></div><span class="astro-service-group">${escapeHtml(service.group)}</span><h3>${escapeHtml(service.title)}</h3><p>${escapeHtml(service.description)}</p><button type="button" data-service="${escapeHtml(service.id)}">${escapeHtml(action)}<i class="bx ${isAdmin() ? "bx-edit-alt" : available ? "bx-right-arrow-alt" : "bx-lock-alt"}"></i></button></article>`;
         }).join("");
+
         serviceGrid.querySelectorAll("[data-service]").forEach(button => button.addEventListener("click", () => {
             const service = services.find(item => item.id === button.dataset.service);
+            if (isAdmin()) return openAdminService(service);
             if (currentOrg.participation < service.level) {
                 byId("nivel").scrollIntoView({ behavior: "smooth" });
                 showToast(`Este servicio se habilita desde ${service.level}% de participación.`);
@@ -188,7 +236,7 @@
         byId("modalDescription").textContent = service.description;
         const detail = byId("modalDetail");
         if (service.id === "cuentas") {
-            detail.innerHTML = currentOrg.email ? `<strong>Cuenta institucional</strong>${currentOrg.email}<br><small>Las contraseñas nunca se muestran ni se almacenan en Astropedia.</small>` : "La cuenta institucional está pendiente de asignación.";
+            detail.innerHTML = currentOrg.email ? `<strong>Cuenta institucional</strong>${escapeHtml(currentOrg.email)}<br><small>Las contraseñas nunca se muestran ni se almacenan en Astropedia.</small>` : "La cuenta institucional está pendiente de asignación.";
             modalAction.href = currentOrg.email ? `mailto:info@redastrum.org?subject=Soporte%20para%20${encodeURIComponent(currentOrg.email)}` : "mailto:info@redastrum.org?subject=Asignación%20de%20cuenta%20institucional";
             modalAction.innerHTML = "Solicitar soporte <i class='bx bx-right-arrow-alt'></i>";
         } else if (service.id === "gastrum") {
@@ -196,7 +244,7 @@
             modalAction.href = "/g-astrum";
             modalAction.innerHTML = "Abrir G-Astrum <i class='bx bx-right-arrow-alt'></i>";
         } else {
-            detail.innerHTML = `<strong>Solicitud institucional</strong>La solicitud se registrará a nombre de ${currentOrg.name} para que el equipo de Red Astrum pueda revisarla.`;
+            detail.innerHTML = `<strong>Solicitud institucional</strong>La solicitud se registrará a nombre de ${escapeHtml(currentOrg.name)} para que el equipo de Red Astrum pueda revisarla.`;
             modalAction.href = "#";
             modalAction.dataset.request = "true";
             modalAction.innerHTML = "Enviar solicitud <i class='bx bx-send'></i>";
@@ -205,11 +253,15 @@
     }
 
     async function submitServiceRequest(event) {
-        if (modalAction.dataset.request !== "true" || modalAction.getAttribute("aria-disabled") === "true") return;
+        if (isAdmin() || modalAction.dataset.request !== "true" || modalAction.getAttribute("aria-disabled") === "true") return;
         event.preventDefault();
         modalAction.setAttribute("aria-disabled", "true");
         modalAction.innerHTML = "Enviando… <i class='bx bx-loader-alt bx-spin'></i>";
-        const { error } = await db.from("service_requests").insert({ organization_id: currentOrg.databaseId, service_id: currentService.id, requested_by: currentUser.id });
+        const { error } = await db.from("service_requests").insert({
+            organization_id: currentOrg.databaseId,
+            service_id: currentService.id,
+            requested_by: currentUser.id
+        });
         modalAction.removeAttribute("aria-disabled");
         if (error) {
             modalAction.innerHTML = "Reintentar solicitud <i class='bx bx-refresh'></i>";
@@ -220,47 +272,281 @@
         }
     }
 
+    function renderAdminOrganizations(query = "") {
+        const filtered = orgs.filter(org => normalize([org.name, org.representative, org.email].join(" ")).includes(normalize(query)));
+        byId("adminOrganizationList").innerHTML = filtered.length ? filtered.map(org => `
+            <article class="astro-admin-row astro-admin-org-grid">
+                <span><strong>${escapeHtml(org.name)}</strong><small>${escapeHtml(org.email || "Sin correo institucional")}</small></span>
+                <span><strong>${escapeHtml(org.representative)}</strong><small>${escapeHtml(org.role || "Cargo por confirmar")}</small></span>
+                <span><strong>${org.participation}%</strong><small>${escapeHtml(integrationLevel(org.participation).name)}</small></span>
+                <span class="astro-admin-status ${org.active ? "is-active" : "is-inactive"}">${org.active ? "Activa" : "Inactiva"}</span>
+                <button class="astro-admin-edit" type="button" data-admin-org="${escapeHtml(org.databaseId)}"><i class="bx bx-edit-alt"></i> Editar</button>
+            </article>`).join("") : '<p class="astro-admin-empty">No se encontraron organizaciones.</p>';
+
+        byId("adminOrganizationList").querySelectorAll("[data-admin-org]").forEach(button => {
+            button.addEventListener("click", () => openAdminOrganization(orgs.find(org => org.databaseId === button.dataset.adminOrg)));
+        });
+    }
+
+    function renderAdminServices() {
+        byId("adminServiceList").innerHTML = services.length ? services.map(service => `
+            <article class="astro-admin-row astro-admin-service-grid">
+                <span><strong>${escapeHtml(service.title)}</strong><small>${escapeHtml(service.description)}</small></span>
+                <span>${escapeHtml(service.group)}</span>
+                <span><strong>${service.level}%</strong></span>
+                <span class="astro-admin-status ${service.active ? "is-active" : "is-inactive"}">${service.active ? "Activo" : "Inactivo"}</span>
+                <button class="astro-admin-edit" type="button" data-admin-service="${escapeHtml(service.id)}"><i class="bx bx-edit-alt"></i> Editar</button>
+            </article>`).join("") : '<p class="astro-admin-empty">No hay servicios registrados.</p>';
+
+        byId("adminServiceList").querySelectorAll("[data-admin-service]").forEach(button => {
+            button.addEventListener("click", () => openAdminService(services.find(service => service.id === button.dataset.adminService)));
+        });
+    }
+
+    function requestStatusLabel(status) {
+        return {
+            pending: "Pendiente",
+            reviewing: "En revisión",
+            approved: "Aprobada",
+            rejected: "Rechazada",
+            completed: "Completada"
+        }[status] || status;
+    }
+
+    function renderAdminRequests() {
+        byId("adminRequestList").innerHTML = serviceRequests.length ? serviceRequests.map(request => {
+            const organizationName = request.organization?.name || orgs.find(org => org.databaseId === request.organization_id)?.name || "Organización";
+            const serviceTitle = request.service?.title || services.find(service => service.id === request.service_id)?.title || "Servicio";
+            const options = ["pending", "reviewing", "approved", "rejected", "completed"].map(status => `<option value="${status}" ${status === request.status ? "selected" : ""}>${requestStatusLabel(status)}</option>`).join("");
+            return `<article class="astro-admin-row astro-admin-request-grid">
+                <span><strong>${escapeHtml(organizationName)}</strong><small>${escapeHtml(request.message || "Sin mensaje adicional")}</small></span>
+                <span>${escapeHtml(serviceTitle)}</span>
+                <span>${new Intl.DateTimeFormat("es-PE", { dateStyle: "medium" }).format(new Date(request.created_at))}</span>
+                <select data-request-status="${escapeHtml(request.id)}" aria-label="Estado de la solicitud">${options}</select>
+                <button class="astro-admin-edit" type="button" data-save-request="${escapeHtml(request.id)}"><i class="bx bx-save"></i> Guardar</button>
+            </article>`;
+        }).join("") : '<p class="astro-admin-empty">Todavía no hay solicitudes registradas.</p>';
+
+        byId("adminRequestList").querySelectorAll("[data-save-request]").forEach(button => {
+            button.addEventListener("click", () => updateRequestStatus(button.dataset.saveRequest));
+        });
+    }
+
+    function renderAdminPanel() {
+        if (!isAdmin()) return;
+        byId("adminOrganizationCount").textContent = orgs.length;
+        byId("adminActiveCount").textContent = orgs.filter(org => org.active).length;
+        byId("adminRequestCount").textContent = serviceRequests.filter(request => ["pending", "reviewing"].includes(request.status)).length;
+        renderAdminOrganizations(byId("adminOrgSearch").value);
+        renderAdminServices();
+        renderAdminRequests();
+    }
+
+    function openAdminOrganization(org) {
+        if (!org) return;
+        byId("adminOrganizationId").value = org.databaseId;
+        byId("adminOrganizationName").value = org.name;
+        byId("adminOrganizationEmail").value = org.email;
+        byId("adminRepresentativeName").value = org.representative === "Representante por confirmar" ? "" : org.representative;
+        byId("adminRepresentativeRole").value = org.role;
+        byId("adminParticipation").value = org.participation;
+        byId("adminOds").value = org.ods.join(", ");
+        byId("adminOrganizationActive").checked = org.active;
+        byId("adminOrganizationError").textContent = "";
+        adminOrganizationModal.hidden = false;
+    }
+
+    function openAdminService(service) {
+        if (!service) return;
+        byId("adminServiceId").value = service.id;
+        byId("adminServiceName").value = service.title;
+        byId("adminServiceGroup").value = service.group;
+        byId("adminServiceDescription").value = service.description;
+        byId("adminServiceAction").value = service.action;
+        byId("adminServiceParticipation").value = service.level;
+        byId("adminServiceActive").checked = service.active;
+        byId("adminServiceError").textContent = "";
+        adminServiceModal.hidden = false;
+    }
+
+    async function saveAdminOrganization(event) {
+        event.preventDefault();
+        if (!isAdmin()) return;
+        const errorTarget = byId("adminOrganizationError");
+        const participation = Number(byId("adminParticipation").value);
+        const ods = [...new Set(byId("adminOds").value.split(",").map(value => Number(value.trim())).filter(value => Number.isInteger(value) && value >= 1 && value <= 17))];
+        if (participation < 20 || participation > 100) {
+            errorTarget.textContent = "La participación debe estar entre 20% y 100%.";
+            return;
+        }
+
+        const submit = event.currentTarget.querySelector("button[type='submit']");
+        submit.disabled = true;
+        const { error } = await db.from("organizations").update({
+            name: byId("adminOrganizationName").value.trim(),
+            institutional_email: byId("adminOrganizationEmail").value.trim().toLowerCase() || null,
+            representative_name: byId("adminRepresentativeName").value.trim() || null,
+            representative_role: byId("adminRepresentativeRole").value.trim() || null,
+            participation,
+            ods,
+            active: byId("adminOrganizationActive").checked
+        }).eq("id", byId("adminOrganizationId").value);
+        submit.disabled = false;
+
+        if (error) {
+            errorTarget.textContent = error.code === "23505" ? "Ese correo institucional ya pertenece a otra organización." : "No se pudo guardar la organización.";
+            return;
+        }
+
+        adminOrganizationModal.hidden = true;
+        await reloadAdminData();
+        showToast("Organización actualizada correctamente.");
+    }
+
+    async function saveAdminService(event) {
+        event.preventDefault();
+        if (!isAdmin()) return;
+        const errorTarget = byId("adminServiceError");
+        const minimumParticipation = Number(byId("adminServiceParticipation").value);
+        if (minimumParticipation < 20 || minimumParticipation > 100) {
+            errorTarget.textContent = "El requisito debe estar entre 20% y 100%.";
+            return;
+        }
+
+        const submit = event.currentTarget.querySelector("button[type='submit']");
+        submit.disabled = true;
+        const { error } = await db.from("services").update({
+            title: byId("adminServiceName").value.trim(),
+            service_group: byId("adminServiceGroup").value.trim(),
+            description: byId("adminServiceDescription").value.trim(),
+            action_label: byId("adminServiceAction").value.trim(),
+            minimum_participation: minimumParticipation,
+            active: byId("adminServiceActive").checked
+        }).eq("id", byId("adminServiceId").value);
+        submit.disabled = false;
+
+        if (error) {
+            errorTarget.textContent = "No se pudo guardar el servicio.";
+            return;
+        }
+
+        adminServiceModal.hidden = true;
+        await reloadAdminData();
+        showToast("Servicio actualizado correctamente.");
+    }
+
+    async function updateRequestStatus(requestId) {
+        if (!isAdmin()) return;
+        const select = byId("adminRequestList").querySelector(`[data-request-status="${CSS.escape(requestId)}"]`);
+        const button = byId("adminRequestList").querySelector(`[data-save-request="${CSS.escape(requestId)}"]`);
+        button.disabled = true;
+        const { error } = await db.from("service_requests").update({ status: select.value }).eq("id", requestId);
+        button.disabled = false;
+        if (error) return showToast("No se pudo actualizar la solicitud.");
+        const request = serviceRequests.find(item => item.id === requestId);
+        if (request) request.status = select.value;
+        renderAdminPanel();
+        showToast("Estado de la solicitud actualizado.");
+    }
+
+    async function fetchDirectoryAndServices() {
+        const [directory, catalog] = await Promise.all([
+            db.from("organizations").select(ORGANIZATION_COLUMNS).order("name"),
+            db.from("services").select("*").order("sort_order")
+        ]);
+        if (directory.error || catalog.error) throw new Error("portal_data_unavailable");
+        orgs = directory.data.map(mapOrg);
+        services = catalog.data.map(mapService);
+    }
+
+    async function reloadAdminData() {
+        await fetchDirectoryAndServices();
+        const requests = await db.from("service_requests")
+            .select("id,organization_id,service_id,status,message,created_at,organization:organizations(name),service:services(title)")
+            .order("created_at", { ascending: false })
+            .limit(100);
+        if (requests.error) throw new Error("admin_requests_unavailable");
+        serviceRequests = requests.data;
+        renderOrganizations();
+        renderServices();
+        renderAdminPanel();
+    }
+
     function enterPlatform() {
+        const admin = isAdmin();
         login.hidden = true;
         app.hidden = false;
+        adminSection.hidden = !admin;
+        adminNav.hidden = !admin;
+        document.body.classList.toggle("is-astropedia-admin", admin);
         scrollTo({ top: 0 });
         renderProfile();
         renderOrganizations();
         renderServices();
+        if (admin) renderAdminPanel();
     }
 
     async function loadPortal(user) {
         currentUser = user;
-        const [profile, directory, catalog] = await Promise.all([
-            db.from("organizations").select("*").eq("auth_user_id", user.id).maybeSingle(),
-            db.from("organizations").select("*").eq("active", true).order("name"),
-            db.from("services").select("*").eq("active", true).order("sort_order")
-        ]);
-        if (profile.error || !profile.data) {
+        errorBox.textContent = "";
+        const membershipResult = await db.from("organization_users")
+            .select("role,organization_id,active")
+            .eq("user_id", user.id)
+            .maybeSingle();
+
+        if (membershipResult.error || !membershipResult.data?.active) {
             await db.auth.signOut();
-            errorBox.textContent = "La cuenta existe, pero todavía no está vinculada a una organización de Astropedia.";
+            errorBox.textContent = "La cuenta existe, pero todavía no tiene un acceso activo en Astropedia.";
             return;
         }
-        if (directory.error || catalog.error) {
-            errorBox.textContent = "No pudimos cargar los datos de Astropedia. Inténtalo nuevamente.";
-            return;
+
+        currentRole = membershipResult.data.role;
+        try {
+            await fetchDirectoryAndServices();
+            if (isAdmin()) {
+                currentOrg = {
+                    databaseId: null,
+                    id: "red-astrum-admin",
+                    name: "Administración Red Astrum",
+                    representative: "",
+                    role: "Administrador",
+                    email: user.email || "",
+                    participation: 100,
+                    ods: [],
+                    active: true
+                };
+                const requests = await db.from("service_requests")
+                    .select("id,organization_id,service_id,status,message,created_at,organization:organizations(name),service:services(title)")
+                    .order("created_at", { ascending: false })
+                    .limit(100);
+                if (requests.error) throw new Error("admin_requests_unavailable");
+                serviceRequests = requests.data;
+            } else {
+                const profile = await db.from("organizations")
+                    .select(ORGANIZATION_COLUMNS)
+                    .eq("id", membershipResult.data.organization_id)
+                    .maybeSingle();
+                if (profile.error || !profile.data) throw new Error("organization_unavailable");
+                currentOrg = mapOrg(profile.data);
+            }
+            enterPlatform();
+        } catch {
+            await db.auth.signOut();
+            errorBox.textContent = "No pudimos cargar los datos autorizados de Astropedia. Contacta a soporte.";
         }
-        orgs = directory.data.map(mapOrg);
-        services = catalog.data.map(mapService);
-        currentOrg = mapOrg(profile.data);
-        enterPlatform();
     }
 
     form.addEventListener("submit", async event => {
         event.preventDefault();
         errorBox.textContent = "";
         if (!db) return void (errorBox.textContent = "La conexión segura no está disponible. Contacta a soporte.");
+
         if (recoveryMode) {
             if (passwordInput.value.length < 8) return void (errorBox.textContent = "La nueva contraseña debe tener al menos 8 caracteres.");
             setLoading(true);
             const { error } = await db.auth.updateUser({ password: passwordInput.value });
             if (error) {
-                errorBox.textContent = "No pudimos actualizar la contraseña. Solicita un nuevo enlace.";
+                errorBox.textContent = error.code === "weak_password" ? "La contraseña no cumple los requisitos de seguridad." : "El enlace venció o no es válido. Solicita uno nuevo.";
                 return setLoading(false);
             }
             await db.auth.signOut();
@@ -268,10 +554,16 @@
             errorBox.textContent = "Contraseña actualizada. Ya puedes iniciar sesión.";
             return;
         }
+
         setLoading(true);
-        const { data, error } = await db.auth.signInWithPassword({ email: emailInput.value.trim().toLowerCase(), password: passwordInput.value });
+        const { data, error } = await db.auth.signInWithPassword({
+            email: emailInput.value.trim().toLowerCase(),
+            password: passwordInput.value
+        });
         if (error || !data.user) {
-            errorBox.textContent = "Correo o contraseña incorrectos.";
+            errorBox.textContent = error?.code === "email_not_confirmed"
+                ? "Debes confirmar primero el correo de esta cuenta."
+                : "Correo o contraseña incorrectos.";
             return setLoading(false);
         }
         await loadPortal(data.user);
@@ -286,9 +578,16 @@
             return emailInput.focus();
         }
         resetButton.setAttribute("aria-disabled", "true");
-        const { error } = await db.auth.resetPasswordForEmail(email, { redirectTo: "https://www.redastrum.org/astropedia" });
+        const redirectTo = new URL("/astropedia?setup=password", window.location.origin).toString();
+        const { error } = await db.auth.resetPasswordForEmail(email, { redirectTo });
         resetButton.removeAttribute("aria-disabled");
-        errorBox.textContent = error ? "No pudimos enviar el enlace. Verifica el correo e inténtalo nuevamente." : "Si la cuenta está habilitada, recibirás un enlace para cambiar la contraseña.";
+        if (error?.status === 429 || error?.code === "over_email_send_rate_limit") {
+            errorBox.textContent = "Se alcanzó temporalmente el límite de correos. Espera unos minutos antes de reintentar.";
+        } else {
+            errorBox.textContent = error
+                ? "No pudimos enviar el enlace de recuperación."
+                : "Si la cuenta está habilitada, recibirás un enlace para cambiar la contraseña.";
+        }
     });
 
     byId("togglePassword").addEventListener("click", event => {
@@ -297,29 +596,47 @@
         event.currentTarget.setAttribute("aria-label", show ? "Ocultar contraseña" : "Mostrar contraseña");
         event.currentTarget.querySelector("i").className = `bx ${show ? "bx-hide" : "bx-show"}`;
     });
+
     byId("logoutButton").addEventListener("click", async () => {
         await db.auth.signOut();
-        currentUser = currentOrg = null;
+        currentUser = currentOrg = currentRole = null;
+        orgs = [];
+        services = [];
+        serviceRequests = [];
         app.hidden = true;
         login.hidden = false;
+        adminSection.hidden = true;
+        adminNav.hidden = true;
+        document.body.classList.remove("is-astropedia-admin");
         resetLoginView();
         byId("assistantPanel").hidden = true;
         scrollTo({ top: 0 });
     });
+
     modalAction.addEventListener("click", submitServiceRequest);
     byId("orgSearch").addEventListener("input", event => renderOrganizations(event.target.value));
+    byId("adminOrgSearch").addEventListener("input", event => renderAdminOrganizations(event.target.value));
     byId("closeModal").addEventListener("click", () => { modal.hidden = true; });
     modal.addEventListener("click", event => { if (event.target === modal) modal.hidden = true; });
+    byId("adminOrganizationForm").addEventListener("submit", saveAdminOrganization);
+    byId("adminServiceForm").addEventListener("submit", saveAdminService);
+    byId("closeAdminOrganizationModal").addEventListener("click", () => { adminOrganizationModal.hidden = true; });
+    byId("closeAdminServiceModal").addEventListener("click", () => { adminServiceModal.hidden = true; });
+    adminOrganizationModal.addEventListener("click", event => { if (event.target === adminOrganizationModal) adminOrganizationModal.hidden = true; });
+    adminServiceModal.addEventListener("click", event => { if (event.target === adminServiceModal) adminServiceModal.hidden = true; });
 
     const assistant = byId("assistantPanel");
     const assistantAnswer = byId("assistantAnswer");
     const assistantQuestions = byId("assistantQuestions");
+
     function selectQuestion(index) {
         const item = faq[index];
-        assistantAnswer.innerHTML = `<strong>${item.question}</strong>${item.answer}`;
-        assistantQuestions.querySelectorAll("button").forEach((button, i) => button.classList.toggle("is-active", i === index));
+        if (!item) return;
+        assistantAnswer.innerHTML = `<strong>${escapeHtml(item.question)}</strong>${escapeHtml(item.answer)}`;
+        assistantQuestions.querySelectorAll("button").forEach((button, buttonIndex) => button.classList.toggle("is-active", buttonIndex === index));
     }
-    assistantQuestions.innerHTML = faq.map((item, index) => `<button type="button" data-question="${index}"><span>${item.question}</span><i class="bx bx-chevron-right"></i></button>`).join("");
+
+    assistantQuestions.innerHTML = faq.map((item, index) => `<button type="button" data-question="${index}"><span>${escapeHtml(item.question)}</span><i class="bx bx-chevron-right"></i></button>`).join("");
     assistantQuestions.querySelectorAll("button").forEach(button => button.addEventListener("click", () => selectQuestion(Number(button.dataset.question))));
     if (faq.length) selectQuestion(0);
     byId("assistantButton").addEventListener("click", () => { assistant.hidden = !assistant.hidden; });
@@ -329,18 +646,20 @@
     const navLinks = [...document.querySelectorAll(".astro-topbar nav a")];
     if ("IntersectionObserver" in window) {
         const observer = new IntersectionObserver(entries => {
-            const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+            const visible = entries.filter(entry => entry.isIntersecting && !entry.target.hidden).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
             if (visible) navLinks.forEach(link => link.classList.toggle("is-active", link.getAttribute("href") === `#${visible.target.id}`));
         }, { rootMargin: "-25% 0px -60%", threshold: [0.05, 0.25] });
         sections.forEach(section => observer.observe(section));
     }
 
     if (!db) return void (errorBox.textContent = "La conexión segura no está disponible. Contacta a soporte.");
+
     db.auth.onAuthStateChange((event, session) => {
         if (event === "PASSWORD_RECOVERY" || (session && passwordSetupIntent)) openPasswordSetup(session?.user);
     });
-    db.auth.getSession().then(({ data }) => {
-        if (!data.session || recoveryMode) return;
+
+    db.auth.getSession().then(({ data, error }) => {
+        if (error || !data.session || recoveryMode) return;
         if (passwordSetupIntent) openPasswordSetup(data.session.user);
         else loadPortal(data.session.user);
     });
