@@ -179,3 +179,63 @@ button { cursor: pointer; }
     .astro-assistant-button > span:nth-child(2) { display: none; }
     .astro-button-avatar { display: grid !important; }
 }
+
+/* Administración */
+.astro-login-options > span { display: inline-flex; align-items: center; gap: 5px; }
+.astro-admin { background: #f3f0ea; }
+.astro-admin-badge { padding: 9px 12px; display: inline-flex; align-items: center; gap: 6px; color: #fff; background: var(--astro-navy); font-size: 9px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.astro-admin-summary { margin-bottom: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.astro-admin-summary article { min-height: 94px; padding: 20px; display: flex; align-items: center; gap: 15px; background: #fff; border: 1px solid var(--astro-line); }
+.astro-admin-summary article > i { width: 42px; height: 42px; display: grid; place-items: center; color: var(--astro-purple); background: rgba(107,47,160,.09); border-radius: 50%; font-size: 20px; }
+.astro-admin-summary strong, .astro-admin-summary small { display: block; }
+.astro-admin-summary strong { color: var(--astro-navy); font-family: "DM Serif Display", Georgia, serif; font-size: 26px; font-weight: 400; }
+.astro-admin-summary small { color: var(--astro-muted); font-size: 9px; }
+.astro-admin-block { margin-top: 18px; background: #fff; border: 1px solid var(--astro-line); }
+.astro-admin-block-heading { min-height: 86px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--astro-line); }
+.astro-admin-block-heading h3 { margin: 0 0 4px; color: var(--astro-navy); font-family: "DM Serif Display", Georgia, serif; font-size: 23px; font-weight: 400; }
+.astro-admin-block-heading p { margin: 0; color: var(--astro-muted); font-size: 9px; }
+.astro-admin-table { overflow-x: auto; }
+.astro-admin-head, .astro-admin-row { min-width: 850px; display: grid; gap: 14px; align-items: center; }
+.astro-admin-head { min-height: 39px; padding: 0 18px; color: rgba(255,255,255,.65); background: var(--astro-navy); font-size: 8px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.astro-admin-row { min-height: 68px; padding: 10px 18px; color: #4d5965; border-top: 1px solid #ece9e3; font-size: 9px; }
+.astro-admin-row:first-child { border-top: 0; }
+.astro-admin-org-grid { grid-template-columns: 1.35fr 1.15fr .7fr .65fr .45fr; }
+.astro-admin-service-grid { grid-template-columns: 1.35fr 1fr .65fr .65fr .45fr; }
+.astro-admin-request-grid { grid-template-columns: 1.2fr 1.25fr .8fr .8fr .45fr; }
+.astro-admin-row strong, .astro-admin-row small { display: block; }
+.astro-admin-row strong { color: var(--astro-ink); font-size: 10px; }
+.astro-admin-row small { margin-top: 2px; color: var(--astro-muted); font-size: 8px; }
+.astro-admin-status { width: max-content; padding: 5px 8px; color: #6c757d; background: #ececea; font-size: 8px; font-weight: 700; text-transform: uppercase; }
+.astro-admin-status.is-active, .astro-admin-status.is-approved, .astro-admin-status.is-completed { color: var(--astro-green); background: #e8f3f0; }
+.astro-admin-status.is-pending, .astro-admin-status.is-reviewing { color: #9b5a0a; background: #fff0da; }
+.astro-admin-status.is-rejected, .astro-admin-status.is-inactive { color: #9d3e35; background: #f8e7e5; }
+.astro-admin-edit { justify-self: end; padding: 8px 11px; display: inline-flex; align-items: center; gap: 5px; color: var(--astro-purple); background: #fff; border: 1px solid rgba(107,47,160,.28); font-size: 8px; font-weight: 700; }
+.astro-admin-edit:hover { color: #fff; background: var(--astro-purple); }
+.astro-admin-row select { width: 100%; min-height: 34px; padding: 0 8px; color: var(--astro-ink); background: #fff; border: 1px solid var(--astro-line); font-size: 9px; }
+.astro-admin-empty { min-width: 850px; margin: 0; padding: 28px 18px; color: var(--astro-muted); text-align: center; font-size: 10px; }
+.astro-admin-form { width: min(680px, 100%); max-height: calc(100vh - 40px); overflow-y: auto; }
+.astro-admin-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.astro-admin-fields label { display: grid; gap: 6px; color: #43505d; font-size: 10px; font-weight: 600; }
+.astro-admin-fields label small { color: var(--astro-muted); font-size: 8px; font-weight: 400; }
+.astro-admin-fields input, .astro-admin-fields textarea { width: 100%; padding: 11px 12px; color: var(--astro-ink); background: #fff; border: 1px solid #d7d4ce; outline: none; font: inherit; font-size: 10px; resize: vertical; }
+.astro-admin-fields input:focus, .astro-admin-fields textarea:focus { border-color: var(--astro-purple); box-shadow: 0 0 0 3px rgba(107,47,160,.1); }
+.astro-admin-field-wide { grid-column: 1 / -1; }
+.astro-admin-checkbox { grid-column: 1 / -1; display: flex !important; grid-auto-flow: column; justify-content: start; align-items: center; }
+.astro-admin-checkbox input { width: auto; accent-color: var(--astro-purple); }
+.astro-admin-form .astro-form-error { margin: 12px 0 4px; }
+.astro-admin-form > .astro-primary-button { width: 100%; margin-top: 10px; }
+
+body.is-astropedia-admin .astro-level-section { display: none; }
+body.is-astropedia-admin .astro-participation a { display: none; }
+
+@media (max-width: 1000px) {
+    .astro-admin-summary { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+    .astro-admin-summary { grid-template-columns: 1fr; }
+    .astro-admin-block-heading { align-items: stretch; flex-direction: column; }
+    .astro-admin-fields { grid-template-columns: 1fr; }
+    .astro-admin-field-wide, .astro-admin-checkbox { grid-column: auto; }
+    .astro-admin-form { padding: 27px 21px; }
+}
