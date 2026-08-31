@@ -561,9 +561,12 @@
             password: passwordInput.value
         });
         if (error || !data.user) {
-            errorBox.textContent = error?.code === "email_not_confirmed"
-                ? "Debes confirmar primero el correo de esta cuenta."
-                : "Correo o contraseña incorrectos.";
+            const invalidProjectConfiguration = /api key|apikey|jwt/i.test(error?.message || "");
+            errorBox.textContent = invalidProjectConfiguration
+                ? "La conexión de Astropedia con Supabase está desactualizada. Contacta a soporte."
+                : error?.code === "email_not_confirmed"
+                    ? "Debes confirmar primero el correo de esta cuenta."
+                    : "Correo o contraseña incorrectos.";
             return setLoading(false);
         }
         await loadPortal(data.user);
