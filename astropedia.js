@@ -5,6 +5,10 @@
     const publicOrgs = typeof ONGS !== "undefined" ? ONGS : [];
     const config = window.ASTROPEDIA_CONFIG || {};
     const ORGANIZATION_COLUMNS = "id,slug,name,representative_name,representative_role,institutional_email,participation,ods,active,created_at,updated_at";
+    const WHATSAPP_CONTACTS = Object.freeze({
+        ongCoordinator: "51977874169",
+        president: "51986823268"
+    });
     const initialQuery = new URLSearchParams(window.location.search);
     const initialHash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
     const initialFlowType = initialQuery.get("type") || initialHash.get("type");
@@ -58,6 +62,44 @@
     }[character]));
     const getPublicOrg = id => publicOrgs.find(org => org.id === id) || null;
     const isAdmin = () => currentRole === "admin";
+    const whatsappUrl = (number, message) => `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+
+    function whatsappService(service) {
+        const greeting = `Hola, soy ${currentOrg.representative} de ${currentOrg.name}.`;
+        const actions = {
+            espacios: {
+                number: WHATSAPP_CONTACTS.ongCoordinator,
+                detail: "La Coordinación de ONGs revisará la disponibilidad y condiciones del espacio solicitado.",
+                message: `${greeting} Quisiera consultar la disponibilidad de un espacio físico mediante Astropedia.`
+            },
+            ruc: {
+                number: WHATSAPP_CONTACTS.ongCoordinator,
+                detail: "La Coordinación de ONGs te orientará sobre requisitos, evaluación y trazabilidad para el uso de RUC.",
+                message: `${greeting} Quisiera iniciar la evaluación para solicitar el uso de RUC mediante Astropedia.`
+            },
+            financiamiento: {
+                number: WHATSAPP_CONTACTS.president,
+                detail: "La Presidencia de Red Astrum revisará la iniciativa y sus necesidades de apoyo económico.",
+                message: `${greeting} Quisiera solicitar una evaluación de apoyo económico para una iniciativa mediante Astropedia.`
+            },
+            metodologias: {
+                number: WHATSAPP_CONTACTS.president,
+                detail: "La Presidencia de Red Astrum te orientará sobre las metodologías disponibles y su implementación.",
+                message: `${greeting} Quisiera conocer y solicitar una Metodología Astrum mediante Astropedia.`
+            },
+            fortalecimiento: {
+                number: WHATSAPP_CONTACTS.president,
+                detail: "La Presidencia de Red Astrum coordinará el diagnóstico inicial de fortalecimiento organizacional.",
+                message: `${greeting} Quisiera solicitar un diagnóstico de fortalecimiento organizacional mediante Astropedia.`
+            },
+            prioridad: {
+                number: WHATSAPP_CONTACTS.president,
+                detail: "La Presidencia de Red Astrum revisará las oportunidades prioritarias adecuadas para tu organización.",
+                message: `${greeting} Quisiera consultar las oportunidades prioritarias disponibles mediante Astropedia.`
+            }
+        };
+        return actions[service.id] || null;
+    }
 
     const mapOrg = row => ({
         databaseId: row.id,
@@ -230,6 +272,8 @@
     function openService(service) {
         currentService = service;
         modalAction.dataset.request = "false";
+        modalAction.removeAttribute("target");
+        modalAction.removeAttribute("rel");
         byId("modalIcon").className = `bx ${service.icon}`;
         byId("modalGroup").textContent = service.group;
         byId("modalTitle").textContent = service.title;
@@ -243,6 +287,17 @@
             detail.innerHTML = "<strong>Comunidad G-Astrum</strong>Explora los clubes y espacios de integración disponibles.";
             modalAction.href = "/g-astrum";
             modalAction.innerHTML = "Abrir G-Astrum <i class='bx bx-right-arrow-alt'></i>";
+        } else if (service.id === "proyectos") {
+            detail.innerHTML = "<strong>Proyecto activo</strong>Actualmente puedes participar en Picnic Astrum, la iniciativa comunitaria activa de la red.";
+            modalAction.href = "/picnic-astrum";
+            modalAction.innerHTML = "Abrir Picnic Astrum <i class='bx bx-right-arrow-alt'></i>";
+        } else if (whatsappService(service)) {
+            const action = whatsappService(service);
+            detail.innerHTML = `<strong>Atención directa por WhatsApp</strong>${escapeHtml(action.detail)}`;
+            modalAction.href = whatsappUrl(action.number, action.message);
+            modalAction.target = "_blank";
+            modalAction.rel = "noopener noreferrer";
+            modalAction.innerHTML = "Enviar mensaje por WhatsApp <i class='bx bxl-whatsapp'></i>";
         } else {
             detail.innerHTML = `<strong>Solicitud institucional</strong>La solicitud se registrará a nombre de ${escapeHtml(currentOrg.name)} para que el equipo de Red Astrum pueda revisarla.`;
             modalAction.href = "#";
