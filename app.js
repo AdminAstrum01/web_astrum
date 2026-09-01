@@ -154,31 +154,75 @@
     }
 
     function addServicesMenu() {
-        const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/"; const isAstrumCertificaPage = normalizedPath === "/verificar";
-        document.querySelectorAll('ul.main > li > a[href="/verificar/"],ul.main > li > a[href="/verificar"],.sidebar > ul > li > a[href="/verificar/"],.sidebar > ul > li > a[href="/verificar"]').forEach(link => link.closest("li")?.remove());
+        const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
+        const isAstrumCertificaPage = normalizedPath === "/verificar";
+        const isAstropediaPage = normalizedPath === "/astropedia";
+        const isServicePage = isAstrumCertificaPage || isAstropediaPage;
+
+        document.querySelectorAll([
+            'ul.main > li > a[href="/verificar/"]',
+            'ul.main > li > a[href="/verificar"]',
+            'ul.main > li > a[href="/astropedia"]',
+            '.sidebar > ul > li > a[href="/verificar/"]',
+            '.sidebar > ul > li > a[href="/verificar"]',
+            '.sidebar > ul > li > a[href="/astropedia"]'
+        ].join(",")).forEach(link => link.closest("li")?.remove());
+
         const desktopMenu = document.querySelector("ul.main");
         if (desktopMenu && !desktopMenu.querySelector('[data-menu="services"]')) {
-            const item = document.createElement("li"); item.className = "nav-dropdown"; item.dataset.menu = "services";
-            item.innerHTML = `<a href="#services-menu" aria-haspopup="true" aria-expanded="false">Servicios <i class="bx bx-chevron-down" aria-hidden="true"></i></a><ul id="services-menu" aria-label="Servicios de Red Astrum"><li><a href="/verificar/">Astrum Certifica</a></li></ul>`;
-            const trigger = item.querySelector(":scope > a"); const serviceLink = item.querySelector('a[href="/verificar/"]'); if (isAstrumCertificaPage) { trigger?.setAttribute("aria-current", "page"); serviceLink?.setAttribute("aria-current", "page"); }
-            const contact = Array.from(desktopMenu.children).find(el => {
-                const link = el.querySelector(":scope > a[href]");
+            const item = document.createElement("li");
+            item.className = "nav-dropdown";
+            item.dataset.menu = "services";
+            item.innerHTML = `<a href="#services-menu" aria-haspopup="true" aria-expanded="false"${isServicePage ? ' aria-current="page"' : ""}>Servicios <i class="bx bx-chevron-down" aria-hidden="true"></i></a><ul id="services-menu" aria-label="Servicios de Red Astrum"><li><a href="/verificar/"${isAstrumCertificaPage ? ' aria-current="page"' : ""}>Astrum Certifica</a></li><li><a href="/astropedia"${isAstropediaPage ? ' aria-current="page"' : ""}>Astropedia</a></li></ul>`;
+
+            const trigger = item.querySelector(":scope > a");
+            const contact = Array.from(desktopMenu.children).find(element => {
+                const link = element.querySelector(":scope > a[href]");
                 if (!link) return false;
-                try { return new URL(link.getAttribute("href"), window.location.origin).hash === "#contacto"; }
-                catch { return false; }
-            }); desktopMenu.insertBefore(item, contact || null);
-            const setOpen = open => { item.classList.toggle("open", open); trigger?.setAttribute("aria-expanded", String(open)); };
-            trigger?.addEventListener("click", event => { event.preventDefault(); setOpen(!item.classList.contains("open")); }); item.addEventListener("keydown", event => { if (event.key === "Escape") { setOpen(false); trigger?.focus(); } }); document.addEventListener("click", event => { if (!item.contains(event.target)) setOpen(false); });
+                try {
+                    return new URL(link.getAttribute("href"), window.location.origin).hash === "#contacto";
+                } catch {
+                    return false;
+                }
+            });
+            desktopMenu.insertBefore(item, contact || null);
+
+            const setOpen = open => {
+                item.classList.toggle("open", open);
+                trigger?.setAttribute("aria-expanded", String(open));
+            };
+            trigger?.addEventListener("click", event => {
+                event.preventDefault();
+                setOpen(!item.classList.contains("open"));
+            });
+            item.addEventListener("keydown", event => {
+                if (event.key === "Escape") {
+                    setOpen(false);
+                    trigger?.focus();
+                }
+            });
+            document.addEventListener("click", event => {
+                if (!item.contains(event.target)) setOpen(false);
+            });
         }
+
         const mobileMenu = document.querySelector(".sidebar > ul");
         if (mobileMenu && !mobileMenu.querySelector('[data-menu="services-mobile"]')) {
-            const item = document.createElement("li"); item.className = "sidebar-services"; item.dataset.menu = "services-mobile"; item.innerHTML = `<details${isAstrumCertificaPage ? " open" : ""}><summary><span>Servicios</span><i class="bx bx-chevron-down" aria-hidden="true"></i></summary><ul aria-label="Servicios de Red Astrum"><li><a href="/verificar/"${isAstrumCertificaPage ? ' aria-current="page"' : ""}>Astrum Certifica</a></li></ul></details>`;
-            const contact = Array.from(mobileMenu.children).find(el => {
-                const link = el.querySelector(":scope > a[href]");
+            const item = document.createElement("li");
+            item.className = "sidebar-services";
+            item.dataset.menu = "services-mobile";
+            item.innerHTML = `<details${isServicePage ? " open" : ""}><summary><span>Servicios</span><i class="bx bx-chevron-down" aria-hidden="true"></i></summary><ul aria-label="Servicios de Red Astrum"><li><a href="/verificar/"${isAstrumCertificaPage ? ' aria-current="page"' : ""}>Astrum Certifica</a></li><li><a href="/astropedia"${isAstropediaPage ? ' aria-current="page"' : ""}>Astropedia</a></li></ul></details>`;
+
+            const contact = Array.from(mobileMenu.children).find(element => {
+                const link = element.querySelector(":scope > a[href]");
                 if (!link) return false;
-                try { return new URL(link.getAttribute("href"), window.location.origin).hash === "#contacto"; }
-                catch { return false; }
-            }); mobileMenu.insertBefore(item, contact || null);
+                try {
+                    return new URL(link.getAttribute("href"), window.location.origin).hash === "#contacto";
+                } catch {
+                    return false;
+                }
+            });
+            mobileMenu.insertBefore(item, contact || null);
         }
     }
 
