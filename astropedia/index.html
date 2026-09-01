@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/astropedia.css">
+    <link rel="stylesheet" href="/astropedia.css?v=3.2.0">
 </head>
 
 <body>
@@ -199,6 +199,9 @@
                     <label>Correo institucional<input id="adminOrganizationEmail" type="email" maxlength="200"></label>
                     <label>Representante<input id="adminRepresentativeName" type="text" maxlength="160"></label>
                     <label>Cargo<input id="adminRepresentativeRole" type="text" maxlength="160"></label>
+                    <label>Correo del representante<input id="adminRepresentativeEmail" type="email" maxlength="200"></label>
+                    <label>Teléfono del representante<input id="adminRepresentativePhone" type="tel" maxlength="40" placeholder="+51 999 999 999"></label>
+                    <label>Grupo de Google AI Pro<select id="adminAccountGroup"><option value="">Sin asignar</option><option value="1">Cuenta 1</option><option value="2">Cuenta 2</option></select></label>
                     <label>Participación (%)<input id="adminParticipation" type="number" min="20" max="100" required></label>
                     <label>ODS <small>Separados por comas</small><input id="adminOds" type="text" placeholder="4, 5, 10, 17"></label>
                     <label class="astro-admin-checkbox"><input id="adminOrganizationActive" type="checkbox"> Organización activa</label>
@@ -218,6 +221,11 @@
                     <label class="astro-admin-field-wide">Descripción<textarea id="adminServiceDescription" required maxlength="600" rows="4"></textarea></label>
                     <label>Texto del botón<input id="adminServiceAction" type="text" required maxlength="120"></label>
                     <label>Participación mínima (%)<input id="adminServiceParticipation" type="number" min="20" max="100" required></label>
+                    <label>Tipo de acción<select id="adminServiceActionType"><option value="request">Solicitud interna</option><option value="form">Formulario</option><option value="whatsapp">WhatsApp directo</option><option value="whatsapp_group">Grupo de WhatsApp</option><option value="external">Enlace externo</option></select></label>
+                    <label>URL de acción<input id="adminServiceActionUrl" type="text" maxlength="500" placeholder="https://... o /ruta"></label>
+                    <label>Número de WhatsApp<input id="adminServiceWhatsapp" type="tel" maxlength="40" placeholder="51999999999"></label>
+                    <label class="astro-admin-field-wide">Detalle de la acción<textarea id="adminServiceDetail" maxlength="600" rows="3"></textarea></label>
+                    <label class="astro-admin-field-wide">Mensaje de WhatsApp <small>Variables: {representative}, {organization}, {service}</small><textarea id="adminServiceMessage" maxlength="1000" rows="3"></textarea></label>
                     <label class="astro-admin-checkbox"><input id="adminServiceActive" type="checkbox"> Servicio activo</label>
                 </div>
                 <p class="astro-form-error" id="adminServiceError" role="alert"></p>
@@ -228,10 +236,10 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js" crossorigin="anonymous"></script>
-    <script src="/astropedia-config.js?v=3.1.0"></script>
+    <script src="/astropedia-config.js?v=3.2.0"></script>
     <script src="/ong-data.js"></script>
     <script src="/astropedia-data.js"></script>
-    <script src="/astropedia.js?v=3.1.0"></script>
+    <script src="/astropedia.js?v=3.2.0"></script>
 </body>
 
 </html>

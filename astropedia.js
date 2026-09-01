@@ -4,11 +4,13 @@
     const faq = window.ASTROPEDIA_FAQ || [];
     const publicOrgs = typeof ONGS !== "undefined" ? ONGS : [];
     const config = window.ASTROPEDIA_CONFIG || {};
-    const ORGANIZATION_COLUMNS = "id,slug,name,representative_name,representative_role,institutional_email,participation,ods,active,created_at,updated_at";
-    const WHATSAPP_CONTACTS = Object.freeze({
-        ongCoordinator: "51977874169",
-        president: "51986823268"
-    });
+    const ORGANIZATION_COLUMNS = "id,slug,name,representative_name,representative_role,representative_email,representative_phone,institutional_email,account_group,participation,ods,active,created_at,updated_at";
+    const ACCOUNT_TYPES = [
+        { id: "zoom", title: "Cuenta de Zoom", icon: "bxl-zoom" },
+        { id: "google_ai_pro", title: "Cuenta de Google AI Pro", icon: "bx-sparkles" },
+        { id: "organization_email", title: "Cuenta de la ONG", icon: "bx-buildings" },
+        { id: "representative_email", title: "Cuenta del representante", icon: "bx-user" }
+    ];
     const initialQuery = new URLSearchParams(window.location.search);
     const initialHash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
     const initialFlowType = initialQuery.get("type") || initialHash.get("type");
@@ -44,6 +46,8 @@
 
     let orgs = [];
     let services = [];
+    let serviceActions = [];
+    let organizationAccounts = [];
     let serviceRequests = [];
     let currentOrg = null;
     let currentUser = null;
@@ -63,43 +67,12 @@
     const getPublicOrg = id => publicOrgs.find(org => org.id === id) || null;
     const isAdmin = () => currentRole === "admin";
     const whatsappUrl = (number, message) => `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-
-    function whatsappService(service) {
-        const greeting = `Hola, soy ${currentOrg.representative} de ${currentOrg.name}.`;
-        const actions = {
-            espacios: {
-                number: WHATSAPP_CONTACTS.ongCoordinator,
-                detail: "La Coordinación de ONGs revisará la disponibilidad y condiciones del espacio solicitado.",
-                message: `${greeting} Quisiera consultar la disponibilidad de un espacio físico mediante Astropedia.`
-            },
-            ruc: {
-                number: WHATSAPP_CONTACTS.ongCoordinator,
-                detail: "La Coordinación de ONGs te orientará sobre requisitos, evaluación y trazabilidad para el uso de RUC.",
-                message: `${greeting} Quisiera iniciar la evaluación para solicitar el uso de RUC mediante Astropedia.`
-            },
-            financiamiento: {
-                number: WHATSAPP_CONTACTS.president,
-                detail: "La Presidencia de Red Astrum revisará la iniciativa y sus necesidades de apoyo económico.",
-                message: `${greeting} Quisiera solicitar una evaluación de apoyo económico para una iniciativa mediante Astropedia.`
-            },
-            metodologias: {
-                number: WHATSAPP_CONTACTS.president,
-                detail: "La Presidencia de Red Astrum te orientará sobre las metodologías disponibles y su implementación.",
-                message: `${greeting} Quisiera conocer y solicitar una Metodología Astrum mediante Astropedia.`
-            },
-            fortalecimiento: {
-                number: WHATSAPP_CONTACTS.president,
-                detail: "La Presidencia de Red Astrum coordinará el diagnóstico inicial de fortalecimiento organizacional.",
-                message: `${greeting} Quisiera solicitar un diagnóstico de fortalecimiento organizacional mediante Astropedia.`
-            },
-            prioridad: {
-                number: WHATSAPP_CONTACTS.president,
-                detail: "La Presidencia de Red Astrum revisará las oportunidades prioritarias adecuadas para tu organización.",
-                message: `${greeting} Quisiera consultar las oportunidades prioritarias disponibles mediante Astropedia.`
-            }
-        };
-        return actions[service.id] || null;
-    }
+    const normalizePhone = value => String(value || "").replace(/\D/g, "");
+    const fillActionTemplate = template => String(template || "")
+        .replaceAll("{organization}", currentOrg?.name || "mi organización")
+        .replaceAll("{representative}", currentOrg?.representative || "representante")
+        .replaceAll("{service}", currentService?.title || "el servicio");
+    const getServiceAction = serviceId => serviceActions.find(action => action.serviceId === serviceId && action.active) || null;
 
     const mapOrg = row => ({
         databaseId: row.id,
@@ -107,7 +80,10 @@
         name: row.name,
         representative: row.representative_name || "Representante por confirmar",
         role: row.representative_role || "",
+        representativeEmail: row.representative_email || "",
+        phone: row.representative_phone || "",
         email: row.institutional_email || "",
+        accountGroup: row.account_group ? Number(row.account_group) : null,
         participation: Number(row.participation),
         ods: Array.isArray(row.ods) ? row.ods.map(Number).filter(Number.isFinite) : [],
         active: row.active !== false
@@ -121,6 +97,26 @@
         level: Number(row.minimum_participation),
         group: row.service_group,
         action: row.action_label,
+        active: row.active !== false,
+        sortOrder: Number(row.sort_order || 0)
+    });
+
+    const mapServiceAction = row => ({
+        serviceId: row.service_id,
+        actionType: row.action_type,
+        actionUrl: row.action_url || "",
+        whatsappNumber: row.whatsapp_number || "",
+        detail: row.detail || "",
+        messageTemplate: row.message_template || "",
+        buttonLabel: row.button_label || "Continuar",
+        active: row.active !== false
+    });
+
+    const mapAccount = row => ({
+        type: row.account_type,
+        title: row.title,
+        email: row.login_email || "",
+        url: row.login_url || "",
         active: row.active !== false,
         sortOrder: Number(row.sort_order || 0)
     });
@@ -236,17 +232,22 @@
     function renderOrganizations(query = "") {
         const filtered = orgs
             .filter(org => org.active)
-            .filter(org => normalize([org.name, org.representative, org.role, org.email, org.ods.join(" ")].join(" ")).includes(normalize(query)));
+            .filter(org => normalize([org.name, org.representative, org.role, org.email, org.phone, org.ods.join(" ")].join(" ")).includes(normalize(query)));
 
         orgList.innerHTML = filtered.map(org => {
             const publicOrg = getPublicOrg(org.id);
+            const phoneNumber = normalizePhone(org.phone);
+            const phone = phoneNumber
+                ? `<a href="${whatsappUrl(phoneNumber, `Hola, ${org.representative}. Me comunico desde Astropedia para conversar con ${org.name}.`)}" target="_blank" rel="noopener noreferrer"><i class="bx bxl-whatsapp"></i><span>${escapeHtml(org.phone)}</span></a>`
+                : '<span class="is-empty"><i class="bx bxl-whatsapp"></i><span>Teléfono por asignar</span></span>';
             const email = org.email
-                ? `<a class="astro-org-email" href="mailto:${encodeURIComponent(org.email)}"><i class="bx bx-envelope"></i><span>${escapeHtml(org.email)}</span></a>`
-                : '<span class="astro-org-email is-empty"><i class="bx bx-envelope"></i><span>Por asignar</span></span>';
+                ? `<a href="mailto:${encodeURIComponent(org.email)}"><i class="bx bx-envelope"></i><span>${escapeHtml(org.email)}</span></a>`
+                : '<span class="is-empty"><i class="bx bx-envelope"></i><span>Correo por asignar</span></span>';
+            const contact = `<div class="astro-org-contact">${phone}${email}</div>`;
             const portal = publicOrg
                 ? `<a class="astro-portal-link" href="/ong?id=${encodeURIComponent(org.id)}">Ver portal <i class="bx bx-link-external"></i></a>`
                 : '<span class="astro-portal-link is-disabled">Portal próximo</span>';
-            return `<article class="astro-org-row"><div class="astro-org-name">${logoMarkup(org)}<span><strong>${escapeHtml(org.name)}</strong><small>${escapeHtml(publicOrg?.region || "Organización afiliada")}</small></span></div><div class="astro-representative"><i class="bx bx-user"></i><span><strong>${escapeHtml(org.representative)}</strong><small>${escapeHtml(org.role)}</small></span></div>${email}<div class="astro-ods">${org.ods.map(number => `<span title="ODS ${number}">${number}</span>`).join("")}</div>${portal}</article>`;
+            return `<article class="astro-org-row"><div class="astro-org-name">${logoMarkup(org)}<span><strong>${escapeHtml(org.name)}</strong><small>${escapeHtml(publicOrg?.region || "Organización afiliada")}</small></span></div><div class="astro-representative"><i class="bx bx-user"></i><span><strong>${escapeHtml(org.representative)}</strong><small>${escapeHtml(org.role)}</small></span></div>${contact}<div class="astro-ods">${org.ods.map(number => `<span title="ODS ${number}">${number}</span>`).join("")}</div>${portal}</article>`;
         }).join("");
 
         orgCount.textContent = `${filtered.length} ${filtered.length === 1 ? "organización" : "organizaciones"}`;
@@ -271,6 +272,7 @@
 
     function openService(service) {
         currentService = service;
+        const action = getServiceAction(service.id);
         modalAction.dataset.request = "false";
         modalAction.removeAttribute("target");
         modalAction.removeAttribute("rel");
@@ -280,24 +282,34 @@
         byId("modalDescription").textContent = service.description;
         const detail = byId("modalDetail");
         if (service.id === "cuentas") {
-            detail.innerHTML = currentOrg.email ? `<strong>Cuenta institucional</strong>${escapeHtml(currentOrg.email)}<br><small>Las contraseñas nunca se muestran ni se almacenan en Astropedia.</small>` : "La cuenta institucional está pendiente de asignación.";
-            modalAction.href = currentOrg.email ? `mailto:info@redastrum.org?subject=Soporte%20para%20${encodeURIComponent(currentOrg.email)}` : "mailto:info@redastrum.org?subject=Asignación%20de%20cuenta%20institucional";
+            const accountRows = ACCOUNT_TYPES.map(type => {
+                const account = organizationAccounts.find(item => item.type === type.id && item.active);
+                const content = account?.email
+                    ? `<strong>${escapeHtml(account.title || type.title)}</strong><small>${escapeHtml(account.email)}</small>`
+                    : `<strong>${escapeHtml(type.title)}</strong><small>Pendiente de asignación</small>`;
+                return account?.url && account?.email
+                    ? `<a class="astro-account-resource" href="${escapeHtml(account.url)}" target="_blank" rel="noopener noreferrer"><i class="bx ${escapeHtml(type.icon)}"></i><span>${content}</span><i class="bx bx-link-external"></i></a>`
+                    : `<span class="astro-account-resource is-pending"><i class="bx ${escapeHtml(type.icon)}"></i><span>${content}</span><i class="bx bx-time-five"></i></span>`;
+            }).join("");
+            detail.innerHTML = `<div class="astro-account-list">${accountRows}</div><p class="astro-security-note"><i class="bx bx-shield-quarter"></i> Astropedia muestra únicamente los correos de acceso. Las contraseñas no se almacenan ni se revelan aquí.</p>`;
+            modalAction.href = `mailto:info@redastrum.org?subject=Soporte%20de%20herramientas%20digitales%20-%20${encodeURIComponent(currentOrg.name)}`;
             modalAction.innerHTML = "Solicitar soporte <i class='bx bx-right-arrow-alt'></i>";
-        } else if (service.id === "gastrum") {
-            detail.innerHTML = "<strong>Comunidad G-Astrum</strong>Explora los clubes y espacios de integración disponibles.";
-            modalAction.href = "/g-astrum";
-            modalAction.innerHTML = "Abrir G-Astrum <i class='bx bx-right-arrow-alt'></i>";
-        } else if (service.id === "proyectos") {
-            detail.innerHTML = "<strong>Proyecto activo</strong>Actualmente puedes participar en Picnic Astrum, la iniciativa comunitaria activa de la red.";
-            modalAction.href = "/picnic-astrum";
-            modalAction.innerHTML = "Abrir Picnic Astrum <i class='bx bx-right-arrow-alt'></i>";
-        } else if (whatsappService(service)) {
-            const action = whatsappService(service);
+        } else if (action?.actionType === "whatsapp") {
             detail.innerHTML = `<strong>Atención directa por WhatsApp</strong>${escapeHtml(action.detail)}`;
-            modalAction.href = whatsappUrl(action.number, action.message);
+            modalAction.href = whatsappUrl(normalizePhone(action.whatsappNumber), fillActionTemplate(action.messageTemplate));
             modalAction.target = "_blank";
             modalAction.rel = "noopener noreferrer";
-            modalAction.innerHTML = "Enviar mensaje por WhatsApp <i class='bx bxl-whatsapp'></i>";
+            modalAction.innerHTML = `${escapeHtml(action.buttonLabel)} <i class='bx bxl-whatsapp'></i>`;
+        } else if (action && ["form", "whatsapp_group", "external"].includes(action.actionType)) {
+            const heading = action.actionType === "form" ? "Formulario oficial" : action.actionType === "whatsapp_group" ? "Comunidad G-Astrum" : "Proyecto activo";
+            detail.innerHTML = `<strong>${heading}</strong>${escapeHtml(action.detail)}`;
+            modalAction.href = action.actionUrl;
+            if (/^https?:\/\//i.test(action.actionUrl)) {
+                modalAction.target = "_blank";
+                modalAction.rel = "noopener noreferrer";
+            }
+            const icon = action.actionType === "whatsapp_group" ? "bxl-whatsapp" : "bx-link-external";
+            modalAction.innerHTML = `${escapeHtml(action.buttonLabel)} <i class='bx ${icon}'></i>`;
         } else {
             detail.innerHTML = `<strong>Solicitud institucional</strong>La solicitud se registrará a nombre de ${escapeHtml(currentOrg.name)} para que el equipo de Red Astrum pueda revisarla.`;
             modalAction.href = "#";
@@ -404,6 +416,9 @@
         byId("adminOrganizationEmail").value = org.email;
         byId("adminRepresentativeName").value = org.representative === "Representante por confirmar" ? "" : org.representative;
         byId("adminRepresentativeRole").value = org.role;
+        byId("adminRepresentativeEmail").value = org.representativeEmail;
+        byId("adminRepresentativePhone").value = org.phone;
+        byId("adminAccountGroup").value = org.accountGroup || "";
         byId("adminParticipation").value = org.participation;
         byId("adminOds").value = org.ods.join(", ");
         byId("adminOrganizationActive").checked = org.active;
@@ -420,6 +435,12 @@
         byId("adminServiceAction").value = service.action;
         byId("adminServiceParticipation").value = service.level;
         byId("adminServiceActive").checked = service.active;
+        const action = getServiceAction(service.id);
+        byId("adminServiceActionType").value = action?.actionType || "request";
+        byId("adminServiceActionUrl").value = action?.actionUrl || "";
+        byId("adminServiceWhatsapp").value = action?.whatsappNumber || "";
+        byId("adminServiceDetail").value = action?.detail || "";
+        byId("adminServiceMessage").value = action?.messageTemplate || "";
         byId("adminServiceError").textContent = "";
         adminServiceModal.hidden = false;
     }
@@ -442,6 +463,9 @@
             institutional_email: byId("adminOrganizationEmail").value.trim().toLowerCase() || null,
             representative_name: byId("adminRepresentativeName").value.trim() || null,
             representative_role: byId("adminRepresentativeRole").value.trim() || null,
+            representative_email: byId("adminRepresentativeEmail").value.trim().toLowerCase() || null,
+            representative_phone: byId("adminRepresentativePhone").value.trim() || null,
+            account_group: Number(byId("adminAccountGroup").value) || null,
             participation,
             ods,
             active: byId("adminOrganizationActive").checked
@@ -470,7 +494,7 @@
 
         const submit = event.currentTarget.querySelector("button[type='submit']");
         submit.disabled = true;
-        const { error } = await db.from("services").update({
+        const serviceUpdate = await db.from("services").update({
             title: byId("adminServiceName").value.trim(),
             service_group: byId("adminServiceGroup").value.trim(),
             description: byId("adminServiceDescription").value.trim(),
@@ -478,9 +502,20 @@
             minimum_participation: minimumParticipation,
             active: byId("adminServiceActive").checked
         }).eq("id", byId("adminServiceId").value);
+        const actionUpdate = serviceUpdate.error ? { error: serviceUpdate.error } : await db.from("service_actions").upsert({
+            service_id: byId("adminServiceId").value,
+            action_type: byId("adminServiceActionType").value,
+            action_url: byId("adminServiceActionUrl").value.trim() || null,
+            whatsapp_number: byId("adminServiceWhatsapp").value.trim() || null,
+            detail: byId("adminServiceDetail").value.trim() || null,
+            message_template: byId("adminServiceMessage").value.trim() || null,
+            button_label: byId("adminServiceAction").value.trim(),
+            active: byId("adminServiceActive").checked,
+            updated_at: new Date().toISOString()
+        }, { onConflict: "service_id" });
         submit.disabled = false;
 
-        if (error) {
+        if (serviceUpdate.error || actionUpdate.error) {
             errorTarget.textContent = "No se pudo guardar el servicio.";
             return;
         }
@@ -505,13 +540,15 @@
     }
 
     async function fetchDirectoryAndServices() {
-        const [directory, catalog] = await Promise.all([
+        const [directory, catalog, actions] = await Promise.all([
             db.from("organizations").select(ORGANIZATION_COLUMNS).order("name"),
-            db.from("services").select("*").order("sort_order")
+            db.from("services").select("*").order("sort_order"),
+            db.from("service_actions").select("*")
         ]);
-        if (directory.error || catalog.error) throw new Error("portal_data_unavailable");
+        if (directory.error || catalog.error || actions.error) throw new Error("portal_data_unavailable");
         orgs = directory.data.map(mapOrg);
         services = catalog.data.map(mapService);
+        serviceActions = actions.data.map(mapServiceAction);
     }
 
     async function reloadAdminData() {
@@ -565,7 +602,10 @@
                     name: "Administración Red Astrum",
                     representative: "",
                     role: "Administrador",
+                    representativeEmail: user.email || "",
+                    phone: "",
                     email: user.email || "",
+                    accountGroup: null,
                     participation: 100,
                     ods: [],
                     active: true
@@ -583,6 +623,12 @@
                     .maybeSingle();
                 if (profile.error || !profile.data) throw new Error("organization_unavailable");
                 currentOrg = mapOrg(profile.data);
+                const accounts = await db.from("organization_accounts")
+                    .select("account_type,title,login_email,login_url,sort_order,active")
+                    .eq("organization_id", currentOrg.databaseId)
+                    .order("sort_order");
+                if (accounts.error) throw new Error("organization_accounts_unavailable");
+                organizationAccounts = accounts.data.map(mapAccount);
             }
             enterPlatform();
         } catch {
@@ -660,6 +706,8 @@
         currentUser = currentOrg = currentRole = null;
         orgs = [];
         services = [];
+        serviceActions = [];
+        organizationAccounts = [];
         serviceRequests = [];
         app.hidden = true;
         login.hidden = false;
