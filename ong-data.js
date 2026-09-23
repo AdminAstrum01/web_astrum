@@ -718,6 +718,44 @@ const ONGS = [
             "indirecto": 1080,
             "miembros": 15
         }
+    },
+    {
+        "id": "por-ti",
+        "nombre": "Por Ti",
+        "descripcion": "Asociación juvenil peruana sin fines de lucro que impulsa a adolescentes y mujeres jóvenes a reconocer sus cualidades físicas, emocionales e intelectuales, fortalecer su seguridad y perseguir sus metas mediante formación y acompañamiento.",
+        "mision": "Fortalecer las cualidades de adolescentes y mujeres jóvenes mediante talleres, charlas y eventos para que desarrollen confianza, alcancen sus metas y ejerzan liderazgo.",
+        "vision": "Promover en estudiantes de secundaria del Perú el desarrollo de sus capacidades intelectuales y emocionales durante los próximos años.",
+        "publico": "Escolares de nivel secundaria en condiciones de vulnerabilidad, especialmente adolescentes y mujeres jóvenes.",
+        "region": "Cusco, Moquegua y Lima, Perú",
+        "fechaFundacion": "27 de septiembre de 2025",
+        "ods": [
+            "ODS 4 · Educación de calidad",
+            "ODS 5 · Igualdad de género",
+            "ODS 10 · Reducción de las desigualdades"
+        ],
+        "reconocimientoGubernamental": true,
+        "valor": "Aporta formación en autoestima, liderazgo y bienestar socioemocional para adolescentes y mujeres jóvenes.",
+        "contacto": "rodripaula759@gmail.com",
+        "redes": {
+            "instagram": "https://www.instagram.com/por_ti.pe/"
+        },
+        "proyectos": [
+            {
+                "nombre": "Tu Pasaporte al Éxito",
+                "descripcion": "Programa virtual de cuatro talleres sobre postulación a becas, rutas metodológicas, redacción de ensayos y salud mental durante la admisión. La organización reporta más de 100 personas capacitadas.",
+                "enlace": "https://www.instagram.com/por_ti.pe/"
+            },
+            {
+                "nombre": "Charla sobre trastornos de la conducta alimentaria",
+                "descripcion": "Charla virtual en alianza con Mi zona segura sobre prevención, autocuidado y sensibilización acerca de los trastornos de la conducta alimentaria. La organización reporta más de 60 personas alcanzadas.",
+                "enlace": "https://www.instagram.com/por_ti.pe/"
+            }
+        ],
+        "impact": {
+            "directo": 450,
+            "indirecto": 800,
+            "miembros": 23
+        }
     }
 ];
 
@@ -726,6 +764,17 @@ const ONGS = [
     "use strict";
 
     const englishTranslations = new Map([
+        ["Cusco, Moquegua y Lima, Perú","Cusco, Moquegua and Lima, Peru"],
+        ["27 de septiembre de 2025","September 27, 2025"],
+        ["Asociación juvenil peruana sin fines de lucro que impulsa a adolescentes y mujeres jóvenes a reconocer sus cualidades físicas, emocionales e intelectuales, fortalecer su seguridad y perseguir sus metas mediante formación y acompañamiento.","Peruvian nonprofit youth association that helps adolescent girls and young women recognize their physical, emotional and intellectual strengths, build confidence and pursue their goals through learning and support."],
+        ["Fortalecer las cualidades de adolescentes y mujeres jóvenes mediante talleres, charlas y eventos para que desarrollen confianza, alcancen sus metas y ejerzan liderazgo.","Strengthen the abilities of adolescent girls and young women through workshops, talks and events so they build confidence, achieve their goals and become leaders."],
+        ["Promover en estudiantes de secundaria del Perú el desarrollo de sus capacidades intelectuales y emocionales durante los próximos años.","Promote the intellectual and emotional development of secondary school students in Peru in the years ahead."],
+        ["Escolares de nivel secundaria en condiciones de vulnerabilidad, especialmente adolescentes y mujeres jóvenes.","Secondary school students facing vulnerable circumstances, especially adolescent girls and young women."],
+        ["Aporta formación en autoestima, liderazgo y bienestar socioemocional para adolescentes y mujeres jóvenes.","Contributes training in self-esteem, leadership and social-emotional well-being for adolescent girls and young women."],
+        ["Tu Pasaporte al Éxito","Your Passport to Success"],
+        ["Programa virtual de cuatro talleres sobre postulación a becas, rutas metodológicas, redacción de ensayos y salud mental durante la admisión. La organización reporta más de 100 personas capacitadas.","Four-workshop virtual program on scholarship applications, planning, essay writing and mental health during admissions. The organization reports training more than 100 people."],
+        ["Charla sobre trastornos de la conducta alimentaria","Talk on eating disorders"],
+        ["Charla virtual en alianza con Mi zona segura sobre prevención, autocuidado y sensibilización acerca de los trastornos de la conducta alimentaria. La organización reporta más de 60 personas alcanzadas.","Virtual talk with Mi zona segura on eating disorder prevention, self-care and awareness. The organization reports reaching more than 60 people."],
         [
                 "Perú, Lima Norte",
                 "Peru, Northern Lima"
