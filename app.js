@@ -275,7 +275,7 @@
     }
 
     function synchronizePublicNgoState() {
-        const OFFICIAL_NGO_COUNT = 14; const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/"; const requestedOng = new URLSearchParams(window.location.search).get("id"); if (normalizedPath === "/ong" && requestedOng === "maywa") { window.location.replace("/ongs"); return; }
+        const OFFICIAL_NGO_COUNT = 15; const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/"; const requestedOng = new URLSearchParams(window.location.search).get("id"); if (normalizedPath === "/ong" && requestedOng === "maywa") { window.location.replace("/ongs"); return; }
         if (typeof window.ONGS !== "undefined" && Array.isArray(window.ONGS)) { const index = window.ONGS.findIndex(org => org.id === "maywa"); if (index >= 0) window.ONGS.splice(index, 1); }
         document.querySelectorAll(".counter").forEach(counter => { if (counter.querySelector("h3")?.textContent.trim() === "ONGs de Red Astrum") { const value = counter.querySelector("span[data-count]"); if (value) value.dataset.count = String(OFFICIAL_NGO_COUNT); } });
         const maywaItem = document.querySelector('.astrum-carousel img[src*="maywa.webp"]')?.closest(".astrum-carousel-item"); if (maywaItem) { const list = maywaItem.parentElement; maywaItem.remove(); const items = Array.from(list?.querySelectorAll(".astrum-carousel-item") || []); items.forEach((item, index) => item.style.setProperty("--position", String(index + 1))); list?.closest(".astrum-carousel")?.style.setProperty("--quantity", String(items.length)); }
