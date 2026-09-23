@@ -722,6 +722,7 @@ const ONGS = [
     {
         "id": "por-ti",
         "nombre": "Por Ti",
+        "logo": "/images/logo_ong/por_ti.jpg",
         "descripcion": "Asociación juvenil peruana sin fines de lucro que impulsa a adolescentes y mujeres jóvenes a reconocer sus cualidades físicas, emocionales e intelectuales, fortalecer su seguridad y perseguir sus metas mediante formación y acompañamiento.",
         "mision": "Fortalecer las cualidades de adolescentes y mujeres jóvenes mediante talleres, charlas y eventos para que desarrollen confianza, alcancen sus metas y ejerzan liderazgo.",
         "vision": "Promover en estudiantes de secundaria del Perú el desarrollo de sus capacidades intelectuales y emocionales durante los próximos años.",
