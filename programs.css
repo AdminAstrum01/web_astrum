@@ -40,3 +40,5 @@
 .ra-program-page .footer{width:100%;margin:0}
 @media(max-width:700px){.ra-program-grid,.ra-detail-grid{grid-template-columns:1fr}.ra-programs{padding:48px 0 16px}.ra-program-card{padding:26px}.ra-program-main{padding:calc(var(--header-height-mobile) + 54px) 0 56px}.ra-program-lead{font-size:16px}.ra-program-hero>h1{font-size:clamp(36px,10vw,48px)}.ra-program-notice{padding:16px;font-size:14px}.ra-hero-actions{gap:10px}.ra-button{max-width:100%;text-align:center}.hero-info h1{font-size:clamp(35px,10vw,48px)}.ra-program-card h3{font-size:26px}}
 @media(prefers-reduced-motion:reduce){.ra-button,.ra-program-card{transition:none}}
+
+.ra-program-page .ga-ra-brand{display:flex;align-items:center;color:inherit;text-decoration:none}
