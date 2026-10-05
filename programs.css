@@ -1,0 +1,42 @@
+/* Current programs, using Red Astrum's institutional palette. */
+.ra-hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.ra-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border:1px solid transparent;border-radius:999px;background:var(--color-accent);color:#fff;text-decoration:none;font-weight:600;font-size:14px;line-height:1.5;transition:transform .2s,background .2s}
+.ra-button:hover{transform:translateY(-2px);background:#b95106}
+.ra-button-outline{border-color:var(--color-light-50);background:var(--color-primary-20);color:var(--color-white)}
+.ra-button-outline:hover{background:var(--color-primary-60)}
+.ra-button:focus-visible,.ra-program-card a:focus-visible{outline:3px solid var(--color-light);outline-offset:5px}
+.ra-programs{width:min(1180px,90%);padding:70px 0 30px;scroll-margin-top:100px}
+.ra-programs-heading{max-width:700px;margin-bottom:36px}
+.ra-kicker{color:var(--color-light);font-size:12px;line-height:1.6;letter-spacing:.09em;text-transform:uppercase;font-weight:600;margin:0 0 12px}
+.ra-programs-heading h2{font-size:clamp(30px,4vw,48px);line-height:1.15;margin:0 0 18px;color:var(--color-white)}
+.ra-programs-heading>p:last-child{line-height:1.7;color:var(--color-text-muted);font-size:17px}
+.ra-program-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.ra-program-card{position:relative;display:flex;flex-direction:column;padding:32px;border:1px solid var(--color-light-20);border-radius:24px;background:linear-gradient(140deg,rgba(107,47,160,.22),rgba(31,58,95,.16));transition:border-color .2s,transform .2s}
+.ra-program-card:hover{border-color:var(--color-light-70);transform:translateY(-3px)}
+.ra-program-icon{display:grid;place-items:center;width:48px;height:48px;margin-bottom:24px;border-radius:14px;background:var(--color-primary-40);color:var(--color-light);font-size:28px}
+.ra-program-apla .ra-program-icon,.ra-program-picnic .ra-program-icon{background:var(--color-accent-15);color:#ffae65}
+.ra-program-card h3{margin:0 0 12px;color:var(--color-white);font-size:28px;line-height:1.25}
+.ra-program-card>p:not(.ra-kicker){margin:0 0 24px;color:#d6d2df;line-height:1.75;font-size:15px}
+.ra-program-status{align-self:flex-start;margin-top:auto;border:1px solid var(--color-light-20);border-radius:999px;padding:6px 12px;color:var(--color-light);font-size:12px;line-height:1.6}
+.ra-program-card>a{align-self:flex-start;display:inline-flex;align-items:center;gap:12px;margin-top:22px;color:#ffae65;text-decoration:none;font-weight:600;font-size:15px}
+.ra-program-card>a i{font-size:22px}
+.ra-impact-note{width:min(800px,90%);margin:0 auto 28px;text-align:center;color:var(--color-text-muted);font-size:13px;line-height:1.7}
+.ra-program-page .container{gap:0;align-items:stretch;background:radial-gradient(ellipse at 90% 0,rgba(107,47,160,.26),transparent 650px),#080b14}
+.ra-program-main{width:min(1100px,90%);margin:0 auto;padding:calc(var(--header-height) + 70px) 0 80px}
+.ra-program-name{margin:0 0 28px;color:#ffae65;font-size:24px;font-weight:700}
+.ra-program-hero>h1{font-size:clamp(38px,5.5vw,66px);line-height:1.12;letter-spacing:-.03em;max-width:850px;margin:0 0 28px;color:#fff}
+.ra-program-lead{max-width:800px;font-size:18px;line-height:1.8;color:#d6d2df}
+.ra-program-notice{max-width:900px;margin:28px 0;padding:18px 22px;border-left:3px solid var(--color-accent);border-radius:0 12px 12px 0;background:var(--color-accent-15);font-size:15px;line-height:1.7;color:#ffe7d1}
+.ra-facts{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 40px}
+.ra-facts>span{border:1px solid var(--color-light-35);border-radius:999px;padding:8px 16px;color:var(--color-light);font-size:13px;line-height:1.6}
+.ra-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:40px 0}
+.ra-detail-grid article{border:1px solid var(--color-light-20);border-radius:18px;background:var(--color-primary-10);padding:28px}
+.ra-detail-grid h2{color:#fff;font-size:22px;line-height:1.3;margin:0 0 12px}
+.ra-detail-grid p,.ra-program-block p,.ra-program-block li{color:#d6d2df;line-height:1.8;font-size:16px}
+.ra-detail-grid p{margin:0}
+.ra-program-block{max-width:900px;margin:40px 0}
+.ra-program-block h2{font-size:clamp(25px,3vw,34px);color:#fff;line-height:1.3}
+.ra-program-block li{padding-left:6px;margin:10px 0}
+.ra-program-page .footer{width:100%;margin:0}
+@media(max-width:700px){.ra-program-grid,.ra-detail-grid{grid-template-columns:1fr}.ra-programs{padding:48px 0 16px}.ra-program-card{padding:26px}.ra-program-main{padding:calc(var(--header-height-mobile) + 54px) 0 56px}.ra-program-lead{font-size:16px}.ra-program-hero>h1{font-size:clamp(36px,10vw,48px)}.ra-program-notice{padding:16px;font-size:14px}.ra-hero-actions{gap:10px}.ra-button{max-width:100%;text-align:center}.hero-info h1{font-size:clamp(35px,10vw,48px)}.ra-program-card h3{font-size:26px}}
+@media(prefers-reduced-motion:reduce){.ra-button,.ra-program-card{transition:none}}
