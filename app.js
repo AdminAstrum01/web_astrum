@@ -95,11 +95,13 @@
         const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
         const isGastrum = normalizedPath === "/g-astrum";
         const isPicnic = normalizedPath === "/picnic-astrum";
-        const isProgramPage = isGastrum || isPicnic;
+        const programs = [{path:"/apla",name:"APLA"},{path:"/g-astrum",name:"Astrum Clubes"},{path:"/astrum-conecta",name:"Astrum Conecta"},{path:"/picnic-astrum",name:"Picnic Astrum"}];
+        const isProgramPage = programs.some(program => program.path === normalizedPath);
+        const programLinks = programs.map(program => `<li><a href="${program.path}"${normalizedPath === program.path ? ' aria-current="page"' : ""}>${program.name}</a></li>`).join("");
         [document.querySelector("ul.main"), document.querySelector(".sidebar > ul")].forEach(menu => {
             Array.from(menu?.children || []).forEach(item => {
                 const link = item.querySelector(":scope > a[href]");
-                if (linkTargets(link, "/g-astrum") || linkTargets(link, "/picnic-astrum")) item.remove();
+                if (programs.some(program => linkTargets(link, program.path))) item.remove();
             });
         });
 
@@ -108,7 +110,7 @@
             const item = document.createElement("li");
             item.className = "nav-dropdown";
             item.dataset.menu = "programs";
-            item.innerHTML = `<a href="#programs-menu" aria-haspopup="true" aria-expanded="false"${isProgramPage ? ' aria-current="page"' : ""}>Programas <i class="bx bx-chevron-down" aria-hidden="true"></i></a><ul id="programs-menu" aria-label="Programas de Red Astrum"><li><a href="/g-astrum"${isGastrum ? ' aria-current="page"' : ""}>G-Astrum</a></li><li><a href="/picnic-astrum"${isPicnic ? ' aria-current="page"' : ""}>Picnic Astrum</a></li></ul>`;
+            item.innerHTML = `<a href="#programs-menu" aria-haspopup="true" aria-expanded="false"${isProgramPage ? ' aria-current="page"' : ""}>Programas <i class="bx bx-chevron-down" aria-hidden="true"></i></a><ul id="programs-menu" aria-label="Programas de Red Astrum">${programLinks}</ul>`;
             const ngos = findTopLevelMenuItem(desktopMenu, "/ongs");
             const join = Array.from(desktopMenu.children).find(el => el.querySelector(':scope > a[href*="linktr.ee/red_astrum"]'));
             if (ngos) ngos.after(item); else desktopMenu.insertBefore(item, join || null);
@@ -138,7 +140,7 @@
             const item = document.createElement("li");
             item.className = "sidebar-services";
             item.dataset.menu = "programs-mobile";
-            item.innerHTML = `<details${isProgramPage ? " open" : ""}><summary><span>Programas</span><i class="bx bx-chevron-down" aria-hidden="true"></i></summary><ul aria-label="Programas de Red Astrum"><li><a href="/g-astrum"${isGastrum ? ' aria-current="page"' : ""}>G-Astrum</a></li><li><a href="/picnic-astrum"${isPicnic ? ' aria-current="page"' : ""}>Picnic Astrum</a></li></ul></details>`;
+            item.innerHTML = `<details${isProgramPage ? " open" : ""}><summary><span>Programas</span><i class="bx bx-chevron-down" aria-hidden="true"></i></summary><ul aria-label="Programas de Red Astrum">${programLinks}</ul></details>`;
             const ngos = findTopLevelMenuItem(mobileMenu, "/ongs");
             const join = Array.from(mobileMenu.children).find(el => el.querySelector(':scope > a[href*="linktr.ee/red_astrum"]'));
             if (ngos) ngos.after(item); else mobileMenu.insertBefore(item, join || null);
