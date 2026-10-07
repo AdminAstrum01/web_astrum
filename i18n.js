@@ -87,6 +87,7 @@
         ["Somos una red educativa juvenil dirigida por la Asociación Red Astrum. Conectamos a jóvenes, organizaciones afiliadas independientes, asesores y aliados para aprender haciendo y crear acciones de impacto.", "We are a youth education network led by Asociación Red Astrum. We connect young people, independent affiliated organizations, advisors and partners to learn by doing and create meaningful action."],
         ["Explora nuestros programas", "Explore our programs"],
         ["Conecta tu organización", "Connect your organization"],
+        ["Conoce nuestras ONGs", "Meet our NGOs"],
         ["Aprender, conectar y actuar en comunidad", "Learn, connect and act as a community"],
         ["Conectamos aprendizaje, organizaciones y acción para que más jóvenes transformen su entorno.", "We connect learning, organizations and action so more young people can transform their communities."],
         ["Organizaciones independientes, propósito compartido", "Independent organizations, shared purpose"],
