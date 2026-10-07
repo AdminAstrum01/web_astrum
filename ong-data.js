@@ -757,6 +757,46 @@ const ONGS = [
             "indirecto": 800,
             "miembros": 23
         }
+    },
+    {
+        "id": "pares",
+        "nombre": "PARES",
+        "sigla": "Asociación Civil Red de Mentoría y Aprendizaje Estudiantil",
+        "logo": "/images/logo_ong/pares.jpg",
+        "descripcion": "PARES es una organización juvenil sin fines de lucro que impulsa la mentoría, el aprendizaje colaborativo y el desarrollo integral de estudiantes, conectando jóvenes para compartir conocimientos, fortalecer habilidades y generar oportunidades de crecimiento.",
+        "mision": "Promover el aprendizaje entre pares, la mentoría y la participación juvenil, brindando a estudiantes espacios y oportunidades para desarrollar sus conocimientos, habilidades, liderazgo y compromiso con su comunidad.",
+        "vision": "Ser una red referente de mentoría y aprendizaje estudiantil en el Perú, reconocida por conectar jóvenes, generar oportunidades formativas y fortalecer una cultura de colaboración, liderazgo y desarrollo educativo.",
+        "publico": "Estudiantes de educación secundaria y jóvenes en etapa de formación, interesados en fortalecer sus conocimientos, habilidades, liderazgo y participación social.",
+        "region": "Perú, con alcance nacional mediante plataformas y actividades presenciales y virtuales.",
+        "fechaFundacion": "1 de junio de 2026",
+        "ods": [
+            "ODS 4 · Educación de calidad",
+            "ODS 8 · Trabajo decente y crecimiento económico",
+            "ODS 10 · Reducción de las desigualdades",
+            "ODS 17 · Alianzas para lograr los objetivos"
+        ],
+        "reconocimientoGubernamental": false,
+        "redes": {
+            "instagram": "https://www.instagram.com/acpares.peru/",
+            "linkedin": "https://www.linkedin.com/in/pares-ong-924042424/"
+        },
+        "proyectos": [
+            {
+                "nombre": "PARES Difusión – Innova Schools",
+                "descripcion": "Del 17 al 21 de agosto de 2026, PARES desarrolló una actividad de difusión en colaboración con Innova Schools, con la participación de 20 jóvenes embajadores. La iniciativa promovió el aprendizaje colaborativo, la participación juvenil y el desarrollo de habilidades de liderazgo y organización.",
+                "enlace": "https://www.instagram.com/p/Dc9HNxTFErS/"
+            },
+            {
+                "nombre": "Actividad por el Día Internacional de la Prevención del Suicidio",
+                "descripcion": "El 10 de septiembre de 2026, PARES y la Escuela de Líderes realizaron una actividad en Innova Schools para promover la reflexión, la escucha y el acompañamiento, mediante la participación y organización juvenil.",
+                "enlace": "https://drive.google.com/file/d/1XzxFNdJLmb32JQ0tyAaDvKn5puMPUEuC/view"
+            }
+        ],
+        "impact": {
+            "directo": 80,
+            "indirecto": 270,
+            "miembros": 26
+        }
     }
 ];
 
@@ -765,6 +805,17 @@ const ONGS = [
     "use strict";
 
     const englishTranslations = new Map([
+        ["Asociación Civil Red de Mentoría y Aprendizaje Estudiantil","Civil Association for Student Mentoring and Learning"],
+        ["PARES es una organización juvenil sin fines de lucro que impulsa la mentoría, el aprendizaje colaborativo y el desarrollo integral de estudiantes, conectando jóvenes para compartir conocimientos, fortalecer habilidades y generar oportunidades de crecimiento.","PARES is a nonprofit youth organization that promotes mentoring, collaborative learning, and students' overall development, connecting young people to share knowledge, strengthen skills, and create opportunities for growth."],
+        ["Promover el aprendizaje entre pares, la mentoría y la participación juvenil, brindando a estudiantes espacios y oportunidades para desarrollar sus conocimientos, habilidades, liderazgo y compromiso con su comunidad.","Promote peer learning, mentoring, and youth participation, providing students with spaces and opportunities to develop their knowledge, skills, leadership, and commitment to their community."],
+        ["Ser una red referente de mentoría y aprendizaje estudiantil en el Perú, reconocida por conectar jóvenes, generar oportunidades formativas y fortalecer una cultura de colaboración, liderazgo y desarrollo educativo.","Become a leading student mentoring and learning network in Peru, recognized for connecting young people, creating educational opportunities, and strengthening a culture of collaboration, leadership, and educational development."],
+        ["Estudiantes de educación secundaria y jóvenes en etapa de formación, interesados en fortalecer sus conocimientos, habilidades, liderazgo y participación social.","Secondary school students and young people in education who are interested in strengthening their knowledge, skills, leadership, and social participation."],
+        ["Perú, con alcance nacional mediante plataformas y actividades presenciales y virtuales.","Peru, with nationwide reach through platforms and in-person and online activities."],
+        ["1 de junio de 2026","June 1, 2026"],
+        ["PARES Difusión – Innova Schools","PARES Outreach – Innova Schools"],
+        ["Del 17 al 21 de agosto de 2026, PARES desarrolló una actividad de difusión en colaboración con Innova Schools, con la participación de 20 jóvenes embajadores. La iniciativa promovió el aprendizaje colaborativo, la participación juvenil y el desarrollo de habilidades de liderazgo y organización.","From August 17 to 21, 2026, PARES held an outreach activity in collaboration with Innova Schools, involving 20 young ambassadors. The initiative promoted collaborative learning, youth participation, and the development of leadership and organizational skills."],
+        ["Actividad por el Día Internacional de la Prevención del Suicidio","World Suicide Prevention Day Activity"],
+        ["El 10 de septiembre de 2026, PARES y la Escuela de Líderes realizaron una actividad en Innova Schools para promover la reflexión, la escucha y el acompañamiento, mediante la participación y organización juvenil.","On September 10, 2026, PARES and the Leadership School held an activity at Innova Schools to encourage reflection, listening, and support through youth participation and organization."],
         ["Cusco, Moquegua y Lima, Perú","Cusco, Moquegua and Lima, Peru"],
         ["27 de septiembre de 2025","September 27, 2025"],
         ["Asociación juvenil peruana sin fines de lucro que impulsa a adolescentes y mujeres jóvenes a reconocer sus cualidades físicas, emocionales e intelectuales, fortalecer su seguridad y perseguir sus metas mediante formación y acompañamiento.","Peruvian nonprofit youth association that helps adolescent girls and young women recognize their physical, emotional and intellectual strengths, build confidence and pursue their goals through learning and support."],
