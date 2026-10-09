@@ -564,6 +564,7 @@
         ["Voluntario", "Volunteer"],
         ["voluntario", "Volunteer"],
         ["Miembro de ONG Astrum", "Astrum NGO Member"],
+        ["Miembro de Red Astrum", "Red Astrum Member"],
         ["Asesora de Red Astrum", "Red Astrum Advisor"],
         ["Asesor de Red Astrum", "Red Astrum Advisor"],
         ["Directora de Green Generation", "Green Generation Director"],
