@@ -301,7 +301,7 @@
             modalAction.rel = "noopener noreferrer";
             modalAction.innerHTML = `${escapeHtml(action.buttonLabel)} <i class='bx bxl-whatsapp'></i>`;
         } else if (action && ["form", "whatsapp_group", "external"].includes(action.actionType)) {
-            const heading = action.actionType === "form" ? "Formulario oficial" : action.actionType === "whatsapp_group" ? "Comunidad G-Astrum" : "Proyecto activo";
+            const heading = action.actionType === "form" ? "Formulario oficial" : action.actionType === "whatsapp_group" ? "Comunidad Astrum Clubes" : "Proyecto activo";
             detail.innerHTML = `<strong>${heading}</strong>${escapeHtml(action.detail)}`;
             modalAction.href = action.actionUrl;
             if (/^https?:\/\//i.test(action.actionUrl)) {

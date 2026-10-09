@@ -145,7 +145,7 @@ function renderMemberCard(member, index) {
 
     const role = document.createElement("p");
     role.className = "member-role";
-    role.textContent = localizedText(member.rol?.trim() || "Miembro de ONG Astrum");
+    role.textContent = localizedText(member.rol?.trim() || "Miembro de Red Astrum");
 
     card.append(badges, name, role);
 
