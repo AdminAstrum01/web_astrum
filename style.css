@@ -1731,6 +1731,31 @@ header > .box-icons {
     color: gray;
 }
 
+.organization-control {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: min(100%, 520px);
+    color: #d8d6e3;
+    text-align: left;
+}
+
+.organization-control select {
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    background: #151323;
+    color: #fff;
+    font: inherit;
+}
+
+.organization-control select:focus-visible {
+    outline: 2px solid #b48aff;
+    outline-offset: 3px;
+}
+
 .filter-pills {
     display: flex;
     flex-wrap: wrap;
@@ -1892,6 +1917,9 @@ header > .box-icons {
 
 .member-area,
 .member-subarea {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
     white-space: nowrap;
     font-size: 10px;
     font-weight: 600;
@@ -4043,6 +4071,11 @@ button {
     .search-box {
         width: calc(100% - 32px);
         min-height: 48px;
+        margin: 0 auto;
+    }
+
+    .organization-control {
+        width: calc(100% - 32px);
         margin: 0 auto;
     }
 

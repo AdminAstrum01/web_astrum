@@ -3,10 +3,11 @@ const emptyState = document.getElementById("empty-state");
 const countElement = document.getElementById("count-num");
 const searchInput = document.getElementById("search-input");
 const filterContainer = document.getElementById("filter-pills");
+const organizationFilter = document.getElementById("organization-filter");
 
 let activeFilter = "Todos";
 let searchQuery = "";
-const unavailablePhotos = new Set();
+let activeOrganization = "";
 
 function localizedText(value = "") {
     return window.AstrumI18n?.translateText(value) || value;
@@ -42,6 +43,15 @@ function renderAvatar(member) {
     const avatar = document.createElement("div");
     avatar.className = member.foto ? "member-avatar" : "member-avatar no-photo";
 
+    const showInitials = () => {
+        avatar.className = "member-avatar no-photo";
+        avatar.replaceChildren(document.createTextNode(getInitials(member.nombre)));
+    };
+    if (!member.foto?.trim()) {
+        showInitials();
+        return avatar;
+    }
+
     const image = document.createElement("img");
     image.src = member.foto;
     image.alt = message(
@@ -51,10 +61,7 @@ function renderAvatar(member) {
     );
     image.loading = "lazy";
     image.decoding = "async";
-    image.addEventListener("error", () => {
-        unavailablePhotos.add(member.foto);
-        applyFilters();
-    }, { once: true });
+    image.addEventListener("error", showInitials, { once: true });
     avatar.appendChild(image);
 
     return avatar;
@@ -125,6 +132,13 @@ function renderMemberCard(member, index) {
         badges.appendChild(subarea);
     }
 
+    (member.organizaciones || []).filter(org => org !== member.subarea).forEach(org => {
+        const badge = document.createElement("span");
+        badge.className = "member-subarea";
+        badge.textContent = org;
+        badges.appendChild(badge);
+    });
+
     const name = document.createElement("h3");
     name.className = "member-name";
     name.textContent = member.nombre;
@@ -162,17 +176,18 @@ function renderCards(members) {
 
 function applyFilters() {
     const filtered = TEAM_MEMBERS.filter(member => {
-        if (!member.foto?.trim() || unavailablePhotos.has(member.foto)) return false;
         const matchesArea = activeFilter === "Todos" || member.areas.includes(activeFilter);
+        const matchesOrganization = !activeOrganization || member.organizaciones?.includes(activeOrganization);
         const searchable = normalizeText([
             member.nombre,
             member.nombreCompleto,
             member.rol,
             member.subarea,
+            ...(member.organizaciones || []),
             ...member.areas
         ].map(searchableText).join(" "));
 
-        return matchesArea && searchable.includes(searchQuery);
+        return matchesArea && matchesOrganization && searchable.includes(searchQuery);
     });
 
     renderCards(filtered);
@@ -194,6 +209,19 @@ filterContainer?.addEventListener("click", event => {
 
 searchInput?.addEventListener("input", event => {
     searchQuery = normalizeText(event.target.value);
+    applyFilters();
+});
+
+const organizations = [...new Set(TEAM_MEMBERS.flatMap(member => member.organizaciones || []))]
+    .sort((a, b) => a.localeCompare(b, "es"));
+organizations.forEach(org => {
+    const option = document.createElement("option");
+    option.value = org;
+    option.textContent = org;
+    organizationFilter?.appendChild(option);
+});
+organizationFilter?.addEventListener("change", event => {
+    activeOrganization = event.target.value;
     applyFilters();
 });
 

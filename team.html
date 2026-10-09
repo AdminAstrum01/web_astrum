@@ -95,8 +95,8 @@
             <section class="team-hero" data-aos="fade-down" data-aos-duration="1000">
                 <h1>Nuestro <span class="gradient">Equipo</span></h1>
                 <p>
-                    Conoce a las personas que lideran, gestionan y representan a las organizaciones
-                    que integran Red Astrum.
+                    Conoce a quienes integran las organizaciones, los clubes, el equipo interno
+                    y la comunidad de asesores de Red Astrum.
                 </p>
             </section>
 
@@ -111,6 +111,13 @@
                     >
                 </label>
 
+                <label class="organization-control" for="organization-filter">
+                    <span>Filtrar por ONG</span>
+                    <select id="organization-filter">
+                        <option value="">Todas las ONGs</option>
+                    </select>
+                </label>
+
                 <div class="filter-pills" id="filter-pills" aria-label="Grupos del equipo">
                     <button class="pill active" type="button" data-filter="Todos" aria-pressed="true">Todos</button>
                     <button class="pill" type="button" data-filter="Fundadores" aria-pressed="false">Fundadores</button>
@@ -119,6 +126,7 @@
                     <button class="pill" type="button" data-filter="Consejo de ONGs" aria-pressed="false">Consejo de ONGs</button>
                     <button class="pill" type="button" data-filter="Miembros de ONGs" aria-pressed="false">Miembros de ONGs</button>
                     <button class="pill" type="button" data-filter="Asesores" aria-pressed="false">Asesores</button>
+                    <button class="pill" type="button" data-filter="Astrum Clubes" aria-pressed="false">Astrum Clubes</button>
                 </div>
             </section>
 
@@ -126,7 +134,7 @@
                 Mostrando <span id="count-num">0</span> perfiles únicos
             </p>
             <p class="team-source-note">
-                Directorio actualizado a octubre de 2026 con las fotografías disponibles de integrantes y asesores de Red Astrum.
+                Directorio actualizado a octubre de 2026. Los perfiles sin fotografía se muestran con sus iniciales.
             </p>
 
             <section class="team-grid" id="team-grid" aria-live="polite"></section>
