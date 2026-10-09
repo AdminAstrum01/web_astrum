@@ -2,7 +2,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jesús Gálvez",
         "nombreCompleto": "Jesús Gálvez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Fundador · Presidente · Representante legal",
         "area": "Fundadores",
         "areas": [
             "Fundadores",
@@ -22,7 +22,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Fabio Alfaro",
         "nombreCompleto": "Fabio Alfaro",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Cofundador · Vicepresidente",
         "area": "Fundadores",
         "areas": [
             "Fundadores",
@@ -42,7 +42,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Manuel Palomino",
         "nombreCompleto": "Manuel Palomino",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Cofundador · Tesorero",
         "area": "Fundadores",
         "areas": [
             "Fundadores",
@@ -59,7 +59,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Claudio Zapata",
         "nombreCompleto": "Claudio Zapata",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Cofundador",
         "area": "Fundadores",
         "areas": [
             "Fundadores",
@@ -76,7 +76,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jhosany Lazo",
         "nombreCompleto": "Jhosany Lazo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Cofundadora · Representante de Holo Astrum UNMSM",
         "area": "Fundadores",
         "areas": [
             "Fundadores",
@@ -97,7 +97,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Valeria Cama",
         "nombreCompleto": "Valeria Cama",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Cofundadora",
         "area": "Fundadores",
         "areas": [
             "Fundadores",
@@ -114,7 +114,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Marcelo Villagarcía",
         "nombreCompleto": "Marcelo Villagarcía",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Coordinador de Astrum Clubes",
         "area": "Consejo Supremo",
         "areas": [
             "Consejo Supremo",
@@ -132,7 +132,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Mary Thomas",
         "nombreCompleto": "Mary Thomas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Coordinadora de ONGs · Representante de House of Young Promises",
         "area": "Consejo Supremo",
         "areas": [
             "Consejo Supremo",
@@ -151,7 +151,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Yulissa Restrepo",
         "nombreCompleto": "Yulissa Restrepo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Coordinadora de Asesores",
         "area": "Consejo Supremo",
         "areas": [
             "Consejo Supremo",
@@ -167,7 +167,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Sebastian Zapata",
         "nombreCompleto": "Sebastian Zapata",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Coordinador de Áreas de Apoyo",
         "area": "Consejo Supremo",
         "areas": [
             "Consejo Supremo",
@@ -186,7 +186,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Valeria Rivas",
         "nombreCompleto": "Valeria Rivas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Directora de Marketing",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro"
@@ -201,7 +201,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "José Piedra",
         "nombreCompleto": "José Piedra",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Marketing",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro"
@@ -214,7 +214,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Walter Sánchez",
         "nombreCompleto": "Walter Sánchez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director de Tecnología",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro"
@@ -229,7 +229,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Evans Toribio",
         "nombreCompleto": "Evans Toribio",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Tecnología",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro"
@@ -242,7 +242,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Amy Maldonado",
         "nombreCompleto": "Amy Maldonado",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Tecnología",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro"
@@ -257,7 +257,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Brendi Imán",
         "nombreCompleto": "Brendi Imán",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Secretaría",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro",
@@ -273,7 +273,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Nancy Sucasaca",
         "nombreCompleto": "Nancy Sucasaca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Secretaría",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro",
@@ -287,7 +287,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Zharick Figueroa",
         "nombreCompleto": "Zharick Figueroa",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Secretaría",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro",
@@ -305,7 +305,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Julibeth Román",
         "nombreCompleto": "Julibeth Román",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Directora de Gestión",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro",
@@ -321,7 +321,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Daira Lima",
         "nombreCompleto": "Daira Lima",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Gestión",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro"
@@ -334,7 +334,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Alisson Canales",
         "nombreCompleto": "Alisson Canales",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Gestión",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro",
@@ -352,7 +352,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Dayanna Córdova",
         "nombreCompleto": "Dayanna Córdova",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Gestión",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro"
@@ -365,7 +365,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Thayz Caycho",
         "nombreCompleto": "Thayz Caycho",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Co-Coordinadora de Astrum Clubes",
         "area": "Núcleo Duro",
         "areas": [
             "Núcleo Duro",
@@ -382,7 +382,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Kimberlym Bonilla",
         "nombreCompleto": "Kimberlym Bonilla",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Representante de Bridges of Equity",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -401,7 +401,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jimena Carlos",
         "nombreCompleto": "Jimena Carlos",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Representante de Girls In Science",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -420,7 +420,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Karla Camara",
         "nombreCompleto": "Karla Camara",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Representante de Green Generation",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -439,7 +439,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Angel Bedoya",
         "nombreCompleto": "Angel Bedoya",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Representante de Holo Astrum",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -456,7 +456,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Diego Iparraguirre",
         "nombreCompleto": "Diego Iparraguirre",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Representante de Holo Astrum PUCP",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -473,7 +473,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Clarisa Farfán",
         "nombreCompleto": "Clarisa Farfán",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Representante de Rikchari",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -493,7 +493,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Pamela Vega",
         "nombreCompleto": "Pamela Vega",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Representante de Unity",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -509,7 +509,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Nadia Huaman",
         "nombreCompleto": "Nadia Huaman",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Representante de Yatimaq",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -525,7 +525,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Valery Huaranga",
         "nombreCompleto": "Valery Huaranga",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Representante de Youth Plus",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -543,7 +543,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Andrés Navarrete",
         "nombreCompleto": "Andrés Navarrete",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Representante de Red Mundial de Jóvenes Académicos",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -561,7 +561,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ximena Cortez",
         "nombreCompleto": "Ximena Cortez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Representante de For Our Rights",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -580,7 +580,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jashira Meza",
         "nombreCompleto": "Jashira Meza",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Representante de Oportunidades con Impacto",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -598,7 +598,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Yaiza Rojas",
         "nombreCompleto": "Yaiza Rojas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Directora de Green Generation",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs",
@@ -614,7 +614,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ximena Morillas",
         "nombreCompleto": "Ximena Morillas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Asesora de Red Astrum",
         "area": "Asesores",
         "areas": [
             "Asesores"
@@ -627,7 +627,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Alexandra Vassallo",
         "nombreCompleto": "Alexandra Vassallo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Asesora de Red Astrum",
         "area": "Asesores",
         "areas": [
             "Asesores"
@@ -640,7 +640,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Natalia Villanueva",
         "nombreCompleto": "Natalia Villanueva",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Asesora de Red Astrum",
         "area": "Asesores",
         "areas": [
             "Asesores"
@@ -653,7 +653,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Joaho Cruz",
         "nombreCompleto": "Joaho Cruz",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Asesor de Red Astrum",
         "area": "Asesores",
         "areas": [
             "Asesores"
@@ -666,7 +666,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Victor Sotelo",
         "nombreCompleto": "Victor Sotelo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Asesor de Red Astrum",
         "area": "Asesores",
         "areas": [
             "Asesores"
@@ -679,7 +679,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Marcos Zevallos",
         "nombreCompleto": "Marcos Zevallos",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Asesor de Red Astrum",
         "area": "Asesores",
         "areas": [
             "Asesores"
@@ -692,7 +692,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Franco Mosso",
         "nombreCompleto": "Franco Mosso",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Asesor de Red Astrum",
         "area": "Asesores",
         "areas": [
             "Asesores"
@@ -705,7 +705,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Mauricio Costa",
         "nombreCompleto": "Mauricio Costa",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Asesor de Red Astrum",
         "area": "Asesores",
         "areas": [
             "Asesores"
@@ -718,7 +718,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Andrea Álvarez",
         "nombreCompleto": "Andrea Álvarez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -731,7 +731,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Micaela Villanueva",
         "nombreCompleto": "Micaela Villanueva",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -744,7 +744,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Karla Ortega",
         "nombreCompleto": "Karla Ortega",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -760,7 +760,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Luciana Abanto",
         "nombreCompleto": "Luciana Abanto",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -773,7 +773,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Flavia Arevalo",
         "nombreCompleto": "Flavia Arevalo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -786,7 +786,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Rodrigo Ramos",
         "nombreCompleto": "Rodrigo Ramos",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -802,7 +802,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Fabiana Pastor",
         "nombreCompleto": "Fabiana Pastor",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -819,7 +819,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Andrea Vilca",
         "nombreCompleto": "Andrea Vilca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -835,7 +835,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Antonella Tinoco",
         "nombreCompleto": "Antonella Tinoco",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -848,7 +848,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Diego Quispe",
         "nombreCompleto": "Diego Quispe",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -861,7 +861,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Hillary Jimenez",
         "nombreCompleto": "Hillary Jimenez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -874,7 +874,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jeferson Fernandez",
         "nombreCompleto": "Jeferson Fernandez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -890,7 +890,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Luana Orozco",
         "nombreCompleto": "Luana Orozco",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -907,7 +907,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Maria Rojas",
         "nombreCompleto": "Maria Rojas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -920,7 +920,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Mariana Suárez",
         "nombreCompleto": "Mariana Suárez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -933,7 +933,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Mauricio Huanca",
         "nombreCompleto": "Mauricio Huanca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -946,7 +946,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Naomi Diego",
         "nombreCompleto": "Naomi Diego",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -959,7 +959,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ximena Quilca",
         "nombreCompleto": "Ximena Quilca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -975,7 +975,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Kimberly Condori",
         "nombreCompleto": "Kimberly Condori",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -988,7 +988,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Milagros Chambilla",
         "nombreCompleto": "Milagros Chambilla",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1001,7 +1001,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Sylvia Morales",
         "nombreCompleto": "Sylvia Morales",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1014,7 +1014,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Fabrizio Ravines",
         "nombreCompleto": "Fabrizio Ravines",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1027,7 +1027,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Fladimar Ancca",
         "nombreCompleto": "Fladimar Ancca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1040,7 +1040,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "María Solis",
         "nombreCompleto": "María Solis",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1053,7 +1053,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Alondra Real",
         "nombreCompleto": "Alondra Real",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1066,7 +1066,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Valery Huertas",
         "nombreCompleto": "Valery Huertas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1079,7 +1079,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Edzel Mullisaca",
         "nombreCompleto": "Edzel Mullisaca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1092,7 +1092,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Thiago Arosquipa",
         "nombreCompleto": "Thiago Arosquipa",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1105,7 +1105,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Meylin Ticona",
         "nombreCompleto": "Meylin Ticona",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1118,7 +1118,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Melanie Carpio",
         "nombreCompleto": "Melanie Carpio",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1131,7 +1131,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Viviana Alférez",
         "nombreCompleto": "Viviana Alférez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1144,7 +1144,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Mía Barrantes",
         "nombreCompleto": "Mía Barrantes",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1157,7 +1157,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Marilyn Cordova",
         "nombreCompleto": "Marilyn Cordova",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1170,7 +1170,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Julia Valdez",
         "nombreCompleto": "Julia Valdez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Líder de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1183,7 +1183,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Genesis Ulloa",
         "nombreCompleto": "Genesis Ulloa",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1196,7 +1196,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Eduardo Aguirre",
         "nombreCompleto": "Eduardo Aguirre",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1209,7 +1209,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Aleida Zabarburu",
         "nombreCompleto": "Aleida Zabarburu",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1222,7 +1222,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Abigail Huaynates",
         "nombreCompleto": "Abigail Huaynates",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1235,7 +1235,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Andrea Lope",
         "nombreCompleto": "Andrea Lope",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1248,7 +1248,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Angela Patazca",
         "nombreCompleto": "Angela Patazca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1264,7 +1264,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Aritza Rojas",
         "nombreCompleto": "Aritza Rojas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1277,7 +1277,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "David Rodriguez",
         "nombreCompleto": "David Rodriguez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1290,7 +1290,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "David Mejia",
         "nombreCompleto": "David Mejia",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1306,7 +1306,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Eymy Aguirre",
         "nombreCompleto": "Eymy Aguirre",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1323,7 +1323,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jair Condemayta",
         "nombreCompleto": "Jair Condemayta",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1336,7 +1336,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Katherin Campana",
         "nombreCompleto": "Katherin Campana",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1352,7 +1352,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Lucía Chirinos",
         "nombreCompleto": "Lucía Chirinos",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1368,7 +1368,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Lucía Valenzuela",
         "nombreCompleto": "Lucía Valenzuela",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1385,7 +1385,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Marhiory Huamán",
         "nombreCompleto": "Marhiory Huamán",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1401,7 +1401,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Mariana Gaona",
         "nombreCompleto": "Mariana Gaona",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1417,7 +1417,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Nikol Salazar",
         "nombreCompleto": "Nikol Salazar",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1430,7 +1430,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Roly Farfan",
         "nombreCompleto": "Roly Farfan",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1443,7 +1443,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Roy Flores",
         "nombreCompleto": "Roy Flores",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1456,7 +1456,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Stephanie Astete",
         "nombreCompleto": "Stephanie Astete",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1469,7 +1469,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jennifer Gutiérrez",
         "nombreCompleto": "Jennifer Gutiérrez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1482,7 +1482,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Andrea Supo",
         "nombreCompleto": "Andrea Supo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1495,7 +1495,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Brittany Zumaeta",
         "nombreCompleto": "Brittany Zumaeta",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1508,7 +1508,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Briana Sandoval",
         "nombreCompleto": "Briana Sandoval",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1521,7 +1521,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Valeria Matute",
         "nombreCompleto": "Valeria Matute",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1534,7 +1534,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Esmeralda Torres",
         "nombreCompleto": "Esmeralda Torres",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1547,7 +1547,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ana Valencia",
         "nombreCompleto": "Ana Valencia",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1560,7 +1560,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Camila Aquino",
         "nombreCompleto": "Camila Aquino",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1573,7 +1573,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Danna Avellaneda",
         "nombreCompleto": "Danna Avellaneda",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Fundador de Dep",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1589,7 +1589,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Sheila Palomino",
         "nombreCompleto": "Sheila Palomino",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1602,7 +1602,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Dafne Romero",
         "nombreCompleto": "Dafne Romero",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1615,7 +1615,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Esther Cobades",
         "nombreCompleto": "Esther Cobades",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1628,7 +1628,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Diana Jiménez",
         "nombreCompleto": "Diana Jiménez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1646,7 +1646,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Valery Proaño",
         "nombreCompleto": "Valery Proaño",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1659,7 +1659,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Gabriel Sánchez",
         "nombreCompleto": "Gabriel Sánchez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1672,7 +1672,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Valery Figueroa",
         "nombreCompleto": "Valery Figueroa",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1685,7 +1685,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Alison Roman",
         "nombreCompleto": "Alison Roman",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1698,7 +1698,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Luz Cruz",
         "nombreCompleto": "Luz Cruz",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1711,7 +1711,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Adriana Minaya",
         "nombreCompleto": "Adriana Minaya",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1724,7 +1724,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Allyson Gonza",
         "nombreCompleto": "Allyson Gonza",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1737,7 +1737,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Cori Contreras",
         "nombreCompleto": "Cori Contreras",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1750,7 +1750,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Cristian Purca",
         "nombreCompleto": "Cristian Purca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1763,7 +1763,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Fatima Rivera",
         "nombreCompleto": "Fatima Rivera",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1780,7 +1780,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Kiara Mendoza",
         "nombreCompleto": "Kiara Mendoza",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1796,7 +1796,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "María Muñante",
         "nombreCompleto": "María Muñante",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1809,7 +1809,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Naydelyn Hurtado",
         "nombreCompleto": "Naydelyn Hurtado",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1822,7 +1822,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Rocio Flores",
         "nombreCompleto": "Rocio Flores",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -1838,7 +1838,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Daniela Valenzuela",
         "nombreCompleto": "Daniela Valenzuela",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1851,7 +1851,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Bethsy Cárdenas",
         "nombreCompleto": "Bethsy Cárdenas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1864,7 +1864,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Yancarlys Pereira",
         "nombreCompleto": "Yancarlys Pereira",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1877,7 +1877,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "José Cahuas",
         "nombreCompleto": "José Cahuas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1890,7 +1890,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Brust Bravo",
         "nombreCompleto": "Brust Bravo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1903,7 +1903,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Perla Larrosa",
         "nombreCompleto": "Perla Larrosa",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1916,7 +1916,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Selena Cusiyupanqui",
         "nombreCompleto": "Selena Cusiyupanqui",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1929,7 +1929,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Yomira Cullcush",
         "nombreCompleto": "Yomira Cullcush",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Líder de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1942,7 +1942,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Paul Delgado",
         "nombreCompleto": "Paul Delgado",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1955,7 +1955,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Thalia Roa",
         "nombreCompleto": "Thalia Roa",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1968,7 +1968,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Anderson Navarro",
         "nombreCompleto": "Anderson Navarro",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1981,7 +1981,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Blanca Mas",
         "nombreCompleto": "Blanca Mas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -1994,7 +1994,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Chen Valero",
         "nombreCompleto": "Chen Valero",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2007,7 +2007,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Kevin Pezua",
         "nombreCompleto": "Kevin Pezua",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2020,7 +2020,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Leidy Revilla",
         "nombreCompleto": "Leidy Revilla",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2033,7 +2033,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Manuel Quito",
         "nombreCompleto": "Manuel Quito",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2046,7 +2046,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Vanessa Laguna",
         "nombreCompleto": "Vanessa Laguna",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2059,7 +2059,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Leonidas Paucar",
         "nombreCompleto": "Leonidas Paucar",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2072,7 +2072,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Analiz Curo",
         "nombreCompleto": "Analiz Curo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2085,7 +2085,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "María Valencia",
         "nombreCompleto": "María Valencia",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2098,7 +2098,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Mariela Godoy",
         "nombreCompleto": "Mariela Godoy",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2111,7 +2111,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Shyomara Flores",
         "nombreCompleto": "Shyomara Flores",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2124,7 +2124,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "George Umasi",
         "nombreCompleto": "George Umasi",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -2140,7 +2140,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Josue Mamani",
         "nombreCompleto": "Josue Mamani",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2153,7 +2153,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jose Osores",
         "nombreCompleto": "Jose Osores",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -2169,7 +2169,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Layne Cáceres",
         "nombreCompleto": "Layne Cáceres",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2182,7 +2182,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Aysha Perez",
         "nombreCompleto": "Aysha Perez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -2198,7 +2198,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Franco Carrasco",
         "nombreCompleto": "Franco Carrasco",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2211,7 +2211,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Frank Cosi",
         "nombreCompleto": "Frank Cosi",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2224,7 +2224,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Daniel del Carpio",
         "nombreCompleto": "Daniel del Carpio",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2237,7 +2237,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jimena Huarcaya",
         "nombreCompleto": "Jimena Huarcaya",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2250,7 +2250,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Yossely Carbajal",
         "nombreCompleto": "Yossely Carbajal",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2263,7 +2263,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Darwin Cumpa",
         "nombreCompleto": "Darwin Cumpa",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Líder de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2276,7 +2276,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Alisson Quichca",
         "nombreCompleto": "Alisson Quichca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2289,7 +2289,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Arian Gerardo",
         "nombreCompleto": "Arian Gerardo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2302,7 +2302,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "María Herrera",
         "nombreCompleto": "María Herrera",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2315,7 +2315,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ninel",
         "nombreCompleto": "Ninel",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2328,7 +2328,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Treysi Puse",
         "nombreCompleto": "Treysi Puse",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -2344,7 +2344,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Eliana Arana",
         "nombreCompleto": "Eliana Arana",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -2360,7 +2360,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Naomy Henry",
         "nombreCompleto": "Naomy Henry",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2373,7 +2373,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Cielo Cortez",
         "nombreCompleto": "Cielo Cortez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2386,7 +2386,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Vanessa Lima",
         "nombreCompleto": "Vanessa Lima",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2399,7 +2399,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "María Mendoza",
         "nombreCompleto": "María Mendoza",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2412,7 +2412,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Daniela Rodriguez",
         "nombreCompleto": "Daniela Rodriguez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2425,7 +2425,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Koryna Merino",
         "nombreCompleto": "Koryna Merino",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2438,7 +2438,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Itzayana González",
         "nombreCompleto": "Itzayana González",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Astrum Clubes",
@@ -2455,7 +2455,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Keving Anaya",
         "nombreCompleto": "Keving Anaya",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2468,7 +2468,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Gino Cardenas",
         "nombreCompleto": "Gino Cardenas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2481,7 +2481,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jhenifer Hernández",
         "nombreCompleto": "Jhenifer Hernández",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de Club",
         "area": "Astrum Clubes",
         "areas": [
             "Astrum Clubes"
@@ -2494,7 +2494,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Paula Rodríguez",
         "nombreCompleto": "Paula Rodríguez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Fundador-Director",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -2510,7 +2510,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Gadiel Lora",
         "nombreCompleto": "Gadiel Lora",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Presidente",
         "area": "Consejo de ONGs",
         "areas": [
             "Consejo de ONGs",
@@ -2526,7 +2526,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Sofía Soto",
         "nombreCompleto": "Sofía Soto",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2541,7 +2541,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Camila Tisnado",
         "nombreCompleto": "Camila Tisnado",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2556,7 +2556,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Abigail Huapaya",
         "nombreCompleto": "Abigail Huapaya",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2571,7 +2571,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Diego Santos",
         "nombreCompleto": "Diego Santos",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2586,7 +2586,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Sergio Calle",
         "nombreCompleto": "Sergio Calle",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2601,7 +2601,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Luz Puma",
         "nombreCompleto": "Luz Puma",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2616,7 +2616,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Melanie Zavaleta",
         "nombreCompleto": "Melanie Zavaleta",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2631,7 +2631,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Belca León",
         "nombreCompleto": "Belca León",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2646,7 +2646,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Priyanka Salazar",
         "nombreCompleto": "Priyanka Salazar",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2661,7 +2661,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Arumy Arrivasplata",
         "nombreCompleto": "Arumy Arrivasplata",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2676,7 +2676,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Danna Tacuri",
         "nombreCompleto": "Danna Tacuri",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2691,7 +2691,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Erick Martínez",
         "nombreCompleto": "Erick Martínez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2706,7 +2706,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Anghela Lara",
         "nombreCompleto": "Anghela Lara",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2721,7 +2721,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ana Marroquín",
         "nombreCompleto": "Ana Marroquín",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2738,7 +2738,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jhasly Huamfin",
         "nombreCompleto": "Jhasly Huamfin",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2753,7 +2753,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Tais Apolin",
         "nombreCompleto": "Tais Apolin",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2768,7 +2768,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Nicol Calle",
         "nombreCompleto": "Nicol Calle",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2783,7 +2783,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Alejandra Pampa",
         "nombreCompleto": "Alejandra Pampa",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2798,7 +2798,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "María Consigna",
         "nombreCompleto": "María Consigna",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2813,7 +2813,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Dulce Cabanillas",
         "nombreCompleto": "Dulce Cabanillas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2828,7 +2828,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Judith Quispe",
         "nombreCompleto": "Judith Quispe",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2843,7 +2843,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jhonatan Quispe",
         "nombreCompleto": "Jhonatan Quispe",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2858,7 +2858,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Eduard Huayta",
         "nombreCompleto": "Eduard Huayta",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2873,7 +2873,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Kiara Rojas",
         "nombreCompleto": "Kiara Rojas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2888,7 +2888,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Franco Otiniano",
         "nombreCompleto": "Franco Otiniano",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2903,7 +2903,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Celia Coico",
         "nombreCompleto": "Celia Coico",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2918,7 +2918,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Camila Pérez",
         "nombreCompleto": "Camila Pérez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2933,7 +2933,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Damaris Guzmfin",
         "nombreCompleto": "Damaris Guzmfin",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2948,7 +2948,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Neyssoon Navarro",
         "nombreCompleto": "Neyssoon Navarro",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2963,7 +2963,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Luana Arroyo",
         "nombreCompleto": "Luana Arroyo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2978,7 +2978,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Gerladine Córdova",
         "nombreCompleto": "Gerladine Córdova",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -2993,7 +2993,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Tatiana Parizaca",
         "nombreCompleto": "Tatiana Parizaca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3008,7 +3008,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Grace Cfirdenas",
         "nombreCompleto": "Grace Cfirdenas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3023,7 +3023,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Emanuel Atencio",
         "nombreCompleto": "Emanuel Atencio",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3038,7 +3038,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Azumi Huamani",
         "nombreCompleto": "Azumi Huamani",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de ONG Astrum",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3053,7 +3053,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ariana Calero",
         "nombreCompleto": "Ariana Calero",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Fundador de Dep",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3068,7 +3068,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Gabriela Soto",
         "nombreCompleto": "Gabriela Soto",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Fundador de Dep",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3083,7 +3083,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Elvira Sernaque",
         "nombreCompleto": "Elvira Sernaque",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Fundador de Dep",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3098,7 +3098,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ángeles Gómez",
         "nombreCompleto": "Ángeles Gómez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Co Fundador",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3113,7 +3113,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Isaac Cabascango",
         "nombreCompleto": "Isaac Cabascango",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Co Fundador",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3128,7 +3128,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Dayana García",
         "nombreCompleto": "Dayana García",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3144,7 +3144,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Sebastian Lucana",
         "nombreCompleto": "Sebastian Lucana",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Coordinador de Alianzas",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3159,7 +3159,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Yagelis Montero",
         "nombreCompleto": "Yagelis Montero",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Coordinadora de Alianzas",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3174,7 +3174,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Lenny Arévalo",
         "nombreCompleto": "Lenny Arévalo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Coordinador de RRHH",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3190,7 +3190,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Micaela Burga",
         "nombreCompleto": "Micaela Burga",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Coordinadora de Proyectos",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3205,7 +3205,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Alexandra Lagos",
         "nombreCompleto": "Alexandra Lagos",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Subdirectora de Proyectos",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3222,7 +3222,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Diana Ramirez",
         "nombreCompleto": "Diana Ramirez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Subdirectora de Proyectos",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3237,7 +3237,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Leslie Oviedo",
         "nombreCompleto": "Leslie Oviedo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Sub-coordinadora de Marketing",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3252,7 +3252,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jimena Rojas",
         "nombreCompleto": "Jimena Rojas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Sub-coordinadora de Marketing",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3267,7 +3267,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Melanny Muralles",
         "nombreCompleto": "Melanny Muralles",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Investigación y Escritura",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3282,7 +3282,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Allison Andrade",
         "nombreCompleto": "Allison Andrade",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Investigación y Escritura",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3297,7 +3297,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Mary Salazar",
         "nombreCompleto": "Mary Salazar",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3312,7 +3312,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ingrid Pisco",
         "nombreCompleto": "Ingrid Pisco",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3327,7 +3327,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Brizha Cabanillas",
         "nombreCompleto": "Brizha Cabanillas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3342,7 +3342,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Grace López",
         "nombreCompleto": "Grace López",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3357,7 +3357,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Anna Contreras",
         "nombreCompleto": "Anna Contreras",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3372,7 +3372,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Lucia Santos",
         "nombreCompleto": "Lucia Santos",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3387,7 +3387,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Diana Carhuatocto",
         "nombreCompleto": "Diana Carhuatocto",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3402,7 +3402,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Gabriela Neyra",
         "nombreCompleto": "Gabriela Neyra",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3417,7 +3417,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Shazadi Mejía",
         "nombreCompleto": "Shazadi Mejía",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3432,7 +3432,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "April Siguas",
         "nombreCompleto": "April Siguas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3447,7 +3447,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Mario Alaluna",
         "nombreCompleto": "Mario Alaluna",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3462,7 +3462,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Angeles Auccaico",
         "nombreCompleto": "Angeles Auccaico",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3477,7 +3477,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Edgar Vences",
         "nombreCompleto": "Edgar Vences",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3492,7 +3492,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Hair Ramos",
         "nombreCompleto": "Hair Ramos",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3507,7 +3507,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "José Ricse",
         "nombreCompleto": "José Ricse",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3522,7 +3522,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Camila Quiroz",
         "nombreCompleto": "Camila Quiroz",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3537,7 +3537,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "April García",
         "nombreCompleto": "April García",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3552,7 +3552,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Joaquín Arriaga",
         "nombreCompleto": "Joaquín Arriaga",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3567,7 +3567,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Deiby Alava",
         "nombreCompleto": "Deiby Alava",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3582,7 +3582,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Alessandra Ávila",
         "nombreCompleto": "Alessandra Ávila",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3597,7 +3597,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Carolina Garcia",
         "nombreCompleto": "Carolina Garcia",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3612,7 +3612,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Mia Herrera",
         "nombreCompleto": "Mia Herrera",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3627,7 +3627,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Gianella Serrano",
         "nombreCompleto": "Gianella Serrano",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3642,7 +3642,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Lizfanny Ramón",
         "nombreCompleto": "Lizfanny Ramón",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3657,7 +3657,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Lissy Ramirez",
         "nombreCompleto": "Lissy Ramirez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3672,7 +3672,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Sarai Retete",
         "nombreCompleto": "Sarai Retete",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3687,7 +3687,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Fabricio Pacheco",
         "nombreCompleto": "Fabricio Pacheco",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3703,7 +3703,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Alexandra Delgado",
         "nombreCompleto": "Alexandra Delgado",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3718,7 +3718,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Luciana Marroquin",
         "nombreCompleto": "Luciana Marroquin",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3733,7 +3733,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Leonardo Mejía",
         "nombreCompleto": "Leonardo Mejía",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3748,7 +3748,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Stefany Nizama",
         "nombreCompleto": "Stefany Nizama",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3763,7 +3763,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Angie Fernandez",
         "nombreCompleto": "Angie Fernandez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3778,7 +3778,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Gabriel Khan",
         "nombreCompleto": "Gabriel Khan",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3793,7 +3793,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Antonella Rodríguez",
         "nombreCompleto": "Antonella Rodríguez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3808,7 +3808,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Allison Chávez",
         "nombreCompleto": "Allison Chávez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3823,7 +3823,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Anghely Visag",
         "nombreCompleto": "Anghely Visag",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3838,7 +3838,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Miguel Meléndez",
         "nombreCompleto": "Miguel Meléndez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3853,7 +3853,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Luz Jurado",
         "nombreCompleto": "Luz Jurado",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3868,7 +3868,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Yoreiny García",
         "nombreCompleto": "Yoreiny García",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3883,7 +3883,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Victoria Puicon",
         "nombreCompleto": "Victoria Puicon",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3898,7 +3898,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Beby Malale",
         "nombreCompleto": "Beby Malale",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3913,7 +3913,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Bianka Ilijic",
         "nombreCompleto": "Bianka Ilijic",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3928,7 +3928,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ariana Casanova",
         "nombreCompleto": "Ariana Casanova",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntaria",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3943,7 +3943,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Hugo Suca",
         "nombreCompleto": "Hugo Suca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3958,7 +3958,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Arhoa Battistini",
         "nombreCompleto": "Arhoa Battistini",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de junta directiva",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3973,7 +3973,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Sofía Cardalda",
         "nombreCompleto": "Sofía Cardalda",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de junta directiva",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -3988,7 +3988,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Luciana Burga",
         "nombreCompleto": "Luciana Burga",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de junta directiva",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4003,7 +4003,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Victoria Pajuelo",
         "nombreCompleto": "Victoria Pajuelo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de junta directiva",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4018,7 +4018,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Amira Veramendi",
         "nombreCompleto": "Amira Veramendi",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de junta directiva",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4033,7 +4033,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "María Mantilla",
         "nombreCompleto": "María Mantilla",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de junta directiva",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4048,7 +4048,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ardina Laqui",
         "nombreCompleto": "Ardina Laqui",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de junta directiva",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4063,7 +4063,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Dayana Arellano",
         "nombreCompleto": "Dayana Arellano",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de junta directiva",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4078,7 +4078,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Mary Catacora",
         "nombreCompleto": "Mary Catacora",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de junta directiva",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4093,7 +4093,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Fabiana Gálvez",
         "nombreCompleto": "Fabiana Gálvez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de junta directiva",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4108,7 +4108,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Brenda Cacsi",
         "nombreCompleto": "Brenda Cacsi",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de junta directiva",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4123,7 +4123,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Gabriela Aguilera",
         "nombreCompleto": "Gabriela Aguilera",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Miembro de junta directiva",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4139,7 +4139,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Camila Montalvan",
         "nombreCompleto": "Camila Montalvan",
-        "rol": "Miembro de Red Astrum",
+        "rol": "co-fundadora",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4154,7 +4154,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Cielo Sallo",
         "nombreCompleto": "Cielo Sallo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "co-fundadora",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4169,7 +4169,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Selah Pacheco",
         "nombreCompleto": "Selah Pacheco",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4184,7 +4184,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Valentino Moreno",
         "nombreCompleto": "Valentino Moreno",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4199,7 +4199,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Luciana Luna",
         "nombreCompleto": "Luciana Luna",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4214,7 +4214,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Itzel Poma",
         "nombreCompleto": "Itzel Poma",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4229,7 +4229,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Noelia Ramos",
         "nombreCompleto": "Noelia Ramos",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4244,7 +4244,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Camila Mundaca",
         "nombreCompleto": "Camila Mundaca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4259,7 +4259,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Gabriela Rodríguez",
         "nombreCompleto": "Gabriela Rodríguez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4274,7 +4274,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Sol Mamani",
         "nombreCompleto": "Sol Mamani",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4289,7 +4289,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Maryjane Salazar",
         "nombreCompleto": "Maryjane Salazar",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4304,7 +4304,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Yutzara Conforme",
         "nombreCompleto": "Yutzara Conforme",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4319,7 +4319,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Brisa Chanduví",
         "nombreCompleto": "Brisa Chanduví",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4334,7 +4334,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Sharmely Champi",
         "nombreCompleto": "Sharmely Champi",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4349,7 +4349,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Retelie Salazar",
         "nombreCompleto": "Retelie Salazar",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4364,7 +4364,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jennifer López",
         "nombreCompleto": "Jennifer López",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4379,7 +4379,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Alejandra Fajardo",
         "nombreCompleto": "Alejandra Fajardo",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4394,7 +4394,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Fernando Belón",
         "nombreCompleto": "Fernando Belón",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4409,7 +4409,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Laura Gonzalez",
         "nombreCompleto": "Laura Gonzalez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4424,7 +4424,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Lady Machicao",
         "nombreCompleto": "Lady Machicao",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4439,7 +4439,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Eslendy de la Cruz",
         "nombreCompleto": "Eslendy de la Cruz",
-        "rol": "Miembro de Red Astrum",
+        "rol": "voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4454,7 +4454,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Cristal Rodríguez",
         "nombreCompleto": "Cristal Rodríguez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4469,7 +4469,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jesús Uribe",
         "nombreCompleto": "Jesús Uribe",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4484,7 +4484,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Nayda Texsi",
         "nombreCompleto": "Nayda Texsi",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4499,7 +4499,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Massimo Vera",
         "nombreCompleto": "Massimo Vera",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4514,7 +4514,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Eliana Janqui",
         "nombreCompleto": "Eliana Janqui",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4529,7 +4529,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Samin Orduña",
         "nombreCompleto": "Samin Orduña",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4544,7 +4544,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Fatima Cabrera",
         "nombreCompleto": "Fatima Cabrera",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4559,7 +4559,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jade Vargas",
         "nombreCompleto": "Jade Vargas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4574,7 +4574,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ariana Sandoval",
         "nombreCompleto": "Ariana Sandoval",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4589,7 +4589,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Shaily Luque",
         "nombreCompleto": "Shaily Luque",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4604,7 +4604,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Valeria Huamani",
         "nombreCompleto": "Valeria Huamani",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4619,7 +4619,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Romina Rosa-perez",
         "nombreCompleto": "Romina Rosa-perez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Sub Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4634,7 +4634,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Esteban Ariel",
         "nombreCompleto": "Esteban Ariel",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4649,7 +4649,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Heidy Roque",
         "nombreCompleto": "Heidy Roque",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4664,7 +4664,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Raquel Garcia",
         "nombreCompleto": "Raquel Garcia",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4679,7 +4679,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Thayra Rojas",
         "nombreCompleto": "Thayra Rojas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4694,7 +4694,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Alvaro Aroni",
         "nombreCompleto": "Alvaro Aroni",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4709,7 +4709,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Ariana Tone",
         "nombreCompleto": "Ariana Tone",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4724,7 +4724,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Selena Heredia",
         "nombreCompleto": "Selena Heredia",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4739,7 +4739,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Stephanie Venero",
         "nombreCompleto": "Stephanie Venero",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4754,7 +4754,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Kelly León",
         "nombreCompleto": "Kelly León",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4769,7 +4769,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Alely Monge",
         "nombreCompleto": "Alely Monge",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4784,7 +4784,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Susan Chinguel",
         "nombreCompleto": "Susan Chinguel",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4799,7 +4799,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Luciana Quispe",
         "nombreCompleto": "Luciana Quispe",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4814,7 +4814,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Lya Ayma",
         "nombreCompleto": "Lya Ayma",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4829,7 +4829,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Linda Márquez",
         "nombreCompleto": "Linda Márquez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4844,7 +4844,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Mayumi Machaca",
         "nombreCompleto": "Mayumi Machaca",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Director",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4859,7 +4859,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "André Pimentel",
         "nombreCompleto": "André Pimentel",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Voluntario",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4874,7 +4874,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jean Yaringaño",
         "nombreCompleto": "Jean Yaringaño",
-        "rol": "Miembro de Red Astrum",
+        "rol": "VicePresidente",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4889,7 +4889,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Dhana Sanchez",
         "nombreCompleto": "Dhana Sanchez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Gerente de Rendimiento",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4904,7 +4904,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Luciana Ávila",
         "nombreCompleto": "Luciana Ávila",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Gerente de Talento Humano",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4919,7 +4919,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Valerya Berrospi",
         "nombreCompleto": "Valerya Berrospi",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Gerente de Alianzas",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4934,7 +4934,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Daphne Leiva",
         "nombreCompleto": "Daphne Leiva",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Gerente de Gestión de Proyectos y eventos",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4949,7 +4949,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Anyeli Robles",
         "nombreCompleto": "Anyeli Robles",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Gerente de Marketing",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4964,7 +4964,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Rosella España",
         "nombreCompleto": "Rosella España",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Gerente de Recursos Humanos",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4979,7 +4979,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Rous Mendoza",
         "nombreCompleto": "Rous Mendoza",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Gerente de Embajadores",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -4994,7 +4994,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Kiara Rojas",
         "nombreCompleto": "Kiara Rojas",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Recursos Humanos",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -5009,7 +5009,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Rebeca Correa",
         "nombreCompleto": "Rebeca Correa",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Marketing y Diseño",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -5024,7 +5024,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Treysi Carrera",
         "nombreCompleto": "Treysi Carrera",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Recursos Humanos",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -5039,7 +5039,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Elisa Susanibar",
         "nombreCompleto": "Elisa Susanibar",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Gestión de Proyectos",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -5054,7 +5054,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Heather Ipenza",
         "nombreCompleto": "Heather Ipenza",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Gestión de Proyectos",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -5069,7 +5069,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Sandra Reyes",
         "nombreCompleto": "Sandra Reyes",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Recursos Humanos",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -5084,7 +5084,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Cinthya Pérez",
         "nombreCompleto": "Cinthya Pérez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Marketing y Diseño",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -5099,7 +5099,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jady Godos",
         "nombreCompleto": "Jady Godos",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Gestión de Proyectos",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -5114,7 +5114,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Jhoselin Mendoza",
         "nombreCompleto": "Jhoselin Mendoza",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Marketing y Diseño",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -5129,7 +5129,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Máximo Sandoval",
         "nombreCompleto": "Máximo Sandoval",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Recursos Humanos",
         "area": "Miembros de ONGs",
         "areas": [
             "Miembros de ONGs"
@@ -5144,7 +5144,7 @@ const TEAM_MEMBERS = [
     {
         "nombre": "Juan Gálvez",
         "nombreCompleto": "Juan Gálvez",
-        "rol": "Miembro de Red Astrum",
+        "rol": "Asesor de Red Astrum",
         "area": "Asesores",
         "areas": [
             "Asesores"
