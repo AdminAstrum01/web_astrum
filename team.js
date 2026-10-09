@@ -6,6 +6,7 @@ const filterContainer = document.getElementById("filter-pills");
 
 let activeFilter = "Todos";
 let searchQuery = "";
+const unavailablePhotos = new Set();
 
 function localizedText(value = "") {
     return window.AstrumI18n?.translateText(value) || value;
@@ -41,16 +42,6 @@ function renderAvatar(member) {
     const avatar = document.createElement("div");
     avatar.className = member.foto ? "member-avatar" : "member-avatar no-photo";
 
-    const showInitials = () => {
-        avatar.className = "member-avatar no-photo";
-        avatar.replaceChildren(document.createTextNode(getInitials(member.nombre)));
-    };
-
-    if (!member.foto) {
-        showInitials();
-        return avatar;
-    }
-
     const image = document.createElement("img");
     image.src = member.foto;
     image.alt = message(
@@ -60,7 +51,10 @@ function renderAvatar(member) {
     );
     image.loading = "lazy";
     image.decoding = "async";
-    image.addEventListener("error", showInitials, { once: true });
+    image.addEventListener("error", () => {
+        unavailablePhotos.add(member.foto);
+        applyFilters();
+    }, { once: true });
     avatar.appendChild(image);
 
     return avatar;
@@ -111,7 +105,6 @@ function renderMemberCard(member, index) {
     card.dataset.area = member.area;
     card.dataset.aos = "fade-up";
     card.dataset.aosDelay = String((index % 3) * 80);
-    card.title = member.nombreCompleto;
 
     card.appendChild(renderAvatar(member));
 
@@ -138,7 +131,7 @@ function renderMemberCard(member, index) {
 
     const role = document.createElement("p");
     role.className = "member-role";
-    role.textContent = localizedText(member.rol);
+    role.textContent = localizedText(member.rol?.trim() || "Miembro de ONG Astrum");
 
     card.append(badges, name, role);
 
@@ -169,6 +162,7 @@ function renderCards(members) {
 
 function applyFilters() {
     const filtered = TEAM_MEMBERS.filter(member => {
+        if (!member.foto?.trim() || unavailablePhotos.has(member.foto)) return false;
         const matchesArea = activeFilter === "Todos" || member.areas.includes(activeFilter);
         const searchable = normalizeText([
             member.nombre,
