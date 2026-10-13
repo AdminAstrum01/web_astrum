@@ -93,9 +93,8 @@
 
     function addProgramsMenu() {
         const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
-        const isGastrum = normalizedPath === "/g-astrum";
         const isPicnic = normalizedPath === "/picnic-astrum";
-        const programs = [{path:"/apla",name:"APLA"},{path:"/g-astrum",name:"Astrum Clubes"},{path:"/astrum-conecta",name:"Astrum Conecta"},{path:"/picnic-astrum",name:"Picnic Astrum"}];
+        const programs = [{path:"/apla",name:"APLA"},{path:"/astrum-clubes",name:"Astrum Clubes"},{path:"/astrum-conecta",name:"Astrum Conecta"},{path:"/picnic-astrum",name:"Picnic Astrum"}];
         const isProgramPage = programs.some(program => program.path === normalizedPath);
         const programLinks = programs.map(program => `<li><a href="${program.path}"${normalizedPath === program.path ? ' aria-current="page"' : ""}>${program.name}</a></li>`).join("");
         [document.querySelector("ul.main"), document.querySelector(".sidebar > ul")].forEach(menu => {
@@ -286,7 +285,7 @@
 
     function ensureInstitutionalFooter() {
         const path = window.location.pathname.replace(/\/+$/, "") || "/";
-        if (!['/ongs', '/g-astrum'].includes(path)) return;
+        if (!['/ongs', '/astrum-clubes'].includes(path)) return;
 
         let footer = document.querySelector('.footer');
         if (!footer) {
@@ -295,7 +294,7 @@
             document.querySelector('.container')?.appendChild(footer);
         }
 
-        if (path === '/g-astrum') footer.classList.add('ga-footer');
+        if (path === '/astrum-clubes') footer.classList.add('ga-footer');
 
         footer.innerHTML = `
             <div class="footer-text">

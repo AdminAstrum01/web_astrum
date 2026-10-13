@@ -390,7 +390,7 @@
         ["Identidad propia, pertenencia institucional clara.", "A distinct identity with clear institutional belonging."],
         ["El lenguaje azul y amarillo distingue la experiencia de clubes, mientras Red Astrum permanece visible como su casa institucional.", "The blue-and-yellow visual language distinguishes the club experience while Red Astrum remains visible as its institutional home."],
         ["Próximas oportunidades", "Upcoming opportunities"],
-        ["¿Quieres participar en un club Astrum Clubes?", "Would you like to join a Astrum Clubes club?"],
+        ["¿Quieres participar en Astrum Clubes?", "Would you like to join Astrum Clubes?"],
         ["Consulta únicamente las convocatorias y canales oficiales de Red Astrum.", "Use only Red Astrum's official opportunity listings and communication channels."],
         ["Ver oportunidades", "View opportunities"],
         ["Astrum Clubes · Programa de clubes juveniles de Red Astrum", "Astrum Clubes · Red Astrum Youth Club Program"],
