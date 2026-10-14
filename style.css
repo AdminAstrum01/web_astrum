@@ -4531,3 +4531,11 @@ header > .box-icons > a { flex: 0 0 30px; }
  header > .box-icons > a { width: 28px; height: 28px; flex-basis: 28px; font-size: 17px; }
  header .left h2 { font-size: 23px; }
 }
+
+.member-avatar img[src$="/gadiel_lora.webp"] {
+    object-position: 50% 8%;
+}
+
+.member-avatar img[src$="/manuel_quito.webp"] {
+    object-position: 50% 15%;
+}
