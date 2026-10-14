@@ -111,7 +111,7 @@
             if (!menu || menu.querySelector('[data-menu="events"]')) return;
             const eventItem = document.createElement("li");
             eventItem.dataset.menu = "events";
-            const eventLinks = `<li><a href="/eventos"${normalizedPath === "/eventos" ? ' aria-current="page"' : ""}>Todos los eventos</a></li><li><a href="/picnic-astrum"${normalizedPath === "/picnic-astrum" ? ' aria-current="page"' : ""}>Picnic Astrum</a></li>`;
+            const eventLinks = `<li><a href="/picnic-astrum"${normalizedPath === "/picnic-astrum" ? ' aria-current="page"' : ""}>Picnic Astrum</a></li>`;
             if (menu.matches("ul.main")) {
                 eventItem.className = "nav-dropdown";
                 eventItem.innerHTML = `<a href="#events-menu" aria-haspopup="true" aria-expanded="false"${isEventPage ? ' aria-current="page"' : ""}>Eventos <i class="bx bx-chevron-down" aria-hidden="true"></i></a><ul id="events-menu" aria-label="Eventos de Red Astrum">${eventLinks}</ul>`;
