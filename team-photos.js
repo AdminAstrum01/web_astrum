@@ -15,3 +15,11 @@ const TEAM_PHOTOS = {
 TEAM_MEMBERS.forEach(member => {
     if (TEAM_PHOTOS[member.nombre]) member.foto = TEAM_PHOTOS[member.nombre];
 });
+
+const TEAM_ROLE_UPDATES = {
+    "Paula Rodríguez": "Representante de Por Ti",
+    "Gadiel Lora": "Representante de Pares"
+};
+TEAM_MEMBERS.forEach(member => {
+    if (TEAM_ROLE_UPDATES[member.nombre]) member.rol = TEAM_ROLE_UPDATES[member.nombre];
+});
