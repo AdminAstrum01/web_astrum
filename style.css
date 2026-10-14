@@ -4517,8 +4517,17 @@ body.menu-open {
 /* Keep four social links and language controls within the header. */
 header > .box-icons { gap: 12px; align-items: center; flex-wrap: nowrap; }
 header > .box-icons > a { flex: 0 0 30px; }
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
  header { grid-template-columns: 1fr auto; }
  header ul.main, header > .box-icons { display: none; }
  .menu-icon { display: inline-flex; align-items: center; justify-content: center; }
+}
+
+@media screen and (min-width: 1281px) {
+ header { grid-template-columns: auto minmax(0,1fr) auto; gap: 18px; }
+ header ul.main { justify-self: center; gap: 4px; padding: 6px; }
+ header ul.main > li > a { padding: 8px 9px; font-size: 13px; }
+ header > .box-icons { gap: 8px; }
+ header > .box-icons > a { width: 28px; height: 28px; flex-basis: 28px; font-size: 17px; }
+ header .left h2 { font-size: 23px; }
 }
