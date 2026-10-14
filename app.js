@@ -111,7 +111,32 @@
             if (!menu || menu.querySelector('[data-menu="events"]')) return;
             const eventItem = document.createElement("li");
             eventItem.dataset.menu = "events";
-            eventItem.innerHTML = `<a href="/eventos"${isEventPage ? ' aria-current="page"' : ""}>Eventos</a>`;
+            const eventLinks = `<li><a href="/eventos"${normalizedPath === "/eventos" ? ' aria-current="page"' : ""}>Todos los eventos</a></li><li><a href="/picnic-astrum"${normalizedPath === "/picnic-astrum" ? ' aria-current="page"' : ""}>Picnic Astrum</a></li>`;
+            if (menu.matches("ul.main")) {
+                eventItem.className = "nav-dropdown";
+                eventItem.innerHTML = `<a href="#events-menu" aria-haspopup="true" aria-expanded="false"${isEventPage ? ' aria-current="page"' : ""}>Eventos <i class="bx bx-chevron-down" aria-hidden="true"></i></a><ul id="events-menu" aria-label="Eventos de Red Astrum">${eventLinks}</ul>`;
+                const trigger = eventItem.querySelector(":scope > a");
+                const setOpen = open => {
+                    eventItem.classList.toggle("open", open);
+                    trigger.setAttribute("aria-expanded", String(open));
+                };
+                trigger.addEventListener("click", event => {
+                    event.preventDefault();
+                    setOpen(!eventItem.classList.contains("open"));
+                });
+                eventItem.addEventListener("keydown", event => {
+                    if (event.key === "Escape") {
+                        setOpen(false);
+                        trigger.focus();
+                    }
+                });
+                document.addEventListener("click", event => {
+                    if (!eventItem.contains(event.target)) setOpen(false);
+                });
+            } else {
+                eventItem.className = "sidebar-services";
+                eventItem.innerHTML = `<details${isEventPage ? " open" : ""}><summary><span>Eventos</span><i class="bx bx-chevron-down" aria-hidden="true"></i></summary><ul aria-label="Eventos de Red Astrum">${eventLinks}</ul></details>`;
+            }
             const ngos = findTopLevelMenuItem(menu, "/ongs");
             if (ngos) ngos.after(eventItem); else menu.appendChild(eventItem);
         });
