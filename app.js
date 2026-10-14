@@ -313,5 +313,25 @@
             </div>`;
     }
 
-    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addProgramsMenu(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); setupContactForm(); ensureInstitutionalFooter();
+
+    function addInstitutionalYouTube() {
+        document.querySelectorAll('.box-icons, .social-box').forEach(container => {
+            if (container.querySelector('a[href="https://www.youtube.com/@RedAstrum"]')) return;
+            const link = document.createElement('a');
+            link.href = 'https://www.youtube.com/@RedAstrum';
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.setAttribute('aria-label', 'YouTube de Red Astrum');
+            const icon = document.createElement('i');
+            icon.className = 'bx bxl-youtube';
+            icon.setAttribute('aria-hidden', 'true');
+            link.appendChild(icon);
+            if (container.classList.contains('social-box')) {
+                link.appendChild(document.createTextNode(' YouTube de Red Astrum'));
+            }
+            container.appendChild(link);
+        });
+    }
+
+    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addProgramsMenu(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); setupContactForm(); ensureInstitutionalFooter(); addInstitutionalYouTube();
 })();
