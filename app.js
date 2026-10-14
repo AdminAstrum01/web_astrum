@@ -315,7 +315,7 @@
 
 
     function addInstitutionalYouTube() {
-        document.querySelectorAll('.box-icons, .social-box').forEach(container => {
+        document.querySelectorAll('.box-icons, .social-box, .sidebar .social-icons').forEach(container => {
             if (container.querySelector('a[href="https://www.youtube.com/@RedAstrum"]')) return;
             const link = document.createElement('a');
             link.href = 'https://www.youtube.com/@RedAstrum';
