@@ -93,8 +93,8 @@
 
     function addProgramsMenu() {
         const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
-        const isPicnic = normalizedPath === "/picnic-astrum";
-        const programs = [{path:"/apla",name:"APLA"},{path:"/astrum-clubes",name:"Astrum Clubes"},{path:"/astrum-conecta",name:"Astrum Conecta"},{path:"/picnic-astrum",name:"Picnic Astrum"}];
+        const isEventPage = ["/eventos", "/picnic-astrum"].includes(normalizedPath);
+        const programs = [{path:"/apla",name:"APLA"},{path:"/astrum-clubes",name:"Astrum Clubes"},{path:"/astrum-conecta",name:"Astrum Conecta"},{path:"/astrum-becas",name:"Astrum Becas"}];
         const isProgramPage = programs.some(program => program.path === normalizedPath);
         const programLinks = programs.map(program => `<li><a href="${program.path}"${normalizedPath === program.path ? ' aria-current="page"' : ""}>${program.name}</a></li>`).join("");
         [document.querySelector("ul.main"), document.querySelector(".sidebar > ul")].forEach(menu => {
@@ -102,6 +102,18 @@
                 const link = item.querySelector(":scope > a[href]");
                 if (programs.some(program => linkTargets(link, program.path))) item.remove();
             });
+        });
+
+        [document.querySelector("ul.main"), document.querySelector(".sidebar > ul")].forEach(menu => {
+            Array.from(menu?.children || []).forEach(item => {
+                if (linkTargets(item.querySelector(":scope > a[href]"), "/picnic-astrum")) item.remove();
+            });
+            if (!menu || menu.querySelector('[data-menu="events"]')) return;
+            const eventItem = document.createElement("li");
+            eventItem.dataset.menu = "events";
+            eventItem.innerHTML = `<a href="/eventos"${isEventPage ? ' aria-current="page"' : ""}>Eventos</a>`;
+            const ngos = findTopLevelMenuItem(menu, "/ongs");
+            if (ngos) ngos.after(eventItem); else menu.appendChild(eventItem);
         });
 
         const desktopMenu = document.querySelector("ul.main");
