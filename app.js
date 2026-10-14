@@ -329,7 +329,7 @@
             if (container.classList.contains('social-box')) {
                 link.appendChild(document.createTextNode(' YouTube de Red Astrum'));
             }
-            container.appendChild(link);
+            container.insertBefore(link, container.querySelector('.language-switcher'));
         });
     }
 
