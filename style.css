@@ -4513,3 +4513,12 @@ body.menu-open {
         justify-content: center;
     }
 }
+
+/* Keep four social links and language controls within the header. */
+header > .box-icons { gap: 12px; align-items: center; flex-wrap: nowrap; }
+header > .box-icons > a { flex: 0 0 30px; }
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+ header { grid-template-columns: 1fr auto; }
+ header ul.main, header > .box-icons { display: none; }
+ .menu-icon { display: inline-flex; align-items: center; justify-content: center; }
+}
