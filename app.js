@@ -1,6 +1,14 @@
 // Shared frontend behavior for Red Astrum.
 (() => {
     "use strict";
+    [document.querySelector("ul.main"), document.querySelector(".sidebar > ul")].forEach(menu => {
+        if (!menu || menu.querySelector('a[href="/blog/"]')) return;
+        const item = document.createElement("li");
+        item.innerHTML = '<a href="/blog/">Blog</a>';
+        const contact = Array.from(menu.children).find(li => li.querySelector('a[href*="#contacto"]'));
+        menu.insertBefore(item, contact || null);
+        if (location.pathname.startsWith("/blog")) item.firstElementChild.setAttribute("aria-current", "page");
+    });
     const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 
     function ensureSocialMetadata() {
@@ -372,3 +380,4 @@
 
     ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addProgramsMenu(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); setupContactForm(); ensureInstitutionalFooter(); addInstitutionalYouTube();
 })();
+
