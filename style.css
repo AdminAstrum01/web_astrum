@@ -4672,3 +4672,7 @@ header .ga-ra-brand img { margin: 0; flex-shrink: 0; }
         font-size: 22px;
     }
 }
+
+/* LALA campaign: Astrum 2026 brandbook colors. */
+.ra-donate-nav{color:#ff9a3d!important;font-weight:700!important}
+.ra-lala-feature{width:min(1160px,calc(100% - 48px));display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:38px;padding:28px;background:#07152e;border:1px solid #8d2bff55;border-radius:24px;text-align:left}.ra-lala-feature>a{display:block}.ra-lala-feature img{display:block;aspect-ratio:16/9;object-fit:contain;width:100%;height:auto;border-radius:14px}.ra-lala-feature h2{font:700 clamp(25px,3vw,38px)/1.2 Poppins,sans-serif;margin:14px 0;color:#f6f1e8;letter-spacing:-.03em}.ra-lala-feature p:not(.ra-lala-eyebrow){font-size:13px;line-height:1.8;color:#d6dbea}.ra-lala-eyebrow{font-size:9px;letter-spacing:.12em;color:#c7a5fc;font-weight:700}.ra-lala-feature .ra-button{background:#6423c7;border-color:#6423c7;color:white;padding:12px 18px;font-size:12px}.ra-lala-direct{display:inline-flex;margin:12px 0 0 16px;color:#ff9a3d;font-size:12px;text-decoration:none;font-weight:700}.ra-lala-direct:hover{text-decoration:underline}@media(max-width:800px){.ra-lala-feature{grid-template-columns:1fr;gap:24px;padding:20px;width:calc(100% - 36px)}.ra-lala-feature h2{font-size:30px}.ra-lala-direct{margin-left:12px}}
