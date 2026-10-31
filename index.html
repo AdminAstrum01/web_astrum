@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css?v=20261031-lala">
     <link rel="stylesheet" href="/programs.css?v=20261004">
     <link rel="stylesheet" href="/i18n.css">
+    <link rel="stylesheet" href="/campaign-notice.css?v=20261031">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
@@ -38,7 +39,7 @@
                     </ul>
                 </li>
 
-                <li><a href="/ongs">ONGs</a></li><li><a href="/blog/">Blog</a></li><li><a class="ra-donate-nav" href="/donar/">Donar</a></li>
+                <li><a href="/ongs">ONGs</a></li><li><a href="/blog/">Blog</a></li>
                 <li><a href="https://linktr.ee/red_astrum" target="_blank" rel="noopener noreferrer">Únete a Red Astrum</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -70,7 +71,7 @@
                 <li><a href="/" aria-current="page">Inicio</a></li>
                 <li><a href="/about">Sobre nosotros</a></li>
                 <li><a href="/team">Equipo</a></li>
-                <li><a href="/ongs">ONGs</a></li><li><a href="/blog/">Blog</a></li><li><a class="ra-donate-nav" href="/donar/">Donar</a></li>
+                <li><a href="/ongs">ONGs</a></li><li><a href="/blog/">Blog</a></li>
                 <li><a href="https://linktr.ee/red_astrum" target="_blank" rel="noopener noreferrer">Únete a Red Astrum</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -343,25 +344,6 @@
             </a>
         </section>
 
-        <section class="ra-lala-feature" aria-labelledby="lala-home-title">
-            <a href="/donar/" aria-label="Conocer la campaña Juntos hacia LALA"><img src="/images/campanas/lala-jovenes.webp" alt="Ximena Capia, Ximena Cortez, Sebastián Zapata y Valeria Rivas, aceptados en LALA" width="1600" height="900" loading="lazy"></a>
-            <div><p class="ra-lala-eyebrow">ASTRUM BECAS · CAMPAÑA SOLIDARIA</p><h2 id="lala-home-title">Cuatro jóvenes,<br>una oportunidad.</h2><p>Ya fueron aceptados en LALA. Ayudémoslos a completar sus cuotas y seguir transformando sus comunidades.</p><a class="ra-button" href="/donar/">Conoce la campaña ↗</a><a class="ra-lala-direct" href="https://link.mercadopago.com.pe/redastrum" target="_blank" rel="noopener noreferrer">Donar ahora ↗</a></div>
-        </section>
-        <!-- DONACIONES -->
-        <section class="donation-section" id="donaciones">
-            <h1 class="section-title autoDisplay">Apoya a Red Astrum</h1>
-            <p class="donation-lead">Elige un monto y paga de forma segura con Mercado Pago.</p>
-            <label class="donation-amount-label" for="donationAmount">Monto de donación (PEN)</label>
-            <select id="donationAmount" class="donation-amount-select">
-                <option value="10">S/ 10.00</option>
-                <option value="25" selected>S/ 25.00</option>
-                <option value="50">S/ 50.00</option>
-                <option value="100">S/ 100.00</option>
-            </select>
-            <div id="paymentBrick_container" class="payment-brick-container"></div>
-            <p id="donationStatus" class="donation-status" role="status" aria-live="polite"></p>
-        </section>
-
         <!-- CONTACTO -->
         <section class="contact-section" id="contacto">
             <h1 class="section-title autoDisplay">Contáctanos 😊</h1>
@@ -450,12 +432,22 @@
         </section>
     </div>
 
+    <aside id="campaign-notice" class="campaign-entry-notice" aria-labelledby="campaign-notice-title" aria-describedby="campaign-notice-description" aria-live="polite" hidden>
+        <button class="campaign-notice-close" type="button" aria-label="Cerrar notificación de la campaña">×</button>
+        <img src="/images/campanas/lala-jovenes.webp" alt="Ximena Capia, Ximena Cortez, Sebastián Zapata y Valeria Rivas, aceptados en LALA" width="1600" height="900">
+        <div class="campaign-notice-content">
+            <p class="campaign-notice-kicker">ASTRUM BECAS · JUNTOS HACIA LALA</p>
+            <h2 id="campaign-notice-title">Cuatro jóvenes,<br>una oportunidad.</h2>
+            <p id="campaign-notice-description">Ya fueron aceptados en LALA. Conoce sus historias y cómo ayudarlos a dar el siguiente paso.</p>
+            <a class="campaign-notice-link" href="/donar/">Conocer la campaña <span aria-hidden="true">↗</span></a>
+            <button class="campaign-notice-dismiss" type="button">Ahora no</button>
+        </div>
+    </aside>
+
     <!-- SCRIPTS -->
     <script src="/i18n.js?v=20261007ongs" defer></script>
-    <script src="/donations-config.js" defer></script>
-    <script src="https://sdk.mercadopago.com/js/v2" defer></script>
-    <script src="/payment-brick.js" defer></script>
-    <script src="/app.js?v=20261031-lala" defer></script>
+    <script src="/app.js?v=20261031-notificacion" defer></script>
+    <script src="/campaign-notice.js?v=20261031" defer></script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 

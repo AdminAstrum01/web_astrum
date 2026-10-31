@@ -9,13 +9,6 @@
         menu.insertBefore(item, contact || null);
         if (location.pathname.startsWith("/blog")) item.firstElementChild.setAttribute("aria-current", "page");
     });
-    [document.querySelector("ul.main"), document.querySelector(".sidebar > ul")].forEach(menu => {
-        if (!menu || menu.querySelector('a[href="/donar/"]')) return;
-        const item = document.createElement("li");
-        item.innerHTML = '<a class="ra-donate-nav" href="/donar/">Donar</a>';
-        const join = Array.from(menu.children).find(li => li.querySelector('a[href*="linktr.ee/red_astrum"]'));
-        menu.insertBefore(item, join || null);
-    });
     const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 
     function ensureSocialMetadata() {

@@ -1,0 +1,15 @@
+/* Entry notification: Astrum 2026 brandbook. */
+.campaign-entry-notice[hidden]{display:none!important}
+.campaign-entry-notice{position:fixed;right:24px;bottom:24px;width:min(380px,calc(100vw - 32px));z-index:9998;background:#f6f1e8;color:#07152e;border:1px solid #6423c74d;border-radius:20px;box-shadow:0 16px 60px #0007;overflow:hidden;font-family:Poppins,sans-serif;animation:campaign-notice-in .2s ease-out}
+.campaign-entry-notice>img{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;display:block;background:#5900ee}
+.campaign-notice-close{position:absolute;right:10px;top:10px;display:grid;place-items:center;width:34px;height:34px;border:1px solid #fff7;border-radius:50%;color:white;background:#07152ee6;font:400 25px/1 sans-serif;cursor:pointer}
+.campaign-notice-content{padding:22px 24px}.campaign-notice-kicker{font-size:8px!important;letter-spacing:.1em;font-weight:700;color:#6423c7;margin:0 0 12px!important;line-height:1.6}
+.campaign-notice-content h2{font:700 26px/1.15 Poppins,sans-serif;letter-spacing:-.03em;color:#07152e;margin:0 0 12px}.campaign-notice-content>p:not(.campaign-notice-kicker){font-size:12px;line-height:1.8;color:#465166;margin:0 0 18px}
+.campaign-notice-link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 17px;border-radius:9px;background:#6423c7;color:#fff!important;text-decoration:none;font-size:12px;font-weight:600;min-height:44px}.campaign-notice-link:hover{background:#5015ab}
+.campaign-notice-dismiss{display:block;margin:12px auto 0;background:transparent;color:#566173;border:0;padding:5px 12px;min-height:30px;cursor:pointer;font:500 11px Poppins,sans-serif}.campaign-notice-dismiss:hover{color:#6423c7;text-decoration:underline}
+.campaign-entry-notice :is(a,button):focus-visible{outline:3px solid #ff7a00;outline-offset:3px}
+@keyframes campaign-notice-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.campaign-entry-notice{right:16px;bottom:max(16px,env(safe-area-inset-bottom));width:calc(100vw - 32px);max-height:calc(100dvh - 88px);overflow-y:auto}.campaign-entry-notice>img{max-height:150px;object-fit:cover;object-position:center}.campaign-notice-content{padding:18px 20px}.campaign-notice-content h2{font-size:24px}}
+@media(prefers-reduced-motion:reduce){.campaign-entry-notice{animation:none}}
+.campaign-entry-notice>.campaign-notice-close{z-index:2;margin:0;padding:0;transform:none;min-height:34px;max-height:34px}
+@media(max-width:600px){.campaign-entry-notice{left:16px;right:16px;width:auto}}
