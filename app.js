@@ -56,7 +56,7 @@
 
     function setupLazyVideos() {
         const videos = document.querySelectorAll("video[data-lazy-video][data-src]");
-        if (!videos.length) return;
+        if (!videos.length || reducedMotion) return;
 
         const loadVideo = video => {
             if (!video.src) video.src = video.dataset.src;
@@ -276,7 +276,14 @@
         const sidebar = document.querySelector(".sidebar"); const menuButton = document.querySelector(".menu-icon"); const closeButton = document.querySelector(".close-icon"); if (!sidebar || !menuButton) return;
         const backdrop = document.createElement("button"); backdrop.type = "button"; backdrop.className = "menu-backdrop"; backdrop.setAttribute("aria-label", "Cerrar menú"); backdrop.hidden = true; sidebar.before(backdrop);
         const setState = (open, restoreFocus = true) => { sidebar.classList.toggle("open-sidebar", open); sidebar.classList.toggle("close-sidebar", !open); menuButton.setAttribute("aria-expanded", String(open)); sidebar.setAttribute("aria-hidden", String(!open)); sidebar.inert = !open; document.body.classList.toggle("menu-open", open); backdrop.hidden = !open; if (open) sidebar.querySelector("a,button,summary")?.focus(); else if (restoreFocus) menuButton.focus(); };
-        menuButton.addEventListener("click", () => setState(!sidebar.classList.contains("open-sidebar"))); closeButton?.addEventListener("click", () => setState(false)); backdrop.addEventListener("click", () => setState(false)); sidebar.addEventListener("click", event => { if (event.target.closest("a")) setState(false, false); }); document.addEventListener("keydown", event => { if (event.key === "Escape" && sidebar.classList.contains("open-sidebar")) setState(false); }); window.addEventListener("resize", () => { if (window.innerWidth > 1024 && sidebar.classList.contains("open-sidebar")) setState(false, false); }, { passive: true });
+        menuButton.addEventListener("click", () => setState(!sidebar.classList.contains("open-sidebar"))); closeButton?.addEventListener("click", () => setState(false)); backdrop.addEventListener("click", () => setState(false)); sidebar.addEventListener("click", event => { if (event.target.closest("a")) setState(false, false); }); document.addEventListener("keydown", event => { if (!sidebar.classList.contains("open-sidebar")) return;
+            if (event.key === "Escape") setState(false);
+            if (event.key === "Tab") {
+                const items = Array.from(sidebar.querySelectorAll('a,button,summary')).filter(el => el.getClientRects().length);
+                const first = items[0], last = items[items.length - 1];
+                if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+                else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+            } }); window.addEventListener("resize", () => { if (window.innerWidth > 1500 && sidebar.classList.contains("open-sidebar")) setState(false, false); }, { passive: true });
     }
 
     function setupCounters() {
@@ -286,8 +293,27 @@
     }
 
     function setupReveal() {
-        const targets = document.querySelectorAll(".autoBlur,.autoDisplay,.fadein-left"); if (!targets.length) return; if (reducedMotion || !("IntersectionObserver" in window)) { targets.forEach(el => el.classList.add("in-view")); return; }
-        const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("in-view"); observer.unobserve(entry.target); } }); }, { threshold: .15, rootMargin: "0px 0px -8% 0px" }); targets.forEach(el => observer.observe(el));
+        const targets = document.querySelectorAll(".autoBlur,.autoDisplay,.fadein-left,.ra-program-card,.ra-card,.ra-detail-grid article");
+        // Progressive enhancement: nothing is hidden while waiting for JavaScript.
+        targets.forEach(el => el.classList.add("in-view"));
+        if (reducedMotion || !("IntersectionObserver" in window)) return;
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("motion-enter");
+                entry.target.addEventListener("animationend", () => entry.target.classList.remove("motion-enter"), { once: true });
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: .08 });
+        targets.forEach(el => { if (!el.closest(".hero,header")) observer.observe(el); });
+    }
+
+    function setupHeader() {
+        const header = document.querySelector("header");
+        if (!header) return;
+        const update = () => header.classList.toggle("is-scrolled", window.scrollY > 24);
+        update();
+        window.addEventListener("scroll", update, { passive: true });
     }
 
     function setupContactForm() {
@@ -378,6 +404,6 @@
         });
     }
 
-    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addProgramsMenu(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); setupContactForm(); ensureInstitutionalFooter(); addInstitutionalYouTube();
+    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addProgramsMenu(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); setupHeader(); setupContactForm(); ensureInstitutionalFooter(); addInstitutionalYouTube();
 })();
 
