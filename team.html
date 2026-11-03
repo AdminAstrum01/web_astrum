@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="/i18n.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
     <link rel="stylesheet" href="/design-refresh.css?v=20261103-motion2">
+    <link rel="stylesheet" href="/inner-pages.css?v=20261103">
 </head>
 
-<body>
+<body class="ra-inner ra-page-team">
     <div class="container">
-        <video class="back-vid" autoplay loop muted playsinline preload="none" data-src="/videos/galaxy.mp4"></video>
 
-        <header data-aos="fade-down" data-aos-duration="1200">
+
+        <header>
             <a class="left" href="/" aria-label="Ir al inicio de Red Astrum">
                 <img src="/images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
                 <h2><span>Red</span> Astrum</h2>
@@ -38,7 +38,7 @@
                     </ul>
                 </li>
                 <li><a href="/ongs">ONGs</a></li>
-                
+
                 <li>
                     <a href="https://linktr.ee/red_astrum" target="_blank" rel="noopener noreferrer">
                         Únete a Red Astrum
@@ -74,7 +74,7 @@
                 <li><a href="/about">Sobre nosotros</a></li>
                 <li><a href="/team" aria-current="page">Equipo</a></li>
                 <li><a href="/ongs">ONGs</a></li>
-                
+
                 <li><a href="https://linktr.ee/red_astrum" target="_blank" rel="noopener noreferrer">Únete a Red Astrum</a></li>
                 <li><a href="/#contacto">Contacto</a></li>
             </ul>
@@ -93,7 +93,7 @@
         </nav>
 
         <main class="team-page">
-            <section class="team-hero" data-aos="fade-down" data-aos-duration="1000">
+            <section class="team-hero">
                 <h1>Nuestro <span class="gradient">Equipo</span></h1>
                 <p>
                     Conoce a quienes integran las organizaciones, los clubes, el equipo interno
@@ -101,12 +101,12 @@
                 </p>
             </section>
 
-            <section class="team-controls" data-aos="fade-up" data-aos-duration="800" aria-label="Filtrar equipo">
+            <section class="team-controls" aria-label="Filtrar equipo">
                 <label class="search-box" for="search-input">
                     <i class="bx bx-search" aria-hidden="true"></i>
                     <input
                         type="search"
-                        id="search-input"
+                        id="search-input" aria-label="Buscar integrantes"
                         placeholder="Buscar por nombre, rol u ONG..."
                         autocomplete="off"
                     >
@@ -170,8 +170,8 @@
     <script src="/team-data.js" defer></script>
     <script src="/team-photos.js" defer></script>
     <script src="/team-roles.js?v=20261014" defer></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="/team.js" defer></script>
+    <script src="/inner-pages.js?v=20261103" defer></script>
 </body>
 
 </html>
