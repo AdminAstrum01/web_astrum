@@ -8,21 +8,22 @@
     <meta name="description" content="Red Astrum conecta a jóvenes, organizaciones afiliadas independientes, asesores y aliados para aprender haciendo y convertir ideas en acciones de impacto.">
     <link rel="canonical" href="https://www.redastrum.org/">
 
-    <link rel="stylesheet" href="style.css?v=20261031-lala">
+    <link rel="stylesheet" href="style.css?v=20261103-design">
     <link rel="stylesheet" href="/programs.css?v=20261004">
     <link rel="stylesheet" href="/i18n.css">
     <link rel="stylesheet" href="/campaign-notice.css?v=20261031">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+
+    <link rel="stylesheet" href="/design-refresh.css?v=20261103">
 </head>
 
-<body>
+<body class="ra-home">
     <div class="container">
-        <video class="back-vid" autoplay loop muted playsinline preload="none" data-src="videos/galaxy.mp4"></video>
+
 
         <!-- HEADER -->
-        <header data-aos="fade-down" data-aos-duration="1200">
+        <header>
             <a class="left" href="/" aria-label="Ir al inicio de Red Astrum">
                 <img src="images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
                 <h2><span>Red</span> Astrum</h2>
@@ -89,20 +90,19 @@
             </div>
         </nav>
 
-        <div class="blackhole-box" data-aos="fade-down" data-aos-duration="1600">
-            <video autoplay loop muted playsinline preload="none" data-src="videos/blackhole.mp4"></video>
-        </div>
+
 
         <!-- HERO -->
         <section class="hero">
-            <div class="hero-info autoBlur" data-aos="fade-right" data-aos-duration="1000">
+            <div class="hero-info autoBlur">
+                <p class="hero-eyebrow">RED EDUCATIVA JUVENIL · PERÚ</p>
                 <div class="hero-info-title">
                     <i class="bx bx-book-reader"></i>
                     Aprende. Conecta. Actúa.
                 </div>
 
-                <h1 data-aos="fade-right" data-aos-duration="1600">
-                    Unimos organizaciones.<br><span class="gradient">Activamos ideas.</span>
+                <h1>
+                    Unimos<br>organizaciones.<br><span class="gradient">Activamos ideas.</span>
                 </h1>
 
                 <p>
@@ -112,15 +112,19 @@
             </div>
 
             <div class="skills-video-box">
-                <img src="images/header-img.svg" alt="Astronauta Red Astrum">
+                <div class="hero-orbit" aria-hidden="true"></div>
+                <img src="images/header-img.svg" alt="Astronauta Red Astrum" width="600" height="600" fetchpriority="high">
+                <span class="orbit-label orbit-label-top" aria-hidden="true"><i class="bx bx-network-chart"></i> Conectamos talento</span>
+                <span class="orbit-label orbit-label-bottom" aria-hidden="true"><i class="bx bx-bulb"></i> Ideas que se vuelven acción</span>
             </div>
 
+            <p class="hero-footnote">El siguiente paso empieza en comunidad.</p>
             <a class="scroll-down" href="#proposito" aria-label="Ir a la siguiente sección"></a>
         </section>
 
         <!-- INFO / PROYECTO -->
         <section class="ra-project-section" id="proposito">
-            <h1 class="section-title autoDisplay">Aprender, conectar y actuar en comunidad</h1>
+            <p class="ra-kicker">Nuestro propósito</p><h2 class="section-title autoDisplay">Aprender, conectar y actuar<br>en comunidad.</h2>
 
             <div class="ra-project-grid">
                 <article class="ra-card ra-card-small">
@@ -166,17 +170,18 @@
             </div>
         </section>
 
-        <section class="ra-programs" id="programas" aria-labelledby="programs-title"><div class="ra-programs-heading"><p class="ra-kicker">Nuestros programas</p><h2 id="programs-title">Encuentra tu manera de participar.</h2><p>Para jóvenes que quieren aprender y organizaciones que quieren crecer juntas.</p></div><div class="ra-program-grid"><article class="ra-program-card ra-program-apla"><div class="ra-program-icon" aria-hidden="true"><i class="bx bx-bulb"></i></div><p class="ra-kicker">Liderazgo práctico</p><h3>APLA</h3><p>Convierte un desafío de tu entorno en una idea, una prueba y un siguiente paso. Aprende en tribus con acompañamiento juvenil.</p><span class="ra-program-status">Piloto en marcha · Convocatoria cerrada</span><a href="/apla">Conocer APLA <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article><article class="ra-program-card ra-program-clubes"><div class="ra-program-icon" aria-hidden="true"><i class="bx bx-group"></i></div><p class="ra-kicker">Intereses que nos unen</p><h3>Astrum Clubes</h3><p>Política, Lectura, Videojuegos y Cine: cuatro comunidades para conversar, crear y aprender con liderazgo compartido.</p><span class="ra-program-status">Cuatro clubes temáticos</span><a href="/astrum-clubes">Conocer Astrum Clubes <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article><article class="ra-program-card ra-program-conecta"><div class="ra-program-icon" aria-hidden="true"><i class="bx bx-network-chart"></i></div><p class="ra-kicker">Colaboración entre organizaciones</p><h3>Astrum Conecta</h3><p>Una ruta de afiliación y fortalecimiento para organizaciones juveniles independientes: asesoría, difusión y proyectos compartidos.</p><span class="ra-program-status">Conserva tu autonomía</span><a href="/astrum-conecta">Conocer Astrum Conecta <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article><article class="ra-program-card ra-program-becas"><div class="ra-program-icon" aria-hidden="true"><i class="bx bx-graduation"></i></div><p class="ra-kicker">Oportunidades educativas</p><h3>Astrum Becas</h3><p>Conoce las becas de idiomas con EduServer y de orientación vocacional con Face to Face, y consulta nuevas oportunidades.</p><span class="ra-program-status">Disponibilidad según convocatoria</span><a href="/astrum-becas">Conocer Astrum Becas <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article></div></section>
-        <section class="ra-programs" id="eventos" aria-labelledby="events-title">
+        <section class="ra-programs" id="programas" aria-labelledby="programs-title"><div class="ra-programs-heading"><p class="ra-kicker">Nuestros programas</p><h2 id="programs-title">Encuentra tu manera de participar.</h2><p>Para jóvenes que quieren aprender y organizaciones que quieren crecer juntas.</p></div><div class="ra-program-grid"><article class="ra-program-card ra-program-apla"><div class="ra-program-icon" aria-hidden="true"><i class="bx bx-bulb"></i></div><p class="ra-kicker">Liderazgo práctico</p><h3>APLA</h3><p>Convierte un desafío de tu entorno en una idea, una prueba y un siguiente paso. Aprende en tribus con acompañamiento juvenil.</p><span class="ra-program-status">Piloto en marcha · Convocatoria cerrada</span><a href="/apla">Conocer APLA <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article><article class="ra-program-card ra-program-clubes"><div class="ra-program-icon" aria-hidden="true"><i class="bx bx-group"></i></div><p class="ra-kicker">Intereses que nos unen</p><h3>Astrum Clubes</h3><p>Política, Lectura, Videojuegos y Cine: cuatro comunidades para conversar, crear y aprender con liderazgo compartido.</p><span class="ra-program-status">Cuatro clubes temáticos</span><a href="/astrum-clubes">Conocer Astrum Clubes <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article><article class="ra-program-card ra-program-conecta"><div class="ra-program-icon" aria-hidden="true"><i class="bx bx-network-chart"></i></div><p class="ra-kicker">Colaboración entre organizaciones</p><h3>Astrum Conecta</h3><p>Una ruta de afiliación y fortalecimiento para organizaciones juveniles independientes: asesoría, difusión y proyectos compartidos.</p><span class="ra-program-status">Conserva tu autonomía</span><a href="/astrum-conecta">Conocer Astrum Conecta <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article><article class="ra-program-card ra-program-becas"><div class="ra-program-icon" aria-hidden="true"><i class="bx bxs-graduation"></i></div><p class="ra-kicker">Oportunidades educativas</p><h3>Astrum Becas</h3><p>Conoce las becas de idiomas con EduServer y de orientación vocacional con Face to Face, y consulta nuevas oportunidades.</p><span class="ra-program-status">Disponibilidad según convocatoria</span><a href="/astrum-becas">Conocer Astrum Becas <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article></div></section>
+        <section class="ra-programs ra-home-events" id="eventos" aria-labelledby="events-title">
             <div class="ra-programs-heading"><p class="ra-kicker">Eventos de Red Astrum</p><h2 id="events-title">Conocernos también fortalece la red.</h2><p>Encuentros para compartir experiencias, conectar entre regiones y conocer a las personas detrás de las organizaciones juveniles.</p></div>
+            <img class="home-event-photo" src="images/fotos/picnic_lima_redastrum.webp" alt="Jóvenes de Red Astrum compartiendo un encuentro al aire libre" loading="lazy" width="900" height="600">
             <article class="ra-program-card ra-program-picnic"><div class="ra-program-icon" aria-hidden="true"><i class="bx bx-sun"></i></div><p class="ra-kicker">Integración juvenil · Astrum Conecta</p><h3>Picnic Astrum</h3><p>Un encuentro al aire libre para conversar, compartir y construir vínculos de confianza entre jóvenes de distintas organizaciones y regiones.</p><span class="ra-program-status">Conoce nuestras experiencias</span><a href="/eventos">Explorar eventos <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article>
         </section>
 
 
-        <section class="ra-programs" aria-labelledby="home-blog-title"><div class="ra-programs-heading"><p class="ra-kicker">Blog de Red Astrum</p><h2 id="home-blog-title">Historias que hacen red.</h2><p>Conoce las voces y experiencias de nuestras organizaciones.</p></div><article class="ra-program-card"><p class="ra-kicker">Puentes de Tinta · Cultura y expresión</p><h3>Una palabra, infinitas posibilidades</h3><p>Más de cien jóvenes de cinco países encontraron en las letras una forma de expresarse y ser escuchados.</p><a href="/blog/una-palabra-infinitas-posibilidades/">Leer historia <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a><a href="/blog/">Explorar el blog <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article></section>
+        <section class="ra-programs ra-home-blog" aria-labelledby="home-blog-title"><div class="ra-programs-heading"><p class="ra-kicker">Blog de Red Astrum</p><h2 id="home-blog-title">Historias que hacen red.</h2><p>Conoce las voces y experiencias de nuestras organizaciones.</p></div><article class="ra-program-card"><p class="ra-kicker">Puentes de Tinta · Cultura y expresión</p><h3>Una palabra, infinitas posibilidades</h3><p>Más de cien jóvenes de cinco países encontraron en las letras una forma de expresarse y ser escuchados.</p><a href="/blog/una-palabra-infinitas-posibilidades/">Leer historia <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a><a href="/blog/">Explorar el blog <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></article></section>
         <!-- ACTIVIDADES -->
         <section class="my-project">
-            <h1 class="section-title autoDisplay">Experiencias que nos conectan</h1>
+            <h2 class="section-title autoDisplay">La red se vive.</h2>
 
             <div class="project-card">
                 <div class="project-vidbox autoBlur">
@@ -184,10 +189,10 @@
                 </div>
 
                 <div class="project-info fadein-left">
-                    <h1>
+                    <h3>
                         <span class="gradient">Formaciones internas basadas en el liderazgo</span>
                         Astrum y la cultura interna.
-                    </h1>
+                    </h3>
                 </div>
             </div>
 
@@ -197,10 +202,10 @@
                 </div>
 
                 <div class="project-info fadein-left">
-                    <h1>
+                    <h3>
                         Proyectos comunitarios diseñados a partir
                         <span class="gradient">de las ODS y la realidad nacional.</span>
-                    </h1>
+                    </h3>
                 </div>
             </div>
 
@@ -210,46 +215,46 @@
                 </div>
 
                 <div class="project-info fadein-left">
-                    <h1>
+                    <h3>
                         Espacios de networking como conferencias,
                         <span class="gradient">cumbres y eventos informales.</span>
-                    </h1>
+                    </h3>
                 </div>
             </div>
         </section>
 
         <!-- IMPACTO -->
         <section class="counters">
-            <h1 class="section-title autoDisplay">Impacto de la Red Astrum</h1><p class="ra-impact-note">Cifras de proyectos, becas, organizaciones y miembros: reporte institucional al 28 de agosto de 2026.</p>
+            <p class="ra-kicker">Juntos llegamos más lejos</p><h2 class="section-title autoDisplay">Impacto de la Red Astrum</h2><p class="ra-impact-note">Cifras de proyectos, becas, organizaciones y miembros: reporte institucional al 28 de agosto de 2026.</p>
 
             <div>
                 <div class="counter">
-                    <h1><span data-count="20">0</span>+</h1>
+                    <p class="counter-value"><span data-count="20">20</span>+</p>
                     <h3>Proyectos educativos lanzados</h3>
                 </div>
 
                 <div class="counter">
-                    <h1><span data-count="30">0</span>+</h1>
+                    <p class="counter-value"><span data-count="30">30</span>+</p>
                     <h3>Becas otorgadas</h3>
                 </div>
 
                 <div class="counter">
-                    <h1><span data-count="14">0</span></h1>
+                    <p class="counter-value"><span data-count="14">14</span></p>
                     <h3>Organizaciones afiliadas</h3>
                 </div>
 
                 <div class="counter">
-                    <h1><span data-count="4">0</span></h1>
+                    <p class="counter-value"><span data-count="4">4</span></p>
                     <h3>Programas para aprender y conectar</h3>
                 </div>
 
                 <div class="counter">
-                    <h1><span data-count="300">0</span>+</h1>
+                    <p class="counter-value"><span data-count="300">300</span>+</p>
                     <h3>Miembros Astrum</h3>
                 </div>
 
                 <div class="counter">
-                    <h1><span data-count="4">0</span></h1>
+                    <p class="counter-value"><span data-count="4">4</span></p>
                     <h3>Clubes temáticos</h3>
                 </div>
             </div>
@@ -257,7 +262,7 @@
 
         <!-- ONGS -->
         <section class="skills-section" id="ongs">
-            <h1 class="section-title autoDisplay">Organizaciones de la Red Astrum</h1>
+            <p class="ra-kicker">Una red, muchas maneras de transformar</p><h2 class="section-title autoDisplay">Organizaciones de la Red Astrum</h2>
 
             <div class="skills-box autoDisplay">
                 <div class="Designer">
@@ -346,7 +351,7 @@
 
         <!-- CONTACTO -->
         <section class="contact-section" id="contacto">
-            <h1 class="section-title autoDisplay">Contáctanos 😊</h1>
+            <div class="contact-heading"><p class="ra-kicker">Hagamos que suceda</p><h2 class="section-title autoDisplay">Las buenas ideas<br>empiezan conversando.</h2></div>
 
             <div class="contact-content">
                 <div class="social-box autoBlur">
@@ -446,14 +451,10 @@
 
     <!-- SCRIPTS -->
     <script src="/i18n.js?v=20261007ongs" defer></script>
-    <script src="/app.js?v=20261031-notificacion" defer></script>
+    <script src="/app.js?v=20261103-design" defer></script>
     <script src="/campaign-notice.js?v=20261031" defer></script>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-    <script>
-        window.AOS?.init();
-    </script>
 </body>
 
 </html>
