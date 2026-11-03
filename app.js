@@ -287,25 +287,159 @@
     }
 
     function setupCounters() {
-        const container = document.querySelector(".counters"); if (!container) return; const counters = container.querySelectorAll("span[data-count]"); if (!counters.length) return;
-        const renderFinal = () => counters.forEach(counter => { counter.textContent = counter.dataset.count || "0"; }); if (reducedMotion || !("IntersectionObserver" in window)) { renderFinal(); return; }
-        let activated = false; const observer = new IntersectionObserver(entries => { if (activated || !entries.some(entry => entry.isIntersecting)) return; activated = true; counters.forEach(counter => { const target = Number.parseInt(counter.dataset.count || "0", 10); let current = 0; const step = Math.max(1, Math.ceil(target / 70)); const tick = () => { current = Math.min(target, current + step); counter.textContent = String(current); if (current < target) requestAnimationFrame(tick); }; tick(); }); observer.disconnect(); }, { threshold: .25, rootMargin: "0px 0px -10% 0px" }); observer.observe(container);
+        const container = document.querySelector(".counters");
+        const counters = container?.querySelectorAll("span[data-count]");
+        if (!counters?.length) return;
+        const renderFinal = () => counters.forEach(counter => { counter.textContent = counter.dataset.count || "0"; });
+        renderFinal();
+        if (reducedMotion || !("IntersectionObserver" in window)) return;
+        const observer = new IntersectionObserver(entries => {
+            if (!entries.some(entry => entry.isIntersecting)) return;
+            const start = performance.now();
+            const tick = now => {
+                const progress = Math.min((now - start) / 1500, 1);
+                const ease = 1 - Math.pow(1 - progress, 4);
+                counters.forEach(counter => { counter.textContent = String(Math.round(Number(counter.dataset.count) * ease)); });
+                if (progress < 1 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) requestAnimationFrame(tick);
+                else renderFinal();
+            };
+            requestAnimationFrame(tick);
+            observer.disconnect();
+        }, { threshold: .25 });
+        observer.observe(container);
     }
 
     function setupReveal() {
-        const targets = document.querySelectorAll(".autoBlur,.autoDisplay,.fadein-left,.ra-program-card,.ra-card,.ra-detail-grid article");
-        // Progressive enhancement: nothing is hidden while waiting for JavaScript.
+        const targets = document.querySelectorAll(".autoBlur,.autoDisplay,.fadein-left,.ra-program-card,.ra-card,.ra-detail-grid article,.home-event-photo,.counter");
         targets.forEach(el => el.classList.add("in-view"));
         if (reducedMotion || !("IntersectionObserver" in window)) return;
+        // Stagger siblings within the viewport, without hiding offscreen content.
+        document.querySelectorAll(".ra-program-grid,.ra-project-grid,.ra-detail-grid,.counters > div").forEach(grid => {
+            Array.from(grid.children).forEach((child, index) => child.style.setProperty("--reveal-delay", `${(index % 3) * 85}ms`));
+        });
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
-                entry.target.classList.add("motion-enter");
-                entry.target.addEventListener("animationend", () => entry.target.classList.remove("motion-enter"), { once: true });
+                if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                    entry.target.classList.add("motion-enter");
+                    const finish = event => {
+                        if (event.target !== entry.target) return;
+                        entry.target.classList.remove("motion-enter");
+                        entry.target.removeEventListener("animationend", finish);
+                    };
+                    entry.target.addEventListener("animationend", finish);
+                }
                 observer.unobserve(entry.target);
             });
-        }, { threshold: .08 });
+        }, { threshold: .12 });
         targets.forEach(el => { if (!el.closest(".hero,header")) observer.observe(el); });
+    }
+
+    function setupImmersiveMotion() {
+        const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const pointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+        const hero = document.querySelector(".ra-home .hero");
+        const stage = hero?.querySelector(".skills-video-box");
+        const root = document.documentElement;
+        let activeHero = true, scrollFrame = 0, pointerFrame = 0;
+        let enabled = !motionQuery.matches;
+        const updatePreference = () => {
+            enabled = !motionQuery.matches;
+            root.classList.toggle("astrum-motion", enabled);
+            if (!enabled) resetScene();
+        };
+        const resetScene = () => {
+            if (!stage) return;
+            ["--scene-x", "--scene-y", "--scene-rx", "--scene-ry"].forEach(name => stage.style.removeProperty(name));
+        };
+        updatePreference();
+        motionQuery.addEventListener("change", updatePreference);
+        const updateVisibility = () => root.classList.toggle("motion-paused", document.hidden);
+        document.addEventListener("visibilitychange", updateVisibility);
+        updateVisibility();
+
+        if (hero && stage) {
+            // Small CSS-only stars: no video, canvas loop or downloaded animation library.
+            const stars = document.createElement("div");
+            stars.className = "astrum-stars";
+            stars.setAttribute("aria-hidden", "true");
+            for (let index = 0; index < 25; index++) {
+                const star = document.createElement("span");
+                star.style.cssText = `--star-x:${(index * 37 + 11) % 100}%;--star-y:${(index * 23 + 7) % 100}%;--star-delay:${-index * .47}s;--star-size:${index % 5 === 0 ? 3 : 2}px`;
+                stars.appendChild(star);
+            }
+            hero.prepend(stars);
+            const orbit = stage.querySelector(".hero-orbit");
+            const satellite = document.createElement("span");
+            satellite.className = "orbit-satellite";
+            satellite.setAttribute("aria-hidden", "true");
+            orbit?.appendChild(satellite);
+            const innerOrbit = document.createElement("div");
+            innerOrbit.className = "hero-orbit-secondary";
+            innerOrbit.setAttribute("aria-hidden", "true");
+            stage.prepend(innerOrbit);
+            hero.querySelectorAll(".hero-eyebrow,.hero-info-title,.hero-info h1,.hero-info > p:not(.hero-eyebrow),.ra-hero-actions,.skills-video-box").forEach((element, index) => {
+                // The scene's transform is reserved for pointer depth; its image handles entry.
+                const target = element === stage ? stage.querySelector("img") : element;
+                target?.classList.add("hero-arrive");
+                target?.style.setProperty("--arrival-delay", `${Math.min(index, 5) * 85}ms`);
+            });
+            if ("IntersectionObserver" in window) {
+                new IntersectionObserver(entries => {
+                    activeHero = entries[0].isIntersecting;
+                    hero.classList.toggle("scene-paused", !activeHero);
+                }).observe(hero);
+            }
+            hero.addEventListener("pointermove", event => {
+                if (!enabled || !pointerQuery.matches || !activeHero || pointerFrame) return;
+                const rect = hero.getBoundingClientRect();
+                const x = Math.max(-1, Math.min(1, (event.clientX - rect.left) / rect.width * 2 - 1));
+                const y = Math.max(-1, Math.min(1, (event.clientY - rect.top) / rect.height * 2 - 1));
+                pointerFrame = requestAnimationFrame(() => {
+                    stage.style.setProperty("--scene-x", `${x * 10}px`);
+                    stage.style.setProperty("--scene-y", `${y * 8}px`);
+                    stage.style.setProperty("--scene-rx", `${-y * 3}deg`);
+                    stage.style.setProperty("--scene-ry", `${x * 4}deg`);
+                    pointerFrame = 0;
+                });
+            }, { passive: true });
+            hero.addEventListener("pointerleave", () => {
+                cancelAnimationFrame(pointerFrame); pointerFrame = 0; resetScene();
+            });
+        }
+
+        const updateScroll = () => {
+            const total = root.scrollHeight - root.clientHeight;
+            root.style.setProperty("--reading-progress", total > 0 ? String(Math.min(1, window.scrollY / total)) : "0");
+            scrollFrame = 0;
+        };
+        const scheduleScroll = () => { if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScroll); };
+        window.addEventListener("scroll", scheduleScroll, { passive: true });
+        window.addEventListener("resize", scheduleScroll, { passive: true });
+        updateScroll();
+        document.querySelectorAll(".ra-program-card,.ra-detail-grid article").forEach(card => {
+            card.classList.add("depth-card");
+            let frame = 0;
+            const resetCard = () => {
+                cancelAnimationFrame(frame); frame = 0;
+                ["--card-rx", "--card-ry", "--light-x", "--light-y"].forEach(name => card.style.removeProperty(name));
+            };
+            card.addEventListener("pointermove", event => {
+                if (!enabled || !pointerQuery.matches || frame) return;
+                const rect = card.getBoundingClientRect();
+                const x = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+                const y = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
+                frame = requestAnimationFrame(() => {
+                    card.style.setProperty("--card-rx", `${(y - .5) * -3}deg`);
+                    card.style.setProperty("--card-ry", `${(x - .5) * 3}deg`);
+                    card.style.setProperty("--light-x", `${x * 100}%`);
+                    card.style.setProperty("--light-y", `${y * 100}%`);
+                    frame = 0;
+                });
+            }, { passive: true });
+            card.addEventListener("pointerleave", resetCard);
+            motionQuery.addEventListener("change", resetCard);
+        });
     }
 
     function setupHeader() {
@@ -404,6 +538,6 @@
         });
     }
 
-    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addProgramsMenu(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); setupHeader(); setupContactForm(); ensureInstitutionalFooter(); addInstitutionalYouTube();
+    ensureSocialMetadata(); optimizeMedia(); setupLazyVideos(); addProgramsMenu(); addServicesMenu(); setupMobileMenu(); synchronizePublicNgoState(); setupCounters(); setupReveal(); setupImmersiveMotion(); setupHeader(); setupContactForm(); ensureInstitutionalFooter(); addInstitutionalYouTube();
 })();
 

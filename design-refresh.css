@@ -191,3 +191,61 @@ header > .box-icons > a { box-shadow: none; border-color: var(--astrum-line); }
  header .left { min-width: 190px; }
  header .left h2 { font-size: 21px; }
 }
+
+/* Motion layer: the established layout and palette remain the foundation. */
+header::after { content: ''; position: absolute; inset: auto 0 -1px; height: 2px; background: linear-gradient(90deg,#6b2fa0,#d4b8e8,#ffac67); transform-origin: left; transform: scaleX(var(--reading-progress,0)); pointer-events: none; }
+.astrum-motion .motion-enter { animation: astrum-depth-reveal .9s cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms) both; }
+@keyframes astrum-depth-reveal { from { opacity: .12; transform: translateY(36px) scale(.98); } to { opacity: 1; transform: none; } }
+.astrum-motion .hero-arrive { animation: astrum-hero-arrive 1.05s cubic-bezier(.16,1,.3,1) var(--arrival-delay,0ms) both; }
+@keyframes astrum-hero-arrive { from { opacity: .15; transform: translateY(28px); filter: blur(5px); } to { opacity: 1; transform: none; filter: none; } }
+.astrum-motion .ra-home .skills-video-box > img.hero-arrive { animation: astrum-hero-arrive 1.2s cubic-bezier(.16,1,.3,1) .15s both, astrum-float 7s ease-in-out 1.35s infinite; }
+.ra-home .skills-video-box { transform: perspective(1000px) translate3d(var(--scene-x,0px),var(--scene-y,0px),0) rotateX(var(--scene-rx,0deg)) rotateY(var(--scene-ry,0deg)); transition: transform .65s cubic-bezier(.2,.7,.2,1); }
+.ra-home .hero::after { content: ''; position: absolute; z-index: -1; width: 50%; aspect-ratio: 1; right: 0; top: 18%; border-radius: 50%; background: radial-gradient(ellipse,#6b2fa020,transparent 68%); pointer-events: none; }
+.astrum-motion .ra-home .hero::after { animation: astrum-nebula 12s ease-in-out infinite alternate; }
+@keyframes astrum-nebula { to { transform: translate(-8%,8%) scale(1.25); opacity: .5; } }
+.astrum-stars { position: absolute; inset: 50px -3% 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.astrum-stars span { position: absolute; width: var(--star-size); height: var(--star-size); border-radius: 50%; left: var(--star-x); top: var(--star-y); background: #e5d6f6; opacity: .28; }
+.astrum-motion .astrum-stars span { animation: astrum-twinkle 5.5s ease-in-out var(--star-delay) infinite; }
+@keyframes astrum-twinkle { 0%,100% { opacity: .08; transform: scale(.7); } 50% { opacity: .65; transform: scale(1.15); } }
+.ra-home .hero-orbit { border-color: #d4b8e82f; }
+.hero-orbit-secondary { position: absolute; inset: -4% 5%; border: 1px dashed #d4b8e827; border-radius: 50%; transform: rotate(24deg) scaleY(.78); pointer-events: none; }
+.orbit-satellite { position: absolute; inset: 0; border-radius: 50%; }
+.orbit-satellite::after { content: ''; position: absolute; top: 50%; right: -4px; width: 8px; height: 8px; background: #ffac67; border-radius: 50%; box-shadow: 0 0 18px #ffac6780; }
+.astrum-motion .orbit-satellite { animation: astrum-satellite 22s linear infinite; }
+@keyframes astrum-satellite { to { transform: rotate(360deg); } }
+.astrum-motion .hero-orbit-secondary { animation: astrum-inner-orbit 60s linear infinite; }
+@keyframes astrum-inner-orbit { to { transform: rotate(384deg) scaleY(.78); } }
+.astrum-motion .orbit-label-top { animation: astrum-label-drift 8s ease-in-out -2s infinite; }
+.astrum-motion .orbit-label-bottom { animation: astrum-label-drift 9s ease-in-out -4s infinite reverse; }
+@keyframes astrum-label-drift { 50% { transform: translateY(-10px); } }
+.astrum-motion .hero-info h1 .gradient { background-size: 200% 100%; animation: astrum-text-light 9s ease-in-out infinite; }
+@keyframes astrum-text-light { 50% { background-position: 100% 50%; } }
+.depth-card { position: relative; isolation: isolate; }
+.depth-card::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(400px circle at var(--light-x,50%) var(--light-y,50%),#d4b8e81c,transparent 65%); opacity: 0; transition: opacity .35s; }
+.depth-card:focus-within { border-color: #c9a6e5; }
+.astrum-motion .ra-button { position: relative; overflow: hidden; isolation: isolate; }
+.astrum-motion .ra-button::after { content: ''; position: absolute; inset: -100% auto -100% -80%; width: 35%; background: linear-gradient(90deg,transparent,#fff5,transparent); transform: rotate(25deg); pointer-events: none; }
+.astrum-motion .ra-button:hover::after,.astrum-motion .ra-button:focus-visible::after { animation: astrum-button-sheen .75s ease-out; }
+@keyframes astrum-button-sheen { to { left: 145%; } }
+.astrum-motion .home-event-photo.motion-enter { animation-name: astrum-photo-reveal; }
+@keyframes astrum-photo-reveal { from { opacity: .2; clip-path: inset(0 12% 0 0 round 18px); transform: translateX(-15px); } to { opacity: 1; clip-path: inset(0 round 18px); transform: none; } }
+.astrum-carousel:hover .astrum-carousel-item,.astrum-carousel:focus-within .astrum-carousel-item { animation-play-state: paused; }
+@media(hover:hover) and (pointer:fine) {
+ .astrum-motion .depth-card:hover { transform: perspective(1100px) rotateX(var(--card-rx,0deg)) rotateY(var(--card-ry,0deg)) translateY(-5px); box-shadow: 0 20px 45px #0003; }
+ .astrum-motion .depth-card:hover::after { opacity: 1; }
+ .astrum-motion .project-card .project-vidbox { transition: box-shadow .4s; }
+ .astrum-motion .project-card:hover .project-vidbox { box-shadow: 0 15px 35px #0004; }
+ .astrum-motion .project-card:hover img { transform: scale(1.065); }
+}
+.motion-paused .astrum-stars span,.motion-paused .hero-arrive,.motion-paused .orbit-satellite,.motion-paused .hero-orbit-secondary,.motion-paused .orbit-label,.motion-paused .ra-home .skills-video-box > img,
+.scene-paused .astrum-stars span,.scene-paused .orbit-satellite,.scene-paused .hero-orbit-secondary,.scene-paused .orbit-label,.scene-paused .skills-video-box > img { animation-play-state: paused!important; }
+@media(max-width:700px) {
+ .astrum-stars span:nth-child(even) { display: none; }
+ .hero-orbit-secondary { inset: 0 5%; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .ra-home .skills-video-box,.depth-card:hover { transform: none!important; }
+ .hero-arrive,.astrum-stars span,.hero-orbit-secondary,.orbit-satellite,.orbit-label,.motion-enter,.ra-home .hero::after { animation: none!important; filter: none!important; }
+}
+.motion-paused .ra-home .hero::after,.motion-paused .hero-info h1 .gradient,
+.scene-paused.hero::after,.scene-paused .hero-info h1 .gradient { animation-play-state: paused!important; }
