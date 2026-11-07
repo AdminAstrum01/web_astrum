@@ -202,8 +202,8 @@
     function addServicesMenu() {
         const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
         const isAstrumCertificaPage = normalizedPath === "/verificar";
-        const isAstropediaPage = normalizedPath === "/astropedia";
-        const isServicePage = isAstrumCertificaPage || isAstropediaPage;
+        const isVentanillaPage = normalizedPath === "/ventanilla";
+        const isServicePage = isAstrumCertificaPage || isVentanillaPage;
 
         document.querySelectorAll([
             'ul.main > li > a[href="/verificar/"]',
@@ -219,7 +219,7 @@
             const item = document.createElement("li");
             item.className = "nav-dropdown";
             item.dataset.menu = "services";
-            item.innerHTML = `<a href="#services-menu" aria-haspopup="true" aria-expanded="false"${isServicePage ? ' aria-current="page"' : ""}>Servicios <i class="bx bx-chevron-down" aria-hidden="true"></i></a><ul id="services-menu" aria-label="Servicios de Red Astrum"><li><a href="/verificar/"${isAstrumCertificaPage ? ' aria-current="page"' : ""}>Astrum Certifica</a></li><li><a href="/astropedia"${isAstropediaPage ? ' aria-current="page"' : ""}>Astropedia</a></li></ul>`;
+            item.innerHTML = `<a href="#services-menu" aria-haspopup="true" aria-expanded="false"${isServicePage ? ' aria-current="page"' : ""}>Servicios <i class="bx bx-chevron-down" aria-hidden="true"></i></a><ul id="services-menu" aria-label="Servicios de Red Astrum"><li><a href="/verificar/"${isAstrumCertificaPage ? ' aria-current="page"' : ""}>Astrum Certifica</a></li><li><a href="/ventanilla/"${isVentanillaPage ? ' aria-current="page"' : ""}>Ventanilla Astrum</a></li></ul>`;
 
             const trigger = item.querySelector(":scope > a");
             const contact = Array.from(desktopMenu.children).find(element => {
@@ -257,7 +257,7 @@
             const item = document.createElement("li");
             item.className = "sidebar-services";
             item.dataset.menu = "services-mobile";
-            item.innerHTML = `<details${isServicePage ? " open" : ""}><summary><span>Servicios</span><i class="bx bx-chevron-down" aria-hidden="true"></i></summary><ul aria-label="Servicios de Red Astrum"><li><a href="/verificar/"${isAstrumCertificaPage ? ' aria-current="page"' : ""}>Astrum Certifica</a></li><li><a href="/astropedia"${isAstropediaPage ? ' aria-current="page"' : ""}>Astropedia</a></li></ul></details>`;
+            item.innerHTML = `<details${isServicePage ? " open" : ""}><summary><span>Servicios</span><i class="bx bx-chevron-down" aria-hidden="true"></i></summary><ul aria-label="Servicios de Red Astrum"><li><a href="/verificar/"${isAstrumCertificaPage ? ' aria-current="page"' : ""}>Astrum Certifica</a></li><li><a href="/ventanilla/"${isVentanillaPage ? ' aria-current="page"' : ""}>Ventanilla Astrum</a></li></ul></details>`;
 
             const contact = Array.from(mobileMenu.children).find(element => {
                 const link = element.querySelector(":scope > a[href]");
