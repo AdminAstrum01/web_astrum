@@ -8,6 +8,7 @@
     <link rel="canonical" href="https://www.redastrum.org/ventanilla/">
     <link rel="stylesheet" href="/style.css?v=20261103-design">
     <link rel="stylesheet" href="/design-refresh.css?v=20261107-nav">
+    <link rel="stylesheet" href="/i18n.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <style>
@@ -30,25 +31,71 @@
 <body>
     <div class="container">
       <header>
-        <a class="left" href="/" aria-label="Ir al inicio de Red Astrum">
-          <img src="/images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
-          <h2><span>Red</span> Astrum</h2>
-        </a>
-        <ul class="main">
-          <li><a href="/">Inicio</a></li>
-          <li><a href="/ongs">ONGs</a></li>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/astrum-conecta">Astrum Conecta</a></li>
-        </ul>
-        <button class="menu-icon" type="button" aria-label="Abrir menú" aria-controls="mobile-navigation" aria-expanded="false"><i class="bx bx-menu"></i></button>
-      </header>
-      <nav class="sidebar close-sidebar" id="mobile-navigation" aria-label="Navegación móvil" aria-hidden="true">
-        <button class="close-icon" type="button" aria-label="Cerrar menú"><i class="bx bx-x"></i></button>
-        <ul>
-          <li><a href="/">Inicio</a></li><li><a href="/ongs">ONGs</a></li><li><a href="/blog/">Blog</a></li>
-          <li><a href="/astrum-conecta">Astrum Conecta</a></li>
-        </ul>
-      </nav>
+            <a class="left" href="/" aria-label="Ir al inicio de Red Astrum">
+                <img src="/images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
+                <h2><span>Red</span> Astrum</h2>
+            </a>
+
+            <ul class="main">
+                <li><a href="/">Inicio</a></li>
+
+                <li class="nav-dropdown">
+                    <a href="/about">Acerca de <i class="bx bx-chevron-down" aria-hidden="true"></i></a>
+                    <ul>
+                        <li><a href="/about">Sobre nosotros</a></li>
+                        <li><a href="/team">Equipo</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="/ongs">ONGs</a></li><li><a href="/blog/">Blog</a></li>
+                <li><a href="https://linktr.ee/red_astrum" target="_blank" rel="noopener noreferrer">Únete a Red Astrum</a></li>
+                <li><a href="/#contacto">Contacto</a></li>
+            </ul>
+
+            <div class="box-icons">
+                <a href="https://www.facebook.com/share/18Cic6fYTM/" target="_blank" aria-label="Facebook">
+                    <i class="bx bxl-facebook-circle"></i>
+                </a>
+                <a href="https://www.instagram.com/red_astrum?igsh=cGxwdHd5OWY2c2w1" target="_blank" aria-label="Instagram">
+                    <i class="bx bxl-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/red-astrum?trk=blended-typeahead" target="_blank" aria-label="LinkedIn">
+                    <i class="bx bxl-linkedin-square"></i>
+                </a>
+            </div>
+
+            <button class="menu-icon" type="button" aria-label="Abrir menú" aria-controls="mobile-navigation" aria-expanded="false">
+                <i class="bx bx-menu"></i>
+            </button>
+        </header>
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar close-sidebar" id="mobile-navigation" aria-label="Navegación móvil" aria-hidden="true">
+            <button class="close-icon" type="button" aria-label="Cerrar menú">
+                <i class="bx bx-x"></i>
+            </button>
+
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/about">Sobre nosotros</a></li>
+                <li><a href="/team">Equipo</a></li>
+                <li><a href="/ongs">ONGs</a></li><li><a href="/blog/">Blog</a></li>
+                <li><a href="https://linktr.ee/red_astrum" target="_blank" rel="noopener noreferrer">Únete a Red Astrum</a></li>
+                <li><a href="/#contacto">Contacto</a></li>
+            </ul>
+
+            <div class="social-sidebar">
+                <a href="https://www.facebook.com/share/18Cic6fYTM/" target="_blank" aria-label="Facebook">
+                    <i class="bx bxl-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/red_astrum?igsh=cGxwdHd5OWY2c2w1" target="_blank" aria-label="Instagram">
+                    <i class="bx bxl-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/red-astrum?trk=blended-typeahead" target="_blank" aria-label="LinkedIn">
+                    <i class="bx bxl-linkedin-square"></i>
+                </a>
+            </div>
+        </nav>
       <main>
         <section class="ventanilla-hero ventanilla-shell" aria-labelledby="ventanilla-title">
           <div class="ventanilla-kicker">Atención para personas y organizaciones</div>
@@ -62,6 +109,7 @@
         </section>
       </main>
     </div>
-    <script src="/app.js"></script>
+    <script src="/i18n.js?v=20261007ongs" defer></script>
+    <script src="/app.js?v=20261103-motion2" defer></script>
 </body>
 </html>
