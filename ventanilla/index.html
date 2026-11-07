@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" data-public-route="/ventanilla">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventanilla Astrum | Red Astrum</title>
+    <meta name="description" content="Actualiza tus datos, presenta solicitudes y recibe atención de Red Astrum desde un solo lugar.">
+    <link rel="canonical" href="https://www.redastrum.org/ventanilla/">
+    <link rel="stylesheet" href="/style.css?v=20261103-design">
+    <link rel="stylesheet" href="/design-refresh.css?v=20261103-motion2">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <style>
+      body { background:#080d1b; color:#f5f7ff; }
+      .ventanilla-shell { width:min(1120px, calc(100% - 40px)); margin:0 auto; }
+      .ventanilla-hero { padding:clamp(88px,12vw,150px) 0 40px; text-align:center; }
+      .ventanilla-kicker { color:#b7a7ff; font-size:.8rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+      .ventanilla-hero h1 { margin:16px 0; font-size:clamp(2.7rem,7vw,5rem); line-height:1.04; color:#fff; }
+      .ventanilla-hero h1 span { color:#a98dff; }
+      .ventanilla-hero p { max-width:720px; margin:0 auto; color:#cbd2e5; line-height:1.7; }
+      .ventanilla-topics { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin:26px auto 0; }
+      .ventanilla-topics span { padding:9px 15px; border:1px solid rgba(175,159,255,.28); border-radius:100px; background:rgba(115,88,206,.13); font-size:.88rem; color:#e5ddff; }
+      .ventanilla-frame { margin:20px auto 70px; padding:clamp(10px,2vw,20px); border:1px solid rgba(175,159,255,.25); border-radius:24px; background:#f8f8fc; box-shadow:0 28px 90px rgba(0,0,0,.3); }
+      .ventanilla-frame iframe { display:block; width:100%; min-height:900px; height:1300px; border:0; border-radius:14px; background:#fff; }
+      .ventanilla-fallback { margin:0 auto 18px; padding:0 6px; color:#25304c; text-align:center; line-height:1.6; }
+      .ventanilla-fallback a { color:#4e35a7; font-weight:750; text-decoration:underline; }
+      @media (max-width:700px) { .ventanilla-frame iframe { min-height:1100px; height:1500px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <header>
+        <a class="left" href="/" aria-label="Ir al inicio de Red Astrum">
+          <img src="/images/logo_redastrum/logo_0_red.webp" alt="Logo Red Astrum">
+          <h2><span>Red</span> Astrum</h2>
+        </a>
+        <ul class="main">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/ongs">ONGs</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/astrum-conecta">Astrum Conecta</a></li>
+          <li><a href="/ventanilla/" aria-current="page">Ventanilla Astrum</a></li>
+        </ul>
+        <button class="menu-icon" type="button" aria-label="Abrir menú" aria-controls="mobile-navigation" aria-expanded="false"><i class="bx bx-menu"></i></button>
+      </header>
+      <nav class="sidebar close-sidebar" id="mobile-navigation" aria-label="Navegación móvil" aria-hidden="true">
+        <button class="close-icon" type="button" aria-label="Cerrar menú"><i class="bx bx-x"></i></button>
+        <ul>
+          <li><a href="/">Inicio</a></li><li><a href="/ongs">ONGs</a></li><li><a href="/blog/">Blog</a></li>
+          <li><a href="/astrum-conecta">Astrum Conecta</a></li><li><a href="/ventanilla/" aria-current="page">Ventanilla Astrum</a></li>
+        </ul>
+      </nav>
+      <main>
+        <section class="ventanilla-hero ventanilla-shell" aria-labelledby="ventanilla-title">
+          <div class="ventanilla-kicker">Atención para personas y organizaciones</div>
+          <h1 id="ventanilla-title">Tu solicitud empieza <span>aquí.</span></h1>
+          <p>Actualiza tus datos, consulta sobre nuestros programas o presenta una solicitud a Red Astrum. Elige el trámite que corresponda dentro del formulario y te responderemos al correo que registres.</p>
+          <div class="ventanilla-topics" aria-label="Tipos de solicitudes"><span>Datos personales y de ONG</span><span>Programas y proyectos</span><span>Colaboraciones</span><span>Certificados y consultas</span></div>
+        </section>
+        <section class="ventanilla-frame ventanilla-shell" aria-label="Formulario de Ventanilla Astrum">
+          <p class="ventanilla-fallback">Si el formulario no aparece o Google te solicita iniciar sesión, <a href="https://forms.gle/caqr4UWF7NM73cjWA" target="_blank" rel="noopener noreferrer">ábrelo directamente en Google Forms <i class="bx bx-link-external" aria-hidden="true"></i></a>.</p>
+          <iframe title="Formulario de Ventanilla Astrum" src="https://docs.google.com/forms/d/e/1FAIpQLSf1Vq4D3SfSEEkmuAPaU2TpO1f0fvZXH4-bAylzO4c2bZL3lA/viewform?embedded=true" loading="lazy">Cargando formulario de Ventanilla Astrum</iframe>
+        </section>
+      </main>
+    </div>
+    <script src="/app.js"></script>
+</body>
+</html>
