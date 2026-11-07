@@ -249,3 +249,20 @@ header::after { content: ''; position: absolute; inset: auto 0 -1px; height: 2px
 }
 .motion-paused .ra-home .hero::after,.motion-paused .hero-info h1 .gradient,
 .scene-paused.hero::after,.scene-paused .hero-info h1 .gradient { animation-play-state: paused!important; }
+
+/* Desktop navigation stays visible; the hamburger belongs to mobile layouts only. */
+@media (min-width: 1025px) {
+ header > .menu-icon { display: none; }
+ header ul.main { display: flex; min-width: 0; max-width: none; gap: 0; padding: 0; }
+ header ul.main > li > a { padding: 10px 7px; font-size: 11px; }
+ header .left { min-width: 0; }
+}
+@media (min-width: 1025px) and (max-width: 1280px) {
+ header { grid-template-columns: auto minmax(0, 1fr); gap: 12px; padding-inline: 20px; }
+ header ul.main { justify-self: end; }
+ header > .box-icons { display: none; }
+}
+@media (min-width: 1281px) and (max-width: 1500px) {
+ header { grid-template-columns: auto minmax(0, 1fr) auto; }
+ header > .box-icons { display: flex; }
+}
