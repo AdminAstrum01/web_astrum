@@ -797,6 +797,84 @@ const ONGS = [
             "indirecto": 270,
             "miembros": 26
         }
+    },
+    {
+        "id": "tribu-solidaria",
+        "nombre": "Tribu Solidaria",
+        "logo": "/images/logo_ong/tribu_solidaria.jpg",
+        "descripcion": "Organización juvenil de La Libertad que apuesta por la educación como herramienta preventiva para la salud. Une el liderazgo y la energía de jóvenes para transformar entornos y promover el bienestar en comunidades en situación de vulnerabilidad.",
+        "mision": "Contribuir al bienestar y desarrollo de las comunidades de la región La Libertad, especialmente de las poblaciones en situación de vulnerabilidad, mediante proyectos sociales, educativos y de salud, promoviendo el voluntariado juvenil, la solidaridad y la participación ciudadana.",
+        "vision": "Ser una organización juvenil referente en la región La Libertad, reconocida por su compromiso, transparencia e impacto social, impulsando iniciativas que promuevan comunidades más solidarias, inclusivas y con mejores oportunidades para su desarrollo.",
+        "publico": "Niños, niñas, adolescentes, jóvenes y poblaciones en situación de vulnerabilidad, priorizando a quienes enfrentan dificultades económicas, sociales o educativas y requieren mayores oportunidades para su desarrollo integral y bienestar.",
+        "region": "La Libertad, Perú",
+        "fechaFundacion": "17 de diciembre de 2025",
+        "ods": [
+            "ODS 3 · Salud y bienestar",
+            "ODS 4 · Educación de calidad"
+        ],
+        "reconocimientoGubernamental": true,
+        "valor": "Aporta una perspectiva de educación, bienestar y voluntariado juvenil desde La Libertad.",
+        "redes": {
+            "instagram": "https://www.instagram.com/tribu.solidariaong/",
+            "facebook": "https://www.facebook.com/profile.php?id=61585390600442"
+        },
+        "proyectos": [
+            {
+                "nombre": "Organización y convocatoria de voluntariado",
+                "descripcion": "Conformación del equipo de trabajo, distribución de responsabilidades e incorporación de jóvenes voluntarios de distintas áreas de formación en Trujillo. La memoria institucional reporta procesos de revisión de postulaciones y selección para fortalecer el compromiso y la continuidad del equipo.",
+                "enlace": "https://www.instagram.com/tribu.solidariaong/"
+            },
+            {
+                "nombre": "Recolección de juguetes y donaciones en especie",
+                "descripcion": "Recolección de juguetes y ropa en buen estado para apoyar actividades solidarias dirigidas a niñas, niños y familias de comunidades vulnerables. En octubre de 2026 se reportó la recepción de siete juguetes adicionales para su clasificación y posterior entrega.",
+                "enlace": "https://www.instagram.com/tribu.solidariaong/"
+            },
+            {
+                "nombre": "Educación ciudadana: Voto Informado",
+                "descripcion": "Coordinación de una charla virtual de educación ciudadana con la iniciativa Voto Informado del Jurado Nacional de Elecciones, programada para el 26 de febrero de 2026. La memoria presentada describe su convocatoria; la realización y asistencia están pendientes de documentación.",
+                "enlace": "https://www.instagram.com/tribu.solidariaong/"
+            }
+        ],
+        "impact": {
+            "directo": 200,
+            "indirecto": 400,
+            "miembros": 23
+        }
+    },
+    {
+        "id": "shimbi-alac",
+        "nombre": "Shimbi Alac",
+        "logo": "/images/logo_ong/shimbi_alac.jpg",
+        "descripcion": "Organización juvenil de Piura que fomenta la identidad cultural y conecta a los jóvenes con su historia para preservar las costumbres y las raíces de su región.",
+        "mision": "Promover la educación y orientación de los jóvenes para preservar las costumbres e historias de su región.",
+        "vision": "Promover en los jóvenes de la región el sentimiento de identidad cultural y la conexión con sus raíces, con el fin de preservar la identidad regional.",
+        "publico": "Escolares y jóvenes de 12 a 25 años interesados en la identidad cultural y la historia de su región.",
+        "region": "Piura, Perú",
+        "fechaFundacion": "2 de junio de 2026",
+        "ods": [
+            "ODS 4 · Educación de calidad",
+            "ODS 5 · Igualdad de género",
+            "ODS 10 · Reducción de las desigualdades",
+            "ODS 11 · Ciudades y comunidades sostenibles",
+            "ODS 17 · Alianzas para lograr los objetivos"
+        ],
+        "reconocimientoGubernamental": false,
+        "valor": "Aporta una perspectiva de identidad cultural, historia y preservación de las costumbres de Piura.",
+        "redes": {
+            "instagram": "https://www.instagram.com/shimbi_alac/"
+        },
+        "proyectos": [
+            {
+                "nombre": "Concurso Nacional de Liderazgo Solidario (CNLS)",
+                "descripcion": "La memoria institucional reporta la participación de representantes de Shimbi Alac en el Concurso Nacional de Liderazgo Solidario en Lima para dar a conocer las iniciativas de la organización.",
+                "enlace": "https://www.instagram.com/p/DdRwsYyoFmk/"
+            }
+        ],
+        "impact": {
+            "directo": 50,
+            "indirecto": 250,
+            "miembros": 7
+        }
     }
 ];
 
@@ -805,6 +883,29 @@ const ONGS = [
     "use strict";
 
     const englishTranslations = new Map([
+        ["Organización juvenil de La Libertad que apuesta por la educación como herramienta preventiva para la salud. Une el liderazgo y la energía de jóvenes para transformar entornos y promover el bienestar en comunidades en situación de vulnerabilidad.", "Youth organization from La Libertad that promotes education as a preventive tool for health. It brings together young people’s leadership and energy to improve environments and support well-being in communities facing vulnerable circumstances."],
+        ["Contribuir al bienestar y desarrollo de las comunidades de la región La Libertad, especialmente de las poblaciones en situación de vulnerabilidad, mediante proyectos sociales, educativos y de salud, promoviendo el voluntariado juvenil, la solidaridad y la participación ciudadana.", "Contribute to the well-being and development of communities in La Libertad, especially vulnerable populations, through social, educational and health projects that encourage youth volunteering, solidarity and civic participation."],
+        ["Ser una organización juvenil referente en la región La Libertad, reconocida por su compromiso, transparencia e impacto social, impulsando iniciativas que promuevan comunidades más solidarias, inclusivas y con mejores oportunidades para su desarrollo.", "Become a leading youth organization in La Libertad, recognized for its commitment, transparency and social impact, promoting more supportive and inclusive communities with greater opportunities for development."],
+        ["Niños, niñas, adolescentes, jóvenes y poblaciones en situación de vulnerabilidad, priorizando a quienes enfrentan dificultades económicas, sociales o educativas y requieren mayores oportunidades para su desarrollo integral y bienestar.", "Children, adolescents, young people and vulnerable populations, prioritizing those facing economic, social or educational difficulties who need greater opportunities for development and well-being."],
+        ["La Libertad, Perú", "La Libertad, Peru"],
+        ["17 de diciembre de 2025", "December 17, 2025"],
+        ["Aporta una perspectiva de educación, bienestar y voluntariado juvenil desde La Libertad.", "Contributes a perspective on education, well-being and youth volunteering from La Libertad."],
+        ["Organización y convocatoria de voluntariado", "Volunteer recruitment and team organization"],
+        ["Conformación del equipo de trabajo, distribución de responsabilidades e incorporación de jóvenes voluntarios de distintas áreas de formación en Trujillo. La memoria institucional reporta procesos de revisión de postulaciones y selección para fortalecer el compromiso y la continuidad del equipo.", "Formation of the team, allocation of responsibilities and recruitment of young volunteers from different fields of study in Trujillo. The institutional report describes application review and selection processes to strengthen commitment and team continuity."],
+        ["Recolección de juguetes y donaciones en especie", "Toy collection and in-kind donations"],
+        ["Recolección de juguetes y ropa en buen estado para apoyar actividades solidarias dirigidas a niñas, niños y familias de comunidades vulnerables. En octubre de 2026 se reportó la recepción de siete juguetes adicionales para su clasificación y posterior entrega.", "Collection of toys and clothes in good condition to support children and families in vulnerable communities. In October 2026, the organization reported receiving seven additional toys for sorting and subsequent distribution."],
+        ["Educación ciudadana: Voto Informado", "Civic education: Informed Voting"],
+        ["Coordinación de una charla virtual de educación ciudadana con la iniciativa Voto Informado del Jurado Nacional de Elecciones, programada para el 26 de febrero de 2026. La memoria presentada describe su convocatoria; la realización y asistencia están pendientes de documentación.", "Coordination of a virtual civic education talk with the National Jury of Elections’ Informed Voting initiative, scheduled for February 26, 2026. The submitted report describes the invitation; documentation of delivery and attendance is pending."],
+        ["Organización juvenil de Piura que fomenta la identidad cultural y conecta a los jóvenes con su historia para preservar las costumbres y las raíces de su región.", "Youth organization from Piura that promotes cultural identity and connects young people with their history to preserve the customs and roots of their region."],
+        ["Promover la educación y orientación de los jóvenes para preservar las costumbres e historias de su región.", "Promote education and guidance for young people to preserve their region’s customs and history."],
+        ["Promover en los jóvenes de la región el sentimiento de identidad cultural y la conexión con sus raíces, con el fin de preservar la identidad regional.", "Encourage a sense of cultural identity and connection with their roots among young people in the region to preserve regional identity."],
+        ["Escolares y jóvenes de 12 a 25 años interesados en la identidad cultural y la historia de su región.", "School students and young people aged 12 to 25 interested in their region’s cultural identity and history."],
+        ["Piura, Perú", "Piura, Peru"],
+        ["2 de junio de 2026", "June 2, 2026"],
+        ["Aporta una perspectiva de identidad cultural, historia y preservación de las costumbres de Piura.", "Contributes a perspective on cultural identity, history and the preservation of Piura’s customs."],
+        ["Concurso Nacional de Liderazgo Solidario (CNLS)", "National Solidarity Leadership Contest (CNLS)"],
+        ["La memoria institucional reporta la participación de representantes de Shimbi Alac en el Concurso Nacional de Liderazgo Solidario en Lima para dar a conocer las iniciativas de la organización.", "The institutional report describes the participation of Shimbi Alac representatives in the National Solidarity Leadership Contest in Lima to present the organization’s initiatives."],
+
         ["Asociación Civil Red de Mentoría y Aprendizaje Estudiantil","Civil Association for Student Mentoring and Learning"],
         ["PARES es una organización juvenil sin fines de lucro que impulsa la mentoría, el aprendizaje colaborativo y el desarrollo integral de estudiantes, conectando jóvenes para compartir conocimientos, fortalecer habilidades y generar oportunidades de crecimiento.","PARES is a nonprofit youth organization that promotes mentoring, collaborative learning, and students' overall development, connecting young people to share knowledge, strengthen skills, and create opportunities for growth."],
         ["Promover el aprendizaje entre pares, la mentoría y la participación juvenil, brindando a estudiantes espacios y oportunidades para desarrollar sus conocimientos, habilidades, liderazgo y compromiso con su comunidad.","Promote peer learning, mentoring, and youth participation, providing students with spaces and opportunities to develop their knowledge, skills, leadership, and commitment to their community."],
